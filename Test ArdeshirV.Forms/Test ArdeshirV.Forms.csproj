@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Test_ArdeshirV.Forms.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconStar.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,9 +82,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ArdeshirV.Forms\ArdeshirV.Forms.csproj">
       <Project>{7e830e6d-b5cc-40a3-9941-f2bee42cd491}</Project>
       <Name>ArdeshirV.Forms</Name>
@@ -86,6 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\312309607-3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconStar.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
