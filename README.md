@@ -1,33 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      body {
-        margin: 5vh 5vw;
-        color: lime;
-        font-family: monospace;
-        background-color: black;
-      }
-      .copyright {
-        color: yellow;
-        text-align: center;
-      }
-      section {
-        margin-bottom: 4em;
-        margin-left: 2em;
-        margin-right: 2em;
-      }
-      img {
-        width: 100%;
-      }
-      h1 {
-        color: red;
-        text-align: center;
-      }
-      pre {
-        color: gray;
-      }
-    </style>
   </head>
   <body>
     <header>
