@@ -85,8 +85,8 @@ namespace ArdeshirV.Forms
         {
             Hide();
 
-            if (Parent is SpecialForm)
-                FollowSpecialForm(Parent as SpecialForm);
+			if (Parent is SpecialForm)
+				FollowSpecialForm(Parent as SpecialForm);
         }
 
         #endregion
@@ -233,6 +233,14 @@ namespace ArdeshirV.Forms
                 m_dblLastOpacity = Opacity;
                 Opacity = 0.0;
             }
+            
+            if(m_imgSplash is Bitmap)
+            {
+            	Hide();
+            	FormSplash.Show(this, m_imgSplash);
+            }
+            
+            Show();
         }
         //-------------------------------------------------------------------------------
         protected override void OnActivated(EventArgs e)
@@ -253,8 +261,6 @@ namespace ArdeshirV.Forms
         {
             base.OnShown(e);
             Invalidate(true);
-            FormSplash.Show(this, m_imgSplash);
-            Show();
 
             if (m_blnChangingOpacityAbility)
             {
