@@ -202,134 +202,131 @@ namespace ArdeshirV.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.m_picApplicationIcon = new System.Windows.Forms.PictureBox();
-            this.m_btnOk = new System.Windows.Forms.Button();
-            this.m_btnSysteminfo = new System.Windows.Forms.Button();
-            this.m_lblApplicationName = new System.Windows.Forms.Label();
-            this.m_lnkTechnicalSupport = new System.Windows.Forms.LinkLabel();
-            this.m_txtDescription = new System.Windows.Forms.RichTextBox();
-            this.m_lblVersion = new System.Windows.Forms.Label();
-            this.m_lblCopyright = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.m_picApplicationIcon)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // m_picApplicationIcon
-            // 
-            this.m_picApplicationIcon.BackColor = System.Drawing.Color.White;
-            this.m_picApplicationIcon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.m_picApplicationIcon.InitialImage = null;
-            this.m_picApplicationIcon.Location = new System.Drawing.Point(12, 12);
-            this.m_picApplicationIcon.Name = "m_picApplicationIcon";
-            this.m_picApplicationIcon.Size = new System.Drawing.Size(125, 125);
-            this.m_picApplicationIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.m_picApplicationIcon.TabIndex = 6;
-            this.m_picApplicationIcon.TabStop = false;
-            // 
-            // m_btnOk
-            // 
-            this.m_btnOk.BackColor = System.Drawing.Color.Transparent;
-            this.m_btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.m_btnOk.Location = new System.Drawing.Point(502, 12);
-            this.m_btnOk.Name = "m_btnOk";
-            this.m_btnOk.Size = new System.Drawing.Size(80, 25);
-            this.m_btnOk.TabIndex = 8;
-            this.m_btnOk.Text = "&OK";
-            this.m_btnOk.UseVisualStyleBackColor = false;
-            this.m_btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // m_btnSysteminfo
-            // 
-            this.m_btnSysteminfo.BackColor = System.Drawing.Color.Transparent;
-            this.m_btnSysteminfo.Location = new System.Drawing.Point(502, 43);
-            this.m_btnSysteminfo.Name = "m_btnSysteminfo";
-            this.m_btnSysteminfo.Size = new System.Drawing.Size(80, 25);
-            this.m_btnSysteminfo.TabIndex = 7;
-            this.m_btnSysteminfo.Text = "&System Info";
-            this.m_btnSysteminfo.UseVisualStyleBackColor = false;
-            this.m_btnSysteminfo.Click += new System.EventHandler(this.btnSysteminfo_Click);
-            // 
-            // m_lblApplicationName
-            // 
-            this.m_lblApplicationName.BackColor = System.Drawing.Color.Transparent;
-            this.m_lblApplicationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_lblApplicationName.Location = new System.Drawing.Point(143, 12);
-            this.m_lblApplicationName.Name = "m_lblApplicationName";
-            this.m_lblApplicationName.Size = new System.Drawing.Size(245, 56);
-            this.m_lblApplicationName.TabIndex = 4;
-            this.m_lblApplicationName.Text = "App Name";
-            this.m_lblApplicationName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // m_lnkTechnicalSupport
-            // 
-            this.m_lnkTechnicalSupport.BackColor = System.Drawing.Color.Transparent;
-            this.m_lnkTechnicalSupport.Location = new System.Drawing.Point(12, 158);
-            this.m_lnkTechnicalSupport.Name = "m_lnkTechnicalSupport";
-            this.m_lnkTechnicalSupport.Size = new System.Drawing.Size(570, 23);
-            this.m_lnkTechnicalSupport.TabIndex = 5;
-            this.m_lnkTechnicalSupport.TabStop = true;
-            this.m_lnkTechnicalSupport.Text = "Technical Support";
-            this.m_lnkTechnicalSupport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.m_lnkTechnicalSupport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
-            // 
-            // m_txtDescription
-            // 
-            this.m_txtDescription.BackColor = System.Drawing.SystemColors.Control;
-            this.m_txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_txtDescription.Location = new System.Drawing.Point(143, 74);
-            this.m_txtDescription.Name = "m_txtDescription";
-            this.m_txtDescription.ReadOnly = true;
-            this.m_txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.m_txtDescription.Size = new System.Drawing.Size(439, 63);
-            this.m_txtDescription.TabIndex = 0;
-            this.m_txtDescription.Text = "Description";
-            // 
-            // m_lblVersion
-            // 
-            this.m_lblVersion.BackColor = System.Drawing.Color.Transparent;
-            this.m_lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_lblVersion.Location = new System.Drawing.Point(389, 12);
-            this.m_lblVersion.Name = "m_lblVersion";
-            this.m_lblVersion.Size = new System.Drawing.Size(106, 56);
-            this.m_lblVersion.TabIndex = 2;
-            this.m_lblVersion.Text = "Version";
-            this.m_lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // m_lblCopyright
-            // 
-            this.m_lblCopyright.BackColor = System.Drawing.Color.Transparent;
-            this.m_lblCopyright.LinkArea = new System.Windows.Forms.LinkArea(6, 8);
-            this.m_lblCopyright.Location = new System.Drawing.Point(12, 140);
-            this.m_lblCopyright.Name = "m_lblCopyright";
-            this.m_lblCopyright.Size = new System.Drawing.Size(570, 22);
-            this.m_lblCopyright.TabIndex = 9;
-            this.m_lblCopyright.TabStop = true;
-            this.m_lblCopyright.Text = "Copyright goes here.";
-            this.m_lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.m_lblCopyright.UseCompatibleTextRendering = true;
-            this.m_lblCopyright.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.M_lblCopyright_LinkClicked);
-            // 
-            // FormAbout
-            // 
-            this.ClientSize = new System.Drawing.Size(594, 184);
-            this.ControlBox = false;
-            this.Controls.Add(this.m_lnkTechnicalSupport);
-            this.Controls.Add(this.m_lblCopyright);
-            this.Controls.Add(this.m_lblVersion);
-            this.Controls.Add(this.m_btnSysteminfo);
-            this.Controls.Add(this.m_btnOk);
-            this.Controls.Add(this.m_txtDescription);
-            this.Controls.Add(this.m_lblApplicationName);
-            this.Controls.Add(this.m_picApplicationIcon);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormAbout";
-            this.ShowInTaskbar = false;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
-            this.Load += new System.EventHandler(this.frmAbout_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.m_picApplicationIcon)).EndInit();
-            this.ResumeLayout(false);
-
+        	this.m_picApplicationIcon = new System.Windows.Forms.PictureBox();
+        	this.m_btnOk = new System.Windows.Forms.Button();
+        	this.m_btnSysteminfo = new System.Windows.Forms.Button();
+        	this.m_lblApplicationName = new System.Windows.Forms.Label();
+        	this.m_lnkTechnicalSupport = new System.Windows.Forms.LinkLabel();
+        	this.m_txtDescription = new System.Windows.Forms.RichTextBox();
+        	this.m_lblVersion = new System.Windows.Forms.Label();
+        	this.m_lblCopyright = new System.Windows.Forms.LinkLabel();
+        	((System.ComponentModel.ISupportInitialize)(this.m_picApplicationIcon)).BeginInit();
+        	this.SuspendLayout();
+        	// 
+        	// m_picApplicationIcon
+        	// 
+        	this.m_picApplicationIcon.BackColor = System.Drawing.Color.White;
+        	this.m_picApplicationIcon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        	this.m_picApplicationIcon.InitialImage = null;
+        	this.m_picApplicationIcon.Location = new System.Drawing.Point(12, 12);
+        	this.m_picApplicationIcon.Name = "m_picApplicationIcon";
+        	this.m_picApplicationIcon.Size = new System.Drawing.Size(125, 125);
+        	this.m_picApplicationIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+        	this.m_picApplicationIcon.TabIndex = 6;
+        	this.m_picApplicationIcon.TabStop = false;
+        	// 
+        	// m_btnOk
+        	// 
+        	this.m_btnOk.BackColor = System.Drawing.Color.Transparent;
+        	this.m_btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        	this.m_btnOk.Location = new System.Drawing.Point(502, 12);
+        	this.m_btnOk.Name = "m_btnOk";
+        	this.m_btnOk.Size = new System.Drawing.Size(80, 25);
+        	this.m_btnOk.TabIndex = 8;
+        	this.m_btnOk.Text = "&OK";
+        	this.m_btnOk.UseVisualStyleBackColor = false;
+        	this.m_btnOk.Click += new System.EventHandler(this.btnOk_Click);
+        	// 
+        	// m_btnSysteminfo
+        	// 
+        	this.m_btnSysteminfo.BackColor = System.Drawing.Color.Transparent;
+        	this.m_btnSysteminfo.Location = new System.Drawing.Point(502, 43);
+        	this.m_btnSysteminfo.Name = "m_btnSysteminfo";
+        	this.m_btnSysteminfo.Size = new System.Drawing.Size(80, 25);
+        	this.m_btnSysteminfo.TabIndex = 7;
+        	this.m_btnSysteminfo.Text = "&System Info";
+        	this.m_btnSysteminfo.UseVisualStyleBackColor = false;
+        	this.m_btnSysteminfo.Click += new System.EventHandler(this.btnSysteminfo_Click);
+        	// 
+        	// m_lblApplicationName
+        	// 
+        	this.m_lblApplicationName.BackColor = System.Drawing.Color.Transparent;
+        	this.m_lblApplicationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.m_lblApplicationName.Location = new System.Drawing.Point(143, 12);
+        	this.m_lblApplicationName.Name = "m_lblApplicationName";
+        	this.m_lblApplicationName.Size = new System.Drawing.Size(245, 56);
+        	this.m_lblApplicationName.TabIndex = 4;
+        	this.m_lblApplicationName.Text = "App Name";
+        	this.m_lblApplicationName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        	// 
+        	// m_lnkTechnicalSupport
+        	// 
+        	this.m_lnkTechnicalSupport.BackColor = System.Drawing.Color.Transparent;
+        	this.m_lnkTechnicalSupport.Location = new System.Drawing.Point(12, 158);
+        	this.m_lnkTechnicalSupport.Name = "m_lnkTechnicalSupport";
+        	this.m_lnkTechnicalSupport.Size = new System.Drawing.Size(570, 23);
+        	this.m_lnkTechnicalSupport.TabIndex = 5;
+        	this.m_lnkTechnicalSupport.TabStop = true;
+        	this.m_lnkTechnicalSupport.Text = "Technical Support";
+        	this.m_lnkTechnicalSupport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	this.m_lnkTechnicalSupport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
+        	// 
+        	// m_txtDescription
+        	// 
+        	this.m_txtDescription.BackColor = System.Drawing.SystemColors.Control;
+        	this.m_txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.m_txtDescription.Location = new System.Drawing.Point(143, 74);
+        	this.m_txtDescription.Name = "m_txtDescription";
+        	this.m_txtDescription.ReadOnly = true;
+        	this.m_txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+        	this.m_txtDescription.Size = new System.Drawing.Size(439, 63);
+        	this.m_txtDescription.TabIndex = 0;
+        	this.m_txtDescription.Text = "Description";
+        	// 
+        	// m_lblVersion
+        	// 
+        	this.m_lblVersion.BackColor = System.Drawing.Color.Transparent;
+        	this.m_lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.m_lblVersion.Location = new System.Drawing.Point(389, 12);
+        	this.m_lblVersion.Name = "m_lblVersion";
+        	this.m_lblVersion.Size = new System.Drawing.Size(106, 56);
+        	this.m_lblVersion.TabIndex = 2;
+        	this.m_lblVersion.Text = "Version";
+        	this.m_lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	// 
+        	// m_lblCopyright
+        	// 
+        	this.m_lblCopyright.BackColor = System.Drawing.Color.Transparent;
+        	this.m_lblCopyright.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
+        	this.m_lblCopyright.Location = new System.Drawing.Point(12, 140);
+        	this.m_lblCopyright.Name = "m_lblCopyright";
+        	this.m_lblCopyright.Size = new System.Drawing.Size(570, 22);
+        	this.m_lblCopyright.TabIndex = 9;
+        	this.m_lblCopyright.Text = "Copyright goes here.";
+        	this.m_lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	this.m_lblCopyright.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.M_lblCopyright_LinkClicked);
+        	// 
+        	// FormAbout
+        	// 
+        	this.ClientSize = new System.Drawing.Size(594, 184);
+        	this.ControlBox = false;
+        	this.Controls.Add(this.m_lnkTechnicalSupport);
+        	this.Controls.Add(this.m_lblCopyright);
+        	this.Controls.Add(this.m_lblVersion);
+        	this.Controls.Add(this.m_btnSysteminfo);
+        	this.Controls.Add(this.m_btnOk);
+        	this.Controls.Add(this.m_txtDescription);
+        	this.Controls.Add(this.m_lblApplicationName);
+        	this.Controls.Add(this.m_picApplicationIcon);
+        	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+        	this.MaximizeBox = false;
+        	this.MinimizeBox = false;
+        	this.Name = "FormAbout";
+        	this.ShowInTaskbar = false;
+        	this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
+        	this.Load += new System.EventHandler(this.frmAbout_Load);
+        	((System.ComponentModel.ISupportInitialize)(this.m_picApplicationIcon)).EndInit();
+        	this.ResumeLayout(false);
         }
         #endregion
     }

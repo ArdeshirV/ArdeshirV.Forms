@@ -16,6 +16,9 @@ namespace ArdeshirV.Forms
         //---------------------------------------------------------------------
         protected FormSplash(Form formOwner, Image imgSplashImage)
         {
+        	if(DesignMode)
+        		return;
+        	
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
             Size = imgSplashImage.Size;
