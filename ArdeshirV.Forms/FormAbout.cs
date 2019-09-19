@@ -308,7 +308,7 @@ namespace ArdeshirV.Forms
         	// 
         	// FormAbout
         	// 
-        	this.ClientSize = new System.Drawing.Size(594, 184);
+        	this.ClientSize = new System.Drawing.Size(596, 335);
         	this.ControlBox = false;
         	this.Controls.Add(this.m_lnkTechnicalSupport);
         	this.Controls.Add(this.m_lblCopyright);
@@ -327,6 +327,7 @@ namespace ArdeshirV.Forms
         	this.Load += new System.EventHandler(this.frmAbout_Load);
         	((System.ComponentModel.ISupportInitialize)(this.m_picApplicationIcon)).EndInit();
         	this.ResumeLayout(false);
+
         }
         #endregion
     }

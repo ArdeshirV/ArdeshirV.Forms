@@ -1,24 +1,25 @@
 ﻿// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
-
 using System;
+using System.IO;
 using System.Drawing;
 using ArdeshirV.Forms;
 using System.Windows.Forms;
-
+//---------------------------------------------------------------------------------------
 namespace Test_ArdeshirV.Forms
 {
-    public partial class FormMainTest : ArdeshirV.Forms.SpecialForm
+    public partial class FormMainTest : SpecialForm
     {
-        private int intIncW = 50;
+        private int intIncW = 250;
         private int intIncH = 50;
         private const string _stringEmail = "ardeshirv@protonmail.com";
-        private const string _stringWebsite = "https://github.com/ArdeshirV/dotNetMySpecialForms";
+        private const string _stringWebsite =
+        	"https://ardeshirv.github.io/dotNetMySpecialForms";
         //-------------------------------------------------------------------------------
         public FormMainTest()
         {
             InitializeComponent();
-            this.OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
+            StartPosition = FormStartPosition.CenterScreen;
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
@@ -65,21 +66,16 @@ namespace Test_ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
-            int i = 0, j = 10;
-            try
-            {
-                i = j / i;  // Throw divide by zero exception
-            }
-            catch (Exception exp)
-            {
+            try {
+            	File.Open("file.ext", System.IO.FileMode.Open);  // Throw an exception
+            } catch (Exception exp) {
                 FormErrorHandler.Show(exp, this, _stringWebsite);
             }
         }
         //-------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
-            FormAbout.Show(this, _stringWebsite,
-                _stringEmail, this.Icon.ToBitmap());
+            FormAbout.Show(this, _stringWebsite, _stringEmail, this.Icon.ToBitmap());
         }
         //-------------------------------------------------------------------------------
         private void UpdateMessageBar()

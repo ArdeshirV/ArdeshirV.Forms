@@ -42,7 +42,7 @@
         	// buttonNewForm
         	// 
         	this.buttonNewForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonNewForm.Location = new System.Drawing.Point(32, 192);
+        	this.buttonNewForm.Location = new System.Drawing.Point(67, 204);
         	this.buttonNewForm.Name = "buttonNewForm";
         	this.buttonNewForm.Size = new System.Drawing.Size(111, 23);
         	this.buttonNewForm.TabIndex = 2;
@@ -53,7 +53,7 @@
         	// buttonErrorHandlerForm
         	// 
         	this.buttonErrorHandlerForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonErrorHandlerForm.Location = new System.Drawing.Point(32, 163);
+        	this.buttonErrorHandlerForm.Location = new System.Drawing.Point(67, 175);
         	this.buttonErrorHandlerForm.Name = "buttonErrorHandlerForm";
         	this.buttonErrorHandlerForm.Size = new System.Drawing.Size(111, 23);
         	this.buttonErrorHandlerForm.TabIndex = 1;
@@ -64,7 +64,7 @@
         	// buttonFormAbout
         	// 
         	this.buttonFormAbout.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonFormAbout.Location = new System.Drawing.Point(32, 134);
+        	this.buttonFormAbout.Location = new System.Drawing.Point(67, 146);
         	this.buttonFormAbout.Name = "buttonFormAbout";
         	this.buttonFormAbout.Size = new System.Drawing.Size(111, 23);
         	this.buttonFormAbout.TabIndex = 0;
@@ -75,7 +75,7 @@
         	// buttonShrinkWidth
         	// 
         	this.buttonShrinkWidth.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonShrinkWidth.Location = new System.Drawing.Point(32, 47);
+        	this.buttonShrinkWidth.Location = new System.Drawing.Point(67, 59);
         	this.buttonShrinkWidth.Name = "buttonShrinkWidth";
         	this.buttonShrinkWidth.Size = new System.Drawing.Size(111, 23);
         	this.buttonShrinkWidth.TabIndex = 3;
@@ -86,7 +86,7 @@
         	// buttonShrinkHeight
         	// 
         	this.buttonShrinkHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonShrinkHeight.Location = new System.Drawing.Point(32, 76);
+        	this.buttonShrinkHeight.Location = new System.Drawing.Point(67, 88);
         	this.buttonShrinkHeight.Name = "buttonShrinkHeight";
         	this.buttonShrinkHeight.Size = new System.Drawing.Size(111, 23);
         	this.buttonShrinkHeight.TabIndex = 4;
@@ -97,7 +97,7 @@
         	// buttonExit
         	// 
         	this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonExit.Location = new System.Drawing.Point(32, 221);
+        	this.buttonExit.Location = new System.Drawing.Point(67, 233);
         	this.buttonExit.Name = "buttonExit";
         	this.buttonExit.Size = new System.Drawing.Size(111, 23);
         	this.buttonExit.TabIndex = 6;
@@ -108,7 +108,7 @@
         	// buttonSplashForm
         	// 
         	this.buttonSplashForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-        	this.buttonSplashForm.Location = new System.Drawing.Point(32, 105);
+        	this.buttonSplashForm.Location = new System.Drawing.Point(67, 117);
         	this.buttonSplashForm.Name = "buttonSplashForm";
         	this.buttonSplashForm.Size = new System.Drawing.Size(111, 23);
         	this.buttonSplashForm.TabIndex = 5;
@@ -124,7 +124,7 @@
         	this.m_lblMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
         	this.m_lblMessage.Location = new System.Drawing.Point(12, 9);
         	this.m_lblMessage.Name = "m_lblMessage";
-        	this.m_lblMessage.Size = new System.Drawing.Size(151, 14);
+        	this.m_lblMessage.Size = new System.Drawing.Size(220, 14);
         	this.m_lblMessage.TabIndex = 7;
         	this.m_lblMessage.Text = "XXX";
         	this.m_lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -134,7 +134,7 @@
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-        	this.ClientSize = new System.Drawing.Size(175, 275);
+        	this.ClientSize = new System.Drawing.Size(244, 298);
         	this.Controls.Add(this.m_lblMessage);
         	this.Controls.Add(this.buttonSplashForm);
         	this.Controls.Add(this.buttonExit);

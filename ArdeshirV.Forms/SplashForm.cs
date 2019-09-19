@@ -38,10 +38,14 @@ namespace ArdeshirV.Forms
             Close();
         }
         //---------------------------------------------------------------------
-        public static void Show(Form formOwner,Image imgSplashImage)
+        public static FormSplash Show(Form formOwner,Image imgSplashImage)
         {
+        	FormSplash form = null;
+
             if (imgSplashImage != null)
-                new FormSplash(formOwner, imgSplashImage);
+                form = new FormSplash(formOwner, imgSplashImage);
+            
+            return form;
         }
         //---------------------------------------------------------------------
         private void M_imgPictureBox_Click(object sender, EventArgs e)

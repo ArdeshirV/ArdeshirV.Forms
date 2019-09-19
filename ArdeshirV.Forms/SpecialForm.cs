@@ -83,8 +83,6 @@ namespace ArdeshirV.Forms
         /// </summary>
         protected SpecialForm()
         {
-            Hide();
-
 			if (Parent is SpecialForm)
 				FollowSpecialForm(Parent as SpecialForm);
         }
@@ -227,20 +225,18 @@ namespace ArdeshirV.Forms
         {
             base.OnLoad(e);
             AddSpecialMouseEvent(this);
+            Hide();
 
             if (m_blnChangingOpacityAbility)
             {
                 m_dblLastOpacity = Opacity;
                 Opacity = 0.0;
+            } else {
+            	Show();
             }
             
             if(m_imgSplash is Bitmap)
-            {
-            	Hide();
             	FormSplash.Show(this, m_imgSplash);
-            }
-            
-            Show();
         }
         //-------------------------------------------------------------------------------
         protected override void OnActivated(EventArgs e)
@@ -261,7 +257,8 @@ namespace ArdeshirV.Forms
         {
             base.OnShown(e);
             Invalidate(true);
-
+            Show();
+            
             if (m_blnChangingOpacityAbility)
             {
                 for (int l_intIndexer = 0; l_intIndexer < 10; l_intIndexer++)
@@ -275,6 +272,7 @@ namespace ArdeshirV.Forms
                 }
 
                 Opacity = m_dblLastOpacity;
+                Focus();
             }
         }
         //-------------------------------------------------------------------------------
