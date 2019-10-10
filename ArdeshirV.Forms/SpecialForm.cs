@@ -2,7 +2,7 @@
 
 // Special Form Project
 // Special Form.cs : Provides Special Form
-// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
 
 using System;
 using System.Drawing;
@@ -21,6 +21,10 @@ namespace ArdeshirV.Forms
     {
         #region Variables
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private bool m_blnFollowParentSpecialForm = true;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
         private Image m_imgSplash = null;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -81,11 +85,7 @@ namespace ArdeshirV.Forms
         /// <summary>
         /// Create SpecialForm instance.
         /// </summary>
-        protected SpecialForm()
-        {
-			if (Parent is SpecialForm)
-				FollowSpecialForm(Parent as SpecialForm);
-        }
+        protected SpecialForm() { }
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -193,14 +193,17 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         public void FollowSpecialForm(SpecialForm frmMasterSpecialForm)
         {
-            OpacityChanger = frmMasterSpecialForm.OpacityChanger;
-            MoveFormWithMouse = frmMasterSpecialForm.MoveFormWithMouse;
-            BackgroundGradientMode = frmMasterSpecialForm.BackgroundGradientMode;
-            BackgroundGradientColor = frmMasterSpecialForm.BackgroundGradientColor;
-            BackgoundEndGradientColor = frmMasterSpecialForm.BackgoundEndGradientColor;
-            BackgoundStartGradientColor = frmMasterSpecialForm.BackgoundStartGradientColor;
-            BackgoundInactiveEndGradientColor = frmMasterSpecialForm.BackgoundInactiveEndGradientColor;
-            BackgoundInactiveStartGradientColor = frmMasterSpecialForm.BackgoundInactiveStartGradientColor;
+            if (frmMasterSpecialForm is SpecialForm)
+            {
+                OpacityChanger = frmMasterSpecialForm.OpacityChanger;
+                MoveFormWithMouse = frmMasterSpecialForm.MoveFormWithMouse;
+                BackgroundGradientMode = frmMasterSpecialForm.BackgroundGradientMode;
+                BackgroundGradientColor = frmMasterSpecialForm.BackgroundGradientColor;
+                BackgoundEndGradientColor = frmMasterSpecialForm.BackgoundEndGradientColor;
+                BackgoundStartGradientColor = frmMasterSpecialForm.BackgoundStartGradientColor;
+                BackgoundInactiveEndGradientColor = frmMasterSpecialForm.BackgoundInactiveEndGradientColor;
+                BackgoundInactiveStartGradientColor = frmMasterSpecialForm.BackgoundInactiveStartGradientColor;
+            }
         }
 
         #endregion
@@ -224,8 +227,10 @@ namespace ArdeshirV.Forms
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            AddSpecialMouseEvent(this);
             Hide();
+            if (Parent is SpecialForm)
+                FollowSpecialForm(Parent as SpecialForm);
+            AddSpecialMouseEvent(this);
 
             if (m_blnChangingOpacityAbility)
             {
@@ -325,6 +330,48 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         #region Utility Functions
 
+        protected void Show(Form frmOwner = null)
+        {
+            if (m_blnFollowParentSpecialForm)
+            {
+                if (frmOwner == null)
+                {
+                    if (Parent is SpecialForm)
+                        FollowSpecialForm(Parent as SpecialForm);
+                    base.Show();
+                }
+                else
+                {
+                    if (frmOwner is SpecialForm)
+                        FollowSpecialForm(frmOwner as SpecialForm);
+                    base.Show(frmOwner);
+                }
+            }
+            else
+                base.Show(frmOwner);
+        }
+        //-------------------------------------------------------------------------------
+        protected void ShowDialog(Form frmOwner = null)
+        {
+            if (m_blnFollowParentSpecialForm)
+            {
+                if (frmOwner == null)
+                {
+                    if (Parent is SpecialForm)
+                        FollowSpecialForm(Parent as SpecialForm);
+                    base.ShowDialog();
+                }
+                else
+                {
+                    if (frmOwner is SpecialForm)
+                        FollowSpecialForm(frmOwner as SpecialForm);
+                    base.ShowDialog(frmOwner);
+                }
+            }
+            else
+                base.ShowDialog(frmOwner);
+        }
+        //-------------------------------------------------------------------------------
         private void InitializeComponent() { }
         //-------------------------------------------------------------------------------
         public void AddSpecialMouseEvent(Control ctlDest)
@@ -387,6 +434,27 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         #region Properties
 
+
+
+
+        /// <summary>
+        /// This form should follow parent special-form properties.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Special")]
+        [Description("This form should follow parent special-form properties.")]
+        public bool FollowParentSpecialForm
+        {
+            get
+            {
+                return m_blnFollowParentSpecialForm;
+            }
+            set
+            {
+                m_blnFollowParentSpecialForm = value;
+            }
+        }
+        //-------------------------------------------------------------------------------
         /// <summary>
         /// Sets or gets the ending lieaner background color when form is inactive.
         /// </summary>
@@ -405,6 +473,7 @@ namespace ArdeshirV.Forms
             }
         }
         //-------------------------------------------------------------------------------
+
         /// <summary>
         /// Sets or gets the ending lieaner background color when form is inactive.
         /// </summary>

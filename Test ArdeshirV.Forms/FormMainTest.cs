@@ -9,9 +9,9 @@ namespace Test_ArdeshirV.Forms
 {
     public partial class FormMainTest : SpecialForm
     {
-        private int intIncW = 250;
         private int intIncH = 50;
-        private const string _stringEmail = "ardeshirv@protonmail.com";
+        private int intIncW = 250;
+        private const string _stringEmail = "ArdeshirV@protonmail.com";
         private const string _stringWebsite =
         	"https://ardeshirv.github.io/dotNetMySpecialForms";
         //-------------------------------------------------------------------------------
@@ -20,6 +20,8 @@ namespace Test_ArdeshirV.Forms
             InitializeComponent();
             OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
             StartPosition = FormStartPosition.CenterScreen;
+            BackgoundStartGradientColor = Color.Yellow;
+            BackgoundEndGradientColor = Color.Firebrick;
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)

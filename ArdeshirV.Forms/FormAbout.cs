@@ -2,13 +2,13 @@
 
 // Form About
 // Form About.cs : Provides Form About Box
-// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
 
 using System;
 using System.IO;
 using System.Drawing;
-using ArdeshirV.Utilities;
 using System.Reflection;
+using ArdeshirV.Utilities;
 using System.Windows.Forms;
 
 #endregion
@@ -40,7 +40,8 @@ namespace ArdeshirV.Forms
         //---------------------------------------------------------------------
         #region Constructor
 
-        protected FormAbout(Form frmOwner, string strLinkSite, string strEmail, Image imgAppImage)
+        protected FormAbout(Form frmOwner, string strLinkSite,
+            string strEmail, Image imgAppImage) : base()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -75,9 +76,9 @@ namespace ArdeshirV.Forms
             m_btnSysteminfo.Enabled = File.Exists(m_strSystemInfo);
 
             int intEmailIndex = m_lblCopyright.Text.
-                ToLower().IndexOf(strEmail.ToLower());
+                ToLower().IndexOf(strEmail.ToLower(), StringComparison.Ordinal);
             int intWebsiteIndex = m_lblCopyright.Text.
-                ToLower().IndexOf(strLinkSite.ToLower());
+                ToLower().IndexOf(strLinkSite.ToLower(), StringComparison.Ordinal);
 
             if(intEmailIndex >= 0)
             {
@@ -90,10 +91,7 @@ namespace ArdeshirV.Forms
                 m_lblCopyright.LinkArea = new LinkArea(intPos, strLinkSite.Length);
             }
 
-            if (frmOwner == null)
-                ShowDialog();
-            else
-                ShowDialog(frmOwner);
+            ShowDialog(frmOwner);
         }
 
         #endregion

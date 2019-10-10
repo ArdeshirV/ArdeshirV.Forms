@@ -14,12 +14,12 @@ namespace ArdeshirV.Forms
     {
         private Timer m_timTimer;
         //---------------------------------------------------------------------
-        protected FormSplash(Form formOwner, Image imgSplashImage)
+        protected FormSplash(Form formOwner, Image imgSplashImage) : base()
         {
-        	if(DesignMode)
-        		return;
-        	
             InitializeComponent();
+            if (DesignMode)
+                return;
+            FollowParentSpecialForm = false;
             this.StartPosition = FormStartPosition.CenterParent;
             Size = imgSplashImage.Size;
             this.AutoSizeMode = AutoSizeMode.GrowOnly;

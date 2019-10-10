@@ -68,10 +68,7 @@ namespace ArdeshirV.Forms
 	            	m_lnkLink.Text = m_strLink;
 			}
 
-            if (frmOwner == null)
-                ShowDialog();
-            else
-                ShowDialog(frmOwner);
+            ShowDialog(frmOwner);
 		}
 
 		#endregion
