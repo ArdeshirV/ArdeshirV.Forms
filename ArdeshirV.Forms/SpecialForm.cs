@@ -193,7 +193,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         public void FollowSpecialForm(SpecialForm frmMasterSpecialForm)
         {
-            if (frmMasterSpecialForm is SpecialForm)
+            if (frmMasterSpecialForm != null)
             {
                 OpacityChanger = frmMasterSpecialForm.OpacityChanger;
                 MoveFormWithMouse = frmMasterSpecialForm.MoveFormWithMouse;
@@ -228,8 +228,6 @@ namespace ArdeshirV.Forms
         {
             base.OnLoad(e);
             Hide();
-            if (Parent is SpecialForm)
-                FollowSpecialForm(Parent as SpecialForm);
             AddSpecialMouseEvent(this);
 
             if (m_blnChangingOpacityAbility)
@@ -330,46 +328,48 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         #region Utility Functions
 
-        protected void Show(Form frmOwner = null)
+        protected new void Show()
         {
-            if (m_blnFollowParentSpecialForm)
-            {
-                if (frmOwner == null)
-                {
-                    if (Parent is SpecialForm)
-                        FollowSpecialForm(Parent as SpecialForm);
-                    base.Show();
-                }
-                else
-                {
-                    if (frmOwner is SpecialForm)
-                        FollowSpecialForm(frmOwner as SpecialForm);
-                    base.Show(frmOwner);
-                }
-            }
-            else
-                base.Show(frmOwner);
+        	this.Show(null);
         }
         //-------------------------------------------------------------------------------
-        protected void ShowDialog(Form frmOwner = null)
-        {
-            if (m_blnFollowParentSpecialForm)
-            {
-                if (frmOwner == null)
-                {
-                    if (Parent is SpecialForm)
-                        FollowSpecialForm(Parent as SpecialForm);
-                    base.ShowDialog();
-                }
-                else
-                {
-                    if (frmOwner is SpecialForm)
-                        FollowSpecialForm(frmOwner as SpecialForm);
-                    base.ShowDialog(frmOwner);
-                }
+        protected new void Show(IWin32Window frmOwner)
+        {            
+        	if (frmOwner == null)
+	    	{
+	            if (Parent is SpecialForm && m_blnFollowParentSpecialForm)
+	                FollowSpecialForm(Parent as SpecialForm);
+                base.Show();
             }
             else
-                base.ShowDialog(frmOwner);
+            {
+                if (frmOwner is SpecialForm && m_blnFollowParentSpecialForm)
+                    FollowSpecialForm(frmOwner as SpecialForm);
+                base.Show(frmOwner);
+            }
+        }
+        //-------------------------------------------------------------------------------
+        protected new DialogResult ShowDialog()
+        {
+        	return this.ShowDialog(null);
+        }
+        //-------------------------------------------------------------------------------
+        protected new DialogResult ShowDialog(IWin32Window frmOwner)
+        {
+        	DialogResult dr = DialogResult.Cancel;
+        	if (frmOwner == null)
+	    	{
+	            if (Parent is SpecialForm && m_blnFollowParentSpecialForm)
+	                FollowSpecialForm(Parent as SpecialForm);
+                dr = base.ShowDialog();
+            }
+            else
+            {
+                if (frmOwner is SpecialForm && m_blnFollowParentSpecialForm)
+                    FollowSpecialForm(frmOwner as SpecialForm);
+                dr = base.ShowDialog(frmOwner);
+            }
+            return dr;
         }
         //-------------------------------------------------------------------------------
         private void InitializeComponent() { }
@@ -433,9 +433,6 @@ namespace ArdeshirV.Forms
         #endregion
         //-------------------------------------------------------------------------------
         #region Properties
-
-
-
 
         /// <summary>
         /// This form should follow parent special-form properties.

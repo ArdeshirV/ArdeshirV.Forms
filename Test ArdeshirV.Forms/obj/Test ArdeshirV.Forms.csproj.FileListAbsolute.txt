@@ -1,0 +1,10 @@
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Release\Test ArdeshirV.Forms.exe
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Release\Test ArdeshirV.Forms.pdb
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Release\ArdeshirV.Forms.dll
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Release\ArdeshirV.Forms.pdb
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Release\ResolveAssemblyReference.cache
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Release\Test_ArdeshirV.Forms.FormMainTest.resources
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Release\Test_ArdeshirV.Forms.Properties.Resources.resources
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Release\Test ArdeshirV.Forms.csproj.GenerateResource.Cache
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Release\Test ArdeshirV.Forms.exe
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Release\Test ArdeshirV.Forms.pdb

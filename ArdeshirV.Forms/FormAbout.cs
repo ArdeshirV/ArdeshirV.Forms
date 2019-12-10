@@ -18,22 +18,22 @@ namespace ArdeshirV.Forms
     /// <summary>
     /// About Form in Vector Project.
     /// </summary>
-    public class FormAbout : ArdeshirV.Forms.SpecialForm
+    public class FormAbout : SpecialForm
     {
         #region Variables
 
+        private Button m_btnOk;
         private Label m_lblVersion;
+        private Button m_btnSysteminfo;
         private LinkLabel m_lblCopyright;
         private Label m_lblApplicationName;
         private RichTextBox m_txtDescription;
         private string m_strLink = string.Empty;
         private LinkLabel m_lnkTechnicalSupport;
+        private PictureBox m_picApplicationIcon;
         private string m_strEmail = string.Empty;
         private static bool s_blnIsExists = false;
-        private System.Windows.Forms.Button m_btnOk;
-        private System.Windows.Forms.Button m_btnSysteminfo;
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.PictureBox m_picApplicationIcon;
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
 
         #endregion
