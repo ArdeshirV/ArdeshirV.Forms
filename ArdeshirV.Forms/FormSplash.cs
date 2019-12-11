@@ -10,27 +10,28 @@ using System.Windows.Forms;
 //-----------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
-    public partial class FormSplash : SpecialForm
+    public partial class FormSplash : FormBase
     {
         private Timer m_timTimer;
         //---------------------------------------------------------------------
         protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) : base()
         {
             InitializeComponent();
-            if (DesignMode)
-                return;
-            Visible = false;
-            FollowParentSpecialForm = false;
-            this.StartPosition = FormStartPosition.CenterParent;
-            Size = imgSplashImage.Size;
-            this.AutoSizeMode = AutoSizeMode.GrowOnly;
-            m_imgPictureBox.Image = imgSplashImage;
-            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            m_timTimer = new Timer();
-            m_timTimer.Interval = Delay;
-            m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
-            m_timTimer.Start();
-            ShowDialog(formOwner);
+            if (!DesignMode)
+            {
+	            Visible = false;
+	            FollowParentFormBase = false;
+	            this.StartPosition = FormStartPosition.CenterScreen;
+	            Size = imgSplashImage.Size; 
+	            this.AutoSizeMode = AutoSizeMode.GrowOnly;
+	            m_imgPictureBox.Image = imgSplashImage;
+	            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+	            m_timTimer = new Timer();
+	            m_timTimer.Interval = Delay;
+	            m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
+	            m_timTimer.Start();
+	            ShowDialog(formOwner);
+            }
         }
         //---------------------------------------------------------------------
         private void m_timTimer_Elapsed(object sender, EventArgs e)

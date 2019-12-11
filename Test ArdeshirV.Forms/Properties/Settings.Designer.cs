@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Test_ArdeshirV.Forms.Properties
+namespace ArdeshirV.TestForms.Properties
 {
 
 

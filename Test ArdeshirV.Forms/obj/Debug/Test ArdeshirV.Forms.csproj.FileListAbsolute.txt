@@ -1,0 +1,12 @@
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Debug\Test ArdeshirV.Forms.exe
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Debug\Test ArdeshirV.Forms.pdb
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Debug\ArdeshirV.Forms.dll
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\bin\Debug\ArdeshirV.Forms.pdb
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test ArdeshirV.Forms.csprojAssemblyReference.cache
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test_ArdeshirV.Forms.FormMainTest.resources
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test_ArdeshirV.Forms.Properties.Resources.resources
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test ArdeshirV.Forms.csproj.GenerateResource.cache
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test ArdeshirV.Forms.csproj.CoreCompileInputs.cache
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test ArdeshirV.Forms.csproj.CopyComplete
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test ArdeshirV.Forms.exe
+D:\Documents\Projects\C#\Visual-Studio-dotNet\0K Projects\ArdeshirV.Forms\Test ArdeshirV.Forms\obj\Debug\Test ArdeshirV.Forms.pdb

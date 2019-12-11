@@ -45,7 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Test_ArdeshirV.Forms.Program</StartupObject>
+    <StartupObject>ArdeshirV.TestForms.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>IconStar.ico</ApplicationIcon>
@@ -74,7 +74,7 @@
       <DependentUpon>FormMainTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>

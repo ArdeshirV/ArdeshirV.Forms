@@ -1,19 +1,19 @@
-﻿// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
+﻿// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
 using System;
 using System.IO;
 using System.Drawing;
 using ArdeshirV.Forms;
 using System.Windows.Forms;
 //---------------------------------------------------------------------------------------
-namespace Test_ArdeshirV.Forms
+namespace ArdeshirV.TestForms
 {
-    public partial class FormMainTest : SpecialForm
+    public partial class FormMainTest : FormBase
     {
-        private int intIncH = 50;
-        private int intIncW = 250;
+        private int intIncH = 100;
+        private int intIncW = 150;
         private const string _stringEmail = "ArdeshirV@protonmail.com";
         private const string _stringWebsite =
-        	"https://ardeshirv.github.io/dotNetMySpecialForms";
+        	"https://ardeshirv.github.io/ArdeshirV.Forms";
         //-------------------------------------------------------------------------------
         public FormMainTest()
         {
@@ -22,6 +22,7 @@ namespace Test_ArdeshirV.Forms
             StartPosition = FormStartPosition.CenterScreen;
             BackgoundStartGradientColor = Color.Yellow;
             BackgoundEndGradientColor = Color.Firebrick;
+            UpdateMessageBar();
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
@@ -69,7 +70,7 @@ namespace Test_ArdeshirV.Forms
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
             try {
-            	File.Open("file.ext", System.IO.FileMode.Open);  // Throw an exception
+            	File.Open("some-file.ext", System.IO.FileMode.Open);  // Throw an exception
             } catch (Exception exp) {
                 FormErrorHandler.Show(exp, this, _stringWebsite);
             }
@@ -82,12 +83,12 @@ namespace Test_ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         private void UpdateMessageBar()
         {
-            m_lblMessage.Text = string.Format("Width = {0}", Width);
+            m_lblMessage.Text = string.Format("W:{0}, H:{1}", Width, Height);
         }
         //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
-            Image img = global::Test_ArdeshirV.Forms.Properties.Resources.SplashImage;
+            Image img = global::ArdeshirV.TestForms.Properties.Resources.Lindows;
             FormSplash.Show(this, img);
         }
         //-------------------------------------------------------------------------------
@@ -95,5 +96,16 @@ namespace Test_ArdeshirV.Forms
         {
             UpdateMessageBar();
         }
+        //-------------------------------------------------------------------------------
+		void ButtonFormMessageClick(object sender, EventArgs e)
+		{
+			DialogResult drResult = FormMessage.Show().DialogResult;//this, "Message");
+		}
+        //-------------------------------------------------------------------------------
+		void ButtonInputClick(object sender, EventArgs e)
+		{
+			//string stringResult;
+			FormInput.Show();//this, "Message", out stringResult);
+		}
     }
 }

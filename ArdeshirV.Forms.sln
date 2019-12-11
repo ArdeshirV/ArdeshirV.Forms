@@ -1,7 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-# SharpDevelop 5.1
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArdeshirV.Forms", "ArdeshirV.Forms\ArdeshirV.Forms.csproj", "{7E830E6D-B5CC-40A3-9941-F2BEE42CD491}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test ArdeshirV.Forms", "Test ArdeshirV.Forms\Test ArdeshirV.Forms.csproj", "{2B6ADB0D-75BD-4EC1-8A29-29DE29363DB5}"

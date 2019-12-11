@@ -1,11 +1,9 @@
 using System;
 
 #region Header
-
 // Assembly Information
 // AssemblyInfo.cs : Provides Information of Assembly
 // Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
-
 using System.Reflection;
 using System.Runtime.InteropServices;
 

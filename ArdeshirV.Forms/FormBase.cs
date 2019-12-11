@@ -17,12 +17,12 @@ namespace ArdeshirV.Forms
     /// <summary>
     /// Provide a special Form with special properties, form shrink ability and special color.
     /// </summary>
-    public class SpecialForm : System.Windows.Forms.Form
+    public class FormBase : System.Windows.Forms.Form
     {
         #region Variables
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool m_blnFollowParentSpecialForm = true;
+        private bool m_blnFollowParentFormBase = true;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         private Image m_imgSplash = null;
@@ -83,9 +83,9 @@ namespace ArdeshirV.Forms
         #region Constructor
 
         /// <summary>
-        /// Create SpecialForm instance.
+        /// Create FormBase instance.
         /// </summary>
-        protected SpecialForm() { }
+        protected FormBase() { }
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -191,18 +191,18 @@ namespace ArdeshirV.Forms
             }
         }
         //-------------------------------------------------------------------------------
-        public void FollowSpecialForm(SpecialForm frmMasterSpecialForm)
+        public void FollowFormBase(FormBase frmMasterFormBase)
         {
-            if (frmMasterSpecialForm != null)
+            if (frmMasterFormBase != null)
             {
-                OpacityChanger = frmMasterSpecialForm.OpacityChanger;
-                MoveFormWithMouse = frmMasterSpecialForm.MoveFormWithMouse;
-                BackgroundGradientMode = frmMasterSpecialForm.BackgroundGradientMode;
-                BackgroundGradientColor = frmMasterSpecialForm.BackgroundGradientColor;
-                BackgoundEndGradientColor = frmMasterSpecialForm.BackgoundEndGradientColor;
-                BackgoundStartGradientColor = frmMasterSpecialForm.BackgoundStartGradientColor;
-                BackgoundInactiveEndGradientColor = frmMasterSpecialForm.BackgoundInactiveEndGradientColor;
-                BackgoundInactiveStartGradientColor = frmMasterSpecialForm.BackgoundInactiveStartGradientColor;
+                OpacityChanger = frmMasterFormBase.OpacityChanger;
+                MoveFormWithMouse = frmMasterFormBase.MoveFormWithMouse;
+                BackgroundGradientMode = frmMasterFormBase.BackgroundGradientMode;
+                BackgroundGradientColor = frmMasterFormBase.BackgroundGradientColor;
+                BackgoundEndGradientColor = frmMasterFormBase.BackgoundEndGradientColor;
+                BackgoundStartGradientColor = frmMasterFormBase.BackgoundStartGradientColor;
+                BackgoundInactiveEndGradientColor = frmMasterFormBase.BackgoundInactiveEndGradientColor;
+                BackgoundInactiveStartGradientColor = frmMasterFormBase.BackgoundInactiveStartGradientColor;
             }
         }
 
@@ -334,17 +334,17 @@ namespace ArdeshirV.Forms
         }
         //-------------------------------------------------------------------------------
         protected new void Show(IWin32Window frmOwner)
-        {            
+        {
         	if (frmOwner == null)
 	    	{
-	            if (Parent is SpecialForm && m_blnFollowParentSpecialForm)
-	                FollowSpecialForm(Parent as SpecialForm);
+	            if (Parent is FormBase && m_blnFollowParentFormBase)
+	                FollowFormBase(Parent as FormBase);
                 base.Show();
             }
             else
             {
-                if (frmOwner is SpecialForm && m_blnFollowParentSpecialForm)
-                    FollowSpecialForm(frmOwner as SpecialForm);
+                if (frmOwner is FormBase && m_blnFollowParentFormBase)
+                    FollowFormBase(frmOwner as FormBase);
                 base.Show(frmOwner);
             }
         }
@@ -359,14 +359,14 @@ namespace ArdeshirV.Forms
         	DialogResult dr = DialogResult.Cancel;
         	if (frmOwner == null)
 	    	{
-	            if (Parent is SpecialForm && m_blnFollowParentSpecialForm)
-	                FollowSpecialForm(Parent as SpecialForm);
+	            if (Parent is FormBase && m_blnFollowParentFormBase)
+	                FollowFormBase(Parent as FormBase);
                 dr = base.ShowDialog();
             }
             else
             {
-                if (frmOwner is SpecialForm && m_blnFollowParentSpecialForm)
-                    FollowSpecialForm(frmOwner as SpecialForm);
+                if (frmOwner is FormBase && m_blnFollowParentFormBase)
+                    FollowFormBase(frmOwner as FormBase);
                 dr = base.ShowDialog(frmOwner);
             }
             return dr;
@@ -440,15 +440,15 @@ namespace ArdeshirV.Forms
         [Browsable(true)]
         [Category("Special")]
         [Description("This form should follow parent special-form properties.")]
-        public bool FollowParentSpecialForm
+        public bool FollowParentFormBase
         {
             get
             {
-                return m_blnFollowParentSpecialForm;
+                return m_blnFollowParentFormBase;
             }
             set
             {
-                m_blnFollowParentSpecialForm = value;
+                m_blnFollowParentFormBase = value;
             }
         }
         //-------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Test_ArdeshirV.Forms
+namespace ArdeshirV.TestForms
 {
     static class Program
     {

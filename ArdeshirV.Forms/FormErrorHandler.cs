@@ -15,7 +15,7 @@ namespace ArdeshirV.Forms
     /// <summary>
     /// About Form in Vector Project.
     /// </summary>
-    public class FormErrorHandler : SpecialForm
+    public class FormErrorHandler : FormBase
 	{
         #region Variables
 
@@ -52,6 +52,7 @@ namespace ArdeshirV.Forms
             exp = expException;
             m_strLink = strLinkSite;
             textBoxMessage.SelectedText = "";
+			DialogResult = DialogResult.Cancel;
             textBoxMessage.Text = expException.Message;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             StartPosition = FormStartPosition.CenterParent;
@@ -272,12 +273,12 @@ namespace ArdeshirV.Forms
 			this.textBoxStackTrack.BackColor = System.Drawing.Color.Black;
 			this.textBoxStackTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxStackTrack.ForeColor = System.Drawing.Color.Gold;
-			this.textBoxStackTrack.Location = new System.Drawing.Point(12, 137);
+			this.textBoxStackTrack.Location = new System.Drawing.Point(12, 150);
 			this.textBoxStackTrack.Multiline = true;
 			this.textBoxStackTrack.Name = "textBoxStackTrack";
 			this.textBoxStackTrack.ReadOnly = true;
 			this.textBoxStackTrack.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxStackTrack.Size = new System.Drawing.Size(560, 222);
+			this.textBoxStackTrack.Size = new System.Drawing.Size(560, 209);
 			this.textBoxStackTrack.TabIndex = 6;
 			this.textBoxStackTrack.TabStop = false;
 			this.textBoxStackTrack.Text = "Message";
@@ -286,7 +287,7 @@ namespace ArdeshirV.Forms
 			// m_lblStackTrack
 			// 
 			this.m_lblStackTrack.BackColor = System.Drawing.Color.Transparent;
-			this.m_lblStackTrack.Location = new System.Drawing.Point(12, 121);
+			this.m_lblStackTrack.Location = new System.Drawing.Point(12, 134);
 			this.m_lblStackTrack.Name = "m_lblStackTrack";
 			this.m_lblStackTrack.Size = new System.Drawing.Size(560, 13);
 			this.m_lblStackTrack.TabIndex = 5;
@@ -304,9 +305,9 @@ namespace ArdeshirV.Forms
 			// 
 			// textBoxMessage
 			// 
-			this.textBoxMessage.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.textBoxMessage.BackColor = System.Drawing.Color.Black;
 			this.textBoxMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxMessage.ForeColor = System.Drawing.Color.Red;
 			this.textBoxMessage.Location = new System.Drawing.Point(12, 12);
 			this.textBoxMessage.Multiline = true;
@@ -320,7 +321,7 @@ namespace ArdeshirV.Forms
 			// 
 			// FormErrorHandler
 			// 
-			this.ClientSize = new System.Drawing.Size(584, 120);
+			this.ClientSize = new System.Drawing.Size(584, 123);
 			this.Controls.Add(this.textBoxMessage);
 			this.Controls.Add(this.buttonInnerExp);
 			this.Controls.Add(this.m_lblStackTrack);

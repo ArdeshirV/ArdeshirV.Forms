@@ -18,7 +18,7 @@ namespace ArdeshirV.Forms
     /// <summary>
     /// About Form in Vector Project.
     /// </summary>
-    public class FormAbout : SpecialForm
+    public class FormAbout : FormBase
     {
         #region Variables
 
@@ -58,7 +58,7 @@ namespace ArdeshirV.Forms
             //m_lnkLink.Text = "Click here to view technical support site.";
 
             //if (strEmail == string.Empty || strEmail == null)
-            ///    m_lnkMalieTo.Visible = false;
+            //    m_lnkMalieTo.Visible = false;
             //else
             //    m_lnkMalieTo.Text = strEmail;
             if (m_strLink == string.Empty || strLinkSite == null)
@@ -306,7 +306,7 @@ namespace ArdeshirV.Forms
         	// 
         	// FormAbout
         	// 
-        	this.ClientSize = new System.Drawing.Size(596, 335);
+        	this.ClientSize = new System.Drawing.Size(596, 190);
         	this.ControlBox = false;
         	this.Controls.Add(this.m_lnkTechnicalSupport);
         	this.Controls.Add(this.m_lblCopyright);
