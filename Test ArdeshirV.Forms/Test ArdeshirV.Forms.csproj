@@ -7,8 +7,8 @@
     <ProjectGuid>{2B6ADB0D-75BD-4EC1-8A29-29DE29363DB5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test_ArdeshirV.Forms</RootNamespace>
-    <AssemblyName>Test ArdeshirV.Forms</AssemblyName>
+    <RootNamespace>ArdeshirV.TestForms</RootNamespace>
+    <AssemblyName>ArdeshirV.TestForms</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NoWin32Manifest>False</NoWin32Manifest>
@@ -17,7 +17,7 @@
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>Test ArdeshirV.Forms.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>TestArdeshirV.Forms.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
@@ -48,7 +48,7 @@
     <StartupObject>ArdeshirV.TestForms.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>IconStar.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\1399 - flower plant.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
@@ -92,12 +92,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\312309607-3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="IconStar.ico" />
+    <None Include="Resources\1399 - flower plant.ico" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

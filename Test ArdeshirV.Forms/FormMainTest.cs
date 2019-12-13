@@ -4,6 +4,7 @@ using System.IO;
 using System.Drawing;
 using ArdeshirV.Forms;
 using System.Windows.Forms;
+using ArdeshirV.TestForms.Properties;
 //---------------------------------------------------------------------------------------
 namespace ArdeshirV.TestForms
 {
@@ -78,7 +79,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
-            FormAbout.Show(this, _stringWebsite, _stringEmail, this.Icon.ToBitmap());
+            FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.ImageFlower);
         }
         //-------------------------------------------------------------------------------
         private void UpdateMessageBar()
@@ -88,8 +89,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
-            Image img = global::ArdeshirV.TestForms.Properties.Resources.Lindows;
-            FormSplash.Show(this, img);
+            FormSplash.Show(this, Resources.ImageFlower);
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)

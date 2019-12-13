@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
+using System;
 using System.Windows.Forms;
 
 namespace ArdeshirV.TestForms
