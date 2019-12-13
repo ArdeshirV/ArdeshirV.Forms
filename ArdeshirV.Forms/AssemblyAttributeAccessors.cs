@@ -19,7 +19,7 @@ namespace ArdeshirV.Utilities
     {
         #region Variables
 
-        private Assembly m_asmExcuting = null;
+        private readonly Assembly m_asmExcuting = null;
 
         #endregion Variables
         //---------------------------------------------------------------------
