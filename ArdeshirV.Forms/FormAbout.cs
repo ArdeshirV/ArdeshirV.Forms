@@ -16,7 +16,7 @@ using System.Windows.Forms;
 namespace ArdeshirV.Forms
 {
     /// <summary>
-    /// About Form in Vector Project.
+    /// About Form
     /// </summary>
     public class FormAbout : FormBase
     {
@@ -115,7 +115,7 @@ namespace ArdeshirV.Forms
             if (File.Exists(l_strSystemInfo))
                 System.Diagnostics.Process.Start(l_strSystemInfo);
             else
-                throw new Exception(string.Format("File {0} missing!", l_strSystemInfo));
+                throw new FileNotFoundException(string.Format("File {0} missing!", l_strSystemInfo));
         }
 
         #endregion
@@ -165,7 +165,7 @@ namespace ArdeshirV.Forms
             if (m_lblCopyright.Text.ToLower().Contains(m_strEmail.ToLower()))
                 m_lnkMalieTo_LinkClicked(sender, e);
             else if (m_lblCopyright.Text.ToLower().Contains(m_strLink.ToLower()))
-                m_lnkMalieTo_LinkClicked(sender, e);
+                m_lnkTechnicalSupport_LinkClicked(sender, e);
         }
 
         #endregion
