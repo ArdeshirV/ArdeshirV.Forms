@@ -30,7 +30,7 @@ namespace ArdeshirV.Forms
 			return form;
 		}
 		//---------------------------------------------------------------------
-		void ButtonOKClick(object sender, EventArgs e)
+		public void ButtonOKClick(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;
 		}
