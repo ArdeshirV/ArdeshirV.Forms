@@ -210,6 +210,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         #region External Methods
 
+        // I removed this code to keep my code platform independent
         //[DllImport("user32.dll", EntryPoint = "AnimateWindow", CharSet = CharSet.Unicode)]
         //static extern int AnimateWindow(IntPtr hWnd, long dwTime, long dwFlags);
 
