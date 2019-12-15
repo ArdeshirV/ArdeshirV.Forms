@@ -87,7 +87,7 @@ namespace ArdeshirV.Forms
 				m_lnkLink.Visible = false;
 			else {
 	        	if(frmOwner != null)
-	        		m_lnkLink.Text = "Technical Support";
+	        		m_lnkLink.Text = m_strLink;
 	        			//string.Format("Visit {0} on the web", frmOwner.Text);
 	        	else
 	            	m_lnkLink.Text = m_strLink;

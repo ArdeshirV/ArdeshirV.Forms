@@ -17,7 +17,7 @@ namespace ArdeshirV.Forms
     /// <summary>
     /// Provide a special Form with special properties, form shrink ability and special color.
     /// </summary>
-    public class FormBase : System.Windows.Forms.Form
+    public class FormBase : Form
     {
         #region Variables
 
@@ -123,6 +123,8 @@ namespace ArdeshirV.Forms
                 Width = intNewWidth;
                 RaiseShrinkEnd();
             }
+            else
+            	Width = intNewWidth;
         }
         //------------------------------------------------------------------------------
         public void ShrinkHeightByTime(int intNewHeight)
@@ -161,6 +163,8 @@ namespace ArdeshirV.Forms
                 Height = intNewHeight;
                 RaiseShrinkEnd();
             }
+            else
+                Height = intNewHeight;
         }
         //-------------------------------------------------------------------------------
         public void ShrinkWidth(int intNewWidth)
@@ -175,6 +179,8 @@ namespace ArdeshirV.Forms
                 Width = intNewWidth;
                 RaiseShrinkEnd();
             }
+            else
+                Width = intNewWidth;
         }
         //-------------------------------------------------------------------------------
         public void ShrinkHeight(int intNewHeight)
@@ -189,6 +195,8 @@ namespace ArdeshirV.Forms
                 Height = intNewHeight;
                 RaiseShrinkEnd();
             }
+            else
+                Height = intNewHeight;
         }
         //-------------------------------------------------------------------------------
         public void FollowFormBase(FormBase frmMasterFormBase)
