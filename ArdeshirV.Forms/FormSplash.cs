@@ -1,6 +1,6 @@
 #region Header
 
-// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.Drawing;

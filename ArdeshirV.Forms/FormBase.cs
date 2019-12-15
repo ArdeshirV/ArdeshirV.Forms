@@ -2,7 +2,7 @@
 
 // Special Form Project
 // Special Form.cs : Provides Special Form
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.Drawing;
@@ -284,7 +284,8 @@ namespace ArdeshirV.Forms
                 }
 
                 Opacity = m_dblLastOpacity;
-                Focus();
+                if(!Disposing)
+                	Focus();
             }
         }
         //-------------------------------------------------------------------------------
@@ -713,7 +714,9 @@ namespace ArdeshirV.Forms
             }
             remove
             {
-                m_dlgBackgroundGradientColorChanged -= value;
+            	if(m_dlgBackgroundGradientColorChanged != null)
+            		// disable once DelegateSubtraction
+                	m_dlgBackgroundGradientColorChanged -= value;
             }
         }
         //-------------------------------------------------------------------------------
@@ -725,7 +728,9 @@ namespace ArdeshirV.Forms
             }
             remove
             {
-                m_dlgShrinkBegan -= value;
+            	if(m_dlgShrinkBegan != null)
+                	// disable once DelegateSubtraction
+                	m_dlgShrinkBegan -= value;
             }
         }
         //-------------------------------------------------------------------------------
@@ -737,7 +742,9 @@ namespace ArdeshirV.Forms
             }
             remove
             {
-                m_dlgShrinkEnd -= value;
+            	if(m_dlgShrinkEnd != null)
+                	// disable once DelegateSubtraction
+                	m_dlgShrinkEnd -= value;
             }
         }
         //-------------------------------------------------------------------------------

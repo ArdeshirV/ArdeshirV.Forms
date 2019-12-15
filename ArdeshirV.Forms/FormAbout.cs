@@ -2,7 +2,7 @@
 
 // Form About
 // Form About.cs : Provides Form About Box
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.IO;
@@ -10,11 +10,13 @@ using System.Drawing;
 using System.Reflection;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 #endregion
 //-----------------------------------------------------------------------------
 namespace ArdeshirV.Forms
-{
+{	
     /// <summary>
     /// About Form
     /// </summary>
@@ -23,7 +25,6 @@ namespace ArdeshirV.Forms
         #region Variables
 
         private Button m_btnOk;
-        private Label m_lblVersion;
         private Button m_btnSysteminfo;
         private Label m_lblApplicationName;
         private string m_strLink = string.Empty;
@@ -48,8 +49,9 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.Button buttonDonationCopy;
         private System.Windows.Forms.Button buttonLicenseCopy;
         private System.Windows.Forms.LinkLabel linkLabelCopyright;
-        private System.Windows.Forms.RichTextBox richTextBoxCopyright;
+        private System.Windows.Forms.RichTextBox richTextBoxCopyrightDescription;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.TextBox textBoxVersion;
 
         #endregion
         //---------------------------------------------------------------------
@@ -81,14 +83,12 @@ namespace ArdeshirV.Forms
             else
                 m_lnkTechnicalSupport.Text = m_strLink;
 
+            textBoxVersion.Text = String.Format("Version {0}", l_aaaInformation.AssemblyVersion);
             linkLabelCopyright.Text = l_aaaInformation.AssemblyCopyright;
             m_lblApplicationName.Text = l_aaaInformation.AssemblyTitle;
-            m_lblApplicationName.Text = l_aaaInformation.AssemblyTitle;
-            richTextBoxCopyright.Text = l_aaaInformation.AssemblyDescription;
+            richTextBoxCopyrightDescription.Text = l_aaaInformation.AssemblyDescription;
             Text = String.Format("About {0}", l_aaaInformation.AssemblyTitle);
             //labelCompanyName.Text = AssemblyAttributeAccessors.AssemblyCompany;
-            m_lblVersion.Text = String.Format("Version {0}",
-                l_aaaInformation.AssemblyVersion);
             m_btnSysteminfo.Enabled = File.Exists(m_strSystemInfo);
 
             int intEmailIndex = linkLabelCopyright.Text.
@@ -140,7 +140,7 @@ namespace ArdeshirV.Forms
         //---------------------------------------------------------------------
 		void ButtonCopyClick(object sender, EventArgs e)
 		{
-			Clipboard.SetText(richTextBoxCopyright.Text);
+			Clipboard.SetText(linkLabelCopyright.Text);
 		}
 		//---------------------------------------------------------------------
 		void ButtonDonationCopyClick(object sender, EventArgs e)
@@ -279,13 +279,12 @@ namespace ArdeshirV.Forms
         	this.m_btnSysteminfo = new System.Windows.Forms.Button();
         	this.m_lblApplicationName = new System.Windows.Forms.Label();
         	this.m_lnkTechnicalSupport = new System.Windows.Forms.LinkLabel();
-        	this.m_lblVersion = new System.Windows.Forms.Label();
         	this.tabControl = new System.Windows.Forms.TabControl();
         	this.tabPageCopyright = new System.Windows.Forms.TabPage();
         	this.linkLabelCopyright = new System.Windows.Forms.LinkLabel();
         	this.buttonCopyrightCopy = new System.Windows.Forms.Button();
         	this.comboBoxCopyrights = new System.Windows.Forms.ComboBox();
-        	this.richTextBoxCopyright = new System.Windows.Forms.RichTextBox();
+        	this.richTextBoxCopyrightDescription = new System.Windows.Forms.RichTextBox();
         	this.tabPageDonation = new System.Windows.Forms.TabPage();
         	this.buttonDonationCopy = new System.Windows.Forms.Button();
         	this.comboBoxDonations = new System.Windows.Forms.ComboBox();
@@ -297,6 +296,7 @@ namespace ArdeshirV.Forms
         	this.pictureBoxLicense = new System.Windows.Forms.PictureBox();
         	this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+        	this.textBoxVersion = new System.Windows.Forms.TextBox();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
         	this.tabControl.SuspendLayout();
         	this.tabPageCopyright.SuspendLayout();
@@ -340,6 +340,7 @@ namespace ArdeshirV.Forms
         	this.m_btnSysteminfo.Size = new System.Drawing.Size(80, 25);
         	this.m_btnSysteminfo.TabIndex = 5;
         	this.m_btnSysteminfo.Text = "&System Info";
+        	this.toolTip.SetToolTip(this.m_btnSysteminfo, "Shows information about current system");
         	this.m_btnSysteminfo.UseVisualStyleBackColor = false;
         	this.m_btnSysteminfo.Click += new System.EventHandler(this.btnSysteminfo_Click);
         	// 
@@ -349,7 +350,7 @@ namespace ArdeshirV.Forms
         	this.m_lblApplicationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.m_lblApplicationName.Location = new System.Drawing.Point(12, 12);
         	this.m_lblApplicationName.Name = "m_lblApplicationName";
-        	this.m_lblApplicationName.Size = new System.Drawing.Size(572, 39);
+        	this.m_lblApplicationName.Size = new System.Drawing.Size(610, 39);
         	this.m_lblApplicationName.TabIndex = 0;
         	this.m_lblApplicationName.Text = "App Name";
         	this.m_lblApplicationName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -368,18 +369,6 @@ namespace ArdeshirV.Forms
         	this.m_lnkTechnicalSupport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	this.m_lnkTechnicalSupport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
         	// 
-        	// m_lblVersion
-        	// 
-        	this.m_lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-        	this.m_lblVersion.BackColor = System.Drawing.Color.Transparent;
-        	this.m_lblVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.m_lblVersion.Location = new System.Drawing.Point(223, 12);
-        	this.m_lblVersion.Name = "m_lblVersion";
-        	this.m_lblVersion.Size = new System.Drawing.Size(397, 52);
-        	this.m_lblVersion.TabIndex = 1;
-        	this.m_lblVersion.Text = "Version 99.99.99.99";
-        	this.m_lblVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-        	// 
         	// tabControl
         	// 
         	this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -396,11 +385,12 @@ namespace ArdeshirV.Forms
         	// tabPageCopyright
         	// 
         	this.tabPageCopyright.BackColor = System.Drawing.Color.Transparent;
+        	this.tabPageCopyright.Controls.Add(this.textBoxVersion);
         	this.tabPageCopyright.Controls.Add(this.linkLabelCopyright);
         	this.tabPageCopyright.Controls.Add(this.buttonCopyrightCopy);
         	this.tabPageCopyright.Controls.Add(this.comboBoxCopyrights);
         	this.tabPageCopyright.Controls.Add(this.pictureBoxAppIcon);
-        	this.tabPageCopyright.Controls.Add(this.richTextBoxCopyright);
+        	this.tabPageCopyright.Controls.Add(this.richTextBoxCopyrightDescription);
         	this.tabPageCopyright.Location = new System.Drawing.Point(4, 22);
         	this.tabPageCopyright.Name = "tabPageCopyright";
         	this.tabPageCopyright.Padding = new System.Windows.Forms.Padding(3);
@@ -412,12 +402,14 @@ namespace ArdeshirV.Forms
         	// 
         	this.linkLabelCopyright.BackColor = System.Drawing.SystemColors.Control;
         	this.linkLabelCopyright.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        	this.linkLabelCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.linkLabelCopyright.Location = new System.Drawing.Point(140, 32);
         	this.linkLabelCopyright.Name = "linkLabelCopyright";
         	this.linkLabelCopyright.Size = new System.Drawing.Size(456, 21);
         	this.linkLabelCopyright.TabIndex = 7;
         	this.linkLabelCopyright.TabStop = true;
-        	this.linkLabelCopyright.Text = "Copyright";
+        	this.linkLabelCopyright.Text = "Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+ Version 2.0." +
+	"0.0";
         	this.linkLabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	// 
         	// buttonCopyrightCopy
@@ -439,26 +431,28 @@ namespace ArdeshirV.Forms
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.comboBoxCopyrights.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         	this.comboBoxCopyrights.FormattingEnabled = true;
+        	this.comboBoxCopyrights.Items.AddRange(new object[] {
+			"Component\'s Name"});
         	this.comboBoxCopyrights.Location = new System.Drawing.Point(140, 6);
         	this.comboBoxCopyrights.Name = "comboBoxCopyrights";
         	this.comboBoxCopyrights.Size = new System.Drawing.Size(380, 21);
         	this.comboBoxCopyrights.TabIndex = 0;
         	this.comboBoxCopyrights.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCopyrightsSelectedIndexChanged);
         	// 
-        	// richTextBoxCopyright
+        	// richTextBoxCopyrightDescription
         	// 
-        	this.richTextBoxCopyright.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+        	this.richTextBoxCopyrightDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-        	this.richTextBoxCopyright.BackColor = System.Drawing.SystemColors.Control;
-        	this.richTextBoxCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.richTextBoxCopyright.Location = new System.Drawing.Point(140, 58);
-        	this.richTextBoxCopyright.Name = "richTextBoxCopyright";
-        	this.richTextBoxCopyright.ReadOnly = true;
-        	this.richTextBoxCopyright.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-        	this.richTextBoxCopyright.Size = new System.Drawing.Size(456, 76);
-        	this.richTextBoxCopyright.TabIndex = 2;
-        	this.richTextBoxCopyright.Text = "Description";
+        	this.richTextBoxCopyrightDescription.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxCopyrightDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.richTextBoxCopyrightDescription.Location = new System.Drawing.Point(140, 82);
+        	this.richTextBoxCopyrightDescription.Name = "richTextBoxCopyrightDescription";
+        	this.richTextBoxCopyrightDescription.ReadOnly = true;
+        	this.richTextBoxCopyrightDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+        	this.richTextBoxCopyrightDescription.Size = new System.Drawing.Size(456, 52);
+        	this.richTextBoxCopyrightDescription.TabIndex = 2;
+        	this.richTextBoxCopyrightDescription.Text = "Description";
         	// 
         	// tabPageDonation
         	// 
@@ -592,14 +586,21 @@ namespace ArdeshirV.Forms
         	this.richTextBoxLicense.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
         	this.richTextBoxLicense.Size = new System.Drawing.Size(456, 101);
         	this.richTextBoxLicense.TabIndex = 2;
-        	this.richTextBoxLicense.Text = "Description";
+        	this.richTextBoxLicense.Text = "License Details";
+        	// 
+        	// textBoxVersion
+        	// 
+        	this.textBoxVersion.Location = new System.Drawing.Point(140, 56);
+        	this.textBoxVersion.Name = "textBoxVersion";
+        	this.textBoxVersion.ReadOnly = true;
+        	this.textBoxVersion.Size = new System.Drawing.Size(456, 20);
+        	this.textBoxVersion.TabIndex = 8;
         	// 
         	// FormAbout
         	// 
         	this.ClientSize = new System.Drawing.Size(634, 262);
         	this.ControlBox = false;
         	this.Controls.Add(this.m_lblApplicationName);
-        	this.Controls.Add(this.m_lblVersion);
         	this.Controls.Add(this.tabControl);
         	this.Controls.Add(this.m_lnkTechnicalSupport);
         	this.Controls.Add(this.m_btnSysteminfo);
@@ -616,6 +617,7 @@ namespace ArdeshirV.Forms
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).EndInit();
         	this.tabControl.ResumeLayout(false);
         	this.tabPageCopyright.ResumeLayout(false);
+        	this.tabPageCopyright.PerformLayout();
         	this.tabPageDonation.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonation)).EndInit();
         	this.tabPageLicense.ResumeLayout(false);
@@ -626,5 +628,175 @@ namespace ArdeshirV.Forms
         
         #endregion
     }
+    
+    /// <summary>
+    /// License class contains data about application/component's license.
+    /// </summary>
+    public sealed class License
+    {
+    	private readonly string _name;
+    	private readonly string _text;
+    	private readonly Image  _logo;
+    	
+    	/// <summary>
+    	/// Component's name
+    	/// </summary>
+    	public string Name { get{ return _name; } }
+    	
+    	/// <summary>
+    	/// License text 
+    	/// </summary>
+    	public string Text { get{ return _text; } }
+    	
+    	/// <summary>
+    	/// License logo
+    	/// </summary>
+    	public Image  Logo { get{ return _logo; } }
+    	
+    	private License() {}
+    	
+    	/// <summary>
+    	/// Creates License class that contains the component's license information.
+    	/// </summary>
+    	/// <param name="name">License name such as GPL, MIT, Apache...</param>
+    	/// <param name="text">License contents and details</param>
+    	/// <param name="logo">License logo</param>
+    	public License(string name, string text, Image logo)
+    	{
+    		_name = name;
+    		_text = text;
+    		_logo = logo;
+    	}
+    }
+    
+    /// <summary>
+    /// Copyright class contains data about application/component's copyright 
+    /// </summary>
+    public sealed class Copyright
+    {
+    	private readonly string _name;
+    	private readonly string _copyright;
+    	private readonly string _description;
+    	private readonly string _version;
+    	private readonly Image  _logo;
+    	
+    	/// <summary>
+    	/// Component's name
+    	/// </summary>
+    	public string Name { get{ return _name; } }
+    	
+    	/// <summary>
+    	/// Component's version
+    	/// </summary>
+    	public string Version { get{ return _version; } }
+    	
+    	/// <summary>
+    	/// Copyright text
+    	/// </summary>
+    	public string Copyrights { get{ return _copyright; } }
+    	
+    	/// <summary>
+    	/// Component's description
+    	/// </summary>
+    	public string Description { get{ return _description; } }
+    	
+    	/// <summary>
+    	/// Component's logo
+    	/// </summary>
+    	public Image  Logo { get{ return _logo; } }
+    	
+    	private Copyright() {}
+    	
+    	/// <summary>
+    	/// Creates copyright class that contains the component's copyright information.
+    	/// </summary>
+    	/// <param name="name">Component's name</param>
+    	/// <param name="version">Component's version</param>
+    	/// <param name="copyrights">Copyright text</param>
+    	/// <param name="description">Component's description</param>
+    	/// <param name="logo">Component's logo</param>
+    	public Copyright(string name, string version,
+    	                 string copyrights, string description, Image logo)
+    	{
+    		_name = name;
+    		_logo = logo;
+    		_version = version;
+    		_copyright = copyrights;
+    		_description = description;
+    	}
+    	
+    	/// <summary>
+    	/// Creates copyright class that contains the component's copyright information.
+    	/// This constructor retrive copyright assembly information
+    	/// from specified control by reflection.
+    	/// </summary>
+    	/// <param name="component">Retrive copyright information from this component</param>
+    	/// <param name="logo">Component's logo</param>
+    	public Copyright(Component component, Image logo)
+    	{
+            AssemblyAttributeAccessors info = new AssemblyAttributeAccessors(
+    			Assembly.GetAssembly(component.GetType()));
+    		_name = info.AssemblyTitle;
+    		_logo = logo;
+    		_version = info.AssemblyVersion;
+    		_copyright = info.AssemblyCopyright;
+    		_description = info.AssemblyDescription;
+    	}
+    }
+    
+    /// <summary>
+    /// Contains a donation currency-type/address pair.
+    /// </summary>
+    public sealed class Donation
+    {
+    	private readonly string _name;
+    	private readonly string _address;
+    	
+    	public string Name { get { return _name; } }
+    	public string Address { get { return _address; } }
+    	
+    	private Donation() {}
+    	
+    	/// <summary>
+    	/// Creates a donation entry with currency-type/address pair.
+    	/// </summary>
+    	/// <param name="name">Currency type such as PayPal, Bitcoin, ...</param>
+    	/// <param name="address">Currency address</param>
+    	private Donation(string name, string address) 
+    	{
+    		_name = name;
+    		_address = address;
+    	}
+    }
+    
+	public sealed class FormAboutData
+	{
+		private readonly Dictionary<string, string> _donations;
+		private readonly Dictionary<string, License> _licenses;
+		private readonly Dictionary<string, Copyright> _copyrights;
+		
+		public Dictionary<string, string> Donations { get { return _donations; } }
+		public Dictionary<string, License> Licenses { get { return _licenses; } }
+		public Dictionary<string, Copyright> Copyrights { get { return _copyrights; } }
+		
+		private FormAboutData() {}
+		
+		public FormAboutData(Copyright[] copyrights,
+		                     License[] licenses, Donation[] donations)
+		{
+			_donations = new Dictionary<string, string>();
+			_licenses = new Dictionary<string, License>();
+			_copyrights = new Dictionary<string, Copyright>();
+			
+			foreach(Donation d in donations)
+				_donations.Add(d.Name, d.Address);
+			
+			foreach(Copyright c in copyrights)
+				_copyrights.Add(c.Name, c);
+			
+			foreach(License l in licenses)
+				_licenses.Add(l.Name, l);
+		}
+	}
 }
 //-----------------------------------------------------------------------------

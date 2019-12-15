@@ -1,0 +1,5 @@
+#!/bin/sh
+rm -R "ArdeshirV.Forms\bin"
+rm -R "ArdeshirV.Forms\obj"
+rm -R "Test ArdeshirV.Forms\bin"
+rm -R "Test ArdeshirV.Forms\obj"

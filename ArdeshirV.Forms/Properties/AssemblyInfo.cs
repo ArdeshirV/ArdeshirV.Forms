@@ -1,9 +1,10 @@
-using System;
-
 #region Header
+
 // Assembly Information
 // AssemblyInfo.cs : Provides Information of Assembly
-// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct ("ArdeshirV.Forms")]
 [assembly: AssemblyCompany ("ArdeshirV@protonmail.com")]
 [assembly: AssemblyDescription ("Speical everyday Windows forms like a custom form base, about box, error handler and splash screen.")]
-[assembly: AssemblyCopyright ("Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+")]
+[assembly: AssemblyCopyright ("Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+")]
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.

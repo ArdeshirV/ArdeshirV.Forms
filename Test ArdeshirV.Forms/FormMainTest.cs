@@ -71,7 +71,7 @@ namespace ArdeshirV.TestForms
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
             try {
-            	File.Open("some-file.ext", System.IO.FileMode.Open);  // Throw an exception
+            	File.Open("some-file.ext", FileMode.Open);  // Throw an exception
             } catch (Exception exp) {
                 FormErrorHandler.Show(exp, this, _stringWebsite);
             }
@@ -79,7 +79,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
-            FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.ImageFlower);
+            FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.Logo);
         }
         //-------------------------------------------------------------------------------
         private void UpdateMessageBar()
@@ -89,7 +89,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
-            FormSplash.Show(this, Resources.ImageFlower);
+            FormSplash.Show(this, Resources.Logo);
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)

@@ -1,13 +1,8 @@
 #region Header
 
-///////////////////////////////////////////////////////////////////////////////
-//                                                                           //
-//    File: AssemblyAttributeAccessors.cs                                    //
-//    Provides access to assembly attributes.                                //
-//                                                                           //
-// Copyright© 2002-2019 ardeshirv@protonmail.com, Licensed under GPLv3+      //
-//                                                                           //
-///////////////////////////////////////////////////////////////////////////////
+// File: AssemblyAttributeAccessors.cs
+// Provides access to assembly attributes.
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System.Reflection;
 
