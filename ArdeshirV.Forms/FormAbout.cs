@@ -28,7 +28,7 @@ namespace ArdeshirV.Forms
         private Button m_btnSysteminfo;
         private Label m_lblApplicationName;
         private string m_strLink = string.Empty;
-        private LinkLabel m_lnkTechnicalSupport;
+        private LinkLabel linkLabelEmail;
         private PictureBox pictureBoxAppIcon;
         private string m_strEmail = string.Empty;
         private static bool s_blnIsExists = false;
@@ -51,7 +51,8 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.LinkLabel linkLabelCopyright;
         private System.Windows.Forms.RichTextBox richTextBoxCopyrightDescription;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.TextBox textBoxVersion;
+        private System.Windows.Forms.RichTextBox textBoxVersion;
+        private System.Windows.Forms.LinkLabel linkLabelURL;
 
         #endregion
         //---------------------------------------------------------------------
@@ -61,11 +62,11 @@ namespace ArdeshirV.Forms
             string strEmail, Image imgAppImage) : base()
         {
             InitializeComponent();
-            FormBorderStyle = FormBorderStyle.FixedDialog;
             StartPosition = FormStartPosition.CenterParent;
-            AssemblyAttributeAccessors l_aaaInformation =
-                new AssemblyAttributeAccessors(
-                    Assembly.GetAssembly(frmOwner.GetType()));
+            //Extractor.ExctractEmails(Text);
+            //Extractor.ExctractURLs(Extractor);
+            /*
+            FormBorderStyle = FormBorderStyle.FixedDialog;
 
             m_strEmail = strEmail;
             Icon = frmOwner.Icon;
@@ -110,7 +111,7 @@ namespace ArdeshirV.Forms
             comboBoxLicenses.SelectedIndex = comboBoxLicenses.Items.Count > 0? 0: -1;
             comboBoxDonations.SelectedIndex = comboBoxDonations.Items.Count > 0? 0: -1;
             comboBoxCopyrights.SelectedIndex = comboBoxCopyrights.Items.Count > 0? 0: -1;
-
+            */
             ShowDialog(frmOwner);
         }
 
@@ -278,9 +279,10 @@ namespace ArdeshirV.Forms
         	this.m_btnOk = new System.Windows.Forms.Button();
         	this.m_btnSysteminfo = new System.Windows.Forms.Button();
         	this.m_lblApplicationName = new System.Windows.Forms.Label();
-        	this.m_lnkTechnicalSupport = new System.Windows.Forms.LinkLabel();
+        	this.linkLabelEmail = new System.Windows.Forms.LinkLabel();
         	this.tabControl = new System.Windows.Forms.TabControl();
         	this.tabPageCopyright = new System.Windows.Forms.TabPage();
+        	this.textBoxVersion = new System.Windows.Forms.RichTextBox();
         	this.linkLabelCopyright = new System.Windows.Forms.LinkLabel();
         	this.buttonCopyrightCopy = new System.Windows.Forms.Button();
         	this.comboBoxCopyrights = new System.Windows.Forms.ComboBox();
@@ -296,7 +298,7 @@ namespace ArdeshirV.Forms
         	this.pictureBoxLicense = new System.Windows.Forms.PictureBox();
         	this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-        	this.textBoxVersion = new System.Windows.Forms.TextBox();
+        	this.linkLabelURL = new System.Windows.Forms.LinkLabel();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
         	this.tabControl.SuspendLayout();
         	this.tabPageCopyright.SuspendLayout();
@@ -348,26 +350,26 @@ namespace ArdeshirV.Forms
         	// 
         	this.m_lblApplicationName.BackColor = System.Drawing.Color.Transparent;
         	this.m_lblApplicationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.m_lblApplicationName.Location = new System.Drawing.Point(12, 12);
+        	this.m_lblApplicationName.Location = new System.Drawing.Point(12, 10);
         	this.m_lblApplicationName.Name = "m_lblApplicationName";
         	this.m_lblApplicationName.Size = new System.Drawing.Size(610, 39);
         	this.m_lblApplicationName.TabIndex = 0;
         	this.m_lblApplicationName.Text = "App Name";
         	this.m_lblApplicationName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         	// 
-        	// m_lnkTechnicalSupport
+        	// linkLabelEmail
         	// 
-        	this.m_lnkTechnicalSupport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+        	this.linkLabelEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-        	this.m_lnkTechnicalSupport.BackColor = System.Drawing.Color.Transparent;
-        	this.m_lnkTechnicalSupport.Location = new System.Drawing.Point(12, 226);
-        	this.m_lnkTechnicalSupport.Name = "m_lnkTechnicalSupport";
-        	this.m_lnkTechnicalSupport.Size = new System.Drawing.Size(436, 23);
-        	this.m_lnkTechnicalSupport.TabIndex = 4;
-        	this.m_lnkTechnicalSupport.TabStop = true;
-        	this.m_lnkTechnicalSupport.Text = "Technical Support";
-        	this.m_lnkTechnicalSupport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        	this.m_lnkTechnicalSupport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
+        	this.linkLabelEmail.BackColor = System.Drawing.Color.Transparent;
+        	this.linkLabelEmail.Location = new System.Drawing.Point(12, 221);
+        	this.linkLabelEmail.Name = "linkLabelEmail";
+        	this.linkLabelEmail.Size = new System.Drawing.Size(436, 19);
+        	this.linkLabelEmail.TabIndex = 4;
+        	this.linkLabelEmail.TabStop = true;
+        	this.linkLabelEmail.Text = "Email goes here";
+        	this.linkLabelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	this.linkLabelEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
         	// 
         	// tabControl
         	// 
@@ -398,19 +400,29 @@ namespace ArdeshirV.Forms
         	this.tabPageCopyright.TabIndex = 0;
         	this.tabPageCopyright.Text = "Copyright";
         	// 
+        	// textBoxVersion
+        	// 
+        	this.textBoxVersion.Location = new System.Drawing.Point(140, 56);
+        	this.textBoxVersion.Name = "textBoxVersion";
+        	this.textBoxVersion.ReadOnly = true;
+        	this.textBoxVersion.Size = new System.Drawing.Size(456, 20);
+        	this.textBoxVersion.TabIndex = 8;
+        	this.textBoxVersion.Text = "";
+        	// 
         	// linkLabelCopyright
         	// 
         	this.linkLabelCopyright.BackColor = System.Drawing.SystemColors.Control;
         	this.linkLabelCopyright.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
         	this.linkLabelCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.linkLabelCopyright.LinkArea = new System.Windows.Forms.LinkArea(21, 24);
         	this.linkLabelCopyright.Location = new System.Drawing.Point(140, 32);
         	this.linkLabelCopyright.Name = "linkLabelCopyright";
         	this.linkLabelCopyright.Size = new System.Drawing.Size(456, 21);
         	this.linkLabelCopyright.TabIndex = 7;
         	this.linkLabelCopyright.TabStop = true;
-        	this.linkLabelCopyright.Text = "Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+ Version 2.0." +
-	"0.0";
+        	this.linkLabelCopyright.Text = "Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+";
         	this.linkLabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	this.linkLabelCopyright.UseCompatibleTextRendering = true;
         	// 
         	// buttonCopyrightCopy
         	// 
@@ -588,21 +600,27 @@ namespace ArdeshirV.Forms
         	this.richTextBoxLicense.TabIndex = 2;
         	this.richTextBoxLicense.Text = "License Details";
         	// 
-        	// textBoxVersion
+        	// linkLabelURL
         	// 
-        	this.textBoxVersion.Location = new System.Drawing.Point(140, 56);
-        	this.textBoxVersion.Name = "textBoxVersion";
-        	this.textBoxVersion.ReadOnly = true;
-        	this.textBoxVersion.Size = new System.Drawing.Size(456, 20);
-        	this.textBoxVersion.TabIndex = 8;
+        	this.linkLabelURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+        	this.linkLabelURL.BackColor = System.Drawing.Color.Transparent;
+        	this.linkLabelURL.Location = new System.Drawing.Point(12, 240);
+        	this.linkLabelURL.Name = "linkLabelURL";
+        	this.linkLabelURL.Size = new System.Drawing.Size(438, 19);
+        	this.linkLabelURL.TabIndex = 7;
+        	this.linkLabelURL.TabStop = true;
+        	this.linkLabelURL.Text = "Technical Support URL goes here";
+        	this.linkLabelURL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	// 
         	// FormAbout
         	// 
         	this.ClientSize = new System.Drawing.Size(634, 262);
         	this.ControlBox = false;
+        	this.Controls.Add(this.linkLabelURL);
         	this.Controls.Add(this.m_lblApplicationName);
         	this.Controls.Add(this.tabControl);
-        	this.Controls.Add(this.m_lnkTechnicalSupport);
+        	this.Controls.Add(this.linkLabelEmail);
         	this.Controls.Add(this.m_btnSysteminfo);
         	this.Controls.Add(this.m_btnOk);
         	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -610,6 +628,7 @@ namespace ArdeshirV.Forms
         	this.MinimizeBox = false;
         	this.Name = "FormAbout";
         	this.ShowInTaskbar = false;
+        	this.Text = "About";
         	this.Activated += new System.EventHandler(this.FormAboutActivated);
         	this.Deactivate += new System.EventHandler(this.FormAboutDeactivate);
         	this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
@@ -617,7 +636,6 @@ namespace ArdeshirV.Forms
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).EndInit();
         	this.tabControl.ResumeLayout(false);
         	this.tabPageCopyright.ResumeLayout(false);
-        	this.tabPageCopyright.PerformLayout();
         	this.tabPageDonation.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonation)).EndInit();
         	this.tabPageLicense.ResumeLayout(false);

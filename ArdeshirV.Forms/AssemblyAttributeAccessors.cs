@@ -4,12 +4,44 @@
 // Provides access to assembly attributes.
 // Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
+using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 #endregion
 //-----------------------------------------------------------------------------
 namespace ArdeshirV.Utilities
 {
+	public static class Extractor
+	{
+		public static string[] ExctractEmails(string Input)
+		{
+        	return Exctract(Input,
+				@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+		}
+		//---------------------------------------------------------------------
+		public static string[] ExctractURLs(string Input)
+		{
+        	return Exctract(Input, 
+                @"((http|ftp|https|file):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\" +
+                @".,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)");
+		}
+		//---------------------------------------------------------------------
+		public static string[] Exctract(string Input, string regularExp)
+		{
+			Regex urlRegex = new Regex(regularExp, RegexOptions.IgnoreCase);
+        	MatchCollection URLMatches = urlRegex.Matches(Input);
+        	
+        	int i = 0;
+        	string[] values = new string[URLMatches.Count];
+        	
+        	foreach(Match m in URLMatches)
+        		values[i++] = m.Value;
+        	
+        	return values;
+		}
+	}
+	//-------------------------------------------------------------------------
     public class AssemblyAttributeAccessors
     {
         #region Variables
@@ -27,17 +59,20 @@ namespace ArdeshirV.Utilities
         {
             get
             {
-                object[] attributes = m_asmExcuting.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                object[] attributes = m_asmExcuting.GetCustomAttributes(
+            		typeof(AssemblyTitleAttribute), false);
 
                 if (attributes.Length > 0)
                 {
-                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    AssemblyTitleAttribute titleAttribute =
+                    	(AssemblyTitleAttribute)attributes[0];
 
                     if (titleAttribute.Title != "")
                         return titleAttribute.Title;
                 }
 
-                return System.IO.Path.GetFileNameWithoutExtension(m_asmExcuting.CodeBase);
+                return Path.GetFileNameWithoutExtension(
+                	m_asmExcuting.CodeBase);
             }
         }
         //---------------------------------------------------------------------
@@ -53,12 +88,14 @@ namespace ArdeshirV.Utilities
         {
             get
             {
-                object[] attributes = m_asmExcuting.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+                object[] attributes = m_asmExcuting.GetCustomAttributes(
+            		typeof(AssemblyDescriptionAttribute), false);
 
                 if (attributes.Length == 0)
                     return "";
-
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+                else
+                	return ((AssemblyDescriptionAttribute)
+                        attributes[0]).Description;
             }
         }
         //---------------------------------------------------------------------
@@ -66,12 +103,13 @@ namespace ArdeshirV.Utilities
         {
             get
             {
-                object[] attributes = m_asmExcuting.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+                object[] attributes = m_asmExcuting.GetCustomAttributes(
+            		typeof(AssemblyProductAttribute), false);
 
                 if (attributes.Length == 0)
                     return "";
-
-                return ((AssemblyProductAttribute)attributes[0]).Product;
+                else
+                	return ((AssemblyProductAttribute)attributes[0]).Product;
             }
         }
         //---------------------------------------------------------------------
@@ -79,12 +117,13 @@ namespace ArdeshirV.Utilities
         {
             get
             {
-                object[] attributes = m_asmExcuting.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                object[] attributes = m_asmExcuting.GetCustomAttributes(
+            		typeof(AssemblyCopyrightAttribute), false);
 
                 if (attributes.Length == 0)
                     return "";
-
-                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                else
+                	return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
         }
         //---------------------------------------------------------------------
@@ -92,37 +131,17 @@ namespace ArdeshirV.Utilities
         {
             get
             {
-                object[] attributes = m_asmExcuting.GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+                object[] attributes = m_asmExcuting.GetCustomAttributes(
+            		typeof(AssemblyCompanyAttribute), false);
 
                 if (attributes.Length == 0)
                     return "";
-
-                return ((AssemblyCompanyAttribute)attributes[0]).Company;
+                else
+                	return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
-        //---------------------------------------------------------------------
     }
 }
 //-----------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

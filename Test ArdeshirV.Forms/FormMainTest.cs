@@ -1,10 +1,14 @@
-﻿// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
+﻿#region Header
+
+// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
 using System;
 using System.IO;
 using System.Drawing;
 using ArdeshirV.Forms;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
+
+#endregion
 //---------------------------------------------------------------------------------------
 namespace ArdeshirV.TestForms
 {
