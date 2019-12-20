@@ -27,10 +27,11 @@ namespace ArdeshirV.Forms
         private Button m_btnOk;
         private Button m_btnSysteminfo;
         private Label m_lblApplicationName;
-        private string m_strLink = string.Empty;
+        private FormAboutData data;
+        //private string m_strLink = string.Empty;
         private LinkLabel linkLabelEmail;
         private PictureBox pictureBoxAppIcon;
-        private string m_strEmail = string.Empty;
+        //private string m_strEmail = string.Empty;
         private static bool s_blnIsExists = false;
         private System.ComponentModel.IContainer components = null;
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
@@ -58,18 +59,21 @@ namespace ArdeshirV.Forms
         //---------------------------------------------------------------------
         #region Constructor
 
-        protected FormAbout(Form frmOwner, string strLinkSite,
-            string strEmail, Image imgAppImage) : base()
+        protected FormAbout(FormAboutData data) : base()
         {
             InitializeComponent();
-            StartPosition = FormStartPosition.CenterParent;
+            
+            // TODO: Create a messageBox that present AssemblyInfo for a standard component
+            this.data = data;
+            StartPosition = FormStartPosition.CenterParent;            
+            Icon = data.Owner.Icon;
+            linkLabelURL.Text = data.URL;
+            linkLabelEmail.Text = data.Email;
+            this.m_lblApplicationName.Text = data.AppName;
             //Extractor.ExctractEmails(Text);
             //Extractor.ExctractURLs(Extractor);
             /*
-            FormBorderStyle = FormBorderStyle.FixedDialog;
 
-            m_strEmail = strEmail;
-            Icon = frmOwner.Icon;
             m_strLink = strLinkSite;
             pictureBoxAppIcon.Image = imgAppImage;
             //this.labelProductName.Text = AssemblyProduct;
@@ -112,7 +116,7 @@ namespace ArdeshirV.Forms
             comboBoxDonations.SelectedIndex = comboBoxDonations.Items.Count > 0? 0: -1;
             comboBoxCopyrights.SelectedIndex = comboBoxCopyrights.Items.Count > 0? 0: -1;
             */
-            ShowDialog(frmOwner);
+            ShowDialog(data.Owner);
         }
 
         #endregion
@@ -121,12 +125,14 @@ namespace ArdeshirV.Forms
 
         public static FormAbout Show(Form frmOwner, string strLinkSite, string strEMail)
         {
-            return new FormAbout(frmOwner, strLinkSite, strEMail, frmOwner.Icon.ToBitmap());
+            //return new FormAbout(frmOwner, strLinkSite, strEMail, frmOwner.Icon.ToBitmap());
+            return null;
         }
         //---------------------------------------------------------------------
         public static FormAbout Show(Form frmOwner, string strLinkSite, string strEMail, Image imgAppImage)
         {
-            return new FormAbout(frmOwner, strLinkSite, strEMail, imgAppImage);
+            //return new FormAbout(frmOwner, strLinkSite, strEMail, imgAppImage);
+            return null;
         }
         //---------------------------------------------------------------------
         private void UpdateTabControlBackColor(bool boolFormIsActive)
@@ -134,9 +140,9 @@ namespace ArdeshirV.Forms
 			tabPageLicense.BackColor =
 			tabPageDonation.BackColor =
 			tabPageCopyright.BackColor =
-			boolFormIsActive ?
-			BackgoundInactiveStartGradientColor:
-			BackgoundStartGradientColor;
+				boolFormIsActive ?
+					BackgoundInactiveStartGradientColor:
+					BackgoundStartGradientColor;
         }
         //---------------------------------------------------------------------
 		void ButtonCopyClick(object sender, EventArgs e)
@@ -161,7 +167,8 @@ namespace ArdeshirV.Forms
             if (File.Exists(l_strSystemInfo))
                 System.Diagnostics.Process.Start(l_strSystemInfo);
             else
-                throw new FileNotFoundException(string.Format("File {0} missing!", l_strSystemInfo));
+                throw new FileNotFoundException(string.Format(
+            		"File {0} missing!", l_strSystemInfo));
         }
 
         #endregion
@@ -190,19 +197,21 @@ namespace ArdeshirV.Forms
 		{
 		}
         //---------------------------------------------------------------------
-        private void m_lnkMalieTo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void m_lnkMalieTo_LinkClicked(object sender,
+                                              LinkLabelLinkClickedEventArgs e)
         {
             //m_lnkMalieTo.LinkVisited = true;
             (sender as LinkLabel).LinkVisited = true;
-            System.Windows.Forms.Clipboard.SetText(m_strEmail);
-            System.Diagnostics.Process.Start("mailto:" + m_strEmail);
+            // Clipboard.SetText(data.Email);
+            System.Diagnostics.Process.Start("mailto:" + data.Email);
         }
         //---------------------------------------------------------------------
-        private void m_lnkTechnicalSupport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void m_lnkTechnicalSupport_LinkClicked(object sender,
+        	LinkLabelLinkClickedEventArgs e)
         {
             //m_lnkTechnicalSupport.LinkVisited = true;
             (sender as LinkLabel).LinkVisited = true;
-            System.Diagnostics.Process.Start(m_strLink);
+            System.Diagnostics.Process.Start(data.URL);
         }
         //---------------------------------------------------------------------
         private void btnOk_Click(object sender, System.EventArgs e)
@@ -228,12 +237,15 @@ namespace ArdeshirV.Forms
             s_blnIsExists = false;
         }
         //---------------------------------------------------------------------
-        private void M_lblCopyright_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void M_lblCopyright_LinkClicked(object sender,
+        	LinkLabelLinkClickedEventArgs e)
         {
-            if (linkLabelCopyright.Text.ToLower().Contains(m_strEmail.ToLower()))
-                m_lnkMalieTo_LinkClicked(sender, e);
-            else if (linkLabelCopyright.Text.ToLower().Contains(m_strLink.ToLower()))
-                m_lnkTechnicalSupport_LinkClicked(sender, e);
+            if (linkLabelCopyright.Text.ToLower().
+        	    Contains(data.Email.ToLower()))
+                	m_lnkMalieTo_LinkClicked(sender, e);
+            else if (linkLabelCopyright.Text.ToLower().
+        	    Contains(data.URL.ToLower()))
+                	m_lnkTechnicalSupport_LinkClicked(sender, e);
         }
 
         #endregion
@@ -646,175 +658,5 @@ namespace ArdeshirV.Forms
         
         #endregion
     }
-    
-    /// <summary>
-    /// License class contains data about application/component's license.
-    /// </summary>
-    public sealed class License
-    {
-    	private readonly string _name;
-    	private readonly string _text;
-    	private readonly Image  _logo;
-    	
-    	/// <summary>
-    	/// Component's name
-    	/// </summary>
-    	public string Name { get{ return _name; } }
-    	
-    	/// <summary>
-    	/// License text 
-    	/// </summary>
-    	public string Text { get{ return _text; } }
-    	
-    	/// <summary>
-    	/// License logo
-    	/// </summary>
-    	public Image  Logo { get{ return _logo; } }
-    	
-    	private License() {}
-    	
-    	/// <summary>
-    	/// Creates License class that contains the component's license information.
-    	/// </summary>
-    	/// <param name="name">License name such as GPL, MIT, Apache...</param>
-    	/// <param name="text">License contents and details</param>
-    	/// <param name="logo">License logo</param>
-    	public License(string name, string text, Image logo)
-    	{
-    		_name = name;
-    		_text = text;
-    		_logo = logo;
-    	}
-    }
-    
-    /// <summary>
-    /// Copyright class contains data about application/component's copyright 
-    /// </summary>
-    public sealed class Copyright
-    {
-    	private readonly string _name;
-    	private readonly string _copyright;
-    	private readonly string _description;
-    	private readonly string _version;
-    	private readonly Image  _logo;
-    	
-    	/// <summary>
-    	/// Component's name
-    	/// </summary>
-    	public string Name { get{ return _name; } }
-    	
-    	/// <summary>
-    	/// Component's version
-    	/// </summary>
-    	public string Version { get{ return _version; } }
-    	
-    	/// <summary>
-    	/// Copyright text
-    	/// </summary>
-    	public string Copyrights { get{ return _copyright; } }
-    	
-    	/// <summary>
-    	/// Component's description
-    	/// </summary>
-    	public string Description { get{ return _description; } }
-    	
-    	/// <summary>
-    	/// Component's logo
-    	/// </summary>
-    	public Image  Logo { get{ return _logo; } }
-    	
-    	private Copyright() {}
-    	
-    	/// <summary>
-    	/// Creates copyright class that contains the component's copyright information.
-    	/// </summary>
-    	/// <param name="name">Component's name</param>
-    	/// <param name="version">Component's version</param>
-    	/// <param name="copyrights">Copyright text</param>
-    	/// <param name="description">Component's description</param>
-    	/// <param name="logo">Component's logo</param>
-    	public Copyright(string name, string version,
-    	                 string copyrights, string description, Image logo)
-    	{
-    		_name = name;
-    		_logo = logo;
-    		_version = version;
-    		_copyright = copyrights;
-    		_description = description;
-    	}
-    	
-    	/// <summary>
-    	/// Creates copyright class that contains the component's copyright information.
-    	/// This constructor retrive copyright assembly information
-    	/// from specified control by reflection.
-    	/// </summary>
-    	/// <param name="component">Retrive copyright information from this component</param>
-    	/// <param name="logo">Component's logo</param>
-    	public Copyright(Component component, Image logo)
-    	{
-            AssemblyAttributeAccessors info = new AssemblyAttributeAccessors(
-    			Assembly.GetAssembly(component.GetType()));
-    		_name = info.AssemblyTitle;
-    		_logo = logo;
-    		_version = info.AssemblyVersion;
-    		_copyright = info.AssemblyCopyright;
-    		_description = info.AssemblyDescription;
-    	}
-    }
-    
-    /// <summary>
-    /// Contains a donation currency-type/address pair.
-    /// </summary>
-    public sealed class Donation
-    {
-    	private readonly string _name;
-    	private readonly string _address;
-    	
-    	public string Name { get { return _name; } }
-    	public string Address { get { return _address; } }
-    	
-    	private Donation() {}
-    	
-    	/// <summary>
-    	/// Creates a donation entry with currency-type/address pair.
-    	/// </summary>
-    	/// <param name="name">Currency type such as PayPal, Bitcoin, ...</param>
-    	/// <param name="address">Currency address</param>
-    	private Donation(string name, string address) 
-    	{
-    		_name = name;
-    		_address = address;
-    	}
-    }
-    
-	public sealed class FormAboutData
-	{
-		private readonly Dictionary<string, string> _donations;
-		private readonly Dictionary<string, License> _licenses;
-		private readonly Dictionary<string, Copyright> _copyrights;
-		
-		public Dictionary<string, string> Donations { get { return _donations; } }
-		public Dictionary<string, License> Licenses { get { return _licenses; } }
-		public Dictionary<string, Copyright> Copyrights { get { return _copyrights; } }
-		
-		private FormAboutData() {}
-		
-		public FormAboutData(Copyright[] copyrights,
-		                     License[] licenses, Donation[] donations)
-		{
-			_donations = new Dictionary<string, string>();
-			_licenses = new Dictionary<string, License>();
-			_copyrights = new Dictionary<string, Copyright>();
-			
-			foreach(Donation d in donations)
-				_donations.Add(d.Name, d.Address);
-			
-			foreach(Copyright c in copyrights)
-				_copyrights.Add(c.Name, c);
-			
-			foreach(License l in licenses)
-				_licenses.Add(l.Name, l);
-		}
-	}
 }
 //-----------------------------------------------------------------------------
