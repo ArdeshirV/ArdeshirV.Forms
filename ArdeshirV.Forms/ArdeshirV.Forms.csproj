@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyAttributeAccessors.cs" />
+    <Compile Include="FormAboutData.cs" />
     <Compile Include="FormInput.cs" />
     <Compile Include="FormInput.Designer.cs">
       <DependentUpon>FormInput.cs</DependentUpon>
