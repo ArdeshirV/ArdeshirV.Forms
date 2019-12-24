@@ -56,7 +56,7 @@ namespace ArdeshirV.Forms
     		_logo = logo;
     	}
     }
-    
+    //-------------------------------------------------------------------------    
     /// <summary>
     /// Copyright class contains data about application/component's copyright 
     /// </summary>
