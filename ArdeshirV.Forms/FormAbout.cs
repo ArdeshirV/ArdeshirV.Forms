@@ -43,8 +43,7 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.RichTextBox richTextBoxLicense;
         private System.Windows.Forms.ComboBox comboBoxCopyrights;
         private System.Windows.Forms.ComboBox comboBoxLicenses;
-        private System.Windows.Forms.ComboBox comboBoxDonations;
-        private System.Windows.Forms.PictureBox pictureBoxDonation;
+        //private System.Windows.Forms.PictureBox comboBoxDonationCurrenciesion;
         private System.Windows.Forms.RichTextBox richTextBoxDonation;
         private System.Windows.Forms.Button buttonCopyrightCopy;
         private System.Windows.Forms.Button buttonDonationCopy;
@@ -52,9 +51,11 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.LinkLabel linkLabelCopyright;
         private System.Windows.Forms.RichTextBox richTextBoxCopyrightDescription;
         private System.Windows.Forms.ToolTip toolTip;
+        private PictureBox pictureBoxDonation;
         private System.Windows.Forms.RichTextBox textBoxVersion;
         private System.Windows.Forms.LinkLabel linkLabelURL;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxDonation;
+        private System.Windows.Forms.ComboBox comboBoxDonationCurrencies;
 
         #endregion
         //---------------------------------------------------------------------
@@ -62,8 +63,9 @@ namespace ArdeshirV.Forms
 
         protected FormAbout(FormAboutData data) : base()
         {
+            comboBoxDonationCurrencies = new ComboBox();
             InitializeComponent();
-            InitFormAbout(data);            
+            InitFormAbout(data);
             ShowDialog(data.Owner);
         }
 
@@ -306,8 +308,9 @@ namespace ArdeshirV.Forms
         	this.comboBoxCopyrights = new System.Windows.Forms.ComboBox();
         	this.richTextBoxCopyrightDescription = new System.Windows.Forms.RichTextBox();
         	this.tabPageDonation = new System.Windows.Forms.TabPage();
+        	this.comboBoxDonation = new System.Windows.Forms.ComboBox();
         	this.buttonDonationCopy = new System.Windows.Forms.Button();
-        	this.comboBoxDonations = new System.Windows.Forms.ComboBox();
+        	this.comboBoxDonationCurrencies = new System.Windows.Forms.ComboBox();
         	this.pictureBoxDonation = new System.Windows.Forms.PictureBox();
         	this.richTextBoxDonation = new System.Windows.Forms.RichTextBox();
         	this.tabPageLicense = new System.Windows.Forms.TabPage();
@@ -317,7 +320,6 @@ namespace ArdeshirV.Forms
         	this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.linkLabelURL = new System.Windows.Forms.LinkLabel();
-        	this.comboBox1 = new System.Windows.Forms.ComboBox();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
         	this.tabControl.SuspendLayout();
         	this.tabPageCopyright.SuspendLayout();
@@ -369,7 +371,7 @@ namespace ArdeshirV.Forms
         	// 
         	this.m_lblApplicationName.BackColor = System.Drawing.Color.Transparent;
         	this.m_lblApplicationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.m_lblApplicationName.Location = new System.Drawing.Point(12, -1);
+        	this.m_lblApplicationName.Location = new System.Drawing.Point(12, 0);
         	this.m_lblApplicationName.Name = "m_lblApplicationName";
         	this.m_lblApplicationName.Size = new System.Drawing.Size(610, 50);
         	this.m_lblApplicationName.TabIndex = 0;
@@ -383,7 +385,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelEmail.BackColor = System.Drawing.Color.Transparent;
         	this.linkLabelEmail.Location = new System.Drawing.Point(12, 221);
         	this.linkLabelEmail.Name = "linkLabelEmail";
-        	this.linkLabelEmail.Size = new System.Drawing.Size(436, 19);
+        	this.linkLabelEmail.Size = new System.Drawing.Size(436, 18);
         	this.linkLabelEmail.TabIndex = 4;
         	this.linkLabelEmail.TabStop = true;
         	this.linkLabelEmail.Text = "Email goes here";
@@ -488,9 +490,9 @@ namespace ArdeshirV.Forms
         	// tabPageDonation
         	// 
         	this.tabPageDonation.BackColor = System.Drawing.Color.Transparent;
-        	this.tabPageDonation.Controls.Add(this.comboBox1);
+        	this.tabPageDonation.Controls.Add(this.comboBoxDonation);
         	this.tabPageDonation.Controls.Add(this.buttonDonationCopy);
-        	this.tabPageDonation.Controls.Add(this.comboBoxDonations);
+        	this.tabPageDonation.Controls.Add(this.comboBoxDonationCurrencies);
         	this.tabPageDonation.Controls.Add(this.pictureBoxDonation);
         	this.tabPageDonation.Controls.Add(this.richTextBoxDonation);
         	this.tabPageDonation.Location = new System.Drawing.Point(4, 22);
@@ -499,6 +501,20 @@ namespace ArdeshirV.Forms
         	this.tabPageDonation.Size = new System.Drawing.Size(602, 140);
         	this.tabPageDonation.TabIndex = 1;
         	this.tabPageDonation.Text = "Donation";
+        	// 
+        	// comboBoxDonation
+        	// 
+        	this.comboBoxDonation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+        	this.comboBoxDonation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comboBoxDonation.FormattingEnabled = true;
+        	this.comboBoxDonation.Items.AddRange(new object[] {
+			"Bitcoin"});
+        	this.comboBoxDonation.Location = new System.Drawing.Point(140, 6);
+        	this.comboBoxDonation.Name = "comboBoxDonation";
+        	this.comboBoxDonation.Size = new System.Drawing.Size(456, 21);
+        	this.comboBoxDonation.TabIndex = 13;
+        	this.comboBoxDonation.SelectedIndexChanged += new System.EventHandler(this.ComboBox1SelectedIndexChanged);
         	// 
         	// buttonDonationCopy
         	// 
@@ -513,19 +529,19 @@ namespace ArdeshirV.Forms
         	this.buttonDonationCopy.UseVisualStyleBackColor = false;
         	this.buttonDonationCopy.Click += new System.EventHandler(this.ButtonDonationCopyClick);
         	// 
-        	// comboBoxDonations
+        	// comboBoxDonationCurrencies
         	// 
-        	this.comboBoxDonations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+        	this.comboBoxDonationCurrencies.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-        	this.comboBoxDonations.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        	this.comboBoxDonations.FormattingEnabled = true;
-        	this.comboBoxDonations.Items.AddRange(new object[] {
+        	this.comboBoxDonationCurrencies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comboBoxDonationCurrencies.FormattingEnabled = true;
+        	this.comboBoxDonationCurrencies.Items.AddRange(new object[] {
 			"Bitcoin"});
-        	this.comboBoxDonations.Location = new System.Drawing.Point(140, 33);
-        	this.comboBoxDonations.Name = "comboBoxDonations";
-        	this.comboBoxDonations.Size = new System.Drawing.Size(380, 21);
-        	this.comboBoxDonations.TabIndex = 0;
-        	this.comboBoxDonations.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDonationsSelectedIndexChanged);
+        	this.comboBoxDonationCurrencies.Location = new System.Drawing.Point(140, 33);
+        	this.comboBoxDonationCurrencies.Name = "comboBoxDonationCurrencies";
+        	this.comboBoxDonationCurrencies.Size = new System.Drawing.Size(380, 21);
+        	this.comboBoxDonationCurrencies.TabIndex = 0;
+        	this.comboBoxDonationCurrencies.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDonationsSelectedIndexChanged);
         	// 
         	// pictureBoxDonation
         	// 
@@ -625,26 +641,13 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.linkLabelURL.BackColor = System.Drawing.Color.Transparent;
-        	this.linkLabelURL.Location = new System.Drawing.Point(12, 240);
+        	this.linkLabelURL.Location = new System.Drawing.Point(12, 239);
         	this.linkLabelURL.Name = "linkLabelURL";
         	this.linkLabelURL.Size = new System.Drawing.Size(438, 19);
         	this.linkLabelURL.TabIndex = 7;
         	this.linkLabelURL.TabStop = true;
         	this.linkLabelURL.Text = "Technical Support URL goes here";
         	this.linkLabelURL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        	// 
-        	// comboBox1
-        	// 
-        	this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-			| System.Windows.Forms.AnchorStyles.Right)));
-        	this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        	this.comboBox1.FormattingEnabled = true;
-        	this.comboBox1.Items.AddRange(new object[] {
-			"Bitcoin"});
-        	this.comboBox1.Location = new System.Drawing.Point(140, 6);
-        	this.comboBox1.Name = "comboBox1";
-        	this.comboBox1.Size = new System.Drawing.Size(456, 21);
-        	this.comboBox1.TabIndex = 13;
         	// 
         	// FormAbout
         	// 
@@ -676,6 +679,10 @@ namespace ArdeshirV.Forms
         	this.ResumeLayout(false);
 
         }
+		void ComboBox1SelectedIndexChanged(object sender, EventArgs e)
+		{
+	
+		}
         
         #endregion
     }

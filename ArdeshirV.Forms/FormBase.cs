@@ -239,8 +239,7 @@ namespace ArdeshirV.Forms
             Hide();
             AddSpecialMouseEvent(this);
 
-            if (m_blnChangingOpacityAbility)
-            {
+            if (m_blnChangingOpacityAbility) {
                 m_dblLastOpacity = Opacity;
                 Opacity = 0.0;
             } else {
