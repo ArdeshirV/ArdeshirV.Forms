@@ -55,6 +55,11 @@ namespace ArdeshirV.Utilities
             m_asmExcuting = asmExcuting;
         }
         //---------------------------------------------------------------------
+        public AssemblyAttributeAccessors(object obj)
+        {
+            m_asmExcuting = Assembly.GetAssembly(obj.GetType());
+        }
+        //---------------------------------------------------------------------
         public string AssemblyTitle
         {
             get

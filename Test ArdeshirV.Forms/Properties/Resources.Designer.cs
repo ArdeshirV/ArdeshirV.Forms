@@ -63,9 +63,49 @@ namespace ArdeshirV.TestForms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
+		public static System.Drawing.Bitmap Bitcoin {
+			get {
+				object obj = ResourceManager.GetObject("Bitcoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		public static System.Drawing.Bitmap Ethereum {
+			get {
+				object obj = ResourceManager.GetObject("Ethereum", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
 		public static System.Drawing.Bitmap GPLv3 {
 			get {
 				object obj = ResourceManager.GetObject("GPLv3", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Byte[].
+		/// </summary>
+		public static byte[] LICENSE {
+			get {
+				object obj = ResourceManager.GetObject("LICENSE", resourceCulture);
+				return ((byte[])(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		public static System.Drawing.Bitmap Litecoin {
+			get {
+				object obj = ResourceManager.GetObject("Litecoin", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -76,6 +116,26 @@ namespace ArdeshirV.TestForms.Properties {
 		public static System.Drawing.Bitmap Logo {
 			get {
 				object obj = ResourceManager.GetObject("Logo", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		public static System.Drawing.Bitmap Nano {
+			get {
+				object obj = ResourceManager.GetObject("Nano", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		public static System.Drawing.Bitmap TrueUSD {
+			get {
+				object obj = ResourceManager.GetObject("TrueUSD", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}

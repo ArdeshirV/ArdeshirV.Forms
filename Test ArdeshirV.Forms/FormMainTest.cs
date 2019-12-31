@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using ArdeshirV.Forms;
+using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
 
@@ -83,6 +84,25 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
+			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
+
+			_donations.Add(aaa.AssemblyTitle, new Donation[] {
+				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
+				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
+				new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.TrueUSD),
+				new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", Resources.Nano),
+				new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw", Resources.Litecoin)
+			});
+			
+			_copyrights.Add(aaa.AssemblyTitle,
+			                new Copyright(aaa.AssemblyTitle,
+			                              aaa.AssemblyVersion,
+			                              aaa.AssemblyCopyright,
+			                              aaa.AssemblyDescription,
+			                              Resources.ArdeshirV_Forms_Logo));
+			
+			_licenses.Add(aaa.AssemblyTitle,
+			              new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
         	// TODO: Modify FormAbout.Show method
         	//FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.Logo);
         	//FormAbout.Show(this, _stringWebsite, _stringEmail);

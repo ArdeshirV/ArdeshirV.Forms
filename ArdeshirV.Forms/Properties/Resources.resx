@@ -607,210 +607,74 @@
   </data>
   <data name="LGPLv3" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
-        KMPHhBH/BSqkDqpwqQ5hAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LICENSE" type="System.Byte[], mscorlib">
-    <value>
-        ICAgICAgICAgICAgICAgICAgIEdOVSBMRVNTRVIgR0VORVJBTCBQVUJMSUMgTElDRU5TRQ0KICAgICAg
-        ICAgICAgICAgICAgICAgICBWZXJzaW9uIDMsIDI5IEp1bmUgMjAwNw0KDQogQ29weXJpZ2h0IChDKSAy
-        MDA3IEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbiwgSW5jLiA8aHR0cHM6Ly9mc2Yub3JnLz4NCiBFdmVy
-        eW9uZSBpcyBwZXJtaXR0ZWQgdG8gY29weSBhbmQgZGlzdHJpYnV0ZSB2ZXJiYXRpbSBjb3BpZXMNCiBv
-        ZiB0aGlzIGxpY2Vuc2UgZG9jdW1lbnQsIGJ1dCBjaGFuZ2luZyBpdCBpcyBub3QgYWxsb3dlZC4NCg0K
-        DQogIFRoaXMgdmVyc2lvbiBvZiB0aGUgR05VIExlc3NlciBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGlu
-        Y29ycG9yYXRlcw0KdGhlIHRlcm1zIGFuZCBjb25kaXRpb25zIG9mIHZlcnNpb24gMyBvZiB0aGUgR05V
-        IEdlbmVyYWwgUHVibGljDQpMaWNlbnNlLCBzdXBwbGVtZW50ZWQgYnkgdGhlIGFkZGl0aW9uYWwgcGVy
-        bWlzc2lvbnMgbGlzdGVkIGJlbG93Lg0KDQogIDAuIEFkZGl0aW9uYWwgRGVmaW5pdGlvbnMuDQoNCiAg
-        QXMgdXNlZCBoZXJlaW4sICJ0aGlzIExpY2Vuc2UiIHJlZmVycyB0byB2ZXJzaW9uIDMgb2YgdGhlIEdO
-        VSBMZXNzZXINCkdlbmVyYWwgUHVibGljIExpY2Vuc2UsIGFuZCB0aGUgIkdOVSBHUEwiIHJlZmVycyB0
-        byB2ZXJzaW9uIDMgb2YgdGhlIEdOVQ0KR2VuZXJhbCBQdWJsaWMgTGljZW5zZS4NCg0KICAiVGhlIExp
-        YnJhcnkiIHJlZmVycyB0byBhIGNvdmVyZWQgd29yayBnb3Zlcm5lZCBieSB0aGlzIExpY2Vuc2UsDQpv
-        dGhlciB0aGFuIGFuIEFwcGxpY2F0aW9uIG9yIGEgQ29tYmluZWQgV29yayBhcyBkZWZpbmVkIGJlbG93
-        Lg0KDQogIEFuICJBcHBsaWNhdGlvbiIgaXMgYW55IHdvcmsgdGhhdCBtYWtlcyB1c2Ugb2YgYW4gaW50
-        ZXJmYWNlIHByb3ZpZGVkDQpieSB0aGUgTGlicmFyeSwgYnV0IHdoaWNoIGlzIG5vdCBvdGhlcndpc2Ug
-        YmFzZWQgb24gdGhlIExpYnJhcnkuDQpEZWZpbmluZyBhIHN1YmNsYXNzIG9mIGEgY2xhc3MgZGVmaW5l
-        ZCBieSB0aGUgTGlicmFyeSBpcyBkZWVtZWQgYSBtb2RlDQpvZiB1c2luZyBhbiBpbnRlcmZhY2UgcHJv
-        dmlkZWQgYnkgdGhlIExpYnJhcnkuDQoNCiAgQSAiQ29tYmluZWQgV29yayIgaXMgYSB3b3JrIHByb2R1
-        Y2VkIGJ5IGNvbWJpbmluZyBvciBsaW5raW5nIGFuDQpBcHBsaWNhdGlvbiB3aXRoIHRoZSBMaWJyYXJ5
-        LiAgVGhlIHBhcnRpY3VsYXIgdmVyc2lvbiBvZiB0aGUgTGlicmFyeQ0Kd2l0aCB3aGljaCB0aGUgQ29t
-        YmluZWQgV29yayB3YXMgbWFkZSBpcyBhbHNvIGNhbGxlZCB0aGUgIkxpbmtlZA0KVmVyc2lvbiIuDQoN
-        CiAgVGhlICJNaW5pbWFsIENvcnJlc3BvbmRpbmcgU291cmNlIiBmb3IgYSBDb21iaW5lZCBXb3JrIG1l
-        YW5zIHRoZQ0KQ29ycmVzcG9uZGluZyBTb3VyY2UgZm9yIHRoZSBDb21iaW5lZCBXb3JrLCBleGNsdWRp
-        bmcgYW55IHNvdXJjZSBjb2RlDQpmb3IgcG9ydGlvbnMgb2YgdGhlIENvbWJpbmVkIFdvcmsgdGhhdCwg
-        Y29uc2lkZXJlZCBpbiBpc29sYXRpb24sIGFyZQ0KYmFzZWQgb24gdGhlIEFwcGxpY2F0aW9uLCBhbmQg
-        bm90IG9uIHRoZSBMaW5rZWQgVmVyc2lvbi4NCg0KICBUaGUgIkNvcnJlc3BvbmRpbmcgQXBwbGljYXRp
-        b24gQ29kZSIgZm9yIGEgQ29tYmluZWQgV29yayBtZWFucyB0aGUNCm9iamVjdCBjb2RlIGFuZC9vciBz
-        b3VyY2UgY29kZSBmb3IgdGhlIEFwcGxpY2F0aW9uLCBpbmNsdWRpbmcgYW55IGRhdGENCmFuZCB1dGls
-        aXR5IHByb2dyYW1zIG5lZWRlZCBmb3IgcmVwcm9kdWNpbmcgdGhlIENvbWJpbmVkIFdvcmsgZnJvbSB0
-        aGUNCkFwcGxpY2F0aW9uLCBidXQgZXhjbHVkaW5nIHRoZSBTeXN0ZW0gTGlicmFyaWVzIG9mIHRoZSBD
-        b21iaW5lZCBXb3JrLg0KDQogIDEuIEV4Y2VwdGlvbiB0byBTZWN0aW9uIDMgb2YgdGhlIEdOVSBHUEwu
-        DQoNCiAgWW91IG1heSBjb252ZXkgYSBjb3ZlcmVkIHdvcmsgdW5kZXIgc2VjdGlvbnMgMyBhbmQgNCBv
-        ZiB0aGlzIExpY2Vuc2UNCndpdGhvdXQgYmVpbmcgYm91bmQgYnkgc2VjdGlvbiAzIG9mIHRoZSBHTlUg
-        R1BMLg0KDQogIDIuIENvbnZleWluZyBNb2RpZmllZCBWZXJzaW9ucy4NCg0KICBJZiB5b3UgbW9kaWZ5
-        IGEgY29weSBvZiB0aGUgTGlicmFyeSwgYW5kLCBpbiB5b3VyIG1vZGlmaWNhdGlvbnMsIGENCmZhY2ls
-        aXR5IHJlZmVycyB0byBhIGZ1bmN0aW9uIG9yIGRhdGEgdG8gYmUgc3VwcGxpZWQgYnkgYW4gQXBwbGlj
-        YXRpb24NCnRoYXQgdXNlcyB0aGUgZmFjaWxpdHkgKG90aGVyIHRoYW4gYXMgYW4gYXJndW1lbnQgcGFz
-        c2VkIHdoZW4gdGhlDQpmYWNpbGl0eSBpcyBpbnZva2VkKSwgdGhlbiB5b3UgbWF5IGNvbnZleSBhIGNv
-        cHkgb2YgdGhlIG1vZGlmaWVkDQp2ZXJzaW9uOg0KDQogICBhKSB1bmRlciB0aGlzIExpY2Vuc2UsIHBy
-        b3ZpZGVkIHRoYXQgeW91IG1ha2UgYSBnb29kIGZhaXRoIGVmZm9ydCB0bw0KICAgZW5zdXJlIHRoYXQs
-        IGluIHRoZSBldmVudCBhbiBBcHBsaWNhdGlvbiBkb2VzIG5vdCBzdXBwbHkgdGhlDQogICBmdW5jdGlv
-        biBvciBkYXRhLCB0aGUgZmFjaWxpdHkgc3RpbGwgb3BlcmF0ZXMsIGFuZCBwZXJmb3Jtcw0KICAgd2hh
-        dGV2ZXIgcGFydCBvZiBpdHMgcHVycG9zZSByZW1haW5zIG1lYW5pbmdmdWwsIG9yDQoNCiAgIGIpIHVu
-        ZGVyIHRoZSBHTlUgR1BMLCB3aXRoIG5vbmUgb2YgdGhlIGFkZGl0aW9uYWwgcGVybWlzc2lvbnMgb2YN
-        CiAgIHRoaXMgTGljZW5zZSBhcHBsaWNhYmxlIHRvIHRoYXQgY29weS4NCg0KICAzLiBPYmplY3QgQ29k
-        ZSBJbmNvcnBvcmF0aW5nIE1hdGVyaWFsIGZyb20gTGlicmFyeSBIZWFkZXIgRmlsZXMuDQoNCiAgVGhl
-        IG9iamVjdCBjb2RlIGZvcm0gb2YgYW4gQXBwbGljYXRpb24gbWF5IGluY29ycG9yYXRlIG1hdGVyaWFs
-        IGZyb20NCmEgaGVhZGVyIGZpbGUgdGhhdCBpcyBwYXJ0IG9mIHRoZSBMaWJyYXJ5LiAgWW91IG1heSBj
-        b252ZXkgc3VjaCBvYmplY3QNCmNvZGUgdW5kZXIgdGVybXMgb2YgeW91ciBjaG9pY2UsIHByb3ZpZGVk
-        IHRoYXQsIGlmIHRoZSBpbmNvcnBvcmF0ZWQNCm1hdGVyaWFsIGlzIG5vdCBsaW1pdGVkIHRvIG51bWVy
-        aWNhbCBwYXJhbWV0ZXJzLCBkYXRhIHN0cnVjdHVyZQ0KbGF5b3V0cyBhbmQgYWNjZXNzb3JzLCBvciBz
-        bWFsbCBtYWNyb3MsIGlubGluZSBmdW5jdGlvbnMgYW5kIHRlbXBsYXRlcw0KKHRlbiBvciBmZXdlciBs
-        aW5lcyBpbiBsZW5ndGgpLCB5b3UgZG8gYm90aCBvZiB0aGUgZm9sbG93aW5nOg0KDQogICBhKSBHaXZl
-        IHByb21pbmVudCBub3RpY2Ugd2l0aCBlYWNoIGNvcHkgb2YgdGhlIG9iamVjdCBjb2RlIHRoYXQgdGhl
-        DQogICBMaWJyYXJ5IGlzIHVzZWQgaW4gaXQgYW5kIHRoYXQgdGhlIExpYnJhcnkgYW5kIGl0cyB1c2Ug
-        YXJlDQogICBjb3ZlcmVkIGJ5IHRoaXMgTGljZW5zZS4NCg0KICAgYikgQWNjb21wYW55IHRoZSBvYmpl
-        Y3QgY29kZSB3aXRoIGEgY29weSBvZiB0aGUgR05VIEdQTCBhbmQgdGhpcyBsaWNlbnNlDQogICBkb2N1
-        bWVudC4NCg0KICA0LiBDb21iaW5lZCBXb3Jrcy4NCg0KICBZb3UgbWF5IGNvbnZleSBhIENvbWJpbmVk
-        IFdvcmsgdW5kZXIgdGVybXMgb2YgeW91ciBjaG9pY2UgdGhhdCwNCnRha2VuIHRvZ2V0aGVyLCBlZmZl
-        Y3RpdmVseSBkbyBub3QgcmVzdHJpY3QgbW9kaWZpY2F0aW9uIG9mIHRoZQ0KcG9ydGlvbnMgb2YgdGhl
-        IExpYnJhcnkgY29udGFpbmVkIGluIHRoZSBDb21iaW5lZCBXb3JrIGFuZCByZXZlcnNlDQplbmdpbmVl
-        cmluZyBmb3IgZGVidWdnaW5nIHN1Y2ggbW9kaWZpY2F0aW9ucywgaWYgeW91IGFsc28gZG8gZWFjaCBv
-        Zg0KdGhlIGZvbGxvd2luZzoNCg0KICAgYSkgR2l2ZSBwcm9taW5lbnQgbm90aWNlIHdpdGggZWFjaCBj
-        b3B5IG9mIHRoZSBDb21iaW5lZCBXb3JrIHRoYXQNCiAgIHRoZSBMaWJyYXJ5IGlzIHVzZWQgaW4gaXQg
-        YW5kIHRoYXQgdGhlIExpYnJhcnkgYW5kIGl0cyB1c2UgYXJlDQogICBjb3ZlcmVkIGJ5IHRoaXMgTGlj
-        ZW5zZS4NCg0KICAgYikgQWNjb21wYW55IHRoZSBDb21iaW5lZCBXb3JrIHdpdGggYSBjb3B5IG9mIHRo
-        ZSBHTlUgR1BMIGFuZCB0aGlzIGxpY2Vuc2UNCiAgIGRvY3VtZW50Lg0KDQogICBjKSBGb3IgYSBDb21i
-        aW5lZCBXb3JrIHRoYXQgZGlzcGxheXMgY29weXJpZ2h0IG5vdGljZXMgZHVyaW5nDQogICBleGVjdXRp
-        b24sIGluY2x1ZGUgdGhlIGNvcHlyaWdodCBub3RpY2UgZm9yIHRoZSBMaWJyYXJ5IGFtb25nDQogICB0
-        aGVzZSBub3RpY2VzLCBhcyB3ZWxsIGFzIGEgcmVmZXJlbmNlIGRpcmVjdGluZyB0aGUgdXNlciB0byB0
-        aGUNCiAgIGNvcGllcyBvZiB0aGUgR05VIEdQTCBhbmQgdGhpcyBsaWNlbnNlIGRvY3VtZW50Lg0KDQog
-        ICBkKSBEbyBvbmUgb2YgdGhlIGZvbGxvd2luZzoNCg0KICAgICAgIDApIENvbnZleSB0aGUgTWluaW1h
-        bCBDb3JyZXNwb25kaW5nIFNvdXJjZSB1bmRlciB0aGUgdGVybXMgb2YgdGhpcw0KICAgICAgIExpY2Vu
-        c2UsIGFuZCB0aGUgQ29ycmVzcG9uZGluZyBBcHBsaWNhdGlvbiBDb2RlIGluIGEgZm9ybQ0KICAgICAg
-        IHN1aXRhYmxlIGZvciwgYW5kIHVuZGVyIHRlcm1zIHRoYXQgcGVybWl0LCB0aGUgdXNlciB0bw0KICAg
-        ICAgIHJlY29tYmluZSBvciByZWxpbmsgdGhlIEFwcGxpY2F0aW9uIHdpdGggYSBtb2RpZmllZCB2ZXJz
-        aW9uIG9mDQogICAgICAgdGhlIExpbmtlZCBWZXJzaW9uIHRvIHByb2R1Y2UgYSBtb2RpZmllZCBDb21i
-        aW5lZCBXb3JrLCBpbiB0aGUNCiAgICAgICBtYW5uZXIgc3BlY2lmaWVkIGJ5IHNlY3Rpb24gNiBvZiB0
-        aGUgR05VIEdQTCBmb3IgY29udmV5aW5nDQogICAgICAgQ29ycmVzcG9uZGluZyBTb3VyY2UuDQoNCiAg
-        ICAgICAxKSBVc2UgYSBzdWl0YWJsZSBzaGFyZWQgbGlicmFyeSBtZWNoYW5pc20gZm9yIGxpbmtpbmcg
-        d2l0aCB0aGUNCiAgICAgICBMaWJyYXJ5LiAgQSBzdWl0YWJsZSBtZWNoYW5pc20gaXMgb25lIHRoYXQg
-        KGEpIHVzZXMgYXQgcnVuIHRpbWUNCiAgICAgICBhIGNvcHkgb2YgdGhlIExpYnJhcnkgYWxyZWFkeSBw
-        cmVzZW50IG9uIHRoZSB1c2VyJ3MgY29tcHV0ZXINCiAgICAgICBzeXN0ZW0sIGFuZCAoYikgd2lsbCBv
-        cGVyYXRlIHByb3Blcmx5IHdpdGggYSBtb2RpZmllZCB2ZXJzaW9uDQogICAgICAgb2YgdGhlIExpYnJh
-        cnkgdGhhdCBpcyBpbnRlcmZhY2UtY29tcGF0aWJsZSB3aXRoIHRoZSBMaW5rZWQNCiAgICAgICBWZXJz
-        aW9uLg0KDQogICBlKSBQcm92aWRlIEluc3RhbGxhdGlvbiBJbmZvcm1hdGlvbiwgYnV0IG9ubHkgaWYg
-        eW91IHdvdWxkIG90aGVyd2lzZQ0KICAgYmUgcmVxdWlyZWQgdG8gcHJvdmlkZSBzdWNoIGluZm9ybWF0
-        aW9uIHVuZGVyIHNlY3Rpb24gNiBvZiB0aGUNCiAgIEdOVSBHUEwsIGFuZCBvbmx5IHRvIHRoZSBleHRl
-        bnQgdGhhdCBzdWNoIGluZm9ybWF0aW9uIGlzDQogICBuZWNlc3NhcnkgdG8gaW5zdGFsbCBhbmQgZXhl
-        Y3V0ZSBhIG1vZGlmaWVkIHZlcnNpb24gb2YgdGhlDQogICBDb21iaW5lZCBXb3JrIHByb2R1Y2VkIGJ5
-        IHJlY29tYmluaW5nIG9yIHJlbGlua2luZyB0aGUNCiAgIEFwcGxpY2F0aW9uIHdpdGggYSBtb2RpZmll
-        ZCB2ZXJzaW9uIG9mIHRoZSBMaW5rZWQgVmVyc2lvbi4gKElmDQogICB5b3UgdXNlIG9wdGlvbiA0ZDAs
-        IHRoZSBJbnN0YWxsYXRpb24gSW5mb3JtYXRpb24gbXVzdCBhY2NvbXBhbnkNCiAgIHRoZSBNaW5pbWFs
-        IENvcnJlc3BvbmRpbmcgU291cmNlIGFuZCBDb3JyZXNwb25kaW5nIEFwcGxpY2F0aW9uDQogICBDb2Rl
-        LiBJZiB5b3UgdXNlIG9wdGlvbiA0ZDEsIHlvdSBtdXN0IHByb3ZpZGUgdGhlIEluc3RhbGxhdGlvbg0K
-        ICAgSW5mb3JtYXRpb24gaW4gdGhlIG1hbm5lciBzcGVjaWZpZWQgYnkgc2VjdGlvbiA2IG9mIHRoZSBH
-        TlUgR1BMDQogICBmb3IgY29udmV5aW5nIENvcnJlc3BvbmRpbmcgU291cmNlLikNCg0KICA1LiBDb21i
-        aW5lZCBMaWJyYXJpZXMuDQoNCiAgWW91IG1heSBwbGFjZSBsaWJyYXJ5IGZhY2lsaXRpZXMgdGhhdCBh
-        cmUgYSB3b3JrIGJhc2VkIG9uIHRoZQ0KTGlicmFyeSBzaWRlIGJ5IHNpZGUgaW4gYSBzaW5nbGUgbGli
-        cmFyeSB0b2dldGhlciB3aXRoIG90aGVyIGxpYnJhcnkNCmZhY2lsaXRpZXMgdGhhdCBhcmUgbm90IEFw
-        cGxpY2F0aW9ucyBhbmQgYXJlIG5vdCBjb3ZlcmVkIGJ5IHRoaXMNCkxpY2Vuc2UsIGFuZCBjb252ZXkg
-        c3VjaCBhIGNvbWJpbmVkIGxpYnJhcnkgdW5kZXIgdGVybXMgb2YgeW91cg0KY2hvaWNlLCBpZiB5b3Ug
-        ZG8gYm90aCBvZiB0aGUgZm9sbG93aW5nOg0KDQogICBhKSBBY2NvbXBhbnkgdGhlIGNvbWJpbmVkIGxp
-        YnJhcnkgd2l0aCBhIGNvcHkgb2YgdGhlIHNhbWUgd29yayBiYXNlZA0KICAgb24gdGhlIExpYnJhcnks
-        IHVuY29tYmluZWQgd2l0aCBhbnkgb3RoZXIgbGlicmFyeSBmYWNpbGl0aWVzLA0KICAgY29udmV5ZWQg
-        dW5kZXIgdGhlIHRlcm1zIG9mIHRoaXMgTGljZW5zZS4NCg0KICAgYikgR2l2ZSBwcm9taW5lbnQgbm90
-        aWNlIHdpdGggdGhlIGNvbWJpbmVkIGxpYnJhcnkgdGhhdCBwYXJ0IG9mIGl0DQogICBpcyBhIHdvcmsg
-        YmFzZWQgb24gdGhlIExpYnJhcnksIGFuZCBleHBsYWluaW5nIHdoZXJlIHRvIGZpbmQgdGhlDQogICBh
-        Y2NvbXBhbnlpbmcgdW5jb21iaW5lZCBmb3JtIG9mIHRoZSBzYW1lIHdvcmsuDQoNCiAgNi4gUmV2aXNl
-        ZCBWZXJzaW9ucyBvZiB0aGUgR05VIExlc3NlciBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlLg0KDQogIFRo
-        ZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24gbWF5IHB1Ymxpc2ggcmV2aXNlZCBhbmQvb3IgbmV3IHZl
-        cnNpb25zDQpvZiB0aGUgR05VIExlc3NlciBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZyb20gdGltZSB0
-        byB0aW1lLiBTdWNoIG5ldw0KdmVyc2lvbnMgd2lsbCBiZSBzaW1pbGFyIGluIHNwaXJpdCB0byB0aGUg
-        cHJlc2VudCB2ZXJzaW9uLCBidXQgbWF5DQpkaWZmZXIgaW4gZGV0YWlsIHRvIGFkZHJlc3MgbmV3IHBy
-        b2JsZW1zIG9yIGNvbmNlcm5zLg0KDQogIEVhY2ggdmVyc2lvbiBpcyBnaXZlbiBhIGRpc3Rpbmd1aXNo
-        aW5nIHZlcnNpb24gbnVtYmVyLiBJZiB0aGUNCkxpYnJhcnkgYXMgeW91IHJlY2VpdmVkIGl0IHNwZWNp
-        ZmllcyB0aGF0IGEgY2VydGFpbiBudW1iZXJlZCB2ZXJzaW9uDQpvZiB0aGUgR05VIExlc3NlciBHZW5l
-        cmFsIFB1YmxpYyBMaWNlbnNlICJvciBhbnkgbGF0ZXIgdmVyc2lvbiINCmFwcGxpZXMgdG8gaXQsIHlv
-        dSBoYXZlIHRoZSBvcHRpb24gb2YgZm9sbG93aW5nIHRoZSB0ZXJtcyBhbmQNCmNvbmRpdGlvbnMgZWl0
-        aGVyIG9mIHRoYXQgcHVibGlzaGVkIHZlcnNpb24gb3Igb2YgYW55IGxhdGVyIHZlcnNpb24NCnB1Ymxp
-        c2hlZCBieSB0aGUgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uLiBJZiB0aGUgTGlicmFyeSBhcyB5b3UN
-        CnJlY2VpdmVkIGl0IGRvZXMgbm90IHNwZWNpZnkgYSB2ZXJzaW9uIG51bWJlciBvZiB0aGUgR05VIExl
-        c3Nlcg0KR2VuZXJhbCBQdWJsaWMgTGljZW5zZSwgeW91IG1heSBjaG9vc2UgYW55IHZlcnNpb24gb2Yg
-        dGhlIEdOVSBMZXNzZXINCkdlbmVyYWwgUHVibGljIExpY2Vuc2UgZXZlciBwdWJsaXNoZWQgYnkgdGhl
-        IEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbi4NCg0KICBJZiB0aGUgTGlicmFyeSBhcyB5b3UgcmVjZWl2
-        ZWQgaXQgc3BlY2lmaWVzIHRoYXQgYSBwcm94eSBjYW4gZGVjaWRlDQp3aGV0aGVyIGZ1dHVyZSB2ZXJz
-        aW9ucyBvZiB0aGUgR05VIExlc3NlciBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHNoYWxsDQphcHBseSwg
-        dGhhdCBwcm94eSdzIHB1YmxpYyBzdGF0ZW1lbnQgb2YgYWNjZXB0YW5jZSBvZiBhbnkgdmVyc2lvbiBp
-        cw0KcGVybWFuZW50IGF1dGhvcml6YXRpb24gZm9yIHlvdSB0byBjaG9vc2UgdGhhdCB2ZXJzaW9uIGZv
-        ciB0aGUNCkxpYnJhcnkuDQo=
+        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
+        DmEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="Warning" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -4785,5 +4649,172 @@
         zjF5120uULO7xsbGonr16qhXr55YWtOtWzexpo3DYc7L1q1bhxMnThivItxC34D/B4RSTJApdCNZAAAA
         AElFTkSuQmCC
 </value>
+  </data>
+  <data name="LICENSE" xml:space="preserve">
+    <value>                   GNU LESSER GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+ Copyright (C) 2007 Free Software Foundation, Inc. &lt;https://fsf.org/&gt;
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+
+  This version of the GNU Lesser General Public License incorporates
+the terms and conditions of version 3 of the GNU General Public
+License, supplemented by the additional permissions listed below.
+
+  0. Additional Definitions.
+
+  As used herein, "this License" refers to version 3 of the GNU Lesser
+General Public License, and the "GNU GPL" refers to version 3 of the GNU
+General Public License.
+
+  "The Library" refers to a covered work governed by this License,
+other than an Application or a Combined Work as defined below.
+
+  An "Application" is any work that makes use of an interface provided
+by the Library, but which is not otherwise based on the Library.
+Defining a subclass of a class defined by the Library is deemed a mode
+of using an interface provided by the Library.
+
+  A "Combined Work" is a work produced by combining or linking an
+Application with the Library.  The particular version of the Library
+with which the Combined Work was made is also called the "Linked
+Version".
+
+  The "Minimal Corresponding Source" for a Combined Work means the
+Corresponding Source for the Combined Work, excluding any source code
+for portions of the Combined Work that, considered in isolation, are
+based on the Application, and not on the Linked Version.
+
+  The "Corresponding Application Code" for a Combined Work means the
+object code and/or source code for the Application, including any data
+and utility programs needed for reproducing the Combined Work from the
+Application, but excluding the System Libraries of the Combined Work.
+
+  1. Exception to Section 3 of the GNU GPL.
+
+  You may convey a covered work under sections 3 and 4 of this License
+without being bound by section 3 of the GNU GPL.
+
+  2. Conveying Modified Versions.
+
+  If you modify a copy of the Library, and, in your modifications, a
+facility refers to a function or data to be supplied by an Application
+that uses the facility (other than as an argument passed when the
+facility is invoked), then you may convey a copy of the modified
+version:
+
+   a) under this License, provided that you make a good faith effort to
+   ensure that, in the event an Application does not supply the
+   function or data, the facility still operates, and performs
+   whatever part of its purpose remains meaningful, or
+
+   b) under the GNU GPL, with none of the additional permissions of
+   this License applicable to that copy.
+
+  3. Object Code Incorporating Material from Library Header Files.
+
+  The object code form of an Application may incorporate material from
+a header file that is part of the Library.  You may convey such object
+code under terms of your choice, provided that, if the incorporated
+material is not limited to numerical parameters, data structure
+layouts and accessors, or small macros, inline functions and templates
+(ten or fewer lines in length), you do both of the following:
+
+   a) Give prominent notice with each copy of the object code that the
+   Library is used in it and that the Library and its use are
+   covered by this License.
+
+   b) Accompany the object code with a copy of the GNU GPL and this license
+   document.
+
+  4. Combined Works.
+
+  You may convey a Combined Work under terms of your choice that,
+taken together, effectively do not restrict modification of the
+portions of the Library contained in the Combined Work and reverse
+engineering for debugging such modifications, if you also do each of
+the following:
+
+   a) Give prominent notice with each copy of the Combined Work that
+   the Library is used in it and that the Library and its use are
+   covered by this License.
+
+   b) Accompany the Combined Work with a copy of the GNU GPL and this license
+   document.
+
+   c) For a Combined Work that displays copyright notices during
+   execution, include the copyright notice for the Library among
+   these notices, as well as a reference directing the user to the
+   copies of the GNU GPL and this license document.
+
+   d) Do one of the following:
+
+       0) Convey the Minimal Corresponding Source under the terms of this
+       License, and the Corresponding Application Code in a form
+       suitable for, and under terms that permit, the user to
+       recombine or relink the Application with a modified version of
+       the Linked Version to produce a modified Combined Work, in the
+       manner specified by section 6 of the GNU GPL for conveying
+       Corresponding Source.
+
+       1) Use a suitable shared library mechanism for linking with the
+       Library.  A suitable mechanism is one that (a) uses at run time
+       a copy of the Library already present on the user's computer
+       system, and (b) will operate properly with a modified version
+       of the Library that is interface-compatible with the Linked
+       Version.
+
+   e) Provide Installation Information, but only if you would otherwise
+   be required to provide such information under section 6 of the
+   GNU GPL, and only to the extent that such information is
+   necessary to install and execute a modified version of the
+   Combined Work produced by recombining or relinking the
+   Application with a modified version of the Linked Version. (If
+   you use option 4d0, the Installation Information must accompany
+   the Minimal Corresponding Source and Corresponding Application
+   Code. If you use option 4d1, you must provide the Installation
+   Information in the manner specified by section 6 of the GNU GPL
+   for conveying Corresponding Source.)
+
+  5. Combined Libraries.
+
+  You may place library facilities that are a work based on the
+Library side by side in a single library together with other library
+facilities that are not Applications and are not covered by this
+License, and convey such a combined library under terms of your
+choice, if you do both of the following:
+
+   a) Accompany the combined library with a copy of the same work based
+   on the Library, uncombined with any other library facilities,
+   conveyed under the terms of this License.
+
+   b) Give prominent notice with the combined library that part of it
+   is a work based on the Library, and explaining where to find the
+   accompanying uncombined form of the same work.
+
+  6. Revised Versions of the GNU Lesser General Public License.
+
+  The Free Software Foundation may publish revised and/or new versions
+of the GNU Lesser General Public License from time to time. Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.
+
+  Each version is given a distinguishing version number. If the
+Library as you received it specifies that a certain numbered version
+of the GNU Lesser General Public License "or any later version"
+applies to it, you have the option of following the terms and
+conditions either of that published version or of any later version
+published by the Free Software Foundation. If the Library as you
+received it does not specify a version number of the GNU Lesser
+General Public License, you may choose any version of the GNU Lesser
+General Public License ever published by the Free Software Foundation.
+
+  If the Library as you received it specifies that a proxy can decide
+whether future versions of the GNU Lesser General Public License shall
+apply, that proxy's public statement of acceptance of any version is
+permanent authorization for you to choose that version for the
+Library.</value>
   </data>
 </root>
