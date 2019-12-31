@@ -2,14 +2,14 @@
 
 // File: AssemblyAttributeAccessors.cs
 // Provides access to assembly attributes.
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
 #endregion
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
 namespace ArdeshirV.Utilities
 {
 	public static class Extractor
@@ -19,14 +19,14 @@ namespace ArdeshirV.Utilities
         	return Exctract(Input,
 				@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
 		}
-		//---------------------------------------------------------------------
+		//-------------------------------------------------------------------------------
 		public static string[] ExctractURLs(string Input)
 		{
         	return Exctract(Input, 
                 @"((http|ftp|https|file):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\" +
                 @".,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)");
 		}
-		//---------------------------------------------------------------------
+		//-------------------------------------------------------------------------------
 		public static string[] Exctract(string Input, string regularExp)
 		{
 			Regex urlRegex = new Regex(regularExp, RegexOptions.IgnoreCase);
@@ -41,7 +41,7 @@ namespace ArdeshirV.Utilities
         	return values;
 		}
 	}
-	//-------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------
     public class AssemblyAttributeAccessors
     {
         #region Variables
@@ -142,6 +142,6 @@ namespace ArdeshirV.Utilities
         }
     }
 }
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
 
 

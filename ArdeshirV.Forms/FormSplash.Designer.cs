@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace ArdeshirV.Forms
 {
     partial class FormSplash
@@ -29,14 +31,14 @@ namespace ArdeshirV.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.m_imgPictureBox = new System.Windows.Forms.PictureBox();
+            this.m_imgPictureBox = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_imgPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // m_imgPictureBox
             // 
             this.m_imgPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.m_imgPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_imgPictureBox.Dock = DockStyle.Fill;
             this.m_imgPictureBox.Location = new System.Drawing.Point(0, 0);
             this.m_imgPictureBox.Name = "m_imgPictureBox";
             this.m_imgPictureBox.Size = new System.Drawing.Size(400, 250);
@@ -48,13 +50,13 @@ namespace ArdeshirV.Forms
             // 
             this.ClientSize = new System.Drawing.Size(400, 250);
             this.Controls.Add(this.m_imgPictureBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.MoveFormWithMouse = false;
             this.Name = "FormSplash";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.TopMost = true;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormSplash_KeyPress);
+            this.KeyPress += new KeyPressEventHandler(this.FormSplash_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.m_imgPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -63,4 +65,3 @@ namespace ArdeshirV.Forms
         #endregion
     }
 }
-//-----------------------------------------------------------------------------

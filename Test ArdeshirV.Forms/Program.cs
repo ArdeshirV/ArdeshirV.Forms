@@ -1,21 +1,28 @@
-﻿// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
+﻿#region Header
+
+// ArdeshirV.TestForms Project
+// Program.cs: Entry Point
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+
+
 using System;
 using System.Windows.Forms;
 
+#endregion Header
+//---------------------------------------------------------------------------------------------
 namespace ArdeshirV.TestForms
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        internal static void Main()
         {
         	const string stringMessage = @"
     ArdeshirV.TestForms v2.0 - Shows how to use 'ArdeshirV.Forms' library
-    Find latest update here: https://ardeshirv.github.io/ArdeshirV.Forms
-    Copyright (C) 2002-2019 ArdeshirV@protonmail.com
+    You can find the latest update here: https://ardeshirv.github.io/ArdeshirV.Forms
+    Copyright (C) 2002-2020 ArdeshirV@protonmail.com
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

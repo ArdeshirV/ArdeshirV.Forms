@@ -1,6 +1,6 @@
 ﻿#region Header
 
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+
 using System;
 using System.IO;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
 
 #endregion
-//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
 namespace ArdeshirV.TestForms
 {
     public partial class FormMainTest : FormBase
@@ -19,7 +19,7 @@ namespace ArdeshirV.TestForms
         private const string _stringEmail = "ArdeshirV@protonmail.com";
         private const string _stringWebsite =
         	"https://ardeshirv.github.io/ArdeshirV.Forms";
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public FormMainTest()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace ArdeshirV.TestForms
             BackgoundEndGradientColor = Color.Firebrick;
             UpdateMessageBar();
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
         {
             UpdateMessageBar();
@@ -46,24 +46,24 @@ namespace ArdeshirV.TestForms
                 buttonShrinkHeight.Enabled = true;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Close();
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonShrinkHeight_Click(object sender, EventArgs e)
         {
             buttonShrinkHeight.Enabled = false;
             this.ShrinkHeightByTime(Height - intIncH);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonShrinkWidth_Click(object sender, EventArgs e)
         {
             buttonShrinkWidth.Enabled = false;
             this.ShrinkWidthByTime(Width - intIncW);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonNewForm_Click(object sender, EventArgs e)
         {
             Form f = new FormMainTest();
@@ -71,7 +71,7 @@ namespace ArdeshirV.TestForms
             f.Location = new Point(Location.X + 10, Location.Y + 10);
             f.Show(this);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
             try {
@@ -80,32 +80,39 @@ namespace ArdeshirV.TestForms
                 FormErrorHandler.Show(exp, this, _stringWebsite);
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
-            FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.Logo);
+        	// TODO: Modify FormAbout.Show method
+        	//FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.Logo);
+        	//FormAbout.Show(this, _stringWebsite, _stringEmail);
+        	FormAboutData data = new FormAboutData(this,
+				new Copyright[] { new Copyright(this, Resources.Logo) },
+				new License[] { new License("GPLv3+", "GNU Public License Version 3+", Resources.GPLv3) },
+				new Donation[] {});
+        	FormAbout.Show(this, _stringWebsite, _stringEmail);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void UpdateMessageBar()
         {
             m_lblMessage.Text = string.Format("W:{0}, H:{1}", Width, Height);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
             FormSplash.Show(this, Resources.Logo);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)
         {
             UpdateMessageBar();
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
 			DialogResult drResult = FormMessage.Show().DialogResult;//this, "Message");
 		}
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
 		{
 			//string stringResult;

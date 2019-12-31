@@ -2,7 +2,7 @@
 
 // Form About
 // FormAboutData.cs : Provides data holder for form about
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.IO;
@@ -14,11 +14,11 @@ using System.ComponentModel;
 using System.Collections.Generic;
 
 #endregion
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
     /// <summary>
-    /// License class contains data about application/component's license.
+    /// License class contains data about application/component's license
     /// </summary>
     public sealed class License
     {
@@ -44,7 +44,7 @@ namespace ArdeshirV.Forms
     	private License() {}
     	//---------------------------------------------------------------------
     	/// <summary>
-    	/// Creates License class that contains the component's license information.
+    	/// Creates License class that contains the component's license information
     	/// </summary>
     	/// <param name="name">License name such as GPL, MIT, Apache...</param>
     	/// <param name="text">License contents and details</param>
@@ -56,7 +56,7 @@ namespace ArdeshirV.Forms
     		_logo = logo;
     	}
     }
-    //-------------------------------------------------------------------------    
+    //-------------------------------------------------------------------------------    
     /// <summary>
     /// Copyright class contains data about application/component's copyright 
     /// </summary>
@@ -131,17 +131,17 @@ namespace ArdeshirV.Forms
     		_description = info.AssemblyDescription;
     	}
     }
-    //-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------
     /// <summary>
     /// Contains a donation currency-type/address pair.
     /// </summary>
     public sealed class Donation
     {
     	private readonly string _name;
-    	private readonly string _address;
+    	private readonly Dictionary<string, string> _address;
     	//---------------------------------------------------------------------
     	public string Name { get { return _name; } }
-    	public string Address { get { return _address; } }
+    	public Dictionary<string, string> Address { get { return _address; } }
     	//---------------------------------------------------------------------
     	private Donation() {}
     	//---------------------------------------------------------------------
@@ -150,29 +150,30 @@ namespace ArdeshirV.Forms
     	/// </summary>
     	/// <param name="name">Currency type such as PayPal, Bitcoin, ...</param>
     	/// <param name="address">Currency address</param>
-    	private Donation(string name, string address) 
+    	private Donation(string name, Dictionary<string, string> address)
     	{
     		_name = name;
     		_address = address;
     	}
     }
-    //-------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
 	public sealed class FormAboutData
 	{
 		private readonly string _URL;
 		private readonly string _email;
-		private readonly Form _formOwner;
-		private readonly Dictionary<string, string> _donations;
+		private readonly Component _formOwner;
 		private readonly Dictionary<string, License> _licenses;
 		private readonly Dictionary<string, Copyright> _copyrights;
-		//---------------------------------------------------------------------
+		private readonly Dictionary<string, Dictionary<string, string>> _donations;
+		//-------------------------------------------------------------------------------
 		public string URL { get { return _URL; } }
 		public string Email { get { return _email; } }
-		public Form Owner { get { return _formOwner; } }
-		public Dictionary<string, string> Donations { get { return _donations; } }
+		public Component Owner { get { return _formOwner; } }
 		public Dictionary<string, License> Licenses { get { return _licenses; } }
 		public Dictionary<string, Copyright> Copyrights { get { return _copyrights; } }
-		//---------------------------------------------------------------------
+		public Dictionary<string, Dictionary<string, string>> Donations
+		{ get { return _donations; } }
+		//-------------------------------------------------------------------------------
 		public string AppName
 		{
 			get
@@ -187,29 +188,29 @@ namespace ArdeshirV.Forms
 				return result;
 			}
 		}
-		//---------------------------------------------------------------------
+		//-------------------------------------------------------------------------------
 		private FormAboutData() {}
-		//---------------------------------------------------------------------
-		public FormAboutData(Form owner, Copyright[] copyrights,
+		//-------------------------------------------------------------------------------
+		public FormAboutData(Component owner, Copyright[] copyrights,
 		                     License[] licenses, Donation[] donations,
 		                     string URL, string email)
 		{
-			_formOwner = owner;
 			_URL = URL;
 			_email = email;
-			_donations = new Dictionary<string, string>();
+			_formOwner = owner;
 			_licenses = new Dictionary<string, License>();
 			_copyrights = new Dictionary<string, Copyright>();
+			_donations = new Dictionary<string, Dictionary<string, string>>();
 			
-			foreach(Donation d in donations)
-				_donations.Add(d.Name, d.Address);
+			foreach(License l in licenses)
+				_licenses.Add(l.Name, l);
 			
 			foreach(Copyright c in copyrights)
 				_copyrights.Add(c.Name, c);
 			
-			foreach(License l in licenses)
-				_licenses.Add(l.Name, l);
+			foreach(Donation d in donations)
+				_donations.Add(d.Name, d.Address);
 		}
 	}
 }
-//-----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------

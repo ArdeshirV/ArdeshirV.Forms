@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle ("Test ArdeshirV.Forms")]
 [assembly: AssemblyDescription ("This is a test application that shows how to use ArdeshirV.Forms")]
-[assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("ArdeshirV")]
 [assembly: AssemblyProduct ("Test ArdeshirV.Forms")]
-[assembly: AssemblyCopyright ("Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under GPLv3+")]
-[assembly: AssemblyTrademark ("ArdeshirV")]
 [assembly: AssemblyCulture ("")]
+[assembly: AssemblyCopyright ("Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+")]
+[assembly: AssemblyTrademark ("ArdeshirV")]
+[assembly: AssemblyConfiguration ("")]
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.

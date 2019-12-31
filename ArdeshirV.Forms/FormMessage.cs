@@ -2,14 +2,14 @@
 
 // Form Message
 // FormMessage.cs : Gets user input values in string variable.
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 #endregion
-//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
 	/// <summary>
@@ -22,14 +22,14 @@ namespace ArdeshirV.Forms
 			InitializeComponent();
 			StartPosition = FormStartPosition.CenterParent;
 		}
-		//---------------------------------------------------------------------
+		//-------------------------------------------------------------------------------
 		public static new FormMessage Show() 
 		{
 			FormMessage form = new FormMessage();
 			form.ShowDialog();
 			return form;
 		}
-		//---------------------------------------------------------------------
+		//-------------------------------------------------------------------------------
 		public void ButtonOKClick(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.OK;

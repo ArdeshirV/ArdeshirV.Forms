@@ -1,23 +1,36 @@
-﻿/*
- * Created by SharpDevelop.
- * User: asha
- * Date: 12/11/2019
- * Time: 6:54 PM
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
+﻿#region Header
+
+// ArdeshirV.Forms Project
+// FormInput.Designer.cs : Provides a Cutomized InputBox
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.ComponentModel;
+using System.Drawing.Drawing2D;
+
+#endregion
+//---------------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
-	partial class FormInput
+	partial class FormInput		
 	{
+		#region Variables
+
+		private Label label1;
+		private Button button1;
+		private Button button2;
+		private TextBox textBox1;
+		
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
+		
+		#endregion
+		//-----------------------------------------------------------------------------------------------
+		#region Dispose
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -33,6 +46,10 @@ namespace ArdeshirV.Forms
 			base.Dispose(disposing);
 		}
 		
+		#endregion Dispose
+		//-----------------------------------------------------------------------------------------------
+		#region InitializeComponent
+
 		/// <summary>
 		/// This method is required for Windows Forms designer support.
 		/// Do not change the method contents inside the source code editor. The Forms designer might
@@ -40,10 +57,10 @@ namespace ArdeshirV.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.button1 = new Button();
+			this.button2 = new Button();
+			this.label1 = new Label();
+			this.textBox1 = new TextBox();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -83,7 +100,7 @@ namespace ArdeshirV.Forms
 			// FormInput
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleMode = AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(384, 161);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.label1);
@@ -93,7 +110,8 @@ namespace ArdeshirV.Forms
 			this.Text = "FormInput";
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
+		
+		#endregion InitializeComponent
 	}
 }

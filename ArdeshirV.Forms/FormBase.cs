@@ -2,7 +2,7 @@
 
 // Special Form Project
 // Special Form.cs : Provides Special Form
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.Drawing;
@@ -11,11 +11,11 @@ using System.ComponentModel;
 using System.Drawing.Drawing2D;
 
 #endregion
-//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
     /// <summary>
-    /// Provide a special Form with special properties, form shrink ability and special color.
+    /// Provide a special Form with special properties, form shrink ability and special color
     /// </summary>
     public class FormBase : Form
     {
@@ -79,16 +79,16 @@ namespace ArdeshirV.Forms
         private LinearGradientMode m_lgmInactiveBackgroundActiveMode = LinearGradientMode.Vertical;
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Constructor
 
         /// <summary>
-        /// Create FormBase instance.
+        /// Create FormBase instance
         /// </summary>
         protected FormBase() { }
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Interface
 
         public void ShrinkWidthByTime(int intNewWidth)
@@ -126,7 +126,7 @@ namespace ArdeshirV.Forms
             else
             	Width = intNewWidth;
         }
-        //------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------
         public void ShrinkHeightByTime(int intNewHeight)
         {
             if (WindowState == FormWindowState.Normal)
@@ -166,7 +166,7 @@ namespace ArdeshirV.Forms
             else
                 Height = intNewHeight;
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public void ShrinkWidth(int intNewWidth)
         {
             if (WindowState == FormWindowState.Normal)
@@ -182,7 +182,7 @@ namespace ArdeshirV.Forms
             else
                 Width = intNewWidth;
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public void ShrinkHeight(int intNewHeight)
         {
             if (WindowState == FormWindowState.Normal)
@@ -198,7 +198,7 @@ namespace ArdeshirV.Forms
             else
                 Height = intNewHeight;
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public void FollowFormBase(FormBase frmMasterFormBase)
         {
             if (frmMasterFormBase != null)
@@ -215,7 +215,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region External Methods
 
         // I removed this code to keep my code platform independent
@@ -230,7 +230,7 @@ namespace ArdeshirV.Forms
         //}
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Overrided functions
 
         protected override void OnLoad(EventArgs e)
@@ -249,21 +249,21 @@ namespace ArdeshirV.Forms
             if(m_imgSplash is Bitmap)
             	FormSplash.Show(this, m_imgSplash);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
             m_blnActivated = true;
             Invalidate(true);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected override void OnDeactivate(EventArgs e)
         {
             base.OnDeactivate(e);
             m_blnActivated = false;
             Invalidate(true);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -287,7 +287,7 @@ namespace ArdeshirV.Forms
                 	Focus();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected override void OnClosed(EventArgs e)
         {
             if (m_blnChangingOpacityAbility)
@@ -302,14 +302,14 @@ namespace ArdeshirV.Forms
 
             base.OnClosed(e);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected override void OnResize(EventArgs e)
         {
             Invalidate(true);
             base.OnResize(e);
         }
-        //-------------------------------------------------------------------------------
-        protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs e)
+        //-------------------------------------------------------------------------------------
+        protected override void OnPaintBackground(PaintEventArgs e)
         {
             if (m_blnBackgroundGradientColor && ClientRectangle.Width > 0 && ClientRectangle.Height > 0)
             {
@@ -334,14 +334,14 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Utility Functions
 
         protected new void Show()
         {
         	this.Show(null);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected new void Show(IWin32Window frmOwner)
         {
         	if (frmOwner == null)
@@ -357,12 +357,12 @@ namespace ArdeshirV.Forms
                 base.Show(frmOwner);
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected new DialogResult ShowDialog()
         {
         	return this.ShowDialog(null);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         protected new DialogResult ShowDialog(IWin32Window frmOwner)
         {
         	DialogResult dr = DialogResult.Cancel;
@@ -380,9 +380,9 @@ namespace ArdeshirV.Forms
             }
             return dr;
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void InitializeComponent() { }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public void AddSpecialMouseEvent(Control ctlDest)
         {
             AddMouseEvents(ctlDest);
@@ -391,7 +391,7 @@ namespace ArdeshirV.Forms
                 if (!(ctlOut is Button))
                     AddMouseEvents(ctlOut);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public void RemoveSpecialMouseEvent(Control ctlDest)
         {
             RemoveMouseEvents(ctlDest);
@@ -400,14 +400,14 @@ namespace ArdeshirV.Forms
                 if (!(ctlOut is Button))
                     RemoveMouseEvents(ctlOut);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void RemoveMouseEvents(Control ctlDest)
         {
             ctlDest.MouseUp -= new MouseEventHandler(OnMouseUp_Event);
             ctlDest.MouseMove -= new MouseEventHandler(OnMouseMove_Event);
             ctlDest.MouseDown -= new MouseEventHandler(OnMouseDown_Event);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void AddMouseEvents(Control ctlDest)
         {
             ctlDest.MouseUp += new MouseEventHandler(OnMouseUp_Event);
@@ -416,7 +416,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Event Handlers
 
         private void OnMouseDown_Event(object sender, MouseEventArgs e)
@@ -424,7 +424,7 @@ namespace ArdeshirV.Forms
             m_blnMouseDown = true;
             m_pntLastLocation = e.Location;
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void OnMouseMove_Event(object sender, MouseEventArgs e)
         {
             if (m_blnMoveWithMouseAbility && m_blnMouseDown)
@@ -433,14 +433,14 @@ namespace ArdeshirV.Forms
                 Left += e.X - m_pntLastLocation.X;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void OnMouseUp_Event(object sender, MouseEventArgs e)
         {
             m_blnMouseDown = false;
         }
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Properties
 
         /// <summary>
@@ -460,7 +460,7 @@ namespace ArdeshirV.Forms
                 m_blnFollowParentFormBase = value;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Sets or gets the ending lieaner background color when form is inactive.
         /// </summary>
@@ -478,7 +478,7 @@ namespace ArdeshirV.Forms
                 m_imgSplash = value;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
 
         /// <summary>
         /// Sets or gets the ending lieaner background color when form is inactive.
@@ -499,7 +499,7 @@ namespace ArdeshirV.Forms
                 Invalidate();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Starting lieaner background color when form is inactive.
         /// </summary>
@@ -519,7 +519,7 @@ namespace ArdeshirV.Forms
                 Invalidate();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Gets last form location when mouse down.
         /// </summary>
@@ -536,7 +536,7 @@ namespace ArdeshirV.Forms
                     return Point.Empty;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Mouse is down?
         /// </summary>
@@ -550,7 +550,7 @@ namespace ArdeshirV.Forms
                 return m_blnMouseDown;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Gets the true if form is activated.
         /// </summary>
@@ -564,7 +564,7 @@ namespace ArdeshirV.Forms
                 return m_blnActivated;
             }
         }
-        //-------------------------------------------------------------------------------b
+        //-------------------------------------------------------------------------------------b
         /// <summary>
         /// Gets or sets the "move form with mouse" ability.
         /// </summary>
@@ -582,7 +582,7 @@ namespace ArdeshirV.Forms
                 return m_blnMoveWithMouseAbility;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Sets or gets the ending lieaner background color.
         /// </summary>
@@ -602,7 +602,7 @@ namespace ArdeshirV.Forms
                 Invalidate();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Starting lieaner background color.
         /// </summary>
@@ -622,7 +622,7 @@ namespace ArdeshirV.Forms
                 Invalidate();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Make gradient lieaner background color ability enable/disable.
         /// </summary>
@@ -642,7 +642,7 @@ namespace ArdeshirV.Forms
                 Invalidate();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Gets or sets opacity changer delay ability.
         /// </summary>
@@ -660,7 +660,7 @@ namespace ArdeshirV.Forms
                 m_blnChangingOpacityAbility = value;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Gets or sets background drawing mode.
         /// </summary>
@@ -680,7 +680,7 @@ namespace ArdeshirV.Forms
                 Invalidate();
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         /// <summary>
         /// Gets or sets background drawing mode when form is inactive.
         /// </summary>
@@ -702,7 +702,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         #region Events
 
         public event EventHandler OnBackgroundGradientColorChange
@@ -718,7 +718,7 @@ namespace ArdeshirV.Forms
                 	m_dlgBackgroundGradientColorChanged -= value;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public event EventHandler OnShrinkBegan
         {
             add
@@ -732,7 +732,7 @@ namespace ArdeshirV.Forms
                 	m_dlgShrinkBegan -= value;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         public event EventHandler OnShrinkEnd
         {
             add
@@ -746,19 +746,19 @@ namespace ArdeshirV.Forms
                 	m_dlgShrinkEnd -= value;
             }
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void RaiseBackgroundGradientColorChanged()
         {
             if(m_dlgBackgroundGradientColorChanged != null)
                 m_dlgBackgroundGradientColorChanged(this, null);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void RaiseShrinkEnd()
         {
             if (m_dlgShrinkEnd != null)
                 m_dlgShrinkEnd(this, null);
         }
-        //-------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         private void RaiseShrinkBegan()
         {
             if (m_dlgShrinkBegan != null)
@@ -768,4 +768,4 @@ namespace ArdeshirV.Forms
         #endregion
     }
 }
-//---------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
