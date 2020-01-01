@@ -85,7 +85,9 @@ namespace ArdeshirV.TestForms
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
 			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
+			Donations _donation = new Donations();
 
+			// TODO: You are allowed to change donation addresses in your own code like this:
 			_donations.Add(aaa.AssemblyTitle, new Donation[] {
 				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
 				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
@@ -109,8 +111,8 @@ namespace ArdeshirV.TestForms
         	FormAboutData data = new FormAboutData(this,
 				new Copyright[] { new Copyright(this, Resources.Logo) },
 				new License[] { new License("GPLv3+", "GNU Public License Version 3+", Resources.GPLv3) },
-				new Donation[] {});
-        	FormAbout.Show(this, _stringWebsite, _stringEmail);
+				new Donation[] {}, _stringWebsite, _stringEmail);
+        	FormAbout.Show(data);
         }
         //-------------------------------------------------------------------------------------
         private void UpdateMessageBar()

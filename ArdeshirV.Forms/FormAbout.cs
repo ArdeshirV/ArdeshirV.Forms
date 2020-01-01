@@ -63,28 +63,28 @@ namespace ArdeshirV.Forms
 
         protected FormAbout(FormAboutData data) : base()
         {
-            comboBoxDonationCurrencies = new ComboBox();
             InitializeComponent();
             InitFormAbout(data);
-            if(data.Owner is Form)
-            	ShowDialog(data.Owner as Form);
-            else
-            	ShowDialog();
+			using (Form form = data.Owner as Form) {
+				if (form != null)
+					ShowDialog(form);
+				else
+					ShowDialog();
+			}
         }
 
         #endregion
         //---------------------------------------------------------------------
         #region Utility functions
 
-        private void InitFormAbout(FormAboutData d) 
+        protected void InitFormAbout(FormAboutData d) 
         {
             // TODO: Create a messageBox that present AssemblyInfo for a standard component
             this.data = d;
             StartPosition = FormStartPosition.CenterParent;
-            if(d.Owner is Form) {
-            	Form MyOwner = d.Owner as Form;
-            	Icon = MyOwner.Icon;
-            }
+            Form form = d.Owner as Form;
+			if (form != null)
+				Icon = form.Icon;
             linkLabelURL.Text = d.URL;
             linkLabelEmail.Text = d.Email;
             this.m_lblApplicationName.Text = d.AppName;
@@ -134,6 +134,11 @@ namespace ArdeshirV.Forms
             comboBoxDonations.SelectedIndex = comboBoxDonations.Items.Count > 0? 0: -1;
             comboBoxCopyrights.SelectedIndex = comboBoxCopyrights.Items.Count > 0? 0: -1;
             */
+        }
+        //---------------------------------------------------------------------
+        public static FormAbout Show(FormAboutData Data)
+        {
+        	return new FormAbout(Data);
         }
         //---------------------------------------------------------------------
         public static FormAbout Show(Form frmOwner, string strLinkSite, string strEMail)

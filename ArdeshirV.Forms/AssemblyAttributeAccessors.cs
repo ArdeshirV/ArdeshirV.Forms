@@ -17,14 +17,14 @@ namespace ArdeshirV.Utilities
 		public static string[] ExctractEmails(string Input)
 		{
         	return Exctract(Input,
-				@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+			                @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
 		}
 		//-------------------------------------------------------------------------------
 		public static string[] ExctractURLs(string Input)
 		{
         	return Exctract(Input, 
-                @"((http|ftp|https|file):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\" +
-                @".,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)");
+			                @"((http|ftp|https|file):\/\/[\w\-_]+(\.[\w\-_]+)+([\w" +
+			                @"\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)");
 		}
 		//-------------------------------------------------------------------------------
 		public static string[] Exctract(string Input, string regularExp)
@@ -97,7 +97,7 @@ namespace ArdeshirV.Utilities
             		typeof(AssemblyDescriptionAttribute), false);
 
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 else
                 	return ((AssemblyDescriptionAttribute)
                         attributes[0]).Description;
@@ -112,7 +112,7 @@ namespace ArdeshirV.Utilities
             		typeof(AssemblyProductAttribute), false);
 
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 else
                 	return ((AssemblyProductAttribute)attributes[0]).Product;
             }
@@ -126,7 +126,7 @@ namespace ArdeshirV.Utilities
             		typeof(AssemblyCopyrightAttribute), false);
 
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 else
                 	return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
@@ -140,7 +140,7 @@ namespace ArdeshirV.Utilities
             		typeof(AssemblyCompanyAttribute), false);
 
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 else
                 	return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
@@ -148,5 +148,3 @@ namespace ArdeshirV.Utilities
     }
 }
 //-----------------------------------------------------------------------------------
-
-

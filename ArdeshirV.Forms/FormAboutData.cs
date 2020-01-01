@@ -262,6 +262,8 @@ namespace ArdeshirV.Forms
 			// but you are allowed to add your own donation addresses that refer to your
 			// own components that use this code out of FormAboutData.cs easily
 			// by FormAboutData contructor when you call FormAbout in your application
+			// You can find the "todo: You are allowed to change " in your "Task List"
+			// for more information and sample code about adding your own donation addr
 			_donations.Add(aaa.AssemblyTitle, new Donation[] {
 				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
 				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
