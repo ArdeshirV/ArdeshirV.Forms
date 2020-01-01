@@ -27,6 +27,18 @@ namespace ArdeshirV.Utilities
 			                @"\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)");
 		}
 		//-------------------------------------------------------------------------------
+		public static string ExtractFirstURL(string Input)
+		{
+			string[] URLs = ExctractURLs(Input);
+			return URLs.Length > 0 ? URLs[0] : string.Empty;
+		}
+		//-------------------------------------------------------------------------------
+		public static string ExtractFirstEmail(string Input)
+		{
+			string[] Emails = ExctractEmails(Input);
+			return Emails .Length > 0 ? Emails [0] : string.Empty;
+		}
+		//-------------------------------------------------------------------------------
 		public static string[] Exctract(string Input, string regularExp)
 		{
 			Regex urlRegex = new Regex(regularExp, RegexOptions.IgnoreCase);

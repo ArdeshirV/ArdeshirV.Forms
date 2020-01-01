@@ -79,17 +79,11 @@ namespace ArdeshirV.Forms
 
         protected void InitFormAbout(FormAboutData d) 
         {
-        	Image x = Icon.ToBitmap();
-            // TODO: Create a messageBox that present AssemblyInfo for a standard component
-            this.data = d;
-            StartPosition = FormStartPosition.CenterParent;
+            data = d;
             SetURL(linkLabelURL, d.URL);
             SetEmail(linkLabelEmail, d.Email);
-            
-            linkLabelEmail.Text = d.Email;
-            this.m_lblApplicationName.Text = d.AppName;
-            //Extractor.ExctractEmails(Text);
-            //Extractor.ExctractURLs(Extractor);
+            m_lblApplicationName.Text = d.AppName;
+            StartPosition = FormStartPosition.CenterParent;
             
             comboBoxDonation.Items.Clear();
             comboBoxDonationCurrencies.Items.Clear();
@@ -116,18 +110,6 @@ namespace ArdeshirV.Forms
             	pictureBoxAppIcon.Image = Icon.ToBitmap();
             
             /*
-            m_strLink = strLinkSite;
-            //this.labelProductName.Text = AssemblyProduct;
-            //m_lnkLink.Text = "Click here to view technical support site.";
-
-            //if (strEmail == string.Empty || strEmail == null)
-            //    m_lnkMalieTo.Visible = false;
-            //else
-            //    m_lnkMalieTo.Text = strEmail;
-            if (m_strLink == string.Empty || strLinkSite == null)
-                m_lnkTechnicalSupport.Visible = false;
-            else
-                m_lnkTechnicalSupport.Text = m_strLink;
 
             textBoxVersion.Text = String.Format("Version {0}", l_aaaInformation.AssemblyVersion);
             linkLabelCopyright.Text = l_aaaInformation.AssemblyCopyright;
@@ -217,21 +199,20 @@ namespace ArdeshirV.Forms
             if(URL != "" || URL != string.Empty) {
             	linkLabelURL_.Text = URL;
 
-            	string[] stringArrURLs = Extractor.ExctractURLs(URL);
-            	if(stringArrURLs.Length > 0) {
-	            	string stringArrURL = stringArrURLs[0];
-	            	
+            	string stringURL = Extractor.ExtractFirstURL(URL);
+            	if(stringURL != string.Empty) {	            	
 		            int intWebsiteIndex =
-		            	URL.ToLower().IndexOf(stringArrURL.ToLower(),
+		            	URL.ToLower().IndexOf(stringURL.ToLower(),
 		            	                      StringComparison.Ordinal);
 	
 		            if(intWebsiteIndex >= 0) {
 		                int intPos = intWebsiteIndex;
 		                linkLabelURL_.LinkArea = new LinkArea(
-		                	intPos, stringArrURL.Length);
+		                	intPos, stringURL.Length);
 		            }
             	}
-            }
+			} else
+				linkLabelURL_.Visible = false;
 		}
 		//-------------------------------------------------------------------------------
 		private void SetEmail(LinkLabel linkLabelEmail_, string Email)
@@ -239,20 +220,19 @@ namespace ArdeshirV.Forms
             if(Email != "" || Email != string.Empty) {
             	linkLabelEmail_.Text = Email;
 
-            	string[] stringArrEmails = Extractor.ExctractEmails(Email);
-            	if(stringArrEmails.Length > 0) {
-	            	string stringArrEmail = stringArrEmails[0];
-	            	
+            	string stringEmail = Extractor.ExtractFirstEmail(Email);
+            	if(stringEmail != string.Empty) {	            	
 		            int intEmailIndex = Email.ToLower().IndexOf(
-	            		stringArrEmail.ToLower(), StringComparison.Ordinal);
+	            		stringEmail.ToLower(), StringComparison.Ordinal);
 	
 		            if(intEmailIndex >= 0) {
 		                int intPos = intEmailIndex;
 		                linkLabelEmail_.LinkArea = new LinkArea(
-		                	intPos, stringArrEmail.Length);
+		                	intPos, stringEmail.Length);
 		            }
             	}
-            }
+            } else
+				linkLabelEmail_.Visible = false;
 		}
 
         #endregion
@@ -285,16 +265,13 @@ namespace ArdeshirV.Forms
         private void m_lnkMalieTo_LinkClicked(object sender,
                                               LinkLabelLinkClickedEventArgs e)
         {
-            //m_lnkMalieTo.LinkVisited = true;
             (sender as LinkLabel).LinkVisited = true;
-            // Clipboard.SetText(data.Email);
             System.Diagnostics.Process.Start("mailto:" + data.Email);
         }
         //---------------------------------------------------------------------
         private void m_lnkTechnicalSupport_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
-            //m_lnkTechnicalSupport.LinkVisited = true;
             (sender as LinkLabel).LinkVisited = true;
             System.Diagnostics.Process.Start(data.URL);
         }
@@ -325,12 +302,31 @@ namespace ArdeshirV.Forms
         private void M_lblCopyright_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
-            if (linkLabelCopyright.Text.ToLower().
-        	    Contains(data.Email.ToLower()))
-                	m_lnkMalieTo_LinkClicked(sender, e);
-            else if (linkLabelCopyright.Text.ToLower().
-        	    Contains(data.URL.ToLower()))
-                	m_lnkTechnicalSupport_LinkClicked(sender, e);
+            if (linkLabelCopyright.Text.ToLower().Contains(
+        		Extractor.ExtractFirstEmail(data.Email).ToLower()))
+        		m_lnkMalieTo_LinkClicked(sender, e);
+            else if (linkLabelCopyright.Text.ToLower().Contains(
+        		Extractor.ExtractFirstURL(data.URL).ToLower()))
+        		m_lnkTechnicalSupport_LinkClicked(sender, e);
+        	else {
+        		string stringURL = Extractor.ExtractFirstURL(linkLabelCopyright.Text);
+        		int intStartURLPos = linkLabelCopyright.Text.ToLower().IndexOf(
+        			stringURL, StringComparison.Ordinal);
+        		
+        		if(intStartURLPos >= 0) {
+        			linkLabelCopyright.LinkArea =
+        				new LinkArea(intStartURLPos, stringURL.Length);
+        		} else {
+	        		string stringEmail = Extractor.ExtractFirstEmail(
+        				linkLabelCopyright.Text);
+	        		int intStartEmailPos = linkLabelCopyright.Text.ToLower().IndexOf(
+	        			stringEmail, StringComparison.Ordinal);
+        		
+	        		if(intStartEmailPos >= 0)
+        				linkLabelCopyright.LinkArea =
+        					new LinkArea(intStartEmailPos, stringEmail.Length);
+        		}
+        	}
         }
 
         #endregion
@@ -462,7 +458,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelEmail.BackColor = System.Drawing.Color.Transparent;
         	this.linkLabelEmail.Location = new System.Drawing.Point(12, 221);
         	this.linkLabelEmail.Name = "linkLabelEmail";
-        	this.linkLabelEmail.Size = new System.Drawing.Size(436, 18);
+        	this.linkLabelEmail.Size = new System.Drawing.Size(438, 17);
         	this.linkLabelEmail.TabIndex = 4;
         	this.linkLabelEmail.TabStop = true;
         	this.linkLabelEmail.Text = "Email goes here";
@@ -719,9 +715,9 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.linkLabelURL.BackColor = System.Drawing.Color.Transparent;
-        	this.linkLabelURL.Location = new System.Drawing.Point(12, 241);
+        	this.linkLabelURL.Location = new System.Drawing.Point(12, 239);
         	this.linkLabelURL.Name = "linkLabelURL";
-        	this.linkLabelURL.Size = new System.Drawing.Size(438, 19);
+        	this.linkLabelURL.Size = new System.Drawing.Size(438, 17);
         	this.linkLabelURL.TabIndex = 7;
         	this.linkLabelURL.TabStop = true;
         	this.linkLabelURL.Text = "Technical Support URL goes here";
