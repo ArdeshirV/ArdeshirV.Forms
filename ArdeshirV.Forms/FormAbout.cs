@@ -288,17 +288,23 @@ namespace ArdeshirV.Forms
 		}
         //---------------------------------------------------------------------
         private void m_lnkMalieTo_LinkClicked(object sender,
-                                              LinkLabelLinkClickedEventArgs e)
+        	LinkLabelLinkClickedEventArgs e)
         {
-            (sender as LinkLabel).LinkVisited = true;
-            System.Diagnostics.Process.Start("mailto:" + data.Email);
+        	string stringEmail = Extractor.ExtractFirstEmail(data.Email);
+        	if(stringEmail != string.Empty) {
+	            (sender as LinkLabel).LinkVisited = true;
+	            System.Diagnostics.Process.Start("mailto:" + stringEmail);
+        	}
         }
         //---------------------------------------------------------------------
         private void m_lnkTechnicalSupport_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
-            (sender as LinkLabel).LinkVisited = true;
-            System.Diagnostics.Process.Start(data.URL);
+        	string stringURL = Extractor.ExtractFirstURL(data.URL);
+        	if(stringURL != string.Empty) {
+	            (sender as LinkLabel).LinkVisited = true;
+	            System.Diagnostics.Process.Start(stringURL);
+        	}
         }
         //---------------------------------------------------------------------
         private void btnOk_Click(object sender, System.EventArgs e)
@@ -327,30 +333,22 @@ namespace ArdeshirV.Forms
         private void M_lblCopyright_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
-            if (linkLabelCopyright.Text.ToLower().Contains(
-        		Extractor.ExtractFirstEmail(data.Email).ToLower()))
-        		m_lnkMalieTo_LinkClicked(sender, e);
-            else if (linkLabelCopyright.Text.ToLower().Contains(
-        		Extractor.ExtractFirstURL(data.URL).ToLower()))
-        		m_lnkTechnicalSupport_LinkClicked(sender, e);
-        	else {
-        		string stringURL = Extractor.ExtractFirstURL(linkLabelCopyright.Text);
-        		int intStartURLPos = linkLabelCopyright.Text.ToLower().IndexOf(
-        			stringURL, StringComparison.Ordinal);
-        		
-        		if(intStartURLPos >= 0) {
-        			System.Diagnostics.Process.Start(stringURL);
-        		} else {
-	        		string stringEmail = Extractor.ExtractFirstEmail(
-        				linkLabelCopyright.Text);
-	        		int intStartEmailPos = linkLabelCopyright.Text.ToLower().IndexOf(
-	        			stringEmail, StringComparison.Ordinal);
-        		
-        			if(intStartEmailPos >= 0) {
-        				System.Diagnostics.Process.Start(stringEmail);
-        			}
-        		}
-        	}
+    		string stringURL = Extractor.ExtractFirstURL(linkLabelCopyright.Text);
+    		int intStartURLPos = linkLabelCopyright.Text.ToLower().IndexOf(
+    			stringURL.ToLower(), StringComparison.Ordinal);
+    		
+    		if(stringURL != string.Empty && intStartURLPos >= 0) {
+    			System.Diagnostics.Process.Start(stringURL);
+    		} else {
+        		string stringEmail = Extractor.ExtractFirstEmail(
+    				linkLabelCopyright.Text);
+        		int intStartEmailPos = linkLabelCopyright.Text.ToLower().IndexOf(
+    				stringEmail.ToLower(), StringComparison.Ordinal);
+    		
+    			if(stringEmail != string.Empty && intStartEmailPos >= 0) {
+    				System.Diagnostics.Process.Start("mailto:" + stringEmail);
+    			}
+    		}
         }
 
         #endregion
@@ -487,7 +485,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelEmail.TabStop = true;
         	this.linkLabelEmail.Text = "Email goes here";
         	this.linkLabelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        	this.linkLabelEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
+        	this.linkLabelEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkMalieTo_LinkClicked);
         	// 
         	// tabControl
         	// 
@@ -541,6 +539,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelCopyright.Text = "Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+";
         	this.linkLabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	this.linkLabelCopyright.UseCompatibleTextRendering = true;
+        	this.linkLabelCopyright.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.M_lblCopyright_LinkClicked);
         	// 
         	// buttonCopyrightCopy
         	// 
@@ -746,6 +745,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.TabStop = true;
         	this.linkLabelURL.Text = "Technical Support URL goes here";
         	this.linkLabelURL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	this.linkLabelURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
         	// 
         	// FormAbout
         	// 
