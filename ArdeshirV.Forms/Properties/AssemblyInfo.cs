@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark ("ArdeshirV")]
 [assembly: AssemblyTitle ("ArdeshirV.Forms")]
 [assembly: AssemblyProduct ("ArdeshirV.Forms")]
-[assembly: AssemblyCompany ("ArdeshirV@protonmail.com")]
+[assembly: AssemblyCompany ("ArdeshirV")]
 [assembly: AssemblyDescription ("ArdeshirV.Forms contains everyday Windows " +
                                 "forms like FormBase, FormAbout, FormErrorHandl" +
                                 "er and FormSplash.")]

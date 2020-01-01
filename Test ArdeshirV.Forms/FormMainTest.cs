@@ -77,6 +77,7 @@ namespace ArdeshirV.TestForms
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
             try {
+        		// Create an error to test FormErrorHandler form
             	File.Open("some-file.ext", FileMode.Open);  // Throw an exception
             } catch (Exception exp) {
                 FormErrorHandler.Show(exp, this, _stringWebsite);
@@ -90,7 +91,7 @@ namespace ArdeshirV.TestForms
 			string stringAssemblyTitle = aaa.AssemblyTitle;
 
 			// TODO: You are allowed to add your donation addresses in your code like this:
-			Donations[] _donations = new Donations[] {
+			Donations[] donations = new Donations[] {
 				new Donations(  // Donations belong to this component and you can specify 
 				// several donation lists for several different component in your app
 				              stringAssemblyTitle,
@@ -121,7 +122,7 @@ namespace ArdeshirV.TestForms
 			)};
 			
 			// You can add your copyright data about your different components like below code
-			Copyright[] _copyrights = new Copyright[] {
+			Copyright[] copyrights = new Copyright[] {
 				new Copyright(this, Resources.Logo)  // the first parameter is
 				// one of your components and the Copyright constructor can retrive all
 				// assembly data about title, version, copyright and description automatically
@@ -132,7 +133,7 @@ namespace ArdeshirV.TestForms
 				// to specify details about your component in your AssemblyInfo.cs file not here
 			};
 			
-			License[] _licenses = new License[] {
+			License[] licenses = new License[] {
 				new License(stringAssemblyTitle,  // The component name
 				            Resources.LICENSE,    // License Contents for specified component
 				            Resources.GPLv3)      // License Logo
@@ -140,9 +141,9 @@ namespace ArdeshirV.TestForms
 			
         	// TODO: Modify FormAbout.Show method
         	FormAboutData data = new FormAboutData(this,
-        	                                       _copyrights,
-        	                                       _licenses,
-        	                                       _donations,
+        	                                       copyrights,
+        	                                       licenses,
+        	                                       donations,
         	                                       _stringWebsite,
         	                                       _stringEmail);
         	FormAbout.Show(data);

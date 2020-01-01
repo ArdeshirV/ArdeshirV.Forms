@@ -56,6 +56,9 @@ namespace ArdeshirV.Forms
         private ComboBox comboBoxDonationCurrencies;
         private System.ComponentModel.IContainer components;
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
+        private System.Windows.Forms.RichTextBox richTextBoxCompany;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
 
         #endregion
         //---------------------------------------------------------------------
@@ -85,7 +88,10 @@ namespace ArdeshirV.Forms
             SetURL(linkLabelURL, d.URL);
             SetEmail(linkLabelEmail, d.Email);
             m_lblApplicationName.Text = d.AppName;
+            Text = String.Format("About {0}", d.AppName);
             StartPosition = FormStartPosition.CenterParent;
+            m_btnSysteminfo.Enabled = File.Exists(m_strSystemInfo);
+            //labelCompanyName.Text = AssemblyAttributeAccessors.AssemblyCompany;
             
             comboBoxDonation.Items.Clear();
             comboBoxDonationCurrencies.Items.Clear();
@@ -99,34 +105,7 @@ namespace ArdeshirV.Forms
             comboBoxCopyrights.Items.Clear();
             foreach(string stringCopyrightTargetComponent in d.Copyrights.Keys)
             	comboBoxCopyrights.Items.Add(stringCopyrightTargetComponent);
-            
-            /*
 
-            textBoxVersion.Text = String.Format("Version {0}", l_aaaInformation.AssemblyVersion);
-            linkLabelCopyright.Text = l_aaaInformation.AssemblyCopyright;
-            m_lblApplicationName.Text = l_aaaInformation.AssemblyTitle;
-            richTextBoxCopyrightDescription.Text = l_aaaInformation.AssemblyDescription;
-            Text = String.Format("About {0}", l_aaaInformation.AssemblyTitle);
-            //labelCompanyName.Text = AssemblyAttributeAccessors.AssemblyCompany;
-            m_btnSysteminfo.Enabled = File.Exists(m_strSystemInfo);
-
-            int intEmailIndex = linkLabelCopyright.Text.
-                ToLower().IndexOf(strEmail.ToLower(), StringComparison.Ordinal);
-            int intWebsiteIndex = linkLabelCopyright.Text.
-                ToLower().IndexOf(strLinkSite.ToLower(), StringComparison.Ordinal);
-
-            if(intEmailIndex >= 0)
-            {
-                int intPos = intEmailIndex;
-                linkLabelCopyright.LinkArea = new LinkArea(intPos, strEmail.Length);
-            }
-            else if(intWebsiteIndex >= 0)
-            {
-                int intPos = intWebsiteIndex;
-                linkLabelCopyright.LinkArea = new LinkArea(intPos, strLinkSite.Length);
-            }
-            
-            */
             comboBoxCopyrights.SelectedIndex = comboBoxCopyrights.Items.Count > 0? 0: -1;
             comboBoxDonation.SelectedIndex = comboBoxDonation.Items.Count > 0? 0: -1;
             comboBoxLicenses.SelectedIndex = comboBoxLicenses.Items.Count > 0? 0: -1;
@@ -272,19 +251,70 @@ namespace ArdeshirV.Forms
 				if(data.Copyrights.ContainsKey(stringSelectedCopyright)) {
 					Copyright copyright = data.Copyrights[stringSelectedCopyright];
 					SetCopyrightText(linkLabelCopyright, copyright.Copyrights);
-					pictureBoxAppIcon.Image = copyright.Logo;
+					textBoxVersion.Clear();
 					textBoxVersion.Text = copyright.Version;
+					richTextBoxCompany.Clear();
+					richTextBoxCompany.Text = copyright.Company;
+					richTextBoxCopyrightDescription.Clear();
 					richTextBoxCopyrightDescription.Text = copyright.Description;
+					pictureBoxAppIcon.Image = copyright.Logo;
+				}
+			}
+		}
+        //---------------------------------------------------------------------
+		void ComboBoxLicensesSelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(comboBoxLicenses.SelectedIndex >= 0) {
+				string stringSelectedLicense = (string)comboBoxLicenses.Items[
+					comboBoxLicenses.SelectedIndex];
+				if(data.Licenses.ContainsKey(stringSelectedLicense)) {
+					License license = data.Licenses[stringSelectedLicense];
+					richTextBoxLicense.Clear();
+					richTextBoxLicense.Text = license.Text;
+					pictureBoxLicense.Image = license.Logo;
+					
 				}
 			}
 		}
         //---------------------------------------------------------------------
 		void ComboBoxDonationsSelectedIndexChanged(object sender, EventArgs e)
 		{
+			if(comboBoxDonation.SelectedIndex >= 0) {
+				string stringSelectedDonations = (string)comboBoxDonation.Items[
+					comboBoxDonation.SelectedIndex];
+				if(data.Donations.ContainsKey(stringSelectedDonations)) {
+					Donation[] donations = data.Donations[stringSelectedDonations];
+					comboBoxDonationCurrencies.Items.Clear();
+					foreach(Donation d in donations)
+						comboBoxDonationCurrencies.Items.Add(d.Name);
+					if(comboBoxDonationCurrencies.Items.Count > 0)
+						comboBoxDonationCurrencies.SelectedIndex = 0;
+				}
+			}
 		}
-        //---------------------------------------------------------------------
-		void ComboBoxLicensesSelectedIndexChanged(object sender, EventArgs e)
+		//---------------------------------------------------------------------
+		void ComboBoxDonationCurrenciesSelectedIndexChanged(object sender, EventArgs e)
 		{
+			if(comboBoxDonation.SelectedIndex >= 0) {
+				string stringSelectedDonations = (string)comboBoxDonation.Items[
+					comboBoxDonation.SelectedIndex];
+				if(data.Donations.ContainsKey(stringSelectedDonations)) {
+					Donation[] donations = data.Donations[stringSelectedDonations];
+					if(comboBoxDonationCurrencies.SelectedIndex >= 0) {
+						string stringSelectedDonation =
+							(string)comboBoxDonationCurrencies.Items[
+								comboBoxDonationCurrencies.SelectedIndex];
+						foreach(Donation d in donations) {
+							if(d.Name == stringSelectedDonation) {
+								richTextBoxDonation.Clear();
+								richTextBoxDonation.Text = d.Address;
+								pictureBoxDonation.Image = d.Logo;
+								break;
+							}
+						}
+					}
+				}
+			}
 		}
         //---------------------------------------------------------------------
         private void m_lnkMalieTo_LinkClicked(object sender,
@@ -338,6 +368,7 @@ namespace ArdeshirV.Forms
     			stringURL.ToLower(), StringComparison.Ordinal);
     		
     		if(stringURL != string.Empty && intStartURLPos >= 0) {
+    			linkLabelCopyright.LinkVisited = true;
     			System.Diagnostics.Process.Start(stringURL);
     		} else {
         		string stringEmail = Extractor.ExtractFirstEmail(
@@ -346,6 +377,7 @@ namespace ArdeshirV.Forms
     				stringEmail.ToLower(), StringComparison.Ordinal);
     		
     			if(stringEmail != string.Empty && intStartEmailPos >= 0) {
+    				linkLabelCopyright.LinkVisited = true;
     				System.Diagnostics.Process.Start("mailto:" + stringEmail);
     			}
     		}
@@ -397,11 +429,14 @@ namespace ArdeshirV.Forms
         	this.linkLabelEmail = new System.Windows.Forms.LinkLabel();
         	this.tabControl = new System.Windows.Forms.TabControl();
         	this.tabPageCopyright = new System.Windows.Forms.TabPage();
+        	this.richTextBoxCompany = new System.Windows.Forms.RichTextBox();
+        	this.label1 = new System.Windows.Forms.Label();
         	this.textBoxVersion = new System.Windows.Forms.RichTextBox();
         	this.linkLabelCopyright = new System.Windows.Forms.LinkLabel();
         	this.buttonCopyrightCopy = new System.Windows.Forms.Button();
         	this.comboBoxCopyrights = new System.Windows.Forms.ComboBox();
         	this.richTextBoxCopyrightDescription = new System.Windows.Forms.RichTextBox();
+        	this.label2 = new System.Windows.Forms.Label();
         	this.tabPageDonation = new System.Windows.Forms.TabPage();
         	this.comboBoxDonation = new System.Windows.Forms.ComboBox();
         	this.buttonDonationCopy = new System.Windows.Forms.Button();
@@ -503,12 +538,15 @@ namespace ArdeshirV.Forms
         	// tabPageCopyright
         	// 
         	this.tabPageCopyright.BackColor = System.Drawing.Color.Transparent;
+        	this.tabPageCopyright.Controls.Add(this.richTextBoxCompany);
+        	this.tabPageCopyright.Controls.Add(this.label1);
         	this.tabPageCopyright.Controls.Add(this.textBoxVersion);
         	this.tabPageCopyright.Controls.Add(this.linkLabelCopyright);
         	this.tabPageCopyright.Controls.Add(this.buttonCopyrightCopy);
         	this.tabPageCopyright.Controls.Add(this.comboBoxCopyrights);
         	this.tabPageCopyright.Controls.Add(this.pictureBoxAppIcon);
         	this.tabPageCopyright.Controls.Add(this.richTextBoxCopyrightDescription);
+        	this.tabPageCopyright.Controls.Add(this.label2);
         	this.tabPageCopyright.Location = new System.Drawing.Point(4, 22);
         	this.tabPageCopyright.Name = "tabPageCopyright";
         	this.tabPageCopyright.Padding = new System.Windows.Forms.Padding(3);
@@ -516,12 +554,31 @@ namespace ArdeshirV.Forms
         	this.tabPageCopyright.TabIndex = 0;
         	this.tabPageCopyright.Text = "Copyright";
         	// 
+        	// richTextBoxCompany
+        	// 
+        	this.richTextBoxCompany.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxCompany.Location = new System.Drawing.Point(194, 56);
+        	this.richTextBoxCompany.Name = "richTextBoxCompany";
+        	this.richTextBoxCompany.ReadOnly = true;
+        	this.richTextBoxCompany.Size = new System.Drawing.Size(190, 20);
+        	this.richTextBoxCompany.TabIndex = 10;
+        	this.richTextBoxCompany.Text = "";
+        	// 
+        	// label1
+        	// 
+        	this.label1.Location = new System.Drawing.Point(140, 56);
+        	this.label1.Name = "label1";
+        	this.label1.Size = new System.Drawing.Size(58, 20);
+        	this.label1.TabIndex = 9;
+        	this.label1.Text = "&Company: ";
+        	this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        	// 
         	// textBoxVersion
         	// 
-        	this.textBoxVersion.Location = new System.Drawing.Point(140, 56);
+        	this.textBoxVersion.Location = new System.Drawing.Point(440, 56);
         	this.textBoxVersion.Name = "textBoxVersion";
         	this.textBoxVersion.ReadOnly = true;
-        	this.textBoxVersion.Size = new System.Drawing.Size(456, 20);
+        	this.textBoxVersion.Size = new System.Drawing.Size(156, 20);
         	this.textBoxVersion.TabIndex = 8;
         	this.textBoxVersion.Text = "";
         	// 
@@ -583,6 +640,15 @@ namespace ArdeshirV.Forms
         	this.richTextBoxCopyrightDescription.TabIndex = 2;
         	this.richTextBoxCopyrightDescription.Text = "Description";
         	// 
+        	// label2
+        	// 
+        	this.label2.Location = new System.Drawing.Point(390, 55);
+        	this.label2.Name = "label2";
+        	this.label2.Size = new System.Drawing.Size(58, 20);
+        	this.label2.TabIndex = 11;
+        	this.label2.Text = "&Version: ";
+        	this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        	// 
         	// tabPageDonation
         	// 
         	this.tabPageDonation.BackColor = System.Drawing.Color.Transparent;
@@ -610,6 +676,7 @@ namespace ArdeshirV.Forms
         	this.comboBoxDonation.Name = "comboBoxDonation";
         	this.comboBoxDonation.Size = new System.Drawing.Size(456, 21);
         	this.comboBoxDonation.TabIndex = 13;
+        	this.comboBoxDonation.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDonationsSelectedIndexChanged);
         	// 
         	// buttonDonationCopy
         	// 
@@ -636,7 +703,7 @@ namespace ArdeshirV.Forms
         	this.comboBoxDonationCurrencies.Name = "comboBoxDonationCurrencies";
         	this.comboBoxDonationCurrencies.Size = new System.Drawing.Size(380, 21);
         	this.comboBoxDonationCurrencies.TabIndex = 0;
-        	this.comboBoxDonationCurrencies.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDonationsSelectedIndexChanged);
+        	this.comboBoxDonationCurrencies.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDonationCurrenciesSelectedIndexChanged);
         	// 
         	// pictureBoxDonation
         	// 

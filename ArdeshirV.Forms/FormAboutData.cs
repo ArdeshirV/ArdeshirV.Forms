@@ -66,6 +66,7 @@ namespace ArdeshirV.Forms
     	private readonly Image  _logo;
     	private readonly string _name;
     	private readonly string _version;
+    	private readonly string _company;
     	private readonly string _copyright;
     	private readonly string _description;
     	//---------------------------------------------------------------------
@@ -85,6 +86,11 @@ namespace ArdeshirV.Forms
     	public string Copyrights { get{ return _copyright; } }
     	//---------------------------------------------------------------------
     	/// <summary>
+    	/// Company name
+    	/// </summary>
+    	public string Company { get{ return _company; } }
+    	//---------------------------------------------------------------------
+    	/// <summary>
     	/// Component's description
     	/// </summary>
     	public string Description { get{ return _description; } }
@@ -101,14 +107,16 @@ namespace ArdeshirV.Forms
     	/// </summary>
     	/// <param name="name">Component's name</param>
     	/// <param name="version">Component's version</param>
+    	/// <param name="company">Component's company name</param>
     	/// <param name="copyrights">Copyright text</param>
     	/// <param name="description">Component's description</param>
     	/// <param name="logo">Component's logo</param>
-    	public Copyright(string name, string version,
+    	public Copyright(string name, string version, string company,
     	                 string copyrights, string description, Image logo)
     	{
     		_name = name;
     		_logo = logo;
+    		_company = company;
     		_version = version;
     		_copyright = copyrights;
     		_description = description;
@@ -128,6 +136,7 @@ namespace ArdeshirV.Forms
     		_name = info.AssemblyTitle;
     		_logo = logo;
     		_version = info.AssemblyVersion;
+    		_company = info.AssemblyCompany;
     		_copyright = info.AssemblyCopyright;
     		_description = info.AssemblyDescription;
     	}
@@ -217,19 +226,6 @@ namespace ArdeshirV.Forms
 			}
 		}
 		//-------------------------------------------------------------------------------
-		public string Name
-		{
-			get
-			{
-				string result = string.Empty;
-				
-				if(Owner != null)
-					result = new AssemblyAttributeAccessors(this).AssemblyProduct;
-				
-				return result;
-			}
-		}
-		//-------------------------------------------------------------------------------
 		private FormAboutData() {}
 		//-------------------------------------------------------------------------------
 		public FormAboutData(Component owner, Copyright[] copyrights,
@@ -240,8 +236,8 @@ namespace ArdeshirV.Forms
 			_email = email;
 			_formOwner = owner;
 			_licenses = new Dictionary<string, License>();
-			_copyrights = new Dictionary<string, Copyright>();
 			_donations = new Dictionary<string, Donation[]>();
+			_copyrights = new Dictionary<string, Copyright>();
 
 			foreach(Donations d in donations)
 				_donations.Add(d.Name, d.Items);
@@ -259,12 +255,14 @@ namespace ArdeshirV.Forms
 		{
 			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
 			//***************************************************************************
-			// Warning: Nobody is not allowed to modify or change my donation addresses
-			// but you are allowed to add your own donation addresses that refer to your
-			// own components that use this code out of FormAboutData.cs easily
+			// Warning: Nobody is not allowed to modify my donation addresses here
+			// but you are allowed to add your own donation addresses somewhere else
+ 			// that refer to your own components. That place is out of FormAboutData.cs
 			// by FormAboutData contructor when you call FormAbout in your application
-			// Now find the "todo: You are allowed to change " in your "Task List"
-			// for more information and sample codes about how to adding your own address
+			// You can set your donation addresses above mine always.
+			// Now find the "todo: You are allowed to change..." in your "Task List"
+			// for more information and find that sample code about
+			// how to adding your own address.
 			_donations.Add(aaa.AssemblyTitle, new Donation[] {
 				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
 				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
@@ -280,6 +278,7 @@ namespace ArdeshirV.Forms
 				new Donation("NEM", "ND6X577XWNXYFHS4FU4SIY2ND4XUCOGAW7ZRMA4T", Resources.NEM),
 				new Donation("Qtum", "QSwAps21X8PKyaHade9K9cMm5bwSScroVf", Resources.Qtum),
 				new Donation("USDTether", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.USDTether),
+				new Donation("Binance", "bnb102m7dhuffkujjp40djj2ekctsya6m9uggss3c8", Resources.Binance),
 				new Donation("Dash", "XjJbXDgq8XBLEpEPNpYHkVF6yJjURQaAu8", Resources.Dash),
 				new Donation("Verge", "DMbadYFQxZA5bg4PoypVNXeQs4YnMo9yYT", Resources.Verge),
 				new Donation("ZCash", "t1cVThXN3ccm8WAGALoTVz172YQHVf1bvGY", Resources.ZCash)
@@ -288,6 +287,7 @@ namespace ArdeshirV.Forms
 			_copyrights.Add(aaa.AssemblyTitle,
 			                new Copyright(aaa.AssemblyTitle,
 			                              aaa.AssemblyVersion,
+			                              aaa.AssemblyCompany,
 			                              aaa.AssemblyCopyright,
 			                              aaa.AssemblyDescription,
 			                              Resources.ArdeshirV_Forms_Logo));
