@@ -242,7 +242,6 @@ namespace ArdeshirV.Forms
 			_licenses = new Dictionary<string, License>();
 			_copyrights = new Dictionary<string, Copyright>();
 			_donations = new Dictionary<string, Donation[]>();
-			AddDefaults();
 
 			foreach(Donations d in donations)
 				_donations.Add(d.Name, d.Items);
@@ -252,18 +251,20 @@ namespace ArdeshirV.Forms
 			
 			foreach(Copyright c in copyrights)
 				_copyrights.Add(c.Name, c);
+			
+			AddDefaults();
 		}
 		//-------------------------------------------------------------------------------
 		private void AddDefaults()
 		{
 			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
-			// //////////////////////////////////////////////////////////////////////////
+			//***************************************************************************
 			// Warning: Nobody is not allowed to modify or change my donation addresses
 			// but you are allowed to add your own donation addresses that refer to your
 			// own components that use this code out of FormAboutData.cs easily
 			// by FormAboutData contructor when you call FormAbout in your application
-			// You can find the "todo: You are allowed to change " in your "Task List"
-			// for more information and sample code about adding your own donation addr
+			// Now find the "todo: You are allowed to change " in your "Task List"
+			// for more information and sample codes about how to adding your own address
 			_donations.Add(aaa.AssemblyTitle, new Donation[] {
 				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
 				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
@@ -282,7 +283,7 @@ namespace ArdeshirV.Forms
 				new Donation("Dash", "XjJbXDgq8XBLEpEPNpYHkVF6yJjURQaAu8", Resources.Dash),
 				new Donation("Verge", "DMbadYFQxZA5bg4PoypVNXeQs4YnMo9yYT", Resources.Verge),
 				new Donation("ZCash", "t1cVThXN3ccm8WAGALoTVz172YQHVf1bvGY", Resources.ZCash)
-			});// ///////////////////////////////////////////////////////////////////////
+			});//************************************************************************
 			
 			_copyrights.Add(aaa.AssemblyTitle,
 			                new Copyright(aaa.AssemblyTitle,

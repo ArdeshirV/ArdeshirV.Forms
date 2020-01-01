@@ -8,6 +8,7 @@ using ArdeshirV.Forms;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
+using AVFR = ArdeshirV.Forms.Properties;
 
 #endregion
 //---------------------------------------------------------------------------------------------
@@ -84,34 +85,66 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
-			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
-			Donations _donation = new Donations();
+        	// AssemblyAttributeAccessors retrive all assembly data by reflection
+        	AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
+			string stringAssemblyTitle = aaa.AssemblyTitle;
 
-			// TODO: You are allowed to change donation addresses in your own code like this:
-			_donations.Add(aaa.AssemblyTitle, new Donation[] {
-				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
-				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
-				new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.TrueUSD),
-				new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", Resources.Nano),
-				new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw", Resources.Litecoin)
-			});
+			// TODO: You are allowed to add your donation addresses in your code like this:
+			Donations[] _donations = new Donations[] {
+				new Donations(  // Donations belong to this component and you can specify 
+				// several donation lists for several different component in your app
+				              stringAssemblyTitle,
+				new Donation[] { // All below donations addresses are linked to
+				              	 // the component with stringAssemblyTitle title
+					new Donation("Bitcoin",                             // Donation name
+					             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
+					             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
+					// if you use usual public cryptocurrency logos like bitcoin and etc...
+					// Then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
+				
+					new Donation("Ethereum",
+					             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
+					             ArdeshirV.Forms.Properties.Resources.Ethereum),
+				
+					new Donation("TrueUSD",
+					             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
+					             ArdeshirV.Forms.Properties.Resources.TrueUSD),
+					
+					new Donation("Nano",
+					             "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5",
+					             ArdeshirV.Forms.Properties.Resources.Nano),
+				
+					new Donation("Litecoin",
+					             "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw",
+					             ArdeshirV.Forms.Properties.Resources.Litecoin)
+				}
+			)};
 			
-			_copyrights.Add(aaa.AssemblyTitle,
-			                new Copyright(aaa.AssemblyTitle,
-			                              aaa.AssemblyVersion,
-			                              aaa.AssemblyCopyright,
-			                              aaa.AssemblyDescription,
-			                              Resources.ArdeshirV_Forms_Logo));
+			// You can add your copyright data about your different components like below code
+			Copyright[] _copyrights = new Copyright[] {
+				new Copyright(this, Resources.Logo)  // the first parameter is
+				// one of your components and the Copyright constructor can retrive all
+				// assembly data about title, version, copyright and description automatically
+				// but you are still able to specify title, version, copyright and description
+				// yourself with another constructor like below:
+				//, new Copyright(Text, "2.0.0", "Copyleft ArdeshirV", "Test ArdeshirV.Forms", Resources.Logo)
+				// but I prefer the first professional constructor and I think it's better
+				// to specify details about your component in your AssemblyInfo.cs file not here
+			};
 			
-			_licenses.Add(aaa.AssemblyTitle,
-			              new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
+			License[] _licenses = new License[] {
+				new License(stringAssemblyTitle,  // The component name
+				            Resources.LICENSE,    // License Contents for specified component
+				            Resources.GPLv3)      // License Logo
+			};
+			
         	// TODO: Modify FormAbout.Show method
-        	//FormAbout.Show(this, _stringWebsite, _stringEmail, Resources.Logo);
-        	//FormAbout.Show(this, _stringWebsite, _stringEmail);
         	FormAboutData data = new FormAboutData(this,
-				new Copyright[] { new Copyright(this, Resources.Logo) },
-				new License[] { new License("GPLv3+", "GNU Public License Version 3+", Resources.GPLv3) },
-				new Donation[] {}, _stringWebsite, _stringEmail);
+        	                                       _copyrights,
+        	                                       _licenses,
+        	                                       _donations,
+        	                                       _stringWebsite,
+        	                                       _stringEmail);
         	FormAbout.Show(data);
         }
         //-------------------------------------------------------------------------------------
