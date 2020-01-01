@@ -67,8 +67,10 @@ namespace ArdeshirV.Forms
             InitFormAbout(data);
 
             Form form = data.Owner as Form;
-            if (form != null)
+            if (form != null) {
+            	Icon = form.Icon;
 				ShowDialog(form);
+            }
 			else
 				ShowDialog();
         }
@@ -97,17 +99,6 @@ namespace ArdeshirV.Forms
             comboBoxCopyrights.Items.Clear();
             foreach(string stringCopyrightTargetComponent in d.Copyrights.Keys)
             	comboBoxCopyrights.Items.Add(stringCopyrightTargetComponent);
-
-            Form form = data.Owner as Form;
-            if (form != null)
-            	Icon = form.Icon;
-
-            if((d.AppName != null || d.AppName != string.Empty) &&
-            	(d.Copyrights.Count > 0) &&
-            	(d.Copyrights.ContainsKey(d.AppName)))
-            	pictureBoxAppIcon.Image = d.Copyrights[d.AppName].Logo;
-            else
-            	pictureBoxAppIcon.Image = Icon.ToBitmap();
             
             /*
 
@@ -136,9 +127,9 @@ namespace ArdeshirV.Forms
             }
             
             */
-            comboBoxLicenses.SelectedIndex = comboBoxLicenses.Items.Count > 0? 0: -1;
-            comboBoxDonation.SelectedIndex = comboBoxDonation.Items.Count > 0? 0: -1;
             comboBoxCopyrights.SelectedIndex = comboBoxCopyrights.Items.Count > 0? 0: -1;
+            comboBoxDonation.SelectedIndex = comboBoxDonation.Items.Count > 0? 0: -1;
+            comboBoxLicenses.SelectedIndex = comboBoxLicenses.Items.Count > 0? 0: -1;
         }
         //---------------------------------------------------------------------
         public static FormAbout Show(FormAboutData Data)
@@ -234,6 +225,30 @@ namespace ArdeshirV.Forms
             } else
 				linkLabelEmail_.Visible = false;
 		}
+        //-------------------------------------------------------------------------------
+        private void SetCopyrightText(LinkLabel linkLabel, string Copyright)
+        {
+        	// Finding and highlight the Email/URL in copyright text automatically
+        	linkLabel.Text = Copyright;
+        	string stringURL = Extractor.ExtractFirstURL(Copyright);
+    		int intStartURLPos = Copyright.ToLower().IndexOf(
+    			stringURL, StringComparison.Ordinal);
+    		
+    		if(stringURL != string.Empty && intStartURLPos >= 0) {
+    			linkLabel.LinkArea =
+    				new LinkArea(intStartURLPos, stringURL.Length);
+    		} else {
+        		string stringEmail = Extractor.ExtractFirstEmail(
+    				linkLabelCopyright.Text);
+        		int intStartEmailPos = linkLabel.Text.ToLower().IndexOf(
+        			stringEmail, StringComparison.Ordinal);
+    		
+    			if(stringEmail != string.Empty && intStartEmailPos >= 0) {
+    				linkLabel.LinkArea =
+    					new LinkArea(intStartEmailPos, stringEmail.Length);
+    			}
+    		}
+        }
 
         #endregion
         //---------------------------------------------------------------------
@@ -251,7 +266,17 @@ namespace ArdeshirV.Forms
         //---------------------------------------------------------------------
 		void ComboBoxCopyrightsSelectedIndexChanged(object sender, EventArgs e)
 		{
-			//data.Copyrights
+			if(comboBoxCopyrights.SelectedIndex >= 0) {
+				string stringSelectedCopyright = (string)comboBoxCopyrights.Items[
+					comboBoxCopyrights.SelectedIndex];
+				if(data.Copyrights.ContainsKey(stringSelectedCopyright)) {
+					Copyright copyright = data.Copyrights[stringSelectedCopyright];
+					SetCopyrightText(linkLabelCopyright, copyright.Copyrights);
+					pictureBoxAppIcon.Image = copyright.Logo;
+					textBoxVersion.Text = copyright.Version;
+					richTextBoxCopyrightDescription.Text = copyright.Description;
+				}
+			}
 		}
         //---------------------------------------------------------------------
 		void ComboBoxDonationsSelectedIndexChanged(object sender, EventArgs e)
@@ -314,17 +339,16 @@ namespace ArdeshirV.Forms
         			stringURL, StringComparison.Ordinal);
         		
         		if(intStartURLPos >= 0) {
-        			linkLabelCopyright.LinkArea =
-        				new LinkArea(intStartURLPos, stringURL.Length);
+        			System.Diagnostics.Process.Start(stringURL);
         		} else {
 	        		string stringEmail = Extractor.ExtractFirstEmail(
         				linkLabelCopyright.Text);
 	        		int intStartEmailPos = linkLabelCopyright.Text.ToLower().IndexOf(
 	        			stringEmail, StringComparison.Ordinal);
         		
-	        		if(intStartEmailPos >= 0)
-        				linkLabelCopyright.LinkArea =
-        					new LinkArea(intStartEmailPos, stringEmail.Length);
+        			if(intStartEmailPos >= 0) {
+        				System.Diagnostics.Process.Start(stringEmail);
+        			}
         		}
         	}
         }
