@@ -28,14 +28,13 @@ namespace ArdeshirV.Forms
         #region Variables
 
         private ImageList _ImageListCurrencies;
+        private Donation _donationSelected = null;
         private FormAboutData data;
         private Button m_btnOk;
         private Button m_btnSysteminfo;
         private Label m_lblApplicationName;
-        //private string m_strLink = string.Empty;
         private LinkLabel linkLabelEmail;
         private PictureBox pictureBoxAppIcon;
-        //private string m_strEmail = string.Empty;
         private static bool s_blnIsExists = false;
         private TabControl tabControl;
         private TabPage tabPageCopyright;
@@ -45,12 +44,11 @@ namespace ArdeshirV.Forms
         private RichTextBox richTextBoxLicense;
         private ComboBox comboBoxCopyrights;
         private ComboBox comboBoxLicenses;
-        //private PictureBox comboBoxDonationCurrenciesion;
         private RichTextBox richTextBoxDonation;
         private Button buttonCopyrightCopy;
         private Button buttonDonationCopy;
         private Button buttonLicenseCopy;
-        private LinkLabel linkLabelCopyright;
+        private RichTextBox textBoxCopyright;
         private RichTextBox richTextBoxCopyrightDescription;
         private ToolTip toolTip;
         private PictureBox pictureBoxDonation;
@@ -58,14 +56,17 @@ namespace ArdeshirV.Forms
         private LinkLabel linkLabelURL;
         private ComboBox comboBoxDonation;
         private ComboBoxImage comboBoxDonationCurrencies;
-        private System.ComponentModel.IContainer components;
+        private IContainer components;
+        private RichTextBox richTextBoxCompany;
+        private Label labelCompany;
+        private Label labelVersion;
+        private ContextMenuStrip contextMenuStripDonation;
+        private ToolStripMenuItem toolStripMenuDonationSaveAs;
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
-        private System.Windows.Forms.RichTextBox richTextBoxCompany;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private const string _stringQRTip = "Right click to save donation address as QR code";
 
         #endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Constructor
 
         protected FormAbout(FormAboutData data) : base()
@@ -116,31 +117,19 @@ namespace ArdeshirV.Forms
             comboBoxDonation.SelectedIndex = comboBoxDonation.Items.Count > 0? 0: -1;
             comboBoxLicenses.SelectedIndex = comboBoxLicenses.Items.Count > 0? 0: -1;
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public static FormAbout Show(FormAboutData Data)
         {
         	return new FormAbout(Data);
         }
-        //---------------------------------------------------------------------
-        public static FormAbout Show(Form frmOwner, string strLinkSite, string strEMail)
-        {
-            //return new FormAbout(frmOwner, strLinkSite, strEMail, frmOwner.Icon.ToBitmap());
-            return null;
-        }
-        //---------------------------------------------------------------------
-        public static FormAbout Show(Form frmOwner, string strLinkSite, string strEMail, Image imgAppImage)
-        {
-            //return new FormAbout(frmOwner, strLinkSite, strEMail, imgAppImage);
-            return null;
-        }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void UpdateTabControlBackColor(bool boolFormIsActive)
-    	{    		
+    	{
 			tabPageLicense.BackColor =
 			tabPageDonation.BackColor =
 			tabPageCopyright.BackColor = GetMidleColor(boolFormIsActive);
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		private Color GetMidleColor(bool boolFormIsActive)
 		{
         	Color c1, c2;
@@ -162,11 +151,10 @@ namespace ArdeshirV.Forms
         	
         	return color;
 		}
-
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		void ButtonCopyClick(object sender, EventArgs e)
 		{
-			Clipboard.SetText(linkLabelCopyright.Text);
+			Clipboard.SetText(textBoxCopyright.Text);
 		}
 		//-------------------------------------------------------------------------------
 		void ButtonDonationCopyClick(object sender, EventArgs e)
@@ -178,7 +166,7 @@ namespace ArdeshirV.Forms
 		{
 			Clipboard.SetText(richTextBoxLicense.Text);
 		}
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private static void ShowSystemInfoDialog()
         {
             string l_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
@@ -231,7 +219,8 @@ namespace ArdeshirV.Forms
 				linkLabelEmail_.Visible = false;
 		}
         //-------------------------------------------------------------------------------
-        private void SetCopyrightText(LinkLabel linkLabel, string Copyright)
+        #region SetCopyrightText
+        /*private void SetCopyrightText(LinkLabel linkLabel, string Copyright)
         {
         	// Finding and highlight the Email/URL in copyright text automatically
         	linkLabel.Text = Copyright;
@@ -244,7 +233,7 @@ namespace ArdeshirV.Forms
     				new LinkArea(intStartURLPos, stringURL.Length);
     		} else {
         		string stringEmail = Extractor.ExtractFirstEmail(
-    				linkLabelCopyright.Text);
+    				textBoxCopyright.Text);
         		int intStartEmailPos = linkLabel.Text.ToLower().IndexOf(
         			stringEmail, StringComparison.Ordinal);
     		
@@ -254,21 +243,35 @@ namespace ArdeshirV.Forms
     			}
     		}
         }
+        //-------------------------------------------------------------------------------
+        private void M_lblCopyright_LinkClicked(object sender,
+        	LinkLabelLinkClickedEventArgs e)
+        {
+    		string stringURL = Extractor.ExtractFirstURL(textBoxCopyright.Text);
+    		int intStartURLPos = textBoxCopyright.Text.ToLower().IndexOf(
+    			stringURL.ToLower(), StringComparison.Ordinal);
+    		
+    		if(stringURL != string.Empty && intStartURLPos >= 0) {
+    			//textBoxCopyright.LinkVisited = true;
+    			System.Diagnostics.Process.Start(stringURL);
+    		} else {
+        		string stringEmail = Extractor.ExtractFirstEmail(
+    				textBoxCopyright.Text);
+        		int intStartEmailPos = textBoxCopyright.Text.ToLower().IndexOf(
+    				stringEmail.ToLower(), StringComparison.Ordinal);
+    		
+    			if(stringEmail != string.Empty && intStartEmailPos >= 0) {
+    				//textBoxCopyright.LinkVisited = true;
+    				System.Diagnostics.Process.Start("mailto:" + stringEmail);
+    			}
+    		}
+        }*/
+        #endregion SetCopyrightText
 
         #endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Event Handlers
 
-		void FormAboutDeactivate(object sender, EventArgs e)
-		{
-			UpdateTabControlBackColor(IsActivated);
-		}
-		//-------------------------------------------------------------------------------
-		void FormAboutActivated(object sender, EventArgs e)
-		{
-			UpdateTabControlBackColor(IsActivated);	
-		}
-        //---------------------------------------------------------------------
 		void ComboBoxCopyrightsSelectedIndexChanged(object sender, EventArgs e)
 		{
 			if(comboBoxCopyrights.SelectedIndex >= 0) {
@@ -276,7 +279,9 @@ namespace ArdeshirV.Forms
 					comboBoxCopyrights.SelectedIndex];
 				if(data.Copyrights.ContainsKey(stringSelectedCopyright)) {
 					Copyright copyright = data.Copyrights[stringSelectedCopyright];
-					SetCopyrightText(linkLabelCopyright, copyright.Copyrights);
+					//SetCopyrightText(textBoxCopyright, copyright.Copyrights);
+					textBoxCopyright.Clear();
+					textBoxCopyright.Text = copyright.Copyrights;
 					textBoxVersion.Clear();
 					textBoxVersion.Text = copyright.Version;
 					richTextBoxCompany.Clear();
@@ -287,7 +292,7 @@ namespace ArdeshirV.Forms
 				}
 			}
 		}
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		void ComboBoxLicensesSelectedIndexChanged(object sender, EventArgs e)
 		{
 			if(comboBoxLicenses.SelectedIndex >= 0) {
@@ -302,7 +307,7 @@ namespace ArdeshirV.Forms
 				}
 			}
 		}
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		void ComboBoxDonationsSelectedIndexChanged(object sender, EventArgs e)
 		{
 			if(comboBoxDonation.SelectedIndex >= 0) {
@@ -314,16 +319,19 @@ namespace ArdeshirV.Forms
 					_ImageListCurrencies.Images.Clear();
 					foreach(Donation d in donations) {
 						comboBoxDonationCurrencies.Items.Add(d.Name);
-						_ImageListCurrencies.Images.Add(d.Name, d.Logo);
+						if(d.Logo != null)
+							_ImageListCurrencies.Images.Add(d.Name, d.Logo);
 					}
 					if(comboBoxDonationCurrencies.Items.Count > 0)
 						comboBoxDonationCurrencies.SelectedIndex = 0;
 				}
 			}
 		}
-		//---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		void ComboBoxDonationCurrenciesSelectedIndexChanged(object sender, EventArgs e)
 		{
+			_donationSelected = null;
+			toolTip.SetToolTip(pictureBoxDonation, string.Empty);
 			if(comboBoxDonation.SelectedIndex >= 0) {
 				string stringSelectedDonations = (string)comboBoxDonation.Items[
 					comboBoxDonation.SelectedIndex];
@@ -335,11 +343,12 @@ namespace ArdeshirV.Forms
 								comboBoxDonationCurrencies.SelectedIndex];
 						foreach(Donation d in donations) {
 							if(d.Name == stringSelectedDonation) {
+								_donationSelected = d;
 								richTextBoxDonation.Clear();
 								richTextBoxDonation.Text = d.Address;
-								//pictureBoxDonation.Image = d.Logo;
-					            qr.QrCode q = qr.QrCode.EncodeText(d.Address, qr.QrCode.Ecc.High);
-					            pictureBoxDonation.Image = q.ToBitmap(5, 2);
+					            pictureBoxDonation.Image = qr.QrCode.EncodeText(
+									d.Address, qr.QrCode.Ecc.High).ToBitmap(4, 1);
+								toolTip.SetToolTip(pictureBoxDonation, _stringQRTip);
 								break;
 							}
 						}
@@ -347,7 +356,7 @@ namespace ArdeshirV.Forms
 				}
 			}
 		}
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void m_lnkMalieTo_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
@@ -357,7 +366,7 @@ namespace ArdeshirV.Forms
 	            System.Diagnostics.Process.Start("mailto:" + stringEmail);
         	}
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void m_lnkTechnicalSupport_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
@@ -367,17 +376,57 @@ namespace ArdeshirV.Forms
 	            System.Diagnostics.Process.Start(stringURL);
         	}
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
+		void FormAboutDeactivate(object sender, EventArgs e)
+		{
+			UpdateTabControlBackColor(IsActivated);
+		}
+		//-------------------------------------------------------------------------------
+		void FormAboutActivated(object sender, EventArgs e)
+		{
+			UpdateTabControlBackColor(IsActivated);	
+		}
+        //-------------------------------------------------------------------------------
+		private void FormAboutOnBackgroundGradientColorChange(object sender, EventArgs e)
+		{
+			UpdateTabControlBackColor(IsActivated);	
+		}
+        //-------------------------------------------------------------------------------
+		void ToolStripMenuDonationSaveAsClick(object sender, EventArgs e)
+		{
+			if(pictureBoxDonation.Image != null && _donationSelected != null) {
+				SaveFileDialog sfd = new SaveFileDialog();
+				sfd.Title = "Save Donation address as QR Code";
+				sfd.Filter = "PNG (*.png)|*.jpg";
+				sfd.DefaultExt = "png";
+				sfd.AddExtension = true;
+				sfd.ValidateNames = true;
+				sfd.OverwritePrompt = true;
+				sfd.CheckPathExists = true;
+				sfd.FileName = string.Format("{0} {1}",
+					_donationSelected.Name, _donationSelected.Address);
+				
+				if(sfd.ShowDialog(this) == DialogResult.OK)
+					pictureBoxDonation.Image.Save(sfd.FileName, ImageFormat.Png);
+			}
+		}
+        //-------------------------------------------------------------------------------
+		void ContextMenuStripDonationOpening(object sender, CancelEventArgs e)
+		{
+			toolStripMenuDonationSaveAs.Enabled = 
+				(pictureBoxDonation.Image != null && _donationSelected != null);
+		}
+        //-------------------------------------------------------------------------------
         private void btnOk_Click(object sender, System.EventArgs e)
         {
             Close();
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void btnSysteminfo_Click(object sender, System.EventArgs e)
         {
             ShowSystemInfoDialog();
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void frmAbout_Load(object sender, System.EventArgs e)
         {
             if (s_blnIsExists)
@@ -385,37 +434,14 @@ namespace ArdeshirV.Forms
             else
                 s_blnIsExists = true;
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void FormAbout_FormClosed(object sender, FormClosedEventArgs e)
         {
             s_blnIsExists = false;
         }
-        //---------------------------------------------------------------------
-        private void M_lblCopyright_LinkClicked(object sender,
-        	LinkLabelLinkClickedEventArgs e)
-        {
-    		string stringURL = Extractor.ExtractFirstURL(linkLabelCopyright.Text);
-    		int intStartURLPos = linkLabelCopyright.Text.ToLower().IndexOf(
-    			stringURL.ToLower(), StringComparison.Ordinal);
-    		
-    		if(stringURL != string.Empty && intStartURLPos >= 0) {
-    			linkLabelCopyright.LinkVisited = true;
-    			System.Diagnostics.Process.Start(stringURL);
-    		} else {
-        		string stringEmail = Extractor.ExtractFirstEmail(
-    				linkLabelCopyright.Text);
-        		int intStartEmailPos = linkLabelCopyright.Text.ToLower().IndexOf(
-    				stringEmail.ToLower(), StringComparison.Ordinal);
-    		
-    			if(stringEmail != string.Empty && intStartEmailPos >= 0) {
-    				linkLabelCopyright.LinkVisited = true;
-    				System.Diagnostics.Process.Start("mailto:" + stringEmail);
-    			}
-    		}
-        }
 
         #endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region overrided functions
 
         protected override void OnClosed(EventArgs e)
@@ -443,7 +469,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -454,20 +480,22 @@ namespace ArdeshirV.Forms
         {
         	this.components = new System.ComponentModel.Container();
         	this.pictureBoxAppIcon = new System.Windows.Forms.PictureBox();
+        	this.contextMenuStripDonation = new System.Windows.Forms.ContextMenuStrip(this.components);
+        	this.toolStripMenuDonationSaveAs = new System.Windows.Forms.ToolStripMenuItem();
         	this.m_btnOk = new System.Windows.Forms.Button();
         	this.m_btnSysteminfo = new System.Windows.Forms.Button();
         	this.m_lblApplicationName = new System.Windows.Forms.Label();
         	this.linkLabelEmail = new System.Windows.Forms.LinkLabel();
         	this.tabControl = new System.Windows.Forms.TabControl();
         	this.tabPageCopyright = new System.Windows.Forms.TabPage();
+        	this.textBoxCopyright = new System.Windows.Forms.RichTextBox();
         	this.richTextBoxCompany = new System.Windows.Forms.RichTextBox();
-        	this.label1 = new System.Windows.Forms.Label();
+        	this.labelCompany = new System.Windows.Forms.Label();
         	this.textBoxVersion = new System.Windows.Forms.RichTextBox();
-        	this.linkLabelCopyright = new System.Windows.Forms.LinkLabel();
         	this.buttonCopyrightCopy = new System.Windows.Forms.Button();
         	this.comboBoxCopyrights = new System.Windows.Forms.ComboBox();
         	this.richTextBoxCopyrightDescription = new System.Windows.Forms.RichTextBox();
-        	this.label2 = new System.Windows.Forms.Label();
+        	this.labelVersion = new System.Windows.Forms.Label();
         	this.tabPageDonation = new System.Windows.Forms.TabPage();
         	this.comboBoxDonation = new System.Windows.Forms.ComboBox();
         	this.buttonDonationCopy = new System.Windows.Forms.Button();
@@ -482,6 +510,7 @@ namespace ArdeshirV.Forms
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.linkLabelURL = new System.Windows.Forms.LinkLabel();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
+        	this.contextMenuStripDonation.SuspendLayout();
         	this.tabControl.SuspendLayout();
         	this.tabPageCopyright.SuspendLayout();
         	this.tabPageDonation.SuspendLayout();
@@ -501,6 +530,22 @@ namespace ArdeshirV.Forms
         	this.pictureBoxAppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
         	this.pictureBoxAppIcon.TabIndex = 6;
         	this.pictureBoxAppIcon.TabStop = false;
+        	// 
+        	// contextMenuStripDonation
+        	// 
+        	this.contextMenuStripDonation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.toolStripMenuDonationSaveAs});
+        	this.contextMenuStripDonation.Name = "contextMenuStripDonation";
+        	this.contextMenuStripDonation.Size = new System.Drawing.Size(124, 26);
+        	this.contextMenuStripDonation.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripDonationOpening);
+        	// 
+        	// toolStripMenuDonationSaveAs
+        	// 
+        	this.toolStripMenuDonationSaveAs.Image = global::ArdeshirV.Forms.Properties.Resources.Save_Picture;
+        	this.toolStripMenuDonationSaveAs.Name = "toolStripMenuDonationSaveAs";
+        	this.toolStripMenuDonationSaveAs.Size = new System.Drawing.Size(123, 22);
+        	this.toolStripMenuDonationSaveAs.Text = "Save &As...";
+        	this.toolStripMenuDonationSaveAs.Click += new System.EventHandler(this.ToolStripMenuDonationSaveAsClick);
         	// 
         	// m_btnOk
         	// 
@@ -569,15 +614,15 @@ namespace ArdeshirV.Forms
         	// tabPageCopyright
         	// 
         	this.tabPageCopyright.BackColor = System.Drawing.Color.Transparent;
+        	this.tabPageCopyright.Controls.Add(this.textBoxCopyright);
         	this.tabPageCopyright.Controls.Add(this.richTextBoxCompany);
-        	this.tabPageCopyright.Controls.Add(this.label1);
+        	this.tabPageCopyright.Controls.Add(this.labelCompany);
         	this.tabPageCopyright.Controls.Add(this.textBoxVersion);
-        	this.tabPageCopyright.Controls.Add(this.linkLabelCopyright);
         	this.tabPageCopyright.Controls.Add(this.buttonCopyrightCopy);
         	this.tabPageCopyright.Controls.Add(this.comboBoxCopyrights);
         	this.tabPageCopyright.Controls.Add(this.pictureBoxAppIcon);
         	this.tabPageCopyright.Controls.Add(this.richTextBoxCopyrightDescription);
-        	this.tabPageCopyright.Controls.Add(this.label2);
+        	this.tabPageCopyright.Controls.Add(this.labelVersion);
         	this.tabPageCopyright.Location = new System.Drawing.Point(4, 22);
         	this.tabPageCopyright.Name = "tabPageCopyright";
         	this.tabPageCopyright.Padding = new System.Windows.Forms.Padding(3);
@@ -585,49 +630,43 @@ namespace ArdeshirV.Forms
         	this.tabPageCopyright.TabIndex = 0;
         	this.tabPageCopyright.Text = "Copyright";
         	// 
+        	// textBoxCopyright
+        	// 
+        	this.textBoxCopyright.BackColor = System.Drawing.SystemColors.Control;
+        	this.textBoxCopyright.Location = new System.Drawing.Point(140, 33);
+        	this.textBoxCopyright.Name = "textBoxCopyright";
+        	this.textBoxCopyright.ReadOnly = true;
+        	this.textBoxCopyright.Size = new System.Drawing.Size(456, 20);
+        	this.textBoxCopyright.TabIndex = 2;
+        	this.textBoxCopyright.Text = "";
+        	// 
         	// richTextBoxCompany
         	// 
         	this.richTextBoxCompany.BackColor = System.Drawing.SystemColors.Control;
-        	this.richTextBoxCompany.Location = new System.Drawing.Point(194, 56);
+        	this.richTextBoxCompany.Location = new System.Drawing.Point(194, 59);
         	this.richTextBoxCompany.Name = "richTextBoxCompany";
         	this.richTextBoxCompany.ReadOnly = true;
         	this.richTextBoxCompany.Size = new System.Drawing.Size(190, 20);
         	this.richTextBoxCompany.TabIndex = 4;
         	this.richTextBoxCompany.Text = "";
         	// 
-        	// label1
+        	// labelCompany
         	// 
-        	this.label1.Location = new System.Drawing.Point(140, 56);
-        	this.label1.Name = "label1";
-        	this.label1.Size = new System.Drawing.Size(58, 20);
-        	this.label1.TabIndex = 3;
-        	this.label1.Text = "&Company: ";
-        	this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        	this.labelCompany.Location = new System.Drawing.Point(140, 59);
+        	this.labelCompany.Name = "labelCompany";
+        	this.labelCompany.Size = new System.Drawing.Size(58, 20);
+        	this.labelCompany.TabIndex = 3;
+        	this.labelCompany.Text = "&Company: ";
+        	this.labelCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         	// 
         	// textBoxVersion
         	// 
-        	this.textBoxVersion.Location = new System.Drawing.Point(440, 56);
+        	this.textBoxVersion.Location = new System.Drawing.Point(440, 59);
         	this.textBoxVersion.Name = "textBoxVersion";
         	this.textBoxVersion.ReadOnly = true;
         	this.textBoxVersion.Size = new System.Drawing.Size(156, 20);
         	this.textBoxVersion.TabIndex = 6;
         	this.textBoxVersion.Text = "";
-        	// 
-        	// linkLabelCopyright
-        	// 
-        	this.linkLabelCopyright.BackColor = System.Drawing.SystemColors.Control;
-        	this.linkLabelCopyright.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        	this.linkLabelCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.linkLabelCopyright.LinkArea = new System.Windows.Forms.LinkArea(21, 24);
-        	this.linkLabelCopyright.Location = new System.Drawing.Point(140, 32);
-        	this.linkLabelCopyright.Name = "linkLabelCopyright";
-        	this.linkLabelCopyright.Size = new System.Drawing.Size(456, 21);
-        	this.linkLabelCopyright.TabIndex = 2;
-        	this.linkLabelCopyright.TabStop = true;
-        	this.linkLabelCopyright.Text = "Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+";
-        	this.linkLabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        	this.linkLabelCopyright.UseCompatibleTextRendering = true;
-        	this.linkLabelCopyright.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.M_lblCopyright_LinkClicked);
         	// 
         	// buttonCopyrightCopy
         	// 
@@ -663,22 +702,22 @@ namespace ArdeshirV.Forms
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.richTextBoxCopyrightDescription.BackColor = System.Drawing.SystemColors.Control;
         	this.richTextBoxCopyrightDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.richTextBoxCopyrightDescription.Location = new System.Drawing.Point(140, 82);
+        	this.richTextBoxCopyrightDescription.Location = new System.Drawing.Point(140, 85);
         	this.richTextBoxCopyrightDescription.Name = "richTextBoxCopyrightDescription";
         	this.richTextBoxCopyrightDescription.ReadOnly = true;
         	this.richTextBoxCopyrightDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-        	this.richTextBoxCopyrightDescription.Size = new System.Drawing.Size(456, 52);
+        	this.richTextBoxCopyrightDescription.Size = new System.Drawing.Size(456, 49);
         	this.richTextBoxCopyrightDescription.TabIndex = 7;
         	this.richTextBoxCopyrightDescription.Text = "Description";
         	// 
-        	// label2
+        	// labelVersion
         	// 
-        	this.label2.Location = new System.Drawing.Point(390, 55);
-        	this.label2.Name = "label2";
-        	this.label2.Size = new System.Drawing.Size(58, 20);
-        	this.label2.TabIndex = 5;
-        	this.label2.Text = "&Version: ";
-        	this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        	this.labelVersion.Location = new System.Drawing.Point(390, 58);
+        	this.labelVersion.Name = "labelVersion";
+        	this.labelVersion.Size = new System.Drawing.Size(58, 20);
+        	this.labelVersion.TabIndex = 5;
+        	this.labelVersion.Text = "&Version: ";
+        	this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         	// 
         	// tabPageDonation
         	// 
@@ -727,6 +766,7 @@ namespace ArdeshirV.Forms
         	this.comboBoxDonationCurrencies.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.comboBoxDonationCurrencies.BackColor = System.Drawing.SystemColors.Control;
+        	this.comboBoxDonationCurrencies.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
         	this.comboBoxDonationCurrencies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         	this.comboBoxDonationCurrencies.FormattingEnabled = true;
         	this.comboBoxDonationCurrencies.Images = null;
@@ -742,6 +782,7 @@ namespace ArdeshirV.Forms
         	// 
         	this.pictureBoxDonation.BackColor = System.Drawing.Color.White;
         	this.pictureBoxDonation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        	this.pictureBoxDonation.ContextMenuStrip = this.contextMenuStripDonation;
         	this.pictureBoxDonation.InitialImage = null;
         	this.pictureBoxDonation.Location = new System.Drawing.Point(6, 6);
         	this.pictureBoxDonation.Name = "pictureBoxDonation";
@@ -863,11 +904,13 @@ namespace ArdeshirV.Forms
         	this.Name = "FormAbout";
         	this.ShowInTaskbar = false;
         	this.Text = "About";
+        	this.OnBackgroundGradientColorChange += new System.EventHandler(this.FormAboutOnBackgroundGradientColorChange);
         	this.Activated += new System.EventHandler(this.FormAboutActivated);
         	this.Deactivate += new System.EventHandler(this.FormAboutDeactivate);
         	this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
         	this.Load += new System.EventHandler(this.frmAbout_Load);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).EndInit();
+        	this.contextMenuStripDonation.ResumeLayout(false);
         	this.tabControl.ResumeLayout(false);
         	this.tabPageCopyright.ResumeLayout(false);
         	this.tabPageDonation.ResumeLayout(false);

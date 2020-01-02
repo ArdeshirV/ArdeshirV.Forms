@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle ("ArdeshirV.Forms")]
 [assembly: AssemblyProduct ("ArdeshirV.Forms")]
 [assembly: AssemblyCompany ("ArdeshirV")]
-[assembly: AssemblyDescription ("ArdeshirV.Forms contains everyday Windows " +
+[assembly: AssemblyDescription ("ArdeshirV.Forms provides everyday Windows " +
                                 "forms like FormBase, FormAbout, FormErrorHandl" +
                                 "er and FormSplash.")]
 [assembly: AssemblyCopyright ("Copyright© 2002-2020 ArdeshirV@protonmail.com," +

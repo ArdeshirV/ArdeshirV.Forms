@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="AssemblyAttributeAccessors.cs" />
     <Compile Include="ComboBoxImage.cs" />
+    <Compile Include="DefaultDonationList.cs" />
     <Compile Include="FormAboutData.cs" />
     <Compile Include="FormInput.cs" />
     <Compile Include="FormInput.Designer.cs">

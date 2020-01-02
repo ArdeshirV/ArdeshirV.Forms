@@ -8,10 +8,10 @@ using ArdeshirV.Forms;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
-using AVF = ArdeshirV.Forms.Properties;
+using AFP = ArdeshirV.Forms.Properties;
 
 #endregion
-//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 namespace ArdeshirV.TestForms
 {
     public partial class FormMainTest : FormBase
@@ -19,21 +19,20 @@ namespace ArdeshirV.TestForms
         private int intIncH = 100;
         private int intIncW = 150;
         private const string _stringEmail = "ArdeshirV@protonmail.com";
-        private const string _stringWebsite =
-        	"https://ardeshirv.github.io/ArdeshirV.Forms";
-        //-------------------------------------------------------------------------------------
+        private const string _stringWebsite = "https://ardeshirv.github.io/ArdeshirV.Forms";
+        //-------------------------------------------------------------------------------
         public FormMainTest()
         {
             InitializeComponent();
             OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
             StartPosition = FormStartPosition.CenterScreen;
-            BackgoundStartGradientColor = Color.White;
             BackgoundEndGradientColor = Color.Lime;
-            BackgoundInactiveStartGradientColor = Color.White;
+            BackgoundStartGradientColor = Color.White;
             BackgoundInactiveEndGradientColor = Color.Yellow;
+            BackgoundInactiveStartGradientColor = Color.White;
             UpdateMessageBar();
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
         {
             UpdateMessageBar();
@@ -50,24 +49,24 @@ namespace ArdeshirV.TestForms
                 buttonShrinkHeight.Enabled = true;
             }
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Close();
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonShrinkHeight_Click(object sender, EventArgs e)
         {
             buttonShrinkHeight.Enabled = false;
             this.ShrinkHeightByTime(Height - intIncH);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonShrinkWidth_Click(object sender, EventArgs e)
         {
             buttonShrinkWidth.Enabled = false;
             this.ShrinkWidthByTime(Width - intIncW);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonNewForm_Click(object sender, EventArgs e)
         {
             Form f = new FormMainTest();
@@ -75,7 +74,7 @@ namespace ArdeshirV.TestForms
             f.Location = new Point(Location.X + 10, Location.Y + 10);
             f.Show(this);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
             try {
@@ -85,7 +84,7 @@ namespace ArdeshirV.TestForms
                 FormErrorHandler.Show(exp, this, _stringWebsite);
             }
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
         	// AssemblyAttributeAccessors retrive all assembly data by reflection
@@ -93,22 +92,25 @@ namespace ArdeshirV.TestForms
 			string stringAssemblyTitle = aaa.AssemblyTitle;
 
 			// TODO: You are allowed to add your donation addresses in your code like this:
+			//Donations[] donations = new Donations[] {
+			//	new Donations(      // Donations belong to this component and you can specify 
+			//	stringAssemblyTitle,// several donation lists for several different component in your app
+			//	new Donation[] {    // All below donations addresses are linked to
+			//	              	    // the component with stringAssemblyTitle title
+			//		new Donation("Bitcoin",                             // Donation name
+			//		             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
+			//		             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
+			//		// if you use usual public cryptocurrency logos like bitcoin and etc...
+			//		// then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
+			//		new Donation("Ethereum",  // Here another example about Ethereum
+			//		             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
+			//		             ArdeshirV.Forms.Properties.Resources.Ethereum)
+			//	})};
+			
+			// Adding all my default donation addresses
 			Donations[] donations = new Donations[] {
-				new Donations(      // Donations belong to this component and you can specify 
-				stringAssemblyTitle,// several donation lists for several different component in your app
-				new Donation[] {    // All below donations addresses are linked to
-				              	    // the component with stringAssemblyTitle title
-					new Donation("Bitcoin",                             // Donation name
-					             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
-					             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
-					// if you use usual public cryptocurrency logos like bitcoin and etc...
-					// Then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
-					new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", AVF.Resources.Ethereum),			
-					new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", AVF.Resources.Nano),				
-					new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", AVF.Resources.TrueUSD),
-					new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw", AVF.Resources.Litecoin)
-				}
-			)};
+				new Donations(stringAssemblyTitle, DefaultDonationList.Items)
+			};
 			
 			// You can add your copyright data about your different components like below code
 			Copyright[] copyrights = new Copyright[] {
@@ -136,27 +138,27 @@ namespace ArdeshirV.TestForms
         	                                       _stringEmail);
         	FormAbout.Show(data);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void UpdateMessageBar()
         {
             m_lblMessage.Text = string.Format("W:{0}, H:{1}", Width, Height);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
             FormSplash.Show(this, Resources.Logo);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)
         {
             UpdateMessageBar();
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
 			DialogResult drResult = FormMessage.Show().DialogResult;//this, "Message");
 		}
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
 		{
 			//string stringResult;
@@ -164,3 +166,4 @@ namespace ArdeshirV.TestForms
 		}
     }
 }
+//---------------------------------------------------------------------------------------
