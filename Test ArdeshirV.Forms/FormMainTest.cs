@@ -8,7 +8,7 @@ using ArdeshirV.Forms;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
-using AVFR = ArdeshirV.Forms.Properties;
+using AVF = ArdeshirV.Forms.Properties;
 
 #endregion
 //---------------------------------------------------------------------------------------------
@@ -103,14 +103,10 @@ namespace ArdeshirV.TestForms
 					             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
 					// if you use usual public cryptocurrency logos like bitcoin and etc...
 					// Then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
-					new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
-					             ArdeshirV.Forms.Properties.Resources.Ethereum),			
-					new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5",
-					             ArdeshirV.Forms.Properties.Resources.Nano),				
-					new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
-					             ArdeshirV.Forms.Properties.Resources.TrueUSD),
-					new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw",
-					             ArdeshirV.Forms.Properties.Resources.Litecoin)
+					new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", AVF.Resources.Ethereum),			
+					new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", AVF.Resources.Nano),				
+					new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", AVF.Resources.TrueUSD),
+					new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw", AVF.Resources.Litecoin)
 				}
 			)};
 			

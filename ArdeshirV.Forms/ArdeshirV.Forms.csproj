@@ -60,9 +60,6 @@
     <StartAction>Project</StartAction>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArdeshirV.Utilities.QrCode">
-      <HintPath>..\..\ArdeshirV.Utility.QrCode\bin\Release\ArdeshirV.Utilities.QrCode.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -129,6 +126,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArdeshirV.Utility.QrCode\ArdeshirV.Utilities.QrCode.csproj">
+      <Project>{39a1b686-75a9-4189-a328-51c96bb4b6eb}</Project>
+      <Name>ArdeshirV.Utilities.QrCode</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
