@@ -199,18 +199,20 @@ namespace ArdeshirV.Forms
                 Height = intNewHeight;
         }
         //-------------------------------------------------------------------------------------
-        public void FollowFormBase(FormBase frmMasterFormBase)
+        public void FollowFormBase(Form frmMasterFormBase)
         {
-            if (frmMasterFormBase != null)
+        	FormBase form = frmMasterFormBase as FormBase;
+
+            if (form != null)
             {
-                OpacityChanger = frmMasterFormBase.OpacityChanger;
-                MoveFormWithMouse = frmMasterFormBase.MoveFormWithMouse;
-                BackgroundGradientMode = frmMasterFormBase.BackgroundGradientMode;
-                BackgroundGradientColor = frmMasterFormBase.BackgroundGradientColor;
-                BackgoundEndGradientColor = frmMasterFormBase.BackgoundEndGradientColor;
-                BackgoundStartGradientColor = frmMasterFormBase.BackgoundStartGradientColor;
-                BackgoundInactiveEndGradientColor = frmMasterFormBase.BackgoundInactiveEndGradientColor;
-                BackgoundInactiveStartGradientColor = frmMasterFormBase.BackgoundInactiveStartGradientColor;
+                OpacityChanger = form.OpacityChanger;
+                MoveFormWithMouse = form.MoveFormWithMouse;
+                BackgroundGradientMode = form.BackgroundGradientMode;
+                BackgroundGradientColor = form.BackgroundGradientColor;
+                BackgoundEndGradientColor = form.BackgoundEndGradientColor;
+                BackgoundStartGradientColor = form.BackgoundStartGradientColor;
+                BackgoundInactiveEndGradientColor = form.BackgoundInactiveEndGradientColor;
+                BackgoundInactiveStartGradientColor = form.BackgoundInactiveStartGradientColor;
             }
         }
 

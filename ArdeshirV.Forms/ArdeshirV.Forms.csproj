@@ -60,12 +60,16 @@
     <StartAction>Project</StartAction>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArdeshirV.Utilities.QrCode">
+      <HintPath>..\..\ArdeshirV.Utility.QrCode\bin\Release\ArdeshirV.Utilities.QrCode.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyAttributeAccessors.cs" />
+    <Compile Include="ComboBoxImage.cs" />
     <Compile Include="FormAboutData.cs" />
     <Compile Include="FormInput.cs" />
     <Compile Include="FormInput.Designer.cs">

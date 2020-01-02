@@ -20,7 +20,7 @@ namespace ArdeshirV.Forms
             if (!DesignMode)
             {
 	            Visible = false;
-	            FollowParentFormBase = false;
+	            FollowParentFormBase = true;
 	            this.StartPosition = FormStartPosition.CenterScreen;
 	            Size = imgSplashImage.Size; 
 	            this.AutoSizeMode = AutoSizeMode.GrowOnly;

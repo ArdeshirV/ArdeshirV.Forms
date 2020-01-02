@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
 using ArdeshirV.Forms.Properties;
+using ArdeshirV.Utilities.QrCode;
+using qr=ArdeshirV.Utilities.QrCode;
 
 #endregion
 //-----------------------------------------------------------------------------------
@@ -129,7 +131,7 @@ namespace ArdeshirV.Forms
     	/// </summary>
     	/// <param name="component">Retrive copyright information from this component</param>
     	/// <param name="logo">Component's logo</param>
-    	public Copyright(Component component, Image logo)
+    	public Copyright(object component, Image logo)
     	{
             AssemblyAttributeAccessors info = new AssemblyAttributeAccessors(
     			Assembly.GetAssembly(component.GetType()));
@@ -266,8 +268,8 @@ namespace ArdeshirV.Forms
 			_donations.Add(aaa.AssemblyTitle, new Donation[] {
 				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
 				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
-				new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.TrueUSD),
 				new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", Resources.Nano),
+				new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.TrueUSD),
 				new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw", Resources.Litecoin),
 				new Donation("BitcoinCash", "bitcoincash:qp6m9sm9d6tflamxhr4wkggcd2lt5vmavy6xyk7sg4", Resources.BitcoinCash),
 				new Donation("Cardano", "DdzFFzCqrhstvvrf4EGLkhSkSFpf9obzTPqex9wzSqd1BfoaXkoT1nXLpvHvbSQGSzk66PaNKVzcV6uhmR8emospbv3UgXi2wNjbqSfN", Resources.Cardano),
@@ -283,17 +285,12 @@ namespace ArdeshirV.Forms
 				new Donation("Verge", "DMbadYFQxZA5bg4PoypVNXeQs4YnMo9yYT", Resources.Verge),
 				new Donation("ZCash", "t1cVThXN3ccm8WAGALoTVz172YQHVf1bvGY", Resources.ZCash)
 			});//************************************************************************
+			_copyrights.Add(aaa.AssemblyTitle, new Copyright(this, Resources.ArdeshirV_Forms_Logo));
+			_licenses.Add(aaa.AssemblyTitle, new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
 			
-			_copyrights.Add(aaa.AssemblyTitle,
-			                new Copyright(aaa.AssemblyTitle,
-			                              aaa.AssemblyVersion,
-			                              aaa.AssemblyCompany,
-			                              aaa.AssemblyCopyright,
-			                              aaa.AssemblyDescription,
-			                              Resources.ArdeshirV_Forms_Logo));
-			
-			_licenses.Add(aaa.AssemblyTitle,
-			              new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
+			AssemblyAttributeAccessors qrcode = new AssemblyAttributeAccessors(qr.QrCode.Ecc.High);
+			_copyrights.Add("ArdeshirV.Utilities.QrCode", new Copyright(qr.QrCode.Ecc.High, qr.Res.Logo));
+			_licenses.Add("ArdeshirV.Utilities.QrCode", new License("MIT", qr.Res.License, qr.Res.LicenseLogo));
 		}
 	}
 }

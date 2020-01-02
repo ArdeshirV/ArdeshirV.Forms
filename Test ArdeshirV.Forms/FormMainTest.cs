@@ -27,8 +27,10 @@ namespace ArdeshirV.TestForms
             InitializeComponent();
             OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
             StartPosition = FormStartPosition.CenterScreen;
-            BackgoundStartGradientColor = Color.Yellow;
-            BackgoundEndGradientColor = Color.Firebrick;
+            BackgoundStartGradientColor = Color.White;
+            BackgoundEndGradientColor = Color.Lime;
+            BackgoundInactiveStartGradientColor = Color.White;
+            BackgoundInactiveEndGradientColor = Color.Yellow;
             UpdateMessageBar();
         }
         //-------------------------------------------------------------------------------------
@@ -92,31 +94,22 @@ namespace ArdeshirV.TestForms
 
 			// TODO: You are allowed to add your donation addresses in your code like this:
 			Donations[] donations = new Donations[] {
-				new Donations(  // Donations belong to this component and you can specify 
-				// several donation lists for several different component in your app
-				              stringAssemblyTitle,
-				new Donation[] { // All below donations addresses are linked to
-				              	 // the component with stringAssemblyTitle title
+				new Donations(      // Donations belong to this component and you can specify 
+				stringAssemblyTitle,// several donation lists for several different component in your app
+				new Donation[] {    // All below donations addresses are linked to
+				              	    // the component with stringAssemblyTitle title
 					new Donation("Bitcoin",                             // Donation name
 					             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
 					             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
 					// if you use usual public cryptocurrency logos like bitcoin and etc...
 					// Then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
-				
-					new Donation("Ethereum",
-					             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
-					             ArdeshirV.Forms.Properties.Resources.Ethereum),
-				
-					new Donation("TrueUSD",
-					             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
+					new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
+					             ArdeshirV.Forms.Properties.Resources.Ethereum),			
+					new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5",
+					             ArdeshirV.Forms.Properties.Resources.Nano),				
+					new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
 					             ArdeshirV.Forms.Properties.Resources.TrueUSD),
-					
-					new Donation("Nano",
-					             "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5",
-					             ArdeshirV.Forms.Properties.Resources.Nano),
-				
-					new Donation("Litecoin",
-					             "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw",
+					new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw",
 					             ArdeshirV.Forms.Properties.Resources.Litecoin)
 				}
 			)};
@@ -128,7 +121,7 @@ namespace ArdeshirV.TestForms
 				// assembly data about title, version, copyright and description automatically
 				// but you are still able to specify title, version, copyright and description
 				// yourself with another constructor like below:
-				//, new Copyright(Text, "2.0.0", "Copyleft ArdeshirV", "Test ArdeshirV.Forms", Resources.Logo)
+				//, new Copyright(Text, "2.0.0", "Company", "Copyleft", "Test", ImageAppLogo)
 				// but I prefer the first professional constructor and I think it's better
 				// to specify details about your component in your AssemblyInfo.cs file not here
 			};
@@ -139,7 +132,6 @@ namespace ArdeshirV.TestForms
 				            Resources.GPLv3)      // License Logo
 			};
 			
-        	// TODO: Modify FormAbout.Show method
         	FormAboutData data = new FormAboutData(this,
         	                                       copyrights,
         	                                       licenses,
