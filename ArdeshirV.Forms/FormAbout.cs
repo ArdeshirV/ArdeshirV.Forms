@@ -1,7 +1,6 @@
 #region Header
 
-// Form About
-// Form About.cs : Provides Form About Box
+// FormAbout.cs : Provides Advanced Form About Box
 // Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
@@ -17,7 +16,7 @@ using System.Collections.Generic;
 using qr=ArdeshirV.Utilities.QrCode;
 
 #endregion
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {	
     /// <summary>
@@ -64,6 +63,9 @@ namespace ArdeshirV.Forms
         private ToolStripMenuItem toolStripMenuDonationSaveAs;
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
         private const string _stringQRTip = "Right click to save donation address as QR code";
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripCopyToClipboard;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItemDonation;
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -346,8 +348,7 @@ namespace ArdeshirV.Forms
 								_donationSelected = d;
 								richTextBoxDonation.Clear();
 								richTextBoxDonation.Text = d.Address;
-					            pictureBoxDonation.Image = qr.QrCode.EncodeText(
-									d.Address, qr.QrCode.Ecc.High).ToBitmap(4, 1);
+								pictureBoxDonation.Image = GetQRCodeImage(d.Address);
 								toolTip.SetToolTip(pictureBoxDonation, _stringQRTip);
 								break;
 							}
@@ -355,6 +356,11 @@ namespace ArdeshirV.Forms
 					}
 				}
 			}
+		}
+        //-------------------------------------------------------------------------------
+		private Image GetQRCodeImage(string Data)
+		{
+			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(4, 1);
 		}
         //-------------------------------------------------------------------------------
         private void m_lnkMalieTo_LinkClicked(object sender,
@@ -389,7 +395,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
 		private void FormAboutOnBackgroundGradientColorChange(object sender, EventArgs e)
 		{
-			UpdateTabControlBackColor(IsActivated);	
+			UpdateTabControlBackColor(IsActivated);
 		}
         //-------------------------------------------------------------------------------
 		void ToolStripMenuDonationSaveAsClick(object sender, EventArgs e)
@@ -397,7 +403,7 @@ namespace ArdeshirV.Forms
 			if(pictureBoxDonation.Image != null && _donationSelected != null) {
 				SaveFileDialog sfd = new SaveFileDialog();
 				sfd.Title = "Save Donation address as QR Code";
-				sfd.Filter = "PNG (*.png)|*.jpg";
+				sfd.Filter = "PNG (*.png)|*.png";
 				sfd.DefaultExt = "png";
 				sfd.AddExtension = true;
 				sfd.ValidateNames = true;
@@ -411,10 +417,33 @@ namespace ArdeshirV.Forms
 			}
 		}
         //-------------------------------------------------------------------------------
+		void CopyToolStripMenuItemDonationClick(object sender, EventArgs e)
+		{
+			if(pictureBoxDonation.Image != null && _donationSelected != null)
+				Clipboard.SetImage(pictureBoxDonation.Image);
+		}
+        //-------------------------------------------------------------------------------
 		void ContextMenuStripDonationOpening(object sender, CancelEventArgs e)
 		{
 			toolStripMenuDonationSaveAs.Enabled = 
+			copyToolStripMenuItemDonation.Enabled =
 				(pictureBoxDonation.Image != null && _donationSelected != null);
+		}
+        //-------------------------------------------------------------------------------
+		void CopyToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			RichTextBox rtb = ((ContextMenuStrip)(((ToolStripMenuItem)sender).
+			                  Owner)).SourceControl as RichTextBox;
+			if(rtb != null)
+				if(rtb.SelectedText != string.Empty)
+					Clipboard.SetText(rtb.SelectedText);
+				else
+					Clipboard.SetText(rtb.Text);
+		}
+        //-------------------------------------------------------------------------------
+		void rtbLinkClick(object sender, LinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start(e.LinkText);
 		}
         //-------------------------------------------------------------------------------
         private void btnOk_Click(object sender, System.EventArgs e)
@@ -481,6 +510,7 @@ namespace ArdeshirV.Forms
         	this.components = new System.ComponentModel.Container();
         	this.pictureBoxAppIcon = new System.Windows.Forms.PictureBox();
         	this.contextMenuStripDonation = new System.Windows.Forms.ContextMenuStrip(this.components);
+        	this.copyToolStripMenuItemDonation = new System.Windows.Forms.ToolStripMenuItem();
         	this.toolStripMenuDonationSaveAs = new System.Windows.Forms.ToolStripMenuItem();
         	this.m_btnOk = new System.Windows.Forms.Button();
         	this.m_btnSysteminfo = new System.Windows.Forms.Button();
@@ -489,6 +519,8 @@ namespace ArdeshirV.Forms
         	this.tabControl = new System.Windows.Forms.TabControl();
         	this.tabPageCopyright = new System.Windows.Forms.TabPage();
         	this.textBoxCopyright = new System.Windows.Forms.RichTextBox();
+        	this.contextMenuStripCopyToClipboard = new System.Windows.Forms.ContextMenuStrip(this.components);
+        	this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.richTextBoxCompany = new System.Windows.Forms.RichTextBox();
         	this.labelCompany = new System.Windows.Forms.Label();
         	this.textBoxVersion = new System.Windows.Forms.RichTextBox();
@@ -513,6 +545,7 @@ namespace ArdeshirV.Forms
         	this.contextMenuStripDonation.SuspendLayout();
         	this.tabControl.SuspendLayout();
         	this.tabPageCopyright.SuspendLayout();
+        	this.contextMenuStripCopyToClipboard.SuspendLayout();
         	this.tabPageDonation.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonation)).BeginInit();
         	this.tabPageLicense.SuspendLayout();
@@ -534,17 +567,26 @@ namespace ArdeshirV.Forms
         	// contextMenuStripDonation
         	// 
         	this.contextMenuStripDonation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.copyToolStripMenuItemDonation,
 			this.toolStripMenuDonationSaveAs});
         	this.contextMenuStripDonation.Name = "contextMenuStripDonation";
-        	this.contextMenuStripDonation.Size = new System.Drawing.Size(124, 26);
+        	this.contextMenuStripDonation.Size = new System.Drawing.Size(179, 48);
         	this.contextMenuStripDonation.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripDonationOpening);
+        	// 
+        	// copyToolStripMenuItemDonation
+        	// 
+        	this.copyToolStripMenuItemDonation.Image = global::ArdeshirV.Forms.Properties.Resources.Copy;
+        	this.copyToolStripMenuItemDonation.Name = "copyToolStripMenuItemDonation";
+        	this.copyToolStripMenuItemDonation.Size = new System.Drawing.Size(178, 22);
+        	this.copyToolStripMenuItemDonation.Text = "&Copy QR Image";
+        	this.copyToolStripMenuItemDonation.Click += new System.EventHandler(this.CopyToolStripMenuItemDonationClick);
         	// 
         	// toolStripMenuDonationSaveAs
         	// 
         	this.toolStripMenuDonationSaveAs.Image = global::ArdeshirV.Forms.Properties.Resources.Save_Picture;
         	this.toolStripMenuDonationSaveAs.Name = "toolStripMenuDonationSaveAs";
-        	this.toolStripMenuDonationSaveAs.Size = new System.Drawing.Size(123, 22);
-        	this.toolStripMenuDonationSaveAs.Text = "Save &As...";
+        	this.toolStripMenuDonationSaveAs.Size = new System.Drawing.Size(178, 22);
+        	this.toolStripMenuDonationSaveAs.Text = "Save QR &As Image...";
         	this.toolStripMenuDonationSaveAs.Click += new System.EventHandler(this.ToolStripMenuDonationSaveAsClick);
         	// 
         	// m_btnOk
@@ -633,22 +675,40 @@ namespace ArdeshirV.Forms
         	// textBoxCopyright
         	// 
         	this.textBoxCopyright.BackColor = System.Drawing.SystemColors.Control;
+        	this.textBoxCopyright.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
         	this.textBoxCopyright.Location = new System.Drawing.Point(140, 33);
         	this.textBoxCopyright.Name = "textBoxCopyright";
         	this.textBoxCopyright.ReadOnly = true;
         	this.textBoxCopyright.Size = new System.Drawing.Size(456, 20);
         	this.textBoxCopyright.TabIndex = 2;
         	this.textBoxCopyright.Text = "";
+        	this.textBoxCopyright.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
+        	// 
+        	// contextMenuStripCopyToClipboard
+        	// 
+        	this.contextMenuStripCopyToClipboard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.copyToolStripMenuItem});
+        	this.contextMenuStripCopyToClipboard.Name = "contextMenuStripDonation";
+        	this.contextMenuStripCopyToClipboard.Size = new System.Drawing.Size(103, 26);
+        	// 
+        	// copyToolStripMenuItem
+        	// 
+        	this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+        	this.copyToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+        	this.copyToolStripMenuItem.Text = "&Copy";
+        	this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItemClick);
         	// 
         	// richTextBoxCompany
         	// 
         	this.richTextBoxCompany.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxCompany.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
         	this.richTextBoxCompany.Location = new System.Drawing.Point(194, 59);
         	this.richTextBoxCompany.Name = "richTextBoxCompany";
         	this.richTextBoxCompany.ReadOnly = true;
         	this.richTextBoxCompany.Size = new System.Drawing.Size(190, 20);
         	this.richTextBoxCompany.TabIndex = 4;
         	this.richTextBoxCompany.Text = "";
+        	this.richTextBoxCompany.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
         	// 
         	// labelCompany
         	// 
@@ -661,12 +721,14 @@ namespace ArdeshirV.Forms
         	// 
         	// textBoxVersion
         	// 
+        	this.textBoxVersion.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
         	this.textBoxVersion.Location = new System.Drawing.Point(440, 59);
         	this.textBoxVersion.Name = "textBoxVersion";
         	this.textBoxVersion.ReadOnly = true;
         	this.textBoxVersion.Size = new System.Drawing.Size(156, 20);
         	this.textBoxVersion.TabIndex = 6;
         	this.textBoxVersion.Text = "";
+        	this.textBoxVersion.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
         	// 
         	// buttonCopyrightCopy
         	// 
@@ -701,6 +763,7 @@ namespace ArdeshirV.Forms
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.richTextBoxCopyrightDescription.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxCopyrightDescription.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
         	this.richTextBoxCopyrightDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.richTextBoxCopyrightDescription.Location = new System.Drawing.Point(140, 85);
         	this.richTextBoxCopyrightDescription.Name = "richTextBoxCopyrightDescription";
@@ -709,6 +772,7 @@ namespace ArdeshirV.Forms
         	this.richTextBoxCopyrightDescription.Size = new System.Drawing.Size(456, 49);
         	this.richTextBoxCopyrightDescription.TabIndex = 7;
         	this.richTextBoxCopyrightDescription.Text = "Description";
+        	this.richTextBoxCopyrightDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
         	// 
         	// labelVersion
         	// 
@@ -797,6 +861,7 @@ namespace ArdeshirV.Forms
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.richTextBoxDonation.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxDonation.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
         	this.richTextBoxDonation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.richTextBoxDonation.Location = new System.Drawing.Point(140, 60);
         	this.richTextBoxDonation.Name = "richTextBoxDonation";
@@ -805,6 +870,7 @@ namespace ArdeshirV.Forms
         	this.richTextBoxDonation.Size = new System.Drawing.Size(456, 74);
         	this.richTextBoxDonation.TabIndex = 3;
         	this.richTextBoxDonation.Text = "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP";
+        	this.richTextBoxDonation.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
         	// 
         	// tabPageLicense
         	// 
@@ -865,6 +931,7 @@ namespace ArdeshirV.Forms
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.richTextBoxLicense.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxLicense.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
         	this.richTextBoxLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.richTextBoxLicense.Location = new System.Drawing.Point(140, 33);
         	this.richTextBoxLicense.Name = "richTextBoxLicense";
@@ -873,6 +940,7 @@ namespace ArdeshirV.Forms
         	this.richTextBoxLicense.Size = new System.Drawing.Size(456, 101);
         	this.richTextBoxLicense.TabIndex = 2;
         	this.richTextBoxLicense.Text = "License Details";
+        	this.richTextBoxLicense.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
         	// 
         	// linkLabelURL
         	// 
@@ -913,6 +981,7 @@ namespace ArdeshirV.Forms
         	this.contextMenuStripDonation.ResumeLayout(false);
         	this.tabControl.ResumeLayout(false);
         	this.tabPageCopyright.ResumeLayout(false);
+        	this.contextMenuStripCopyToClipboard.ResumeLayout(false);
         	this.tabPageDonation.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonation)).EndInit();
         	this.tabPageLicense.ResumeLayout(false);
