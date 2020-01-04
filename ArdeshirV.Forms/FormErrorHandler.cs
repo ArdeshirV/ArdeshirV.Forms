@@ -1,15 +1,15 @@
 #region Header
 
-// Form Error Handler
 // Form Error Handler.cs : Provides Forn Error Handler
 // Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.Drawing;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 #endregion
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
     /// <summary>
@@ -21,7 +21,9 @@ namespace ArdeshirV.Forms
 
         private Exception exp;
         private Button m_btnOk;
+        private ToolTip toolTip;
         private Button m_btnMore;
+        private Button buttonCopy;
 		private LinkLabel m_lnkLink;
         private string m_strLink = "";
         private Label m_lblStackTrack;
@@ -30,15 +32,13 @@ namespace ArdeshirV.Forms
         private const int intMax = 450;
         private const int intMin = 188;
 		private TextBox textBoxStackTrack;
+        private readonly string strFileLine;
 		private bool m_blnIsShrinked = false;
         private static bool s_blnIsExists = false;
-        private readonly string strFileLine;
-        private Button buttonCopy;
-        private ToolTip toolTip;
         private System.ComponentModel.IContainer components;
 
         #endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Constructor
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace ArdeshirV.Forms
 		}
 
 		#endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Utility functions
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
 		#region Event Handlers
 
 		/// <summary>
@@ -400,5 +400,4 @@ namespace ArdeshirV.Forms
         #endregion
     }
 }
-
-
+//---------------------------------------------------------------------------------------
