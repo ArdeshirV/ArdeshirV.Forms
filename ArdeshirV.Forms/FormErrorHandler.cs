@@ -55,14 +55,13 @@ namespace ArdeshirV.Forms
             Height = intMin;
             exp = expException;
             m_strLink = strLinkSite;
-            string strTrack = expException.StackTrace;
             textBoxMessage.SelectedText = "";
 			DialogResult = DialogResult.Cancel;
             //textBoxMessage.Text = expException.Message;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             StartPosition = FormStartPosition.CenterParent;
-            textBoxStackTrack.Text = strTrack;
             Text = string.Format("{0} - Error", frmOwner.Text);
+            string strTrack = textBoxStackTrack.Text = expException.StackTrace;
             
             const string strLine = ":line";
             if(strTrack.Contains(strLine))

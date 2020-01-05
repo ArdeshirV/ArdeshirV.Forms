@@ -410,7 +410,8 @@ namespace ArdeshirV.Forms
 				sfd.OverwritePrompt = true;
 				sfd.CheckPathExists = true;
 				sfd.FileName = string.Format("{0} {1}",
-					_donationSelected.Name, _donationSelected.Address);
+				                             _donationSelected.Name,
+				                             _donationSelected.Address).Replace(':', ' ');
 				
 				if(sfd.ShowDialog(this) == DialogResult.OK)
 					pictureBoxDonation.Image.Save(sfd.FileName, ImageFormat.Png);
