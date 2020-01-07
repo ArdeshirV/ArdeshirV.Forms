@@ -174,7 +174,7 @@ namespace ArdeshirV.Forms
     }
     //-----------------------------------------------------------------------------------
     /// <summary>
-    /// Contains a donation currency-type/address pair.
+    /// Contains a donation currency-type/address-list pair.
     /// </summary>
     public sealed class Donations
     {
