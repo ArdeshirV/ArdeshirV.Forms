@@ -25,6 +25,8 @@ namespace ArdeshirV.Forms
 		//-------------------------------------------------------------------------------
 		public static new FormMessage Show() 
 		{
+			//MessageBoxButtons.
+			
 			FormMessage form = new FormMessage();
 			form.ShowDialog();
 			return form;
