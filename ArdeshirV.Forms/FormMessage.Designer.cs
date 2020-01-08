@@ -21,10 +21,10 @@ namespace ArdeshirV.Forms
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
-		private Button ButtonOK;
-		private Button ButtonYes;
-		private Label LabelMessage;
-		private Button ButtonCancel;
+		private Button buttonOne;
+		private Button buttonThree;
+		private Label labelMessage;
+		private Button buttonTwo;
 		private ImageList imageListIcons;
 		private PictureBox pictureBoxIcon;
 		private System.ComponentModel.IContainer components = null;
@@ -60,35 +60,37 @@ namespace ArdeshirV.Forms
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMessage));
-			this.ButtonOK = new System.Windows.Forms.Button();
-			this.ButtonCancel = new System.Windows.Forms.Button();
+			this.buttonOne = new System.Windows.Forms.Button();
+			this.buttonTwo = new System.Windows.Forms.Button();
 			this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-			this.ButtonYes = new System.Windows.Forms.Button();
+			this.buttonThree = new System.Windows.Forms.Button();
 			this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
-			this.LabelMessage = new System.Windows.Forms.Label();
+			this.labelMessage = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// ButtonOK
+			// buttonOne
 			// 
-			this.ButtonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonOK.Location = new System.Drawing.Point(459, 117);
-			this.ButtonOK.Name = "ButtonOK";
-			this.ButtonOK.Size = new System.Drawing.Size(75, 23);
-			this.ButtonOK.TabIndex = 0;
-			this.ButtonOK.Text = "&OK";
-			this.ButtonOK.UseVisualStyleBackColor = true;
-			this.ButtonOK.Click += new System.EventHandler(this.ButtonOKClick);
+			this.buttonOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonOne.Location = new System.Drawing.Point(377, 117);
+			this.buttonOne.Name = "buttonOne";
+			this.buttonOne.Size = new System.Drawing.Size(75, 23);
+			this.buttonOne.TabIndex = 0;
+			this.buttonOne.Text = "&OK";
+			this.buttonOne.UseVisualStyleBackColor = true;
+			this.buttonOne.Click += new System.EventHandler(this.ButtonOneClick);
 			// 
-			// ButtonCancel
+			// buttonTwo
 			// 
-			this.ButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonCancel.Location = new System.Drawing.Point(378, 117);
-			this.ButtonCancel.Name = "ButtonCancel";
-			this.ButtonCancel.Size = new System.Drawing.Size(75, 23);
-			this.ButtonCancel.TabIndex = 1;
-			this.ButtonCancel.Text = "&Cancel";
-			this.ButtonCancel.UseVisualStyleBackColor = true;
+			this.buttonTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonTwo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.buttonTwo.Location = new System.Drawing.Point(296, 117);
+			this.buttonTwo.Name = "buttonTwo";
+			this.buttonTwo.Size = new System.Drawing.Size(75, 23);
+			this.buttonTwo.TabIndex = 1;
+			this.buttonTwo.Text = "&Cancel";
+			this.buttonTwo.UseVisualStyleBackColor = true;
+			this.buttonTwo.Click += new System.EventHandler(this.ButtonTwoClick);
 			// 
 			// pictureBoxIcon
 			// 
@@ -101,15 +103,16 @@ namespace ArdeshirV.Forms
 			this.pictureBoxIcon.TabIndex = 2;
 			this.pictureBoxIcon.TabStop = false;
 			// 
-			// ButtonYes
+			// buttonThree
 			// 
-			this.ButtonYes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonYes.Location = new System.Drawing.Point(297, 117);
-			this.ButtonYes.Name = "ButtonYes";
-			this.ButtonYes.Size = new System.Drawing.Size(75, 23);
-			this.ButtonYes.TabIndex = 3;
-			this.ButtonYes.Text = "&Yes";
-			this.ButtonYes.UseVisualStyleBackColor = true;
+			this.buttonThree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonThree.Location = new System.Drawing.Point(215, 117);
+			this.buttonThree.Name = "buttonThree";
+			this.buttonThree.Size = new System.Drawing.Size(75, 23);
+			this.buttonThree.TabIndex = 3;
+			this.buttonThree.Text = "&Yes";
+			this.buttonThree.UseVisualStyleBackColor = true;
+			this.buttonThree.Click += new System.EventHandler(this.ButtonThreeClick);
 			// 
 			// imageListIcons
 			// 
@@ -119,27 +122,32 @@ namespace ArdeshirV.Forms
 			this.imageListIcons.Images.SetKeyName(1, "Information");
 			this.imageListIcons.Images.SetKeyName(2, "Error");
 			// 
-			// LabelMessage
+			// labelMessage
 			// 
-			this.LabelMessage.BackColor = System.Drawing.Color.Transparent;
-			this.LabelMessage.Location = new System.Drawing.Point(146, 12);
-			this.LabelMessage.Name = "LabelMessage";
-			this.LabelMessage.Size = new System.Drawing.Size(388, 102);
-			this.LabelMessage.TabIndex = 5;
-			this.LabelMessage.Text = "Message";
-			this.LabelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.labelMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.labelMessage.BackColor = System.Drawing.Color.Transparent;
+			this.labelMessage.Location = new System.Drawing.Point(146, 12);
+			this.labelMessage.Name = "labelMessage";
+			this.labelMessage.Size = new System.Drawing.Size(306, 102);
+			this.labelMessage.TabIndex = 5;
+			this.labelMessage.Text = "Message";
+			this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// FormMessage
 			// 
+			this.AcceptButton = this.buttonOne;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(546, 152);
+			this.CancelButton = this.buttonTwo;
+			this.ClientSize = new System.Drawing.Size(464, 152);
 			this.ControlBox = false;
-			this.Controls.Add(this.LabelMessage);
-			this.Controls.Add(this.ButtonYes);
+			this.Controls.Add(this.labelMessage);
+			this.Controls.Add(this.buttonThree);
 			this.Controls.Add(this.pictureBoxIcon);
-			this.Controls.Add(this.ButtonCancel);
-			this.Controls.Add(this.ButtonOK);
+			this.Controls.Add(this.buttonTwo);
+			this.Controls.Add(this.buttonOne);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "FormMessage";
 			this.Text = "FormMessage";

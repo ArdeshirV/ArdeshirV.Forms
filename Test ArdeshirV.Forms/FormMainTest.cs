@@ -156,7 +156,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
-			DialogResult drResult = FormMessage.Show().DialogResult;//this, "Message");
+			DialogResult drResult = FormMessage.Show(this).DialogResult;//this, "Message");
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
