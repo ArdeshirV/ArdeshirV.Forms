@@ -133,16 +133,6 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Error {
-			get {
-				object obj = ResourceManager.GetObject("Error", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized resource of type System.Drawing.Bitmap.
-		/// </summary>
 		internal static System.Drawing.Bitmap Ethereum {
 			get {
 				object obj = ResourceManager.GetObject("Ethereum", resourceCulture);
@@ -153,9 +143,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Help {
+		internal static System.Drawing.Bitmap IconError {
 			get {
-				object obj = ResourceManager.GetObject("Help", resourceCulture);
+				object obj = ResourceManager.GetObject("IconError", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -163,9 +153,29 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Information {
+		internal static System.Drawing.Bitmap IconInfo {
 			get {
-				object obj = ResourceManager.GetObject("Information", resourceCulture);
+				object obj = ResourceManager.GetObject("IconInfo", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap IconQuestion {
+			get {
+				object obj = ResourceManager.GetObject("IconQuestion", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap IconWarning {
+			get {
+				object obj = ResourceManager.GetObject("IconWarning", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -254,6 +264,16 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
+		internal static System.Drawing.Bitmap Question {
+			get {
+				object obj = ResourceManager.GetObject("Question", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
 		internal static System.Drawing.Bitmap Ripple {
 			get {
 				object obj = ResourceManager.GetObject("Ripple", resourceCulture);
@@ -317,16 +337,6 @@ namespace ArdeshirV.Forms.Properties {
 		internal static System.Drawing.Bitmap Verge {
 			get {
 				object obj = ResourceManager.GetObject("Verge", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized resource of type System.Drawing.Bitmap.
-		/// </summary>
-		internal static System.Drawing.Bitmap Warning {
-			get {
-				object obj = ResourceManager.GetObject("Warning", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}

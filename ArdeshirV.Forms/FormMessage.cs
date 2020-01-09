@@ -7,6 +7,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ArdeshirV.Forms.Properties;
 
 #endregion
 //-----------------------------------------------------------------------------------
@@ -24,15 +25,52 @@ namespace ArdeshirV.Forms
 			StartPosition = FormStartPosition.CenterParent;
 		}
 		//-------------------------------------------------------------------------------
-		public static new FormMessage Show(Form Owner) 
+		public static DialogResult Show(Form Owner) 
 		{
-			//MessageBoxButtons.
+			const string stringX = " try {" +
+        			"// Create an error to test FormErrorHandler form" +
+            		"File.Open(\"some-file.ext\", FileMode.Open);  // Throw an exception" +
+            	"} catch (Exception exp) {" +
+                	"FormErrorHandler.Show(exp, this, _stringWebsite);";
+			MessageBox.Show(stringX, "Test MessageBox",
+			                MessageBoxButtons.OKCancel,
+			                MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1,
+			                MessageBoxOptions.RightAlign);
+			
 			FormMessage form = new FormMessage();
-			form.SetKeys(MessageBoxButtons.AbortRetryIgnore);
+			form.Text = Owner.Text;
+			form.labelMessage.Text = stringX;
+			form.SetKeys(MessageBoxButtons.OKCancel);
+			form.SetIcon(MessageBoxIcon.Exclamation);
 			form.ShowDialog(Owner);
-			return form;
+			return form.DialogResult;
 		}
 		//-------------------------------------------------------------------------------
+		private void SetIcon(MessageBoxIcon icon) 
+		{
+			switch(icon) {
+				case MessageBoxIcon.None:
+					pictureBoxIcon.Image = null;
+					pictureBoxIcon.Visible = false;
+					break;
+				case MessageBoxIcon.Information:
+				//case MessageBoxIcon.Asterisk:
+					pictureBoxIcon.Image = Resources.IconInfo;
+					break;
+				case MessageBoxIcon.Error:
+				//case MessageBoxIcon.Hand:
+				//case MessageBoxIcon.Stop:
+					pictureBoxIcon.Image = Resources.IconError;
+					break;
+				case MessageBoxIcon.Warning:
+				//case MessageBoxIcon.Exclamation:
+					pictureBoxIcon.Image = Resources.IconWarning;
+					break;
+				case MessageBoxIcon.Question:
+					//pictureBoxIcon.Image = Resources.Question;
+					break;
+			}
+		}
 		//-------------------------------------------------------------------------------
 		private void SetKeys(MessageBoxButtons buttons)
 		{
@@ -105,18 +143,6 @@ namespace ArdeshirV.Forms
 					CancelButton = buttonOne;
 					break;
 			}
-		}
-		//-------------------------------------------------------------------------------
-		void ButtonOneClick(object sender, EventArgs e)
-		{
-		}
-		//-------------------------------------------------------------------------------
-		void ButtonTwoClick(object sender, EventArgs e)
-		{
-		}
-		//-------------------------------------------------------------------------------
-		void ButtonThreeClick(object sender, EventArgs e)
-		{
 		}
 	}
 }

@@ -92,20 +92,20 @@ namespace ArdeshirV.TestForms
 			string stringAssemblyTitle = aaa.AssemblyTitle;
 
 			// TODO: You are allowed to add your donation addresses in your code like this:
-			//Donations[] donations = new Donations[] {
-			//	new Donations(      // Donations belong to this component and you can specify 
-			//	stringAssemblyTitle,// several donation lists for several different component in your app
-			//	new Donation[] {    // All below donations addresses are linked to
-			//	              	    // the component with stringAssemblyTitle title
-			//		new Donation("Bitcoin",                             // Donation name
-			//		             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
-			//		             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
-			//		// if you use usual public cryptocurrency logos like bitcoin and etc...
-			//		// then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
-			//		new Donation("Ethereum",  // Here another example about Ethereum
-			//		             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
-			//		             ArdeshirV.Forms.Properties.Resources.Ethereum)
-			//	})};
+			/*Donations[] donations = new Donations[] {
+				new Donations(      // Donations belong to this component and you can specify 
+				stringAssemblyTitle,// several donation lists for several different component in your app
+				new Donation[] {    // All below donations addresses are linked to
+				              	    // the component with stringAssemblyTitle title
+					new Donation("Bitcoin",                             // Donation name
+					             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
+				             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
+					// if you use usual public cryptocurrency logos like bitcoin and etc...
+					// then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
+					new Donation("Ethereum",  // Here another example about Ethereum
+					             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
+					             ArdeshirV.Forms.Properties.Resources.Ethereum)
+				})};*/
 			
 			// Adding all my default donation addresses
 			Donations[] donations = new Donations[] {
@@ -156,7 +156,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
-			DialogResult drResult = FormMessage.Show(this).DialogResult;//this, "Message");
+			DialogResult drResult = FormMessage.Show(this);//this, "Message");
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)

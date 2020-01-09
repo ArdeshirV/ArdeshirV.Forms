@@ -72,33 +72,33 @@ namespace ArdeshirV.Forms
 			// buttonOne
 			// 
 			this.buttonOne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOne.Location = new System.Drawing.Point(377, 117);
+			this.buttonOne.Location = new System.Drawing.Point(215, 66);
 			this.buttonOne.Name = "buttonOne";
 			this.buttonOne.Size = new System.Drawing.Size(75, 23);
 			this.buttonOne.TabIndex = 0;
 			this.buttonOne.Text = "&OK";
 			this.buttonOne.UseVisualStyleBackColor = true;
-			this.buttonOne.Click += new System.EventHandler(this.ButtonOneClick);
+			//this.buttonOne.Click += new System.EventHandler(this.ButtonOneClick);
 			// 
 			// buttonTwo
 			// 
 			this.buttonTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonTwo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonTwo.Location = new System.Drawing.Point(296, 117);
+			this.buttonTwo.Location = new System.Drawing.Point(296, 66);
 			this.buttonTwo.Name = "buttonTwo";
 			this.buttonTwo.Size = new System.Drawing.Size(75, 23);
 			this.buttonTwo.TabIndex = 1;
 			this.buttonTwo.Text = "&Cancel";
 			this.buttonTwo.UseVisualStyleBackColor = true;
-			this.buttonTwo.Click += new System.EventHandler(this.ButtonTwoClick);
+			//this.buttonTwo.Click += new System.EventHandler(this.ButtonTwoClick);
 			// 
 			// pictureBoxIcon
 			// 
 			this.pictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
-			this.pictureBoxIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxIcon.Image")));
+			this.pictureBoxIcon.Image = global::ArdeshirV.Forms.Properties.Resources.IconInfo;
 			this.pictureBoxIcon.Location = new System.Drawing.Point(12, 12);
 			this.pictureBoxIcon.Name = "pictureBoxIcon";
-			this.pictureBoxIcon.Size = new System.Drawing.Size(128, 128);
+			this.pictureBoxIcon.Size = new System.Drawing.Size(48, 48);
 			this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBoxIcon.TabIndex = 2;
 			this.pictureBoxIcon.TabStop = false;
@@ -106,13 +106,13 @@ namespace ArdeshirV.Forms
 			// buttonThree
 			// 
 			this.buttonThree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonThree.Location = new System.Drawing.Point(215, 117);
+			this.buttonThree.Location = new System.Drawing.Point(377, 66);
 			this.buttonThree.Name = "buttonThree";
 			this.buttonThree.Size = new System.Drawing.Size(75, 23);
 			this.buttonThree.TabIndex = 3;
 			this.buttonThree.Text = "&Yes";
 			this.buttonThree.UseVisualStyleBackColor = true;
-			this.buttonThree.Click += new System.EventHandler(this.ButtonThreeClick);
+			//this.buttonThree.Click += new System.EventHandler(this.ButtonThreeClick);
 			// 
 			// imageListIcons
 			// 
@@ -128,9 +128,9 @@ namespace ArdeshirV.Forms
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.labelMessage.BackColor = System.Drawing.Color.Transparent;
-			this.labelMessage.Location = new System.Drawing.Point(146, 12);
+			this.labelMessage.Location = new System.Drawing.Point(66, 12);
 			this.labelMessage.Name = "labelMessage";
-			this.labelMessage.Size = new System.Drawing.Size(306, 102);
+			this.labelMessage.Size = new System.Drawing.Size(386, 47);
 			this.labelMessage.TabIndex = 5;
 			this.labelMessage.Text = "Message";
 			this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,7 +141,7 @@ namespace ArdeshirV.Forms
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonTwo;
-			this.ClientSize = new System.Drawing.Size(464, 152);
+			this.ClientSize = new System.Drawing.Size(464, 101);
 			this.ControlBox = false;
 			this.Controls.Add(this.labelMessage);
 			this.Controls.Add(this.buttonThree);
