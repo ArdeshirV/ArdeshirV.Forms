@@ -203,14 +203,14 @@ namespace ArdeshirV.Forms
 	{
 		private readonly string _URL;
 		private readonly string _email;
-		private readonly Component _formOwner;
+		private readonly IWin32Window _formOwner;
 		private readonly Dictionary<string, License> _licenses;
 		private readonly Dictionary<string, Copyright> _copyrights;
 		private readonly Dictionary<string, Donation[]> _donations;
 		//-------------------------------------------------------------------------------
 		public string URL { get { return _URL; } }
 		public string Email { get { return _email; } }
-		public Component Owner { get { return _formOwner; } }
+		public IWin32Window Owner { get { return _formOwner; } }
 		public Dictionary<string, License> Licenses { get { return _licenses; } }
 		public Dictionary<string, Copyright> Copyrights { get { return _copyrights; } }
 		public Dictionary<string, Donation[]> Donations { get { return _donations; } }
@@ -230,7 +230,7 @@ namespace ArdeshirV.Forms
 		//-------------------------------------------------------------------------------
 		private FormAboutData() {}
 		//-------------------------------------------------------------------------------
-		public FormAboutData(Component owner, Copyright[] copyrights,
+		public FormAboutData(IWin32Window owner, Copyright[] copyrights,
 		                     License[] licenses, Donations[] donations,
 		                     string URL, string email)
 		{

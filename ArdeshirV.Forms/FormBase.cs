@@ -85,10 +85,29 @@ namespace ArdeshirV.Forms
         /// <summary>
         /// Create FormBase instance
         /// </summary>
-        protected FormBase() { }
+        protected FormBase()
+        {
+        	IWin32Window window = Parent;
+        		
+            if (window is FormBase && m_blnFollowParentFormBase)
+                FollowFormBase(window as FormBase);
+        }
+        //-------------------------------------------------------------------------------
+        /// <summary>
+        /// Create FormBase instance
+        /// </summary>
+        protected FormBase(IWin32Window windowParent)
+        {
+        	IWin32Window window = windowParent;
+        	if (windowParent == null)
+        		window = Parent;
+        		
+            if (window is FormBase && m_blnFollowParentFormBase)
+                FollowFormBase(window as FormBase);
+        }
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Interface
 
         public void ShrinkWidthByTime(int intNewWidth)
@@ -284,9 +303,10 @@ namespace ArdeshirV.Forms
                         break;
                 }
 
-                Opacity = m_dblLastOpacity;
-                if(!Disposing)
+                if(!Disposing && !IsDisposed) {
+                	Opacity = m_dblLastOpacity;
                 	Focus();
+                }
             }
         }
         //-------------------------------------------------------------------------------------
@@ -339,68 +359,35 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------------
         #region Utility Functions
 
-        protected new void Show()
-        {
-        	this.Show(null);
-        }
-        //-------------------------------------------------------------------------------------
-        protected new void Show(IWin32Window frmOwner)
-        {
-        	if (frmOwner == null)
-	    	{
-	            if (Parent is FormBase && m_blnFollowParentFormBase)
-	                FollowFormBase(Parent as FormBase);
-                base.Show();
-            }
-            else
-            {
-                if (frmOwner is FormBase && m_blnFollowParentFormBase)
-                    FollowFormBase(frmOwner as FormBase);
-                base.Show(frmOwner);
-            }
-        }
-        //-------------------------------------------------------------------------------------
-        protected new DialogResult ShowDialog()
-        {
-        	return this.ShowDialog(null);
-        }
-        //-------------------------------------------------------------------------------------
-        protected new DialogResult ShowDialog(IWin32Window frmOwner)
-        {
-        	DialogResult dr = DialogResult.Cancel;
-        	if (frmOwner == null)
-	    	{
-	            if (Parent is FormBase && m_blnFollowParentFormBase)
-	                FollowFormBase(Parent as FormBase);
-                dr = base.ShowDialog();
-            }
-            else
-            {
-                if (frmOwner is FormBase && m_blnFollowParentFormBase)
-                    FollowFormBase(frmOwner as FormBase);
-                dr = base.ShowDialog(frmOwner);
-            }
-            return dr;
-        }
-        //-------------------------------------------------------------------------------------
         private void InitializeComponent() { }
+        //-------------------------------------------------------------------------------------
+        private bool IsMovableControl(Control c)
+        {
+        	return c is Label || c is LinkLabel || c is TabPage || c is TabControl ||
+				c is Panel || c is PictureBox || c is ProgressBar || c is GroupBox ||
+				c is FlowLayoutPanel || c is TableLayoutPanel || c is ToolStripContainer ||
+				c is ToolStripContentPanel || c is RadioButton || c is CheckedListBox ||
+    			c is CheckBox;
+        }
         //-------------------------------------------------------------------------------------
         public void AddSpecialMouseEvent(Control ctlDest)
         {
             AddMouseEvents(ctlDest);
-
-            foreach (Control ctlOut in ctlDest.Controls)
-                if (!(ctlOut is Button))
-                    AddMouseEvents(ctlOut);
+            foreach (Control c in ctlDest.Controls) {
+            	if (IsMovableControl(c)) {
+                    AddSpecialMouseEvent(c);
+        	    }
+            }
         }
         //-------------------------------------------------------------------------------------
         public void RemoveSpecialMouseEvent(Control ctlDest)
         {
             RemoveMouseEvents(ctlDest);
-
-            foreach (Control ctlOut in ctlDest.Controls)
-                if (!(ctlOut is Button))
-                    RemoveMouseEvents(ctlOut);
+            foreach (Control c in ctlDest.Controls) {
+            	if (IsMovableControl(c)) {
+                    RemoveSpecialMouseEvent(c);
+        	    }
+            }
         }
         //-------------------------------------------------------------------------------------
         private void RemoveMouseEvents(Control ctlDest)

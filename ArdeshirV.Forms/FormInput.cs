@@ -17,15 +17,15 @@ namespace ArdeshirV.Forms
 	/// </summary>
 	public partial class FormInput : FormBase
 	{
-		public FormInput()
+		public FormInput(IWin32Window windowParent) : base(windowParent)
 		{
 			InitializeComponent();
 		}
 		//-------------------------------------------------------------------------------
-		public static new FormInput Show() 
+		public static new FormInput Show(IWin32Window windowParent)
 		{
-			FormInput form = new FormInput();
-            form.ShowDialog();
+			FormInput form = new FormInput(windowParent);
+            form.ShowDialog(windowParent);
 			return form;
 		}
 	}

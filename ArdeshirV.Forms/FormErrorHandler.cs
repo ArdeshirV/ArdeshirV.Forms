@@ -48,7 +48,7 @@ namespace ArdeshirV.Forms
         /// <param name="frmOwner">Form parent</param>
         /// <param name="strLinkSite">Link value</param>
         protected FormErrorHandler(Exception expException,
-                                   Form frmOwner, string strLinkSite)
+                                   Form frmOwner, string strLinkSite) : base(frmOwner)
         {
             InitializeComponent();
             Opacity = 1.0;

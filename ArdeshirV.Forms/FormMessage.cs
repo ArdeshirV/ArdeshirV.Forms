@@ -18,31 +18,52 @@ namespace ArdeshirV.Forms
 	/// </summary>
 	public partial class FormMessage : FormBase
 	{
-		protected FormMessage()
+		protected FormMessage(IWin32Window windowParent) : base(windowParent)
 		{
 			InitializeComponent();
 			FollowParentFormBase = true;
 			StartPosition = FormStartPosition.CenterParent;
 		}
 		//-------------------------------------------------------------------------------
-		public static DialogResult Show(Form Owner) 
+		public static DialogResult Show(Form FormOwner, string Text)
 		{
-			const string stringX = " try {" +
-        			"// Create an error to test FormErrorHandler form" +
-            		"File.Open(\"some-file.ext\", FileMode.Open);  // Throw an exception" +
-            	"} catch (Exception exp) {" +
-                	"FormErrorHandler.Show(exp, this, _stringWebsite);";
-			MessageBox.Show(stringX, "Test MessageBox",
-			                MessageBoxButtons.OKCancel,
-			                MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1,
-			                MessageBoxOptions.RightAlign);
-			
-			FormMessage form = new FormMessage();
-			form.Text = Owner.Text;
-			form.labelMessage.Text = stringX;
-			form.SetKeys(MessageBoxButtons.OKCancel);
-			form.SetIcon(MessageBoxIcon.Exclamation);
-			form.ShowDialog(Owner);
+			return Show(FormOwner, Text, FormOwner.Text, MessageBoxButtons.OK,
+			            MessageBoxIcon.None);
+		}
+		//-------------------------------------------------------------------------------
+		public static DialogResult Show(Form FormOwner, string Text, string Caption)
+		{
+			return Show(FormOwner, Text, Caption, MessageBoxButtons.OK,
+			            MessageBoxIcon.None);
+		}
+		//-------------------------------------------------------------------------------
+		public static DialogResult Show(Form FormOwner, string Text,
+		    string Caption, MessageBoxButtons buttons)
+		{
+			return Show(FormOwner, Text, Caption, buttons, MessageBoxIcon.None);
+		}
+		//-------------------------------------------------------------------------------
+		public static DialogResult Show(Form FormOwner, string text,
+			string Caption, MessageBoxButtons buttons, MessageBoxIcon icon)
+		{
+			FormMessage form = new FormMessage(FormOwner);
+			form.Text = Caption;
+			form.labelMessage.Text = text;
+			form.SetKeys(buttons);
+			form.SetIcon(icon);
+			Font font = form.labelMessage.Font;
+			Size sizeLabel = form.labelMessage.Size;
+			Size sizeForm = form.Size;
+			Rectangle screenRectangle = form.RectangleToScreen(form.ClientRectangle);
+			int titleBarHeight = screenRectangle.Top - form.Top;
+			Size sizeText = TextRenderer.MeasureText(text, font);
+			form.Size = new Size(sizeText.Width + (sizeForm.Width - sizeLabel.Width),
+			                     sizeText.Height + (sizeForm.Height - sizeLabel.Height) +
+			                     titleBarHeight);
+			form.StartPosition = (FormOwner ==  null)?
+				FormStartPosition.CenterScreen:
+				FormStartPosition.CenterParent;
+			form.ShowDialog(FormOwner);
 			return form.DialogResult;
 		}
 		//-------------------------------------------------------------------------------
@@ -67,7 +88,7 @@ namespace ArdeshirV.Forms
 					pictureBoxIcon.Image = Resources.IconWarning;
 					break;
 				case MessageBoxIcon.Question:
-					//pictureBoxIcon.Image = Resources.Question;
+					pictureBoxIcon.Image = Resources.IconQuestion;
 					break;
 			}
 		}
@@ -143,6 +164,7 @@ namespace ArdeshirV.Forms
 					CancelButton = buttonOne;
 					break;
 			}
+			
 		}
 	}
 }

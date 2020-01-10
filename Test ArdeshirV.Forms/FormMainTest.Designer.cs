@@ -30,21 +30,21 @@ namespace ArdeshirV.TestForms
         private void InitializeComponent()
         {
         	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainTest));
-        	this.buttonNewForm = new Button();
-        	this.buttonErrorHandlerForm = new Button();
-        	this.buttonFormAbout = new Button();
-        	this.buttonShrinkWidth = new Button();
-        	this.buttonShrinkHeight = new Button();
-        	this.buttonExit = new Button();
-        	this.buttonSplashForm = new Button();
-        	this.m_lblMessage = new Label();
-        	this.ButtonFormMessage = new Button();
-        	this.ButtonInput = new Button();
+        	this.buttonNewForm = new System.Windows.Forms.Button();
+        	this.buttonErrorHandlerForm = new System.Windows.Forms.Button();
+        	this.buttonFormAbout = new System.Windows.Forms.Button();
+        	this.buttonShrinkWidth = new System.Windows.Forms.Button();
+        	this.buttonShrinkHeight = new System.Windows.Forms.Button();
+        	this.buttonExit = new System.Windows.Forms.Button();
+        	this.buttonSplashForm = new System.Windows.Forms.Button();
+        	this.m_lblMessage = new System.Windows.Forms.Label();
+        	this.ButtonFormMessage = new System.Windows.Forms.Button();
+        	this.ButtonInput = new System.Windows.Forms.Button();
         	this.SuspendLayout();
         	// 
         	// buttonNewForm
         	// 
-        	this.buttonNewForm.Anchor = AnchorStyles.None;
+        	this.buttonNewForm.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonNewForm.Location = new System.Drawing.Point(70, 268);
         	this.buttonNewForm.Name = "buttonNewForm";
         	this.buttonNewForm.Size = new System.Drawing.Size(111, 23);
@@ -55,7 +55,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// buttonErrorHandlerForm
         	// 
-        	this.buttonErrorHandlerForm.Anchor = AnchorStyles.None;
+        	this.buttonErrorHandlerForm.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonErrorHandlerForm.Location = new System.Drawing.Point(70, 239);
         	this.buttonErrorHandlerForm.Name = "buttonErrorHandlerForm";
         	this.buttonErrorHandlerForm.Size = new System.Drawing.Size(111, 23);
@@ -66,7 +66,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// buttonFormAbout
         	// 
-        	this.buttonFormAbout.Anchor = AnchorStyles.None;
+        	this.buttonFormAbout.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonFormAbout.Location = new System.Drawing.Point(70, 210);
         	this.buttonFormAbout.Name = "buttonFormAbout";
         	this.buttonFormAbout.Size = new System.Drawing.Size(111, 23);
@@ -77,7 +77,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// buttonShrinkWidth
         	// 
-        	this.buttonShrinkWidth.Anchor = AnchorStyles.None;
+        	this.buttonShrinkWidth.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonShrinkWidth.Location = new System.Drawing.Point(70, 65);
         	this.buttonShrinkWidth.Name = "buttonShrinkWidth";
         	this.buttonShrinkWidth.Size = new System.Drawing.Size(111, 23);
@@ -88,7 +88,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// buttonShrinkHeight
         	// 
-        	this.buttonShrinkHeight.Anchor = AnchorStyles.None;
+        	this.buttonShrinkHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonShrinkHeight.Location = new System.Drawing.Point(70, 94);
         	this.buttonShrinkHeight.Name = "buttonShrinkHeight";
         	this.buttonShrinkHeight.Size = new System.Drawing.Size(111, 23);
@@ -99,7 +99,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// buttonExit
         	// 
-        	this.buttonExit.Anchor = AnchorStyles.None;
+        	this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonExit.Location = new System.Drawing.Point(70, 297);
         	this.buttonExit.Name = "buttonExit";
         	this.buttonExit.Size = new System.Drawing.Size(111, 23);
@@ -110,7 +110,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// buttonSplashForm
         	// 
-        	this.buttonSplashForm.Anchor = AnchorStyles.None;
+        	this.buttonSplashForm.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.buttonSplashForm.Location = new System.Drawing.Point(70, 123);
         	this.buttonSplashForm.Name = "buttonSplashForm";
         	this.buttonSplashForm.Size = new System.Drawing.Size(111, 23);
@@ -121,10 +121,10 @@ namespace ArdeshirV.TestForms
         	// 
         	// m_lblMessage
         	// 
-        	this.m_lblMessage.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) 
-			| AnchorStyles.Right)));
+        	this.m_lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
         	this.m_lblMessage.BackColor = System.Drawing.SystemColors.ActiveCaption;
-        	this.m_lblMessage.FlatStyle = FlatStyle.System;
+        	this.m_lblMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
         	this.m_lblMessage.Location = new System.Drawing.Point(12, 9);
         	this.m_lblMessage.Name = "m_lblMessage";
         	this.m_lblMessage.Size = new System.Drawing.Size(224, 14);
@@ -134,7 +134,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// ButtonFormMessage
         	// 
-        	this.ButtonFormMessage.Anchor = AnchorStyles.None;
+        	this.ButtonFormMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.ButtonFormMessage.Location = new System.Drawing.Point(70, 152);
         	this.ButtonFormMessage.Name = "ButtonFormMessage";
         	this.ButtonFormMessage.Size = new System.Drawing.Size(111, 23);
@@ -145,7 +145,7 @@ namespace ArdeshirV.TestForms
         	// 
         	// ButtonInput
         	// 
-        	this.ButtonInput.Anchor = AnchorStyles.None;
+        	this.ButtonInput.Anchor = System.Windows.Forms.AnchorStyles.None;
         	this.ButtonInput.Location = new System.Drawing.Point(70, 181);
         	this.ButtonInput.Name = "ButtonInput";
         	this.ButtonInput.Size = new System.Drawing.Size(111, 23);
@@ -157,8 +157,8 @@ namespace ArdeshirV.TestForms
         	// FormMainTest
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        	this.AutoScaleMode = AutoScaleMode.Font;
-        	this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+        	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        	this.BackColor = System.Drawing.SystemColors.Control;
         	this.ClientSize = new System.Drawing.Size(248, 370);
         	this.Controls.Add(this.ButtonInput);
         	this.Controls.Add(this.ButtonFormMessage);

@@ -59,19 +59,19 @@ namespace ArdeshirV.Forms
         private RichTextBox richTextBoxCompany;
         private Label labelCompany;
         private Label labelVersion;
+        private ToolStripMenuItem copyToolStripMenuItem;
         private ContextMenuStrip contextMenuStripDonation;
         private ToolStripMenuItem toolStripMenuDonationSaveAs;
-        private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
+        private ToolStripMenuItem copyToolStripMenuItemDonation;
+        private ContextMenuStrip contextMenuStripCopyToClipboard;
         private const string _stringQRTip = "Right click to save donation address as QR code";
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripCopyToClipboard;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItemDonation;
+        private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
 
         #endregion
         //-------------------------------------------------------------------------------
         #region Constructor
 
-        protected FormAbout(FormAboutData data) : base()
+        protected FormAbout(FormAboutData data) : base(data.Owner)
         {
             InitializeComponent();
             InitFormAbout(data);

@@ -28,7 +28,7 @@ namespace ArdeshirV.TestForms
             StartPosition = FormStartPosition.CenterScreen;
             BackgoundEndGradientColor = Color.Lime;
             BackgoundStartGradientColor = Color.White;
-            BackgoundInactiveEndGradientColor = Color.Yellow;
+            BackgoundInactiveEndGradientColor = Color.LightBlue;
             BackgoundInactiveStartGradientColor = Color.White;
             UpdateMessageBar();
         }
@@ -146,7 +146,16 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
-            FormSplash.Show(this, Resources.Logo);
+        	const int delay = 3000;
+            FormSplash splash = FormSplash.Show(this, Resources.Logo, delay);
+            splash.Progress.Minimum = 0;
+            splash.Progress.Maximum = delay;
+            int n = (int)DateTime.Now.Ticks;
+            for(int i = 0; i <= delay; i = (int)DateTime.Now.Ticks - n) {
+            	Application.DoEvents();
+            	if(i <= splash.Progress.Maximum)
+            		splash.Progress.Value = i;
+            }
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)
@@ -156,13 +165,21 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
-			DialogResult drResult = FormMessage.Show(this);//this, "Message");
+			const string stringX = 
+				@"lorem ipsum...
+				It's a testing passage to show you FormMessage ability.
+				How are you today?
+				FormMessage arrange and align text and buttons automatically.
+				Are you a professional computer programmer?
+				Here we are talking about Computer programming and cyber security";
+			m_lblMessage.Text = "Dialog Result: " + FormMessage.Show(this, stringX,
+				Text, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning).ToString();
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
 		{
 			//string stringResult;
-			FormInput.Show();//this, "Message", out stringResult);
+			FormInput.Show(this);//this, "Message", out stringResult);
 		}
     }
 }

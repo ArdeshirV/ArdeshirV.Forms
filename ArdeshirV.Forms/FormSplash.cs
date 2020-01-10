@@ -4,42 +4,56 @@
 
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 #endregion
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
     public partial class FormSplash : FormBase
     {
-        private Timer m_timTimer;
-        //---------------------------------------------------------------------
-        protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) : base()
+        private Thread t;
+        private Form _formOwner;
+        private ThreadStart run;
+        //private Timer m_timTimer;
+        //-------------------------------------------------------------------------------
+        protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) : base(formOwner)
         {
             InitializeComponent();
             if (!DesignMode)
             {
-	            Visible = false;
-	            FollowParentFormBase = true;
-	            this.StartPosition = FormStartPosition.CenterScreen;
-	            Size = imgSplashImage.Size; 
-	            this.AutoSizeMode = AutoSizeMode.GrowOnly;
+	            //Visible = false;
+            	//formOwner.Hide();
+            	Size = new Size(imgSplashImage.Size.Width,
+            	                imgSplashImage.Size.Height + progressBar.Height);
+	            //FollowParentFormBase = true;
+            	MoveFormWithMouse = false;
 	            m_imgPictureBox.Image = imgSplashImage;
+	            this.AutoSizeMode = AutoSizeMode.GrowOnly;
+	            this.StartPosition = FormStartPosition.CenterScreen;
 	            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-	            m_timTimer = new Timer();
-	            m_timTimer.Interval = Delay;
-	            m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
-	            m_timTimer.Start();
-	            ShowDialog(formOwner);
+	            //m_timTimer = new Timer();
+	            //m_timTimer.Interval = Delay;
+	            //m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
+	            //m_timTimer.Start();
+	            Show(_formOwner = formOwner);
+            	run = new ThreadStart(Run);
+            	t = new Thread(run);
             }
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
+        private void Run() {
+        	
+        }
+        //-------------------------------------------------------------------------------
         private void m_timTimer_Elapsed(object sender, EventArgs e)
         {
-            m_timTimer.Stop();
+            //m_timTimer.Stop();
             Close();
+            //_formOwner.Show();
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         /// <summary>
         /// Create and show splash form 
         /// </summary>
@@ -50,7 +64,7 @@ namespace ArdeshirV.Forms
         {
         	return Show(formOwner, imgSplashImage, 3000);
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         /// <summary>
         /// Create and show splash form 
         /// </summary>
@@ -67,16 +81,23 @@ namespace ArdeshirV.Forms
             
             return form;
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
+        public ProgressBar Progress
+        {
+        	get {
+        		return progressBar;
+        	}
+        }
+        //-------------------------------------------------------------------------------
         private void M_imgPictureBox_Click(object sender, EventArgs e)
         {
             Close();
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void FormSplash_KeyPress(object sender, KeyPressEventArgs e)
         {
             Close();
         }
     }
 }
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
