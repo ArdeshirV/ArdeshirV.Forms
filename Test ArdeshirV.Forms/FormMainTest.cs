@@ -171,9 +171,11 @@ namespace ArdeshirV.TestForms
 				How are you today?
 				FormMessage arrange and align text and buttons automatically.
 				Are you a professional computer programmer?
-				Here we are talking about Computer programming and cyber security";
-			m_lblMessage.Text = "Dialog Result: " + FormMessage.Show(this, stringX,
-				Text, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning).ToString();
+				Here we are talking about Computer programming and cyber security
+				The test message finished here.";
+			m_lblMessage.Text = "Dialog Result: " + //FormMessage.Show(this, stringX,
+				//Text, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning).ToString();
+				FormMessage.Show("Hello World");
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)

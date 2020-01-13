@@ -6,7 +6,9 @@
 
 using System;
 using System.Drawing;
+using ArdeshirV.Utilities;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using ArdeshirV.Forms.Properties;
 
 #endregion
@@ -18,23 +20,33 @@ namespace ArdeshirV.Forms
 	/// </summary>
 	public partial class FormMessage : FormBase
 	{
+		private Button[] buttonArr = null;
+		//-------------------------------------------------------------------------------	
 		protected FormMessage(IWin32Window windowParent) : base(windowParent)
 		{
 			InitializeComponent();
 			FollowParentFormBase = true;
+			labelMessage.Text = "Message goes here.";
 			StartPosition = FormStartPosition.CenterParent;
+			buttonArr = new Button[] { buttonOne, buttonTwo, buttonThree };
+		}
+		//-------------------------------------------------------------------------------
+		public static DialogResult Show(string Text)
+		{
+			return Show(null, Text, string.Empty,
+			            MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
 		public static DialogResult Show(Form FormOwner, string Text)
 		{
-			return Show(FormOwner, Text, FormOwner.Text, MessageBoxButtons.OK,
-			            MessageBoxIcon.None);
+			return Show(FormOwner, Text, FormOwner.Text,
+			            MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
 		public static DialogResult Show(Form FormOwner, string Text, string Caption)
 		{
-			return Show(FormOwner, Text, Caption, MessageBoxButtons.OK,
-			            MessageBoxIcon.None);
+			return Show(FormOwner, Text, Caption,
+			            MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
 		public static DialogResult Show(Form FormOwner, string Text,
@@ -164,7 +176,21 @@ namespace ArdeshirV.Forms
 					CancelButton = buttonOne;
 					break;
 			}
+			List<Button> buttonActive = new List<Button>();
+			int intGap = buttonOne.Left, intWidth = buttonOne.Width;
+			foreach(Button b in buttonArr) {
+				b.Width = intWidth;
+				if(b.Visible)
+					buttonActive.Add(b);
+			}
 			
+			int intAllButtonsWidth = (intGap + intWidth) * buttonActive.Count;			
+			int intLastLeft = (Width - intAllButtonsWidth / 2);
+			foreach(Button b in buttonActive) {
+				b.Left = intLastLeft;
+				intLastLeft += intGap + intWidth;
+				MessageBox.Show("Yes");
+			}
 		}
 	}
 }
