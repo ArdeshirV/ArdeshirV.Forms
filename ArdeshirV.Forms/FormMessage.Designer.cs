@@ -123,7 +123,7 @@ namespace ArdeshirV.Forms
 			this.labelMessage.BackColor = System.Drawing.Color.Transparent;
 			this.labelMessage.Location = new System.Drawing.Point(63, 12);
 			this.labelMessage.Name = "labelMessage";
-			this.labelMessage.Size = new System.Drawing.Size(178, 52);
+			this.labelMessage.Size = new System.Drawing.Size(178, 51);
 			this.labelMessage.TabIndex = 0;
 			this.labelMessage.Text = "Message";
 			this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,7 +140,7 @@ namespace ArdeshirV.Forms
 			this.tableLayoutPanelBottom.Controls.Add(this.buttonThree, 2, 0);
 			this.tableLayoutPanelBottom.Controls.Add(this.buttonTwo, 1, 0);
 			this.tableLayoutPanelBottom.Controls.Add(this.buttonOne, 0, 0);
-			this.tableLayoutPanelBottom.Location = new System.Drawing.Point(12, 67);
+			this.tableLayoutPanelBottom.Location = new System.Drawing.Point(12, 66);
 			this.tableLayoutPanelBottom.Name = "tableLayoutPanelBottom";
 			this.tableLayoutPanelBottom.RowCount = 1;
 			this.tableLayoutPanelBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -159,7 +159,7 @@ namespace ArdeshirV.Forms
 			this.tableLayoutPanelIcon.Name = "tableLayoutPanelIcon";
 			this.tableLayoutPanelIcon.RowCount = 1;
 			this.tableLayoutPanelIcon.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanelIcon.Size = new System.Drawing.Size(48, 52);
+			this.tableLayoutPanelIcon.Size = new System.Drawing.Size(48, 51);
 			this.tableLayoutPanelIcon.TabIndex = 5;
 			// 
 			// FormMessage
@@ -168,7 +168,7 @@ namespace ArdeshirV.Forms
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonTwo;
-			this.ClientSize = new System.Drawing.Size(253, 108);
+			this.ClientSize = new System.Drawing.Size(253, 107);
 			this.ControlBox = false;
 			this.Controls.Add(this.tableLayoutPanelIcon);
 			this.Controls.Add(this.labelMessage);

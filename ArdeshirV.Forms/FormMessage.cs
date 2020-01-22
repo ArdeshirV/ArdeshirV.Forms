@@ -71,8 +71,9 @@ namespace ArdeshirV.Forms
 			int intMinWidth = form.GetMinimumWidth();
 			if(form.Width < intMinWidth)
 				form.Width = intMinWidth;
-			if(form.Height < 147)
-				form.Height = 147;
+			int intMinHeight = (icon == MessageBoxIcon.None)? 118: 147;
+			if(form.Height < intMinHeight)
+				form.Height = intMinHeight;
 			form.ShowDialog(FormOwner);
 			return form.DialogResult;
 		}
