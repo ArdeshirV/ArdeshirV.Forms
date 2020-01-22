@@ -20,21 +20,13 @@ namespace ArdeshirV.Forms
 	/// </summary>
 	public partial class FormMessage : FormBase
 	{
-		private Button[] buttonArr = null;
-		//-------------------------------------------------------------------------------	
+		private int intKeyCount = 0;
 		protected FormMessage(IWin32Window windowParent) : base(windowParent)
 		{
 			InitializeComponent();
 			FollowParentFormBase = true;
 			labelMessage.Text = "Message goes here.";
 			StartPosition = FormStartPosition.CenterParent;
-			buttonArr = new Button[] { buttonOne, buttonTwo, buttonThree };
-		}
-		//-------------------------------------------------------------------------------
-		public static DialogResult Show(string Text)
-		{
-			return Show(null, Text, string.Empty,
-			            MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
 		public static DialogResult Show(Form FormOwner, string Text)
@@ -69,12 +61,18 @@ namespace ArdeshirV.Forms
 			Rectangle screenRectangle = form.RectangleToScreen(form.ClientRectangle);
 			int titleBarHeight = screenRectangle.Top - form.Top;
 			Size sizeText = TextRenderer.MeasureText(text, font);
+			//form.labelMessage.Size = sizeText;
 			form.Size = new Size(sizeText.Width + (sizeForm.Width - sizeLabel.Width),
 			                     sizeText.Height + (sizeForm.Height - sizeLabel.Height) +
 			                     titleBarHeight);
 			form.StartPosition = (FormOwner ==  null)?
 				FormStartPosition.CenterScreen:
 				FormStartPosition.CenterParent;
+			int intMinWidth = form.GetMinimumWidth();
+			if(form.Width < intMinWidth)
+				form.Width = intMinWidth;
+			if(form.Height < 147)
+				form.Height = 147;
 			form.ShowDialog(FormOwner);
 			return form.DialogResult;
 		}
@@ -85,6 +83,9 @@ namespace ArdeshirV.Forms
 				case MessageBoxIcon.None:
 					pictureBoxIcon.Image = null;
 					pictureBoxIcon.Visible = false;
+					tableLayoutPanelIcon.Visible = false;
+					labelMessage.Location = new Point(12, 12);
+					labelMessage.Width = Width - 24;
 					break;
 				case MessageBoxIcon.Information:
 				//case MessageBoxIcon.Asterisk:
@@ -109,36 +110,40 @@ namespace ArdeshirV.Forms
 		{
 			switch(buttons) {
 				case MessageBoxButtons.OK:
-					buttonOne.Visible = true;
-					buttonOne.Text = "&OK";
-					buttonOne.DialogResult = DialogResult.OK;
-					buttonTwo.Visible = false;
+					intKeyCount = 1;
+					buttonTwo.Visible = true;
+					buttonTwo.Text = "&OK";
+					buttonTwo.DialogResult = DialogResult.OK;
+					buttonOne.Visible = false;
 					buttonThree.Visible = false;
-					AcceptButton = buttonOne;
+					AcceptButton = buttonTwo;
 					break;
 				case MessageBoxButtons.OKCancel:
+					intKeyCount = 2;
 					buttonOne.Visible = true;
 					buttonOne.Text = "&OK";
 					buttonOne.DialogResult = DialogResult.OK;
-					buttonTwo.Visible = true;
-					buttonTwo.Text = "&Cancel";
-					buttonTwo.DialogResult = DialogResult.Cancel;
-					buttonThree.Visible = false;
+					buttonThree.Visible = true;
+					buttonThree.Text = "&Cancel";
+					buttonThree.DialogResult = DialogResult.Cancel;
+					buttonTwo.Visible = false;
 					AcceptButton = buttonOne;
-					CancelButton = buttonTwo;
+					CancelButton = buttonThree;
 					break;
 				case MessageBoxButtons.YesNo:
+					intKeyCount = 2;
 					buttonOne.Visible = true;
 					buttonOne.Text = "&Yes";
 					buttonOne.DialogResult = DialogResult.Yes;
-					buttonTwo.Visible = true;
-					buttonTwo.Text = "&No";
-					buttonTwo.DialogResult = DialogResult.No;
-					buttonThree.Visible = false;
+					buttonThree.Visible = true;
+					buttonThree.Text = "&No";
+					buttonThree.DialogResult = DialogResult.No;
+					buttonTwo.Visible = false;
 					AcceptButton = buttonOne;
-					CancelButton = buttonTwo;
+					CancelButton = buttonThree;
 					break;
 				case MessageBoxButtons.YesNoCancel:
+					intKeyCount = 3;
 					buttonOne.Visible = true;
 					buttonOne.Text = "&Yes";
 					buttonOne.DialogResult = DialogResult.Yes;
@@ -152,17 +157,19 @@ namespace ArdeshirV.Forms
 					CancelButton = buttonThree;
 					break;
 				case MessageBoxButtons.RetryCancel:
+					intKeyCount = 2;
 					buttonOne.Visible = true;
 					buttonOne.Text = "&Retry";
 					buttonOne.DialogResult = DialogResult.Retry;
-					buttonTwo.Visible = true;
-					buttonTwo.Text = "&Cancel";
-					buttonTwo.DialogResult = DialogResult.Retry;
-					buttonThree.Visible = false;
+					buttonThree.Visible = true;
+					buttonThree.Text = "&Cancel";
+					buttonThree.DialogResult = DialogResult.Retry;
+					buttonTwo.Visible = false;
 					AcceptButton = buttonOne;
-					CancelButton = buttonTwo;
+					CancelButton = buttonThree;
 					break;
 				case MessageBoxButtons.AbortRetryIgnore:
+					intKeyCount = 3;
 					buttonOne.Visible = true;
 					buttonOne.Text = "&Abort";
 					buttonOne.DialogResult = DialogResult.Abort;
@@ -176,21 +183,20 @@ namespace ArdeshirV.Forms
 					CancelButton = buttonOne;
 					break;
 			}
-			List<Button> buttonActive = new List<Button>();
-			int intGap = buttonOne.Left, intWidth = buttonOne.Width;
-			foreach(Button b in buttonArr) {
-				b.Width = intWidth;
-				if(b.Visible)
-					buttonActive.Add(b);
-			}
 			
-			int intAllButtonsWidth = (intGap + intWidth) * buttonActive.Count;			
-			int intLastLeft = (Width - intAllButtonsWidth / 2);
-			foreach(Button b in buttonActive) {
-				b.Left = intLastLeft;
-				intLastLeft += intGap + intWidth;
-				MessageBox.Show("Yes");
-			}
+			if(intKeyCount == 2)
+				HideCenterButton();
+		}
+		//-------------------------------------------------------------------------------
+		private int GetMinimumWidth()
+		{
+			int intWidth = 269, intButtonWidth = 70;
+			return intWidth - intButtonWidth * (3 - intKeyCount);
+		}
+		//-------------------------------------------------------------------------------
+		private void HideCenterButton() {
+			tableLayoutPanelBottom.ColumnStyles[1].SizeType = SizeType.Percent;
+			tableLayoutPanelBottom.ColumnStyles[1].Width = 0;
 		}
 	}
 }

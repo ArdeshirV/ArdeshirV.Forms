@@ -165,17 +165,14 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
-			const string stringX = 
+			const string stringX =
 				@"lorem ipsum...
 				It's a testing passage to show you FormMessage ability.
-				How are you today?
-				FormMessage arrange and align text and buttons automatically.
-				Are you a professional computer programmer?
-				Here we are talking about Computer programming and cyber security
-				The test message finished here.";
-			m_lblMessage.Text = "Dialog Result: " + //FormMessage.Show(this, stringX,
-				//Text, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning).ToString();
-				FormMessage.Show("Hello World");
+				FormMessage arrange and align text and buttons automatically.";
+			
+			m_lblMessage.Text = "Dialog Result: " +
+				FormMessage.Show(this, stringX, Text, MessageBoxButtons.YesNoCancel,
+				                 MessageBoxIcon.Information).ToString();
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
