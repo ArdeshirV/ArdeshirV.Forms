@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany ("ArdeshirV")]
 [assembly: AssemblyDescription ("ArdeshirV.Forms provides everyday Windows " +
                                 "forms like FormBase, FormAbout, FormErrorHandl" +
-                                "er and FormSplash.")]
+                                "er, FormInput, FormMessage and FormSplash.")]
 [assembly: AssemblyCopyright ("Copyright© 2002-2020 ArdeshirV@protonmail.com," +
                               " Licensed under LGPLv3+")]
 // Setting ComVisible to false makes the types in this assembly not visible 

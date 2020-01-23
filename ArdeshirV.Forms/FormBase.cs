@@ -1,17 +1,18 @@
 #region Header
 
-// Special Form Project
-// Special Form.cs : Provides Special Form
+// ArdeshirV.Forms Project
+// FormBase.cs : Provides FormBase with extended abilities
 // Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
 
 #endregion
-//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
     /// <summary>
@@ -79,7 +80,7 @@ namespace ArdeshirV.Forms
         private LinearGradientMode m_lgmInactiveBackgroundActiveMode = LinearGradientMode.Vertical;
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Constructor
 
         /// <summary>
@@ -128,12 +129,14 @@ namespace ArdeshirV.Forms
                 for (int i = 0; i < l_intShrinkWidthSize; i++)
                 {
                     if (Width == intNewWidth ||
-                        (intInc > 0 && MaximumSize != Size.Empty && Width >= MaximumSize.Width) ||
-                        (intInc < 0 && MinimumSize != Size.Empty && Width <= MinimumSize.Width))
+                        (intInc > 0 && MaximumSize != Size.Empty &&
+                	     Width >= MaximumSize.Width) ||
+                        (intInc < 0 && MinimumSize != Size.Empty &&
+                	     Width <= MinimumSize.Width))
                         break;
 
                     Application.DoEvents();
-                    System.Threading.Thread.Sleep(5);
+                    Thread.Sleep(5);
                     Application.DoEvents();
                     Left -= intIncHalf;
                     Width += intInc;
@@ -145,7 +148,7 @@ namespace ArdeshirV.Forms
             else
             	Width = intNewWidth;
         }
-        //------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public void ShrinkHeightByTime(int intNewHeight)
         {
             if (WindowState == FormWindowState.Normal)
@@ -165,12 +168,14 @@ namespace ArdeshirV.Forms
                 for (int i = 0; i < l_intShrinkHeightSize; i++)
                 {
                     if (Height == intNewHeight ||
-                        (intInc > 0 && MaximumSize != Size.Empty && Height >= MaximumSize.Height) ||
-                        (intInc < 0 && MinimumSize != Size.Empty && Height <= MinimumSize.Height))
+                        (intInc > 0 && MaximumSize != Size.Empty &&
+                	     Height >= MaximumSize.Height) ||
+                        (intInc < 0 && MinimumSize != Size.Empty &&
+                	     Height <= MinimumSize.Height))
                         break;
 
                     Application.DoEvents();
-                    System.Threading.Thread.Sleep(10);
+                    Thread.Sleep(10);
                     Application.DoEvents();
                     Top -= intIncHalf;
                     Height += intInc;
@@ -185,7 +190,7 @@ namespace ArdeshirV.Forms
             else
                 Height = intNewHeight;
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public void ShrinkWidth(int intNewWidth)
         {
             if (WindowState == FormWindowState.Normal)
@@ -201,7 +206,7 @@ namespace ArdeshirV.Forms
             else
                 Width = intNewWidth;
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public void ShrinkHeight(int intNewHeight)
         {
             if (WindowState == FormWindowState.Normal)
@@ -217,7 +222,7 @@ namespace ArdeshirV.Forms
             else
                 Height = intNewHeight;
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public void FollowFormBase(Form frmMasterFormBase)
         {
         	FormBase form = frmMasterFormBase as FormBase;
@@ -236,7 +241,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region External Methods
 
         // I removed this code to keep my code platform independent
@@ -251,7 +256,7 @@ namespace ArdeshirV.Forms
         //}
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Overrided functions
 
         protected override void OnLoad(EventArgs e)
@@ -270,21 +275,21 @@ namespace ArdeshirV.Forms
             if(m_imgSplash is Bitmap)
             	FormSplash.Show(this, m_imgSplash);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
             m_blnActivated = true;
             Invalidate(true);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnDeactivate(EventArgs e)
         {
             base.OnDeactivate(e);
             m_blnActivated = false;
             Invalidate(true);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -309,7 +314,7 @@ namespace ArdeshirV.Forms
                 }
             }
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnClosed(EventArgs e)
         {
             if (m_blnChangingOpacityAbility)
@@ -318,36 +323,36 @@ namespace ArdeshirV.Forms
                 {
                     Opacity -= 0.1;
                     Application.DoEvents();
-                    System.Threading.Thread.Sleep(90);
+                    Thread.Sleep(90);
                 }
             }
 
             base.OnClosed(e);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnResize(EventArgs e)
         {
             Invalidate(true);
             base.OnResize(e);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-            if (m_blnBackgroundGradientColor && ClientRectangle.Width > 0 && ClientRectangle.Height > 0)
+            if (m_blnBackgroundGradientColor &&
+        	    ClientRectangle.Width > 0 && ClientRectangle.Height > 0)
             {
                 LinearGradientBrush l_brsGradient;
 
                 if(m_blnActivated)
-                    l_brsGradient = new LinearGradientBrush(ClientRectangle, m_clrStart, m_clrEnd, m_lgmBackgroundActiveMode);
+                    l_brsGradient = new LinearGradientBrush(ClientRectangle,
+                		m_clrStart, m_clrEnd, m_lgmBackgroundActiveMode);
                 else
-                    l_brsGradient = new LinearGradientBrush(ClientRectangle, m_clrStartInactive, m_clrEndInactive, m_lgmBackgroundActiveMode);
+                    l_brsGradient = new LinearGradientBrush(ClientRectangle,
+                		m_clrStartInactive, m_clrEndInactive, m_lgmBackgroundActiveMode);
 
-                try
-                {
+                try {
                     e.Graphics.FillRectangle(l_brsGradient, ClientRectangle);
-                }
-                finally
-                {
+                } finally {
                     l_brsGradient.Dispose();
                 }
             }
@@ -356,47 +361,47 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Utility Functions
 
         private void InitializeComponent() { }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private bool IsMovableControl(Control c)
         {
         	return c is Label || c is LinkLabel || c is TabPage || c is TabControl ||
 				c is Panel || c is PictureBox || c is ProgressBar || c is GroupBox ||
-				c is FlowLayoutPanel || c is TableLayoutPanel || c is ToolStripContainer ||
-				c is ToolStripContentPanel || c is RadioButton || c is CheckedListBox ||
-    			c is CheckBox;
+				c is FlowLayoutPanel || c is TableLayoutPanel || 
+        		c is ToolStripContainer || c is ToolStripContentPanel ||
+        		c is RadioButton || c is CheckedListBox || c is CheckBox;
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public void AddSpecialMouseEvent(Control ctlDest)
         {
             AddMouseEvents(ctlDest);
             foreach (Control c in ctlDest.Controls) {
             	if (IsMovableControl(c)) {
                     AddSpecialMouseEvent(c);
-        	    }
+            	}
             }
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         public void RemoveSpecialMouseEvent(Control ctlDest)
         {
             RemoveMouseEvents(ctlDest);
             foreach (Control c in ctlDest.Controls) {
             	if (IsMovableControl(c)) {
                     RemoveSpecialMouseEvent(c);
-        	    }
+            	}
             }
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void RemoveMouseEvents(Control ctlDest)
         {
             ctlDest.MouseUp -= new MouseEventHandler(OnMouseUp_Event);
             ctlDest.MouseMove -= new MouseEventHandler(OnMouseMove_Event);
             ctlDest.MouseDown -= new MouseEventHandler(OnMouseDown_Event);
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void AddMouseEvents(Control ctlDest)
         {
             ctlDest.MouseUp += new MouseEventHandler(OnMouseUp_Event);
@@ -405,7 +410,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Event Handlers
 
         private void OnMouseDown_Event(object sender, MouseEventArgs e)
@@ -413,23 +418,22 @@ namespace ArdeshirV.Forms
             m_blnMouseDown = true;
             m_pntLastLocation = e.Location;
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void OnMouseMove_Event(object sender, MouseEventArgs e)
         {
-            if (m_blnMoveWithMouseAbility && m_blnMouseDown)
-            {
+            if (m_blnMoveWithMouseAbility && m_blnMouseDown) {
                 Top += e.Y - m_pntLastLocation.Y;
                 Left += e.X - m_pntLastLocation.X;
             }
         }
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         private void OnMouseUp_Event(object sender, MouseEventArgs e)
         {
             m_blnMouseDown = false;
         }
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Properties
 
         /// <summary>
@@ -691,7 +695,7 @@ namespace ArdeshirV.Forms
         }
 
         #endregion
-        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         #region Events
 
         public event EventHandler OnBackgroundGradientColorChange
@@ -757,4 +761,4 @@ namespace ArdeshirV.Forms
         #endregion
     }
 }
-//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------

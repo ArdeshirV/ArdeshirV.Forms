@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("ArdeshirV.Forms Test")]
+[assembly: AssemblyTitle ("ArdeshirV.TestForms")]
 [assembly: AssemblyDescription ("This is a test application that shows how to use ArdeshirV.Forms")]
 [assembly: AssemblyCompany ("ArdeshirV")]
-[assembly: AssemblyProduct ("ArdeshirV.Forms Test")]
+[assembly: AssemblyProduct ("ArdeshirV.TestForms")]
 [assembly: AssemblyCulture ("")]
 [assembly: AssemblyCopyright ("Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+")]
 [assembly: AssemblyTrademark ("ArdeshirV")]

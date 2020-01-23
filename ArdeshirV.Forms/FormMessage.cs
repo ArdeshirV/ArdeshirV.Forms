@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using ArdeshirV.Forms.Properties;
 
 #endregion
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
 {
 	/// <summary>
@@ -20,33 +20,83 @@ namespace ArdeshirV.Forms
 	/// </summary>
 	public partial class FormMessage : FormBase
 	{
+		#region Variables
+		
 		private int intKeyCount = 0;
+		
+		#endregion Variables
+		//-------------------------------------------------------------------------------
+		#region Constructor
+		
 		protected FormMessage(IWin32Window windowParent) : base(windowParent)
 		{
 			InitializeComponent();
 			FollowParentFormBase = true;
 			labelMessage.Text = "Message goes here.";
-			StartPosition = FormStartPosition.CenterParent;
+			
+			if(windowParent is Form)
+				StartPosition = FormStartPosition.CenterParent;
+			else
+				StartPosition = FormStartPosition.CenterScreen;
 		}
+		
+		#endregion Constructor
 		//-------------------------------------------------------------------------------
-		public static DialogResult Show(Form FormOwner, string Text)
+		/// <summary>
+		/// Displays a message box with the specified text, caption, buttons and icon.
+		/// </summary>
+		/// <param name="FormOwner">Owner form</param>
+		/// <param name="text">The text to display in the FormMessage.</param>
+		/// <returns>One of DialogResult values</returns>
+		public static DialogResult Show(Form FormOwner, string text)
 		{
-			return Show(FormOwner, Text, FormOwner.Text,
+			string Caption = (FormOwner != null)? FormOwner.Text: string.Empty;
+			return Show(FormOwner, text, Caption, 
 			            MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
-		public static DialogResult Show(Form FormOwner, string Text, string Caption)
+		/// <summary>
+		/// Displays a message box with the specified text, caption, buttons and icon.
+		/// </summary>
+		/// <param name="FormOwner">Owner form</param>
+		/// <param name="text">The text to display in the FormMessage.</param>
+		/// <param name="Caption">The text to display in
+		/// the title bar of FormMessage.</param>
+		/// <returns>One of DialogResult values</returns>
+		public static DialogResult Show(Form FormOwner, string text, string Caption)
 		{
-			return Show(FormOwner, Text, Caption,
+			return Show(FormOwner, text, Caption,
 			            MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
-		public static DialogResult Show(Form FormOwner, string Text,
+		/// <summary>
+		/// Displays a message box with the specified text, caption, buttons and icon.
+		/// </summary>
+		/// <param name="FormOwner">Owner form</param>
+		/// <param name="text">The text to display in the FormMessage.</param>
+		/// <param name="Caption">The text to display in
+		/// the title bar of FormMessage.</param>
+		/// <param name="buttons">One of the MessageBoxButtons values that
+		/// specifies which buttons to display in the message box.</param>
+		/// <returns>One of DialogResult values</returns>
+		public static DialogResult Show(Form FormOwner, string text,
 		    string Caption, MessageBoxButtons buttons)
 		{
-			return Show(FormOwner, Text, Caption, buttons, MessageBoxIcon.None);
+			return Show(FormOwner, text, Caption, buttons, MessageBoxIcon.None);
 		}
 		//-------------------------------------------------------------------------------
+		/// <summary>
+		/// Displays a message box with the specified text, caption, buttons and icon.
+		/// </summary>
+		/// <param name="FormOwner">Owner form</param>
+		/// <param name="text">The text to display in the FormMessage.</param>
+		/// <param name="Caption">The text to display in
+		/// the title bar of FormMessage.</param>
+		/// <param name="buttons">One of the MessageBoxButtons values that
+		/// specifies which buttons to display in the message box.</param>
+		/// <param name="icon"> One of the MessageBoxIcon values that
+		/// specifies which icon to display in the message box.</param>
+		/// <returns>One of DialogResult values</returns>
 		public static DialogResult Show(Form FormOwner, string text,
 			string Caption, MessageBoxButtons buttons, MessageBoxIcon icon)
 		{
@@ -74,8 +124,7 @@ namespace ArdeshirV.Forms
 			int intMinHeight = (icon == MessageBoxIcon.None)? 118: 147;
 			if(form.Height < intMinHeight)
 				form.Height = intMinHeight;
-			form.ShowDialog(FormOwner);
-			return form.DialogResult;
+			return form.ShowDialog(FormOwner);
 		}
 		//-------------------------------------------------------------------------------
 		private void SetIcon(MessageBoxIcon icon) 

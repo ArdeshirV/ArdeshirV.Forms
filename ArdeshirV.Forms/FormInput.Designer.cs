@@ -18,10 +18,10 @@ namespace ArdeshirV.Forms
 	{
 		#region Variables
 
-		private Label label1;
-		private Button button1;
-		private Button button2;
-		private TextBox textBox1;
+		private Label labelInputMessage;
+		private Button buttonCancel;
+		private Button buttonOK;
+		private TextBox textBoxInput;
 		
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
@@ -57,59 +57,78 @@ namespace ArdeshirV.Forms
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.button1 = new Button();
-			this.button2 = new Button();
-			this.label1 = new Label();
-			this.textBox1 = new TextBox();
+			this.buttonCancel = new System.Windows.Forms.Button();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.labelInputMessage = new System.Windows.Forms.Label();
+			this.textBoxInput = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
-			// button1
+			// buttonCancel
 			// 
-			this.button1.Location = new System.Drawing.Point(297, 126);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
+			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.buttonCancel.Location = new System.Drawing.Point(172, 59);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 0;
+			this.buttonCancel.Text = "&Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// buttonOK
 			// 
-			this.button2.Location = new System.Drawing.Point(216, 126);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "button2";
-			this.button2.UseVisualStyleBackColor = true;
+			this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.buttonOK.Location = new System.Drawing.Point(91, 59);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 1;
+			this.buttonOK.Text = "&OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
 			// 
-			// label1
+			// labelInputMessage
 			// 
-			this.label1.Location = new System.Drawing.Point(13, 9);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(359, 19);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "label1";
+			this.labelInputMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.labelInputMessage.BackColor = System.Drawing.Color.Transparent;
+			this.labelInputMessage.Location = new System.Drawing.Point(12, 9);
+			this.labelInputMessage.Name = "labelInputMessage";
+			this.labelInputMessage.Size = new System.Drawing.Size(235, 19);
+			this.labelInputMessage.TabIndex = 2;
+			this.labelInputMessage.Text = "Enter Input Value: ";
+			this.labelInputMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// textBox1
+			// textBoxInput
 			// 
-			this.textBox1.Location = new System.Drawing.Point(13, 31);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(359, 89);
-			this.textBox1.TabIndex = 3;
+			this.textBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxInput.Location = new System.Drawing.Point(12, 30);
+			this.textBoxInput.Multiline = true;
+			this.textBoxInput.Name = "textBoxInput";
+			this.textBoxInput.Size = new System.Drawing.Size(235, 23);
+			this.textBoxInput.TabIndex = 3;
+			this.textBoxInput.Text = "Input value goes here";
 			// 
 			// FormInput
 			// 
+			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(384, 161);
-			this.Controls.Add(this.textBox1);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.buttonCancel;
+			this.ClientSize = new System.Drawing.Size(259, 94);
+			this.ControlBox = false;
+			this.Controls.Add(this.textBoxInput);
+			this.Controls.Add(this.labelInputMessage);
+			this.Controls.Add(this.buttonOK);
+			this.Controls.Add(this.buttonCancel);
+			this.MinimumSize = new System.Drawing.Size(197, 133);
 			this.Name = "FormInput";
-			this.Text = "FormInput";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			this.Text = "Input";
+			this.Shown += new System.EventHandler(this.FormInputShown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		
 		#endregion InitializeComponent

@@ -8,7 +8,6 @@ using ArdeshirV.Forms;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
-using AFP = ArdeshirV.Forms.Properties;
 
 #endregion
 //---------------------------------------------------------------------------------------
@@ -122,6 +121,7 @@ namespace ArdeshirV.TestForms
 				//, new Copyright(Text, "2.0.0", "Company", "Copyleft", "Test", ImageAppLogo)
 				// but I prefer the first professional constructor and I think it's better
 				// to specify details about your component in your AssemblyInfo.cs file not here
+				// You can use the first kind of constructor only if you set strongname with key
 			};
 			
 			License[] licenses = new License[] {
@@ -158,11 +158,6 @@ namespace ArdeshirV.TestForms
             }
         }
         //-------------------------------------------------------------------------------
-        private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)
-        {
-            UpdateMessageBar();
-        }
-        //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
 			const string stringX =
@@ -177,9 +172,16 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
 		{
-			//string stringResult;
-			FormInput.Show(this);//this, "Message", out stringResult);
+			string stringValue;
+			if(FormInput.Show(this, out stringValue,
+			                  "Enter input value:", Text, Size) == DialogResult.OK)
+				m_lblMessage.Text = stringValue;
 		}
+        //-------------------------------------------------------------------------------
+        private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)
+        {
+            UpdateMessageBar();
+        }
     }
 }
 //---------------------------------------------------------------------------------------
