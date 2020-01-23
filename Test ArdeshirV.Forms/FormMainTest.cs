@@ -139,11 +139,6 @@ namespace ArdeshirV.TestForms
         	FormAbout.Show(data);
         }
         //-------------------------------------------------------------------------------
-        private void UpdateMessageBar()
-        {
-            m_lblMessage.Text = string.Format("W:{0}, H:{1}", Width, Height);
-        }
-        //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
         	const int delay = 3000;
@@ -170,13 +165,26 @@ namespace ArdeshirV.TestForms
 				                 MessageBoxIcon.Information).ToString();
 		}
         //-------------------------------------------------------------------------------
+		private bool IsValidInput(string strInput, out string stringErrMsg) {
+			double result;
+			stringErrMsg = "Enter a valid floating point number.";
+			return double.TryParse(strInput, out result);
+		}
+        //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
 		{
 			string stringValue;
-			if(FormInput.Show(this, out stringValue,
-			                  "Enter input value:", Text, Size) == DialogResult.OK)
+			const string stringInputMsg = "Enter floating point number: ";
+			DialogResult result = FormInput.Show(this, out stringValue, IsValidInput, 
+			                                     stringInputMsg, Text, Size);
+			if(result == DialogResult.OK)
 				m_lblMessage.Text = stringValue;
 		}
+        //-------------------------------------------------------------------------------
+        private void UpdateMessageBar()
+        {
+            m_lblMessage.Text = string.Format("W:{0}, H:{1}", Width, Height);
+        }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_Resize(object sender, EventArgs e)
         {
