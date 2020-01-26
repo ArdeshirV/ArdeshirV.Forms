@@ -35,7 +35,7 @@ namespace ArdeshirV.Forms
 		private TextBox textBoxStackTrack;
         private readonly string strFileLine;
 		private bool m_blnIsShrinked = false;
-        private static bool s_blnIsExists = false;
+        //private static bool s_blnIsExists = false;
         private System.ComponentModel.IContainer components;
 
         #endregion
@@ -161,10 +161,10 @@ namespace ArdeshirV.Forms
 		/// <param name="e"></param>
 		private void frmAbout_Load(object sender, System.EventArgs e)
 		{
-			if(s_blnIsExists)
-				Close();
-			else
-				s_blnIsExists = true;
+			//if(s_blnIsExists)
+			//	Close();
+			//else
+			//	s_blnIsExists = true;
 		}
 		//-------------------------------------------------------------------------------
 		/// <summary>
@@ -229,13 +229,13 @@ namespace ArdeshirV.Forms
 		//-------------------------------------------------------------------------------
         private void FormErrorHandler_FormClosed(object sender, FormClosedEventArgs e)
         {
-            s_blnIsExists = false;
+            //s_blnIsExists = false;
         }
         //---------------------------------------------------------------------
         private void ButtonInnerExp_Click(object sender, EventArgs e)
         {
-            //if(exp.InnerException != null)
-                FormErrorHandler.Show(ParentForm, exp.InnerException, m_strLink);
+            if(exp.InnerException != null)
+                FormErrorHandler.Show(this, exp.InnerException, m_strLink);
         }
         //---------------------------------------------------------------------
 		void buttonCopy_Click(object sender, EventArgs e)

@@ -87,7 +87,7 @@ namespace ArdeshirV.TestForms
         		string s = null;
         		int i = s.Length;
         	} catch(Exception exp) {
-        		throw new Exception("Can not retrive null string lenght.", exp);
+        		throw new Exception("Can not retrieve null string length.", exp);
         	}
         }
         //-------------------------------------------------------------------------------

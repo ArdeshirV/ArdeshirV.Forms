@@ -12,6 +12,7 @@ using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Imaging;
+using ArdeshirV.Forms.Properties;
 using System.Collections.Generic;
 using qr=ArdeshirV.Utilities.QrCode;
 
@@ -66,6 +67,7 @@ namespace ArdeshirV.Forms
         private ContextMenuStrip contextMenuStripCopyToClipboard;
         private const string _stringQRTip = "Right click to save donation address as QR code";
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
+        private System.Windows.Forms.Button button1;
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -73,6 +75,7 @@ namespace ArdeshirV.Forms
 
         protected FormAbout(FormAboutData data) : base(data.Owner)
         {
+        	s_blnIsExists = true;
             InitializeComponent();
             InitFormAbout(data);
 
@@ -122,7 +125,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         public static FormAbout Show(FormAboutData Data)
         {
-        	return new FormAbout(Data);
+        	return (s_blnIsExists)? null: new FormAbout(Data);
         }
         //-------------------------------------------------------------------------------
         private void UpdateTabControlBackColor(bool boolFormIsActive)
@@ -360,7 +363,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
 		private Image GetQRCodeImage(string Data)
 		{
-			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(4, 1);
+			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.Low).ToBitmap(4, 1);
 		}
         //-------------------------------------------------------------------------------
         private void m_lnkMalieTo_LinkClicked(object sender,
@@ -410,8 +413,8 @@ namespace ArdeshirV.Forms
 				sfd.OverwritePrompt = true;
 				sfd.CheckPathExists = true;
 				sfd.FileName = string.Format("{0} {1}",
-				                             _donationSelected.Name,
-				                             _donationSelected.Address).Replace(':', ' ');
+                     _donationSelected.Name,
+                     _donationSelected.Address).Replace(':', ' ');
 				
 				if(sfd.ShowDialog(this) == DialogResult.OK)
 					pictureBoxDonation.Image.Save(sfd.FileName, ImageFormat.Png);
@@ -449,25 +452,12 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         private void btnOk_Click(object sender, System.EventArgs e)
         {
-            Close();
+        	DialogResult = DialogResult.OK;
         }
         //-------------------------------------------------------------------------------
         private void btnSysteminfo_Click(object sender, System.EventArgs e)
         {
             ShowSystemInfoDialog();
-        }
-        //-------------------------------------------------------------------------------
-        private void frmAbout_Load(object sender, System.EventArgs e)
-        {
-            if (s_blnIsExists)
-                Close();
-            else
-                s_blnIsExists = true;
-        }
-        //-------------------------------------------------------------------------------
-        private void FormAbout_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            s_blnIsExists = false;
         }
 
         #endregion
@@ -498,6 +488,17 @@ namespace ArdeshirV.Forms
             base.Dispose(disposing);
         }
 
+        #endregion
+        //-------------------------------------------------------------------------------
+        #region Properties
+
+        public static bool IsExists
+        {
+        	get {
+        		return s_blnIsExists;
+        	}
+        }
+        
         #endregion
         //-------------------------------------------------------------------------------
         #region Windows Form Designer generated code
@@ -542,6 +543,7 @@ namespace ArdeshirV.Forms
         	this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.linkLabelURL = new System.Windows.Forms.LinkLabel();
+        	this.button1 = new System.Windows.Forms.Button();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
         	this.contextMenuStripDonation.SuspendLayout();
         	this.tabControl.SuspendLayout();
@@ -957,10 +959,21 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	this.linkLabelURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
         	// 
+        	// button1
+        	// 
+        	this.button1.Location = new System.Drawing.Point(541, 23);
+        	this.button1.Name = "button1";
+        	this.button1.Size = new System.Drawing.Size(75, 23);
+        	this.button1.TabIndex = 6;
+        	this.button1.Text = "Do";
+        	this.button1.UseVisualStyleBackColor = true;
+        	//this.button1.Click += new System.EventHandler(this.Button1Click);
+        	// 
         	// FormAbout
         	// 
         	this.ClientSize = new System.Drawing.Size(634, 262);
         	this.ControlBox = false;
+        	this.Controls.Add(this.button1);
         	this.Controls.Add(this.linkLabelURL);
         	this.Controls.Add(this.m_lblApplicationName);
         	this.Controls.Add(this.tabControl);
@@ -976,8 +989,8 @@ namespace ArdeshirV.Forms
         	this.OnBackgroundGradientColorChange += new System.EventHandler(this.FormAboutOnBackgroundGradientColorChange);
         	this.Activated += new System.EventHandler(this.FormAboutActivated);
         	this.Deactivate += new System.EventHandler(this.FormAboutDeactivate);
-        	this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
-        	this.Load += new System.EventHandler(this.frmAbout_Load);
+        	//this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
+        	//this.Load += new System.EventHandler(this.frmAbout_Load);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).EndInit();
         	this.contextMenuStripDonation.ResumeLayout(false);
         	this.tabControl.ResumeLayout(false);

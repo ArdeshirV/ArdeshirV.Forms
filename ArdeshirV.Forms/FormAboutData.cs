@@ -218,7 +218,7 @@ namespace ArdeshirV.Forms
 		public string AppName
 		{
 			get
-			{
+			{System.Collections.Hashtable h = new System.Collections.Hashtable();
 				string result = string.Empty;
 				
 				if(Owner != null)
