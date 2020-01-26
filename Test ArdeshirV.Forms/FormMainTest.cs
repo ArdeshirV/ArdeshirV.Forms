@@ -15,10 +15,17 @@ namespace ArdeshirV.TestForms
 {
     public partial class FormMainTest : FormBase
     {
+    	#region Variables 
+    	
         private int intIncH = 100;
         private int intIncW = 150;
         private const string _stringEmail = "ArdeshirV@protonmail.com";
-        private const string _stringWebsite = "https://ardeshirv.github.io/ArdeshirV.Forms";
+        private const string _stringWebsite =
+        	"https://ardeshirv.github.io/ArdeshirV.Forms";
+        private const string _stringWebsiteErr =
+        	"https://github.com/ArdeshirV/ArdeshirV.Forms/issues/new";
+        
+    	#endregion Variables
         //-------------------------------------------------------------------------------
         public FormMainTest()
         {
@@ -74,13 +81,22 @@ namespace ArdeshirV.TestForms
             f.Show(this);
         }
         //-------------------------------------------------------------------------------
+        private void CreateError()
+        {
+        	try {
+        		string s = null;
+        		int i = s.Length;
+        	} catch(Exception exp) {
+        		throw new Exception("Can not retrive null string lenght.", exp);
+        	}
+        }
+        //-------------------------------------------------------------------------------
         private void buttonErrorHandlerForm_Click(object sender, EventArgs e)
         {
             try {
-        		// Create an error to test FormErrorHandler form
-            	File.Open("some-file.ext", FileMode.Open);  // Throw an exception
+        		CreateError();  // Throw an error to test FormErrorHandler form
             } catch (Exception exp) {
-                FormErrorHandler.Show(exp, this, _stringWebsite);
+                FormErrorHandler.Show(this, exp, _stringWebsiteErr);
             }
         }
         //-------------------------------------------------------------------------------
@@ -155,19 +171,19 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
 		{
-			const string stringX =
+			const string strMsg =
 				@"lorem ipsum...
 				It's a testing passage to show you FormMessage ability.
 				FormMessage arrange and align text and buttons automatically.";
 			
 			m_lblMessage.Text = "Dialog Result: " +
-				FormMessage.Show(this, stringX, Text, MessageBoxButtons.YesNoCancel,
+				FormMessage.Show(this, strMsg, Text, MessageBoxButtons.YesNoCancel,
 				                 MessageBoxIcon.Information).ToString();
 		}
         //-------------------------------------------------------------------------------
 		private bool IsValidInput(string strInput, out string stringErrMsg) {
 			double result;
-			stringErrMsg = "Enter a valid floating point number.";
+			stringErrMsg = "Please enter a valid floating point number.";
 			return double.TryParse(strInput, out result);
 		}
         //-------------------------------------------------------------------------------
@@ -175,7 +191,7 @@ namespace ArdeshirV.TestForms
 		{
 			string stringValue;
 			const string stringInputMsg = "Enter floating point number: ";
-			DialogResult result = FormInput.Show(this, out stringValue, IsValidInput, 
+			DialogResult result = FormInput.Show(this, out stringValue, IsValidInput,
 			                                     stringInputMsg, Text, Size);
 			if(result == DialogResult.OK)
 				m_lblMessage.Text = stringValue;

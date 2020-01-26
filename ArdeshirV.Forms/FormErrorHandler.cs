@@ -31,6 +31,7 @@ namespace ArdeshirV.Forms
         private TextBox textBoxMessage;
         private const int intMax = 450;
         private const int intMin = 188;
+        private IWin32Window hwndOwner; 
 		private TextBox textBoxStackTrack;
         private readonly string strFileLine;
 		private bool m_blnIsShrinked = false;
@@ -45,14 +46,15 @@ namespace ArdeshirV.Forms
         /// Constructor.
         /// </summary>
         /// <param name="expException">Exception</param>
-        /// <param name="frmOwner">Form parent</param>
+        /// <param name="wOwner">Form parent</param>
         /// <param name="strLinkSite">Link value</param>
         protected FormErrorHandler(Exception expException,
-                                   Form frmOwner, string strLinkSite) : base(frmOwner)
+                                   IWin32Window wOwner, string strLinkSite) : base(wOwner)
         {
             InitializeComponent();
             Opacity = 1.0;
             Height = intMin;
+            hwndOwner = wOwner;
             exp = expException;
             m_strLink = strLinkSite;
             textBoxMessage.SelectedText = "";
@@ -60,18 +62,30 @@ namespace ArdeshirV.Forms
             //textBoxMessage.Text = expException.Message;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             StartPosition = FormStartPosition.CenterParent;
-            Text = string.Format("{0} - Error", frmOwner.Text);
+            //textBoxMessage.BackColor = Color.LightGray;
             string strTrack = textBoxStackTrack.Text = expException.StackTrace;
+
+            if(wOwner != null && wOwner is Form) {
+            	Form form = wOwner as Form;
+            	Text = string.Format("{0} - Error", form.Text);
+            }
+            else
+            	Text = "Error";
             
             const string strLine = ":line";
-            if(strTrack.Contains(strLine))
-            {
-            	int intSlashIndex = strTrack.LastIndexOf("\\",
-            		StringComparison.InvariantCulture);
-            	
-            	if(intSlashIndex > 0)
-            		strFileLine = strTrack.Substring(intSlashIndex + 1);
-			}
+            string strNewLine = Environment.NewLine;
+            string[] stringArrTrackLines = strTrack.Split(new string[]{strNewLine},
+				StringSplitOptions.RemoveEmptyEntries);
+            
+            foreach(string line in stringArrTrackLines) {
+            	if(line.IndexOf(strLine, StringComparison.InvariantCulture) >= 0) {
+            		int intLastP1 = line.LastIndexOf("\\", StringComparison.InvariantCulture);
+            		int intLastP2 = line.LastIndexOf("/", StringComparison.InvariantCulture);
+            		int intLastP = 1 + ((intLastP1 > intLastP2)? intLastP1: intLastP2);
+            		strFileLine = line.Substring(intLastP);
+            		break;
+            	}
+            }
             
             string strMsgTitle = string.Empty;
             
@@ -85,14 +99,14 @@ namespace ArdeshirV.Forms
 			if (string.IsNullOrEmpty(m_strLink))
 				m_lnkLink.Visible = false;
 			else {
-	        	if(frmOwner != null)
-	        		m_lnkLink.Text = m_strLink;
+	        	//if(wOwner != null)
+	        		//m_lnkLink.Text = m_strLink;
 	        			//string.Format("Visit {0} on the web", frmOwner.Text);
-	        	else
+	        	//else
 	            	m_lnkLink.Text = m_strLink;
 			}
 
-            ShowDialog(frmOwner);
+            ShowDialog(wOwner);
 		}
 
 		#endregion
@@ -102,17 +116,15 @@ namespace ArdeshirV.Forms
         /// <summary>
         /// Shows error handler form
         /// </summary>
-        public static FormErrorHandler Show(Exception exp,
-                                            Form frmOwner, string strLinkSite)
-        {
+        public static FormErrorHandler Show(Form frmOwner,
+			Exception exp, string strLinkSite) {
             return new FormErrorHandler(exp, frmOwner, strLinkSite);
         }
         
         /// <summary>
         /// Shows error handler form
         /// </summary>
-        public static FormErrorHandler Show(Exception exp, Form frmOwner)
-        {
+        public static FormErrorHandler Show(Form frmOwner, Exception exp) {
             return new FormErrorHandler(exp, frmOwner, string.Empty);
         }
 
@@ -223,7 +235,7 @@ namespace ArdeshirV.Forms
         private void ButtonInnerExp_Click(object sender, EventArgs e)
         {
             //if(exp.InnerException != null)
-                FormErrorHandler.Show(exp.InnerException, ParentForm, m_strLink);
+                FormErrorHandler.Show(ParentForm, exp.InnerException, m_strLink);
         }
         //---------------------------------------------------------------------
 		void buttonCopy_Click(object sender, EventArgs e)
@@ -254,22 +266,22 @@ namespace ArdeshirV.Forms
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.m_btnOk = new Button();
-			this.m_lnkLink = new LinkLabel();
-			this.m_btnMore = new Button();
-			this.textBoxStackTrack = new TextBox();
-			this.m_lblStackTrack = new Label();
-			this.buttonInnerExp = new Button();
-			this.textBoxMessage = new TextBox();
-			this.buttonCopy = new Button();
-			this.toolTip = new ToolTip(this.components);
+			this.m_btnOk = new System.Windows.Forms.Button();
+			this.m_lnkLink = new System.Windows.Forms.LinkLabel();
+			this.m_btnMore = new System.Windows.Forms.Button();
+			this.textBoxStackTrack = new System.Windows.Forms.TextBox();
+			this.m_lblStackTrack = new System.Windows.Forms.Label();
+			this.buttonInnerExp = new System.Windows.Forms.Button();
+			this.textBoxMessage = new System.Windows.Forms.TextBox();
+			this.buttonCopy = new System.Windows.Forms.Button();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.SuspendLayout();
 			// 
 			// m_btnOk
 			// 
-			this.m_btnOk.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+			this.m_btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_btnOk.BackColor = System.Drawing.Color.Transparent;
-			this.m_btnOk.DialogResult = DialogResult.Cancel;
+			this.m_btnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.m_btnOk.Location = new System.Drawing.Point(490, 12);
 			this.m_btnOk.Name = "m_btnOk";
 			this.m_btnOk.Size = new System.Drawing.Size(82, 23);
@@ -280,23 +292,23 @@ namespace ArdeshirV.Forms
 			// 
 			// m_lnkLink
 			// 
-			this.m_lnkLink.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) 
-			| AnchorStyles.Right)));
+			this.m_lnkLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.m_lnkLink.BackColor = System.Drawing.Color.Transparent;
 			this.m_lnkLink.Location = new System.Drawing.Point(12, 125);
 			this.m_lnkLink.Name = "m_lnkLink";
-			this.m_lnkLink.Size = new System.Drawing.Size(472, 19);
+			this.m_lnkLink.Size = new System.Drawing.Size(560, 19);
 			this.m_lnkLink.TabIndex = 4;
 			this.m_lnkLink.TabStop = true;
 			this.m_lnkLink.Text = "Technical Support";
 			this.m_lnkLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.toolTip.SetToolTip(this.m_lnkLink, "Link/email to technical support");
 			this.m_lnkLink.UseCompatibleTextRendering = true;
-			this.m_lnkLink.LinkClicked += new LinkLabelLinkClickedEventHandler(this.lnkLink_LinkClicked);
+			this.m_lnkLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLink_LinkClicked);
 			// 
 			// m_btnMore
 			// 
-			this.m_btnMore.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+			this.m_btnMore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_btnMore.BackColor = System.Drawing.Color.Transparent;
 			this.m_btnMore.Location = new System.Drawing.Point(490, 99);
 			this.m_btnMore.Name = "m_btnMore";
@@ -308,17 +320,17 @@ namespace ArdeshirV.Forms
 			// 
 			// textBoxStackTrack
 			// 
-			this.textBoxStackTrack.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) 
-			| AnchorStyles.Right)));
+			this.textBoxStackTrack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxStackTrack.BackColor = System.Drawing.Color.Black;
-			this.textBoxStackTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBoxStackTrack.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxStackTrack.ForeColor = System.Drawing.Color.Gold;
 			this.textBoxStackTrack.Location = new System.Drawing.Point(12, 177);
 			this.textBoxStackTrack.Multiline = true;
 			this.textBoxStackTrack.Name = "textBoxStackTrack";
 			this.textBoxStackTrack.ReadOnly = true;
-			this.textBoxStackTrack.ScrollBars = ScrollBars.Both;
-			this.textBoxStackTrack.Size = new System.Drawing.Size(560, 224);
+			this.textBoxStackTrack.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.textBoxStackTrack.Size = new System.Drawing.Size(560, 236);
 			this.textBoxStackTrack.TabIndex = 6;
 			this.textBoxStackTrack.TabStop = false;
 			this.textBoxStackTrack.Text = "Message";
@@ -347,14 +359,14 @@ namespace ArdeshirV.Forms
 			// textBoxMessage
 			// 
 			this.textBoxMessage.BackColor = System.Drawing.Color.Black;
-			this.textBoxMessage.BorderStyle = BorderStyle.None;
-			this.textBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBoxMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxMessage.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.textBoxMessage.ForeColor = System.Drawing.Color.Red;
 			this.textBoxMessage.Location = new System.Drawing.Point(12, 12);
 			this.textBoxMessage.Multiline = true;
 			this.textBoxMessage.Name = "textBoxMessage";
 			this.textBoxMessage.ReadOnly = true;
-			this.textBoxMessage.ScrollBars = ScrollBars.Vertical;
+			this.textBoxMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textBoxMessage.Size = new System.Drawing.Size(472, 110);
 			this.textBoxMessage.TabIndex = 0;
 			this.textBoxMessage.TabStop = false;
@@ -373,7 +385,7 @@ namespace ArdeshirV.Forms
 			// 
 			// FormErrorHandler
 			// 
-			this.ClientSize = new System.Drawing.Size(584, 149);
+			this.ClientSize = new System.Drawing.Size(584, 152);
 			this.Controls.Add(this.buttonCopy);
 			this.Controls.Add(this.textBoxMessage);
 			this.Controls.Add(this.buttonInnerExp);
@@ -382,14 +394,14 @@ namespace ArdeshirV.Forms
 			this.Controls.Add(this.m_lnkLink);
 			this.Controls.Add(this.m_btnMore);
 			this.Controls.Add(this.m_btnOk);
-			this.FormBorderStyle = FormBorderStyle.FixedDialog;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "FormErrorHandler";
 			this.Opacity = 0D;
 			this.ShowInTaskbar = false;
 			this.Text = "Error";
-			this.FormClosed += new FormClosedEventHandler(this.FormErrorHandler_FormClosed);
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormErrorHandler_FormClosed);
 			this.Load += new System.EventHandler(this.frmAbout_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

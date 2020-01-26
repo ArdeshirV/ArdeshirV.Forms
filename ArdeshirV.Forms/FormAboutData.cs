@@ -282,18 +282,19 @@ namespace ArdeshirV.Forms
  			// that refer to your own components. That place is out of this file.
 			// Now search for "todo: You are allowed to change..." in your "Task List"
 			// for more information and find that sample code about
-			// how to adding your own addresses easily.
+			// how to adding your own addresses easily above mine.
 			_donations = new Donation[] {
 				new Donation("Bitcoin", "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP", Resources.Bitcoin),
 				new Donation("Ethereum", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.Ethereum),
 				new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", Resources.Nano),
 				new Donation("TrueUSD", "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D", Resources.TrueUSD),
+				new Donation("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y", Resources.Monero),
 				new Donation("Litecoin", "LWzeZqbn38AzYJTJg6yyDAbKi7i8EEUbqw", Resources.Litecoin),
 				new Donation("BitcoinCash", "bitcoincash:qp6m9sm9d6tflamxhr4wkggcd2lt5vmavy6xyk7sg4", Resources.BitcoinCash),
-				new Donation("Cardano", "DdzFFzCqrhstvvrf4EGLkhSkSFpf9obzTPqex9wzSqd1BfoaXkoT1nXLpvHvbSQGSzk66PaNKVzcV6uhmR8emospbv3UgXi2wNjbqSfN", Resources.Cardano),
 				new Donation("Stellar", "GAO6L574LOYTJDY7RJM5UD6K26ALY7Z3WCOSPM2GFAOY75JLOZUPKEON", Resources.Stellar),
 				new Donation("Ripple", "rndM8KNWq4FgcWpKjwwFtzkAnDpW2akpeS", Resources.Ripple),
-				new Donation("Neo", "AGxAc3yEA4GKaku5jhYct6RwjzGfjxwDx6", Resources.Neo),
+				new Donation("Cardano", "DdzFFzCqrhstvvrf4EGLkhSkSFpf9obzTPqex9wzSqd1BfoaXkoT1nXLpvHvbSQGSzk66PaNKVzcV6uhmR8emospbv3UgXi2wNjbqSfN", Resources.Cardano),
+				new Donation("Neo", "AXqbLBWhcrFrjumvrm8nW9iYaUFoKML17b", Resources.Neo),
 				new Donation("Tron", "TShbF9NibNPuyAHGbjSeXB4hzej11MMeWE", Resources.Tron),
 				new Donation("NEM", "ND6X577XWNXYFHS4FU4SIY2ND4XUCOGAW7ZRMA4T", Resources.NEM),
 				new Donation("Qtum", "QSwAps21X8PKyaHade9K9cMm5bwSScroVf", Resources.Qtum),

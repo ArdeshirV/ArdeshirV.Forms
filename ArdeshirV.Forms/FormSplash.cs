@@ -18,7 +18,8 @@ namespace ArdeshirV.Forms
         private ThreadStart run;
         //private Timer m_timTimer;
         //-------------------------------------------------------------------------------
-        protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) : base(formOwner)
+        protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) :
+        	base(formOwner)
         {
             InitializeComponent();
             if (!DesignMode)

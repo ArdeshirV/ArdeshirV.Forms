@@ -16,7 +16,8 @@ using System.Drawing.Drawing2D;
 namespace ArdeshirV.Forms
 {
     /// <summary>
-    /// Provide a special Form with special properties, form shrink ability and special color
+    /// Provides an extended Form with special properties such as form shrink ability,
+    /// background gradient colors and fading ability.  
     /// </summary>
     public class FormBase : Form
     {
