@@ -17,6 +17,7 @@ namespace ArdeshirV.TestForms
     {
     	#region Variables 
     	
+    	private Button[] buttons;
         private int intIncH = 100;
         private int intIncW = 150;
         private const string _stringEmail = "ArdeshirV@protonmail.com";
@@ -37,6 +38,11 @@ namespace ArdeshirV.TestForms
             BackgoundInactiveEndGradientColor = Color.LightBlue;
             BackgoundInactiveStartGradientColor = Color.White;
             UpdateMessageBar();
+            buttons = new Button[] {
+            	buttonShrinkWidth, buttonShrinkHeight, buttonSplashForm,
+            	ButtonFormMessage, ButtonInput, buttonErrorHandlerForm,
+            	buttonFormAbout, buttonNewForm, buttonExit };
+            //this.fo
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
@@ -48,7 +54,7 @@ namespace ArdeshirV.TestForms
                 intIncW = -intIncW;
                 buttonShrinkWidth.Enabled = true;
             }
-
+            
             if (!buttonShrinkHeight.Enabled)
             {
                 intIncH = -intIncH;

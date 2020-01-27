@@ -224,7 +224,7 @@ namespace ArdeshirV.Forms
                 Height = intNewHeight;
         }
         //-------------------------------------------------------------------------------
-        public void FollowFormBase(Form frmMasterFormBase)
+        public void FollowFormBase(FormBase frmMasterFormBase)
         {
         	FormBase form = frmMasterFormBase as FormBase;
 

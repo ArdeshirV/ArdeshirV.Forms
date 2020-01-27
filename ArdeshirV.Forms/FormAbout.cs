@@ -67,7 +67,6 @@ namespace ArdeshirV.Forms
         private ContextMenuStrip contextMenuStripCopyToClipboard;
         private const string _stringQRTip = "Right click to save donation address as QR code";
         private readonly string m_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
-        private System.Windows.Forms.Button button1;
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -363,7 +362,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
 		private Image GetQRCodeImage(string Data)
 		{
-			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.Low).ToBitmap(4, 1);
+			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(4, 1);
 		}
         //-------------------------------------------------------------------------------
         private void m_lnkMalieTo_LinkClicked(object sender,
@@ -543,7 +542,6 @@ namespace ArdeshirV.Forms
         	this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.linkLabelURL = new System.Windows.Forms.LinkLabel();
-        	this.button1 = new System.Windows.Forms.Button();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
         	this.contextMenuStripDonation.SuspendLayout();
         	this.tabControl.SuspendLayout();
@@ -959,21 +957,10 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	this.linkLabelURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
         	// 
-        	// button1
-        	// 
-        	this.button1.Location = new System.Drawing.Point(541, 23);
-        	this.button1.Name = "button1";
-        	this.button1.Size = new System.Drawing.Size(75, 23);
-        	this.button1.TabIndex = 6;
-        	this.button1.Text = "Do";
-        	this.button1.UseVisualStyleBackColor = true;
-        	//this.button1.Click += new System.EventHandler(this.Button1Click);
-        	// 
         	// FormAbout
         	// 
         	this.ClientSize = new System.Drawing.Size(634, 262);
         	this.ControlBox = false;
-        	this.Controls.Add(this.button1);
         	this.Controls.Add(this.linkLabelURL);
         	this.Controls.Add(this.m_lblApplicationName);
         	this.Controls.Add(this.tabControl);
@@ -989,8 +976,6 @@ namespace ArdeshirV.Forms
         	this.OnBackgroundGradientColorChange += new System.EventHandler(this.FormAboutOnBackgroundGradientColorChange);
         	this.Activated += new System.EventHandler(this.FormAboutActivated);
         	this.Deactivate += new System.EventHandler(this.FormAboutDeactivate);
-        	//this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAbout_FormClosed);
-        	//this.Load += new System.EventHandler(this.frmAbout_Load);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).EndInit();
         	this.contextMenuStripDonation.ResumeLayout(false);
         	this.tabControl.ResumeLayout(false);
