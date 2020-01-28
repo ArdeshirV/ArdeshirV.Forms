@@ -37,6 +37,7 @@ namespace ArdeshirV.Forms
 		private bool m_blnIsShrinked = false;
         //private static bool s_blnIsExists = false;
         private System.ComponentModel.IContainer components;
+        private System.Windows.Forms.Label labelReportError;
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -96,9 +97,10 @@ namespace ArdeshirV.Forms
             textBoxMessage.Text = strMsgTitle + expException.Message;            
             buttonInnerExp.Enabled = (exp.InnerException != null);
 
-			if (string.IsNullOrEmpty(m_strLink))
-				m_lnkLink.Visible = false;
-			else {
+            if (string.IsNullOrEmpty(m_strLink)) {
+				m_lnkLink.Visible =
+				labelReportError.Visible = false;
+            } else {
 	        	//if(wOwner != null)
 	        		//m_lnkLink.Text = m_strLink;
 	        			//string.Format("Visit {0} on the web", frmOwner.Text);
@@ -267,7 +269,6 @@ namespace ArdeshirV.Forms
 		{
 			this.components = new System.ComponentModel.Container();
 			this.m_btnOk = new System.Windows.Forms.Button();
-			this.m_lnkLink = new System.Windows.Forms.LinkLabel();
 			this.m_btnMore = new System.Windows.Forms.Button();
 			this.textBoxStackTrack = new System.Windows.Forms.TextBox();
 			this.m_lblStackTrack = new System.Windows.Forms.Label();
@@ -275,6 +276,8 @@ namespace ArdeshirV.Forms
 			this.textBoxMessage = new System.Windows.Forms.TextBox();
 			this.buttonCopy = new System.Windows.Forms.Button();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.labelReportError = new System.Windows.Forms.Label();
+			this.m_lnkLink = new System.Windows.Forms.LinkLabel();
 			this.SuspendLayout();
 			// 
 			// m_btnOk
@@ -290,22 +293,6 @@ namespace ArdeshirV.Forms
 			this.m_btnOk.UseVisualStyleBackColor = false;
 			this.m_btnOk.Click += new System.EventHandler(this.btnOk_Click);
 			// 
-			// m_lnkLink
-			// 
-			this.m_lnkLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-			| System.Windows.Forms.AnchorStyles.Right)));
-			this.m_lnkLink.BackColor = System.Drawing.Color.Transparent;
-			this.m_lnkLink.Location = new System.Drawing.Point(12, 125);
-			this.m_lnkLink.Name = "m_lnkLink";
-			this.m_lnkLink.Size = new System.Drawing.Size(560, 19);
-			this.m_lnkLink.TabIndex = 4;
-			this.m_lnkLink.TabStop = true;
-			this.m_lnkLink.Text = "Technical Support";
-			this.m_lnkLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.toolTip.SetToolTip(this.m_lnkLink, "Link/email to technical support");
-			this.m_lnkLink.UseCompatibleTextRendering = true;
-			this.m_lnkLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLink_LinkClicked);
-			// 
 			// m_btnMore
 			// 
 			this.m_btnMore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -313,7 +300,7 @@ namespace ArdeshirV.Forms
 			this.m_btnMore.Location = new System.Drawing.Point(490, 99);
 			this.m_btnMore.Name = "m_btnMore";
 			this.m_btnMore.Size = new System.Drawing.Size(82, 23);
-			this.m_btnMore.TabIndex = 3;
+			this.m_btnMore.TabIndex = 4;
 			this.m_btnMore.Text = "&More >>";
 			this.m_btnMore.UseVisualStyleBackColor = false;
 			this.m_btnMore.Click += new System.EventHandler(this.btnMore_Click);
@@ -331,7 +318,7 @@ namespace ArdeshirV.Forms
 			this.textBoxStackTrack.ReadOnly = true;
 			this.textBoxStackTrack.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBoxStackTrack.Size = new System.Drawing.Size(560, 236);
-			this.textBoxStackTrack.TabIndex = 6;
+			this.textBoxStackTrack.TabIndex = 8;
 			this.textBoxStackTrack.TabStop = false;
 			this.textBoxStackTrack.Text = "Message";
 			this.textBoxStackTrack.WordWrap = false;
@@ -342,7 +329,7 @@ namespace ArdeshirV.Forms
 			this.m_lblStackTrack.Location = new System.Drawing.Point(12, 161);
 			this.m_lblStackTrack.Name = "m_lblStackTrack";
 			this.m_lblStackTrack.Size = new System.Drawing.Size(560, 13);
-			this.m_lblStackTrack.TabIndex = 5;
+			this.m_lblStackTrack.TabIndex = 7;
 			this.m_lblStackTrack.Text = "&Stack Track:";
 			// 
 			// buttonInnerExp
@@ -350,7 +337,7 @@ namespace ArdeshirV.Forms
 			this.buttonInnerExp.Location = new System.Drawing.Point(490, 70);
 			this.buttonInnerExp.Name = "buttonInnerExp";
 			this.buttonInnerExp.Size = new System.Drawing.Size(82, 23);
-			this.buttonInnerExp.TabIndex = 2;
+			this.buttonInnerExp.TabIndex = 3;
 			this.buttonInnerExp.Text = "&Inner Error...";
 			this.toolTip.SetToolTip(this.buttonInnerExp, "Shows the exception that is the cause of the current exception");
 			this.buttonInnerExp.UseVisualStyleBackColor = true;
@@ -377,15 +364,43 @@ namespace ArdeshirV.Forms
 			this.buttonCopy.Location = new System.Drawing.Point(490, 41);
 			this.buttonCopy.Name = "buttonCopy";
 			this.buttonCopy.Size = new System.Drawing.Size(82, 23);
-			this.buttonCopy.TabIndex = 7;
+			this.buttonCopy.TabIndex = 2;
 			this.buttonCopy.Text = "&Copy";
 			this.toolTip.SetToolTip(this.buttonCopy, "Copy error message to clipboard");
 			this.buttonCopy.UseVisualStyleBackColor = true;
 			this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
 			// 
+			// labelReportError
+			// 
+			this.labelReportError.BackColor = System.Drawing.Color.Transparent;
+			this.labelReportError.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.labelReportError.Location = new System.Drawing.Point(12, 125);
+			this.labelReportError.Name = "labelReportError";
+			this.labelReportError.Size = new System.Drawing.Size(74, 19);
+			this.labelReportError.TabIndex = 5;
+			this.labelReportError.Text = "&Report Error:";
+			this.labelReportError.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// m_lnkLink
+			// 
+			this.m_lnkLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this.m_lnkLink.BackColor = System.Drawing.Color.Transparent;
+			this.m_lnkLink.Location = new System.Drawing.Point(86, 125);
+			this.m_lnkLink.Name = "m_lnkLink";
+			this.m_lnkLink.Size = new System.Drawing.Size(486, 19);
+			this.m_lnkLink.TabIndex = 6;
+			this.m_lnkLink.TabStop = true;
+			this.m_lnkLink.Text = "Technical Support";
+			this.m_lnkLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolTip.SetToolTip(this.m_lnkLink, "Link/email to technical support");
+			this.m_lnkLink.UseCompatibleTextRendering = true;
+			this.m_lnkLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLink_LinkClicked);
+			// 
 			// FormErrorHandler
 			// 
-			this.ClientSize = new System.Drawing.Size(584, 152);
+			this.ClientSize = new System.Drawing.Size(584, 150);
+			this.Controls.Add(this.labelReportError);
 			this.Controls.Add(this.buttonCopy);
 			this.Controls.Add(this.textBoxMessage);
 			this.Controls.Add(this.buttonInnerExp);

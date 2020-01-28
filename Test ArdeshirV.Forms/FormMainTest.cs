@@ -42,7 +42,6 @@ namespace ArdeshirV.TestForms
             	buttonShrinkWidth, buttonShrinkHeight, buttonSplashForm,
             	ButtonFormMessage, ButtonInput, buttonErrorHandlerForm,
             	buttonFormAbout, buttonNewForm, buttonExit };
-            //this.fo
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
@@ -130,7 +129,8 @@ namespace ArdeshirV.TestForms
 			
 			// Adding all my default donation addresses
 			Donations[] donations = new Donations[] {
-				new Donations(stringAssemblyTitle, DefaultDonationList.Items)
+				// Below code add default donation list to donation tab of FormAbout
+				//new Donations(stringAssemblyTitle, DefaultDonationList.Items)
 			};
 			
 			// You can add your copyright data about your different components like below code
@@ -179,7 +179,7 @@ namespace ArdeshirV.TestForms
 		{
 			const string strMsg =
 				@"lorem ipsum...
-				It's a testing passage to show you FormMessage ability.
+				This is a sample passage to test FormMessage abilities.
 				FormMessage arrange and align text and buttons automatically.";
 			
 			m_lblMessage.Text = "Dialog Result: " +
@@ -198,7 +198,7 @@ namespace ArdeshirV.TestForms
 			string stringValue;
 			const string stringInputMsg = "Enter floating point number: ";
 			DialogResult result = FormInput.Show(this, out stringValue, IsValidInput,
-			                                     stringInputMsg, Text, Size);
+			                                     stringInputMsg, Text, "", Size);
 			if(result == DialogResult.OK)
 				m_lblMessage.Text = stringValue;
 		}

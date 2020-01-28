@@ -51,7 +51,7 @@ namespace ArdeshirV.Forms
 		/// <returns>One of DialogResult values</returns>
 		public static DialogResult Show(IWin32Window windowParent, out string Value) {
 			return Show(windowParent, out Value, null, stringDefaultInputMessage,
-			            GetCaption(windowParent), Size.Empty);
+			            GetCaption(windowParent), string.Empty, Size.Empty);
 		}
 		//-------------------------------------------------------------------------------
 		/// <summary>
@@ -64,7 +64,7 @@ namespace ArdeshirV.Forms
 		public static DialogResult Show(IWin32Window windowParent,
 			out string Value, IsValidInput IsValid) {
 			return Show(windowParent, out Value, IsValid, stringDefaultInputMessage,
-			            GetCaption(windowParent), Size.Empty);
+			            GetCaption(windowParent), string.Empty, Size.Empty);
 		}
 		//-------------------------------------------------------------------------------
 		/// <summary>
@@ -78,7 +78,7 @@ namespace ArdeshirV.Forms
 		public static DialogResult Show(IWin32Window windowParent,
 			out string Value, IsValidInput IsValid, string InputMessage) {
 			return Show(windowParent, out Value, IsValid, InputMessage,
-			            GetCaption(windowParent), Size.Empty);
+			            GetCaption(windowParent), string.Empty, Size.Empty);
 		}
 		//-------------------------------------------------------------------------------
 		/// <summary>
@@ -93,7 +93,7 @@ namespace ArdeshirV.Forms
 		public static DialogResult Show(IWin32Window windowParent, out string Value,
 		    IsValidInput IsValid, string InputMessage, string Caption) {
 			return Show(windowParent, out Value,
-			            IsValid, InputMessage, Caption, Size.Empty);
+			            IsValid, InputMessage, Caption, string.Empty, Size.Empty);
 		}
 		//-------------------------------------------------------------------------------
 		/// <summary>
@@ -104,14 +104,34 @@ namespace ArdeshirV.Forms
 		/// <param name="IsValid">IsValid is a boolean function that checks input.</param>
 		/// <param name="InputMessage">The message in input box.</param>
 		/// <param name="Caption">Form input caption.</param>
+		/// <param name="DefaultValue">Initial text as default value of FormInput.</param>
+		/// <returns>One of DialogResult values</returns>
+		public static DialogResult Show(IWin32Window windowParent,
+			out string Value, IsValidInput IsValid, string InputMessage,
+			string Caption, string DefaultValue) {
+			return Show(windowParent, out Value, IsValid, InputMessage,
+			            Caption, DefaultValue, Size.Empty);
+		}
+		//-------------------------------------------------------------------------------
+		/// <summary>
+		/// Displays an input box with the specified message and size.
+		/// </summary>
+		/// <param name="windowParent">Owner form.</param>
+		/// <param name="Value">The text output.</param>
+		/// <param name="IsValid">IsValid is a boolean function that checks input.</param>
+		/// <param name="InputMessage">The message in input box.</param>
+		/// <param name="Caption">Form input caption.</param>
+		/// <param name="DefaultValue">Initial text as default value of FormInput.</param>
 		/// <param name="formSize">Form input size.</param>
 		/// <returns>One of DialogResult values</returns>
-		public static DialogResult Show(IWin32Window windowParent, out string Value,
-			IsValidInput IsValid, string InputMessage, string Caption, Size formSize)
+		public static DialogResult Show(IWin32Window windowParent,
+		    out string Value, IsValidInput IsValid, string InputMessage,
+		    string Caption, string DefaultValue, Size formSize)
 		{
 			FormInput form = new FormInput(windowParent);
 			form.labelInputMessage.Text = InputMessage;
 			form.Text =  Caption;
+			form.textBoxInput.Text = DefaultValue;
 			form.funcIsValidInput += IsValid;
 			if(formSize != Size.Empty)
 				form.Size = formSize;
@@ -135,10 +155,10 @@ namespace ArdeshirV.Forms
 			if(funcIsValidInput != null) {
 				string stringErrMsg; 
 				if(funcIsValidInput(textBoxInput.Text, out stringErrMsg)) {
+					DialogResult =
 					buttonOK.DialogResult = DialogResult.OK;
-					DialogResult = DialogResult.OK;
 				} else {
-					errorProvider.SetError(textBoxInput, stringErrMsg);
+					errorProvider.SetError(textBoxInput, stringErrMsg); 
 					textBoxInput.SelectAll();
 					textBoxInput.Focus();
 				}
