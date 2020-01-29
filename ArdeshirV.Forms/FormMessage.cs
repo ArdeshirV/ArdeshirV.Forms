@@ -124,6 +124,11 @@ namespace ArdeshirV.Forms
 			int intMinHeight = (icon == MessageBoxIcon.None)? 118: 147;
 			if(form.Height < intMinHeight)
 				form.Height = intMinHeight;
+			if(Environment.OSVersion.Platform == PlatformID.Unix) {
+				int intPos = form.buttonOne.Height + form.buttonOne.Top + 20; // + titleBarHeight
+				if(form.Height < intPos)
+					form.Height += 30;
+			}
 			return form.ShowDialog(FormOwner);
 		}
 		//-------------------------------------------------------------------------------
@@ -247,6 +252,11 @@ namespace ArdeshirV.Forms
 		private void HideCenterButton() {
 			tableLayoutPanelBottom.ColumnStyles[1].SizeType = SizeType.Percent;
 			tableLayoutPanelBottom.ColumnStyles[1].Width = 0;
+		}
+		//-------------------------------------------------------------------------------
+		void FormMessageShown(object sender, EventArgs e)
+		{
+        	//CorrectFormHeight(buttonOne, pictureBoxIcon.Left);
 		}
 	}
 }

@@ -71,7 +71,7 @@ namespace ArdeshirV.Forms
 			// 
 			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(142, 59);
+			this.buttonCancel.Location = new System.Drawing.Point(142, 82);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
 			this.buttonCancel.TabIndex = 0;
@@ -81,7 +81,7 @@ namespace ArdeshirV.Forms
 			// buttonOK
 			// 
 			this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOK.Location = new System.Drawing.Point(61, 59);
+			this.buttonOK.Location = new System.Drawing.Point(61, 82);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 1;
@@ -109,7 +109,7 @@ namespace ArdeshirV.Forms
 			this.textBoxInput.Location = new System.Drawing.Point(22, 30);
 			this.textBoxInput.Multiline = true;
 			this.textBoxInput.Name = "textBoxInput";
-			this.textBoxInput.Size = new System.Drawing.Size(195, 23);
+			this.textBoxInput.Size = new System.Drawing.Size(195, 46);
 			this.textBoxInput.TabIndex = 3;
 			this.textBoxInput.Text = "Input value goes here";
 			// 
@@ -123,7 +123,7 @@ namespace ArdeshirV.Forms
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(239, 94);
+			this.ClientSize = new System.Drawing.Size(239, 117);
 			this.ControlBox = false;
 			this.Controls.Add(this.textBoxInput);
 			this.Controls.Add(this.labelInputMessage);
@@ -131,7 +131,6 @@ namespace ArdeshirV.Forms
 			this.Controls.Add(this.buttonCancel);
 			this.MinimumSize = new System.Drawing.Size(216, 133);
 			this.Name = "FormInput";
-			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
 			this.Text = "Input";
 			this.Shown += new System.EventHandler(this.FormInputShown);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

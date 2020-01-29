@@ -360,6 +360,13 @@ namespace ArdeshirV.Forms
             else
                 base.OnPaintBackground(e);
         }
+        //-------------------------------------------------------------------------------
+        protected void CorrectFormHeight(Control bottomCtl, int gap)
+        {        	
+			Rectangle screenRectangle = this.RectangleToScreen(this.ClientRectangle);
+			int titleBarHeight = screenRectangle.Top - this.Top;
+        	Height = bottomCtl.Top + bottomCtl.Height + gap + titleBarHeight;
+        }
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -373,7 +380,8 @@ namespace ArdeshirV.Forms
 				c is Panel || c is PictureBox || c is ProgressBar || c is GroupBox ||
 				c is FlowLayoutPanel || c is TableLayoutPanel || 
         		c is ToolStripContainer || c is ToolStripContentPanel ||
-        		c is RadioButton || c is CheckedListBox || c is CheckBox;
+        		c is RadioButton || c is CheckedListBox || 
+        		c is CheckBox || c is TableLayoutPanel;
         }
         //-------------------------------------------------------------------------------
         public void AddSpecialMouseEvent(Control ctlDest)

@@ -176,6 +176,7 @@ namespace ArdeshirV.Forms
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "FormMessage";
 			this.Text = "FormMessage";
+			this.Shown += new System.EventHandler(this.FormMessageShown);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
 			this.tableLayoutPanelBottom.ResumeLayout(false);
 			this.tableLayoutPanelIcon.ResumeLayout(false);

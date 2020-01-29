@@ -45,79 +45,86 @@ namespace ArdeshirV.TestForms
         	// buttonNewForm
         	// 
         	this.buttonNewForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonNewForm.BackColor = System.Drawing.Color.Transparent;
         	this.buttonNewForm.Location = new System.Drawing.Point(70, 268);
         	this.buttonNewForm.Name = "buttonNewForm";
         	this.buttonNewForm.Size = new System.Drawing.Size(111, 23);
         	this.buttonNewForm.TabIndex = 8;
         	this.buttonNewForm.Text = "New SpecialForm ...";
-        	this.buttonNewForm.UseVisualStyleBackColor = true;
+        	this.buttonNewForm.UseVisualStyleBackColor = false;
         	this.buttonNewForm.Click += new System.EventHandler(this.buttonNewForm_Click);
         	// 
         	// buttonErrorHandlerForm
         	// 
         	this.buttonErrorHandlerForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonErrorHandlerForm.BackColor = System.Drawing.Color.Transparent;
         	this.buttonErrorHandlerForm.Location = new System.Drawing.Point(70, 210);
         	this.buttonErrorHandlerForm.Name = "buttonErrorHandlerForm";
         	this.buttonErrorHandlerForm.Size = new System.Drawing.Size(111, 23);
         	this.buttonErrorHandlerForm.TabIndex = 6;
         	this.buttonErrorHandlerForm.Text = "Form Error Handler ...";
-        	this.buttonErrorHandlerForm.UseVisualStyleBackColor = true;
+        	this.buttonErrorHandlerForm.UseVisualStyleBackColor = false;
         	this.buttonErrorHandlerForm.Click += new System.EventHandler(this.buttonErrorHandlerForm_Click);
         	// 
         	// buttonFormAbout
         	// 
         	this.buttonFormAbout.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonFormAbout.BackColor = System.Drawing.Color.Transparent;
         	this.buttonFormAbout.Location = new System.Drawing.Point(70, 239);
         	this.buttonFormAbout.Name = "buttonFormAbout";
         	this.buttonFormAbout.Size = new System.Drawing.Size(111, 23);
         	this.buttonFormAbout.TabIndex = 7;
         	this.buttonFormAbout.Text = "Form &About ...";
-        	this.buttonFormAbout.UseVisualStyleBackColor = true;
+        	this.buttonFormAbout.UseVisualStyleBackColor = false;
         	this.buttonFormAbout.Click += new System.EventHandler(this.buttonFormAbout_Click);
         	// 
         	// buttonShrinkWidth
         	// 
         	this.buttonShrinkWidth.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonShrinkWidth.BackColor = System.Drawing.Color.Transparent;
         	this.buttonShrinkWidth.Location = new System.Drawing.Point(70, 65);
         	this.buttonShrinkWidth.Name = "buttonShrinkWidth";
         	this.buttonShrinkWidth.Size = new System.Drawing.Size(111, 23);
         	this.buttonShrinkWidth.TabIndex = 1;
         	this.buttonShrinkWidth.Text = "Shrink &Horizontally";
-        	this.buttonShrinkWidth.UseVisualStyleBackColor = true;
+        	this.buttonShrinkWidth.UseVisualStyleBackColor = false;
         	this.buttonShrinkWidth.Click += new System.EventHandler(this.buttonShrinkWidth_Click);
         	// 
         	// buttonShrinkHeight
         	// 
         	this.buttonShrinkHeight.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonShrinkHeight.BackColor = System.Drawing.Color.Transparent;
         	this.buttonShrinkHeight.Location = new System.Drawing.Point(70, 94);
         	this.buttonShrinkHeight.Name = "buttonShrinkHeight";
         	this.buttonShrinkHeight.Size = new System.Drawing.Size(111, 23);
         	this.buttonShrinkHeight.TabIndex = 2;
         	this.buttonShrinkHeight.Text = "Shrink &Vertically";
-        	this.buttonShrinkHeight.UseVisualStyleBackColor = true;
+        	this.buttonShrinkHeight.UseVisualStyleBackColor = false;
         	this.buttonShrinkHeight.Click += new System.EventHandler(this.buttonShrinkHeight_Click);
         	// 
         	// buttonExit
         	// 
         	this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonExit.BackColor = System.Drawing.Color.Transparent;
         	this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         	this.buttonExit.Location = new System.Drawing.Point(70, 297);
         	this.buttonExit.Name = "buttonExit";
         	this.buttonExit.Size = new System.Drawing.Size(111, 23);
         	this.buttonExit.TabIndex = 9;
         	this.buttonExit.Text = "E&xit";
-        	this.buttonExit.UseVisualStyleBackColor = true;
+        	this.buttonExit.UseVisualStyleBackColor = false;
         	this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
         	// 
         	// buttonSplashForm
         	// 
         	this.buttonSplashForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.buttonSplashForm.BackColor = System.Drawing.Color.Transparent;
         	this.buttonSplashForm.Location = new System.Drawing.Point(70, 123);
         	this.buttonSplashForm.Name = "buttonSplashForm";
         	this.buttonSplashForm.Size = new System.Drawing.Size(111, 23);
         	this.buttonSplashForm.TabIndex = 3;
         	this.buttonSplashForm.Text = "&Splash Form ...";
-        	this.buttonSplashForm.UseVisualStyleBackColor = true;
+        	this.buttonSplashForm.UseVisualStyleBackColor = false;
         	this.buttonSplashForm.Click += new System.EventHandler(this.buttonSplashForm_Click);
         	// 
         	// m_lblMessage
@@ -136,23 +143,25 @@ namespace ArdeshirV.TestForms
         	// ButtonFormMessage
         	// 
         	this.ButtonFormMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.ButtonFormMessage.BackColor = System.Drawing.Color.Transparent;
         	this.ButtonFormMessage.Location = new System.Drawing.Point(70, 152);
         	this.ButtonFormMessage.Name = "ButtonFormMessage";
         	this.ButtonFormMessage.Size = new System.Drawing.Size(111, 23);
         	this.ButtonFormMessage.TabIndex = 4;
         	this.ButtonFormMessage.Text = "Form &Message...";
-        	this.ButtonFormMessage.UseVisualStyleBackColor = true;
+        	this.ButtonFormMessage.UseVisualStyleBackColor = false;
         	this.ButtonFormMessage.Click += new System.EventHandler(this.ButtonFormMessageClick);
         	// 
         	// ButtonInput
         	// 
         	this.ButtonInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+        	this.ButtonInput.BackColor = System.Drawing.Color.Transparent;
         	this.ButtonInput.Location = new System.Drawing.Point(70, 181);
         	this.ButtonInput.Name = "ButtonInput";
         	this.ButtonInput.Size = new System.Drawing.Size(111, 23);
         	this.ButtonInput.TabIndex = 5;
         	this.ButtonInput.Text = "Form &Input...";
-        	this.ButtonInput.UseVisualStyleBackColor = true;
+        	this.ButtonInput.UseVisualStyleBackColor = false;
         	this.ButtonInput.Click += new System.EventHandler(this.ButtonInputClick);
         	// 
         	// FormMainTest
