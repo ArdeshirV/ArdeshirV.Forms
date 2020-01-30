@@ -129,8 +129,8 @@ namespace ArdeshirV.Forms
 		    string Caption, string DefaultValue, Size formSize)
 		{
 			FormInput form = new FormInput(windowParent);
-			form.labelInputMessage.Text = InputMessage;
-			form.Text =  Caption;
+			form.labelInputMessage.Text = string.Format("       {0}", InputMessage);
+			form.Text = Caption;
 			form.textBoxInput.Text = DefaultValue;
 			form.funcIsValidInput += IsValid;
 			if(formSize != Size.Empty)
@@ -148,21 +148,28 @@ namespace ArdeshirV.Forms
 		void FormInputShown(object sender, EventArgs e)
 		{
 			textBoxInput.Focus();
+			// Below code is neccesary for run normally in Mono
+			textBoxInput.Height = panelBackCenter.Height;
 		}
 		//-------------------------------------------------------------------------------
 		void ButtonOKClick(object sender, EventArgs e)
 		{
 			if(funcIsValidInput != null) {
-				string stringErrMsg; 
+				string stringErrMsg;
 				if(funcIsValidInput(textBoxInput.Text, out stringErrMsg)) {
 					DialogResult =
 					buttonOK.DialogResult = DialogResult.OK;
 				} else {
-					errorProvider.SetError(textBoxInput, stringErrMsg); 
+					errorProvider.SetError(textBoxInput, stringErrMsg);
 					textBoxInput.SelectAll();
 					textBoxInput.Focus();
 				}
 			} else DialogResult = DialogResult.OK;
+		}
+		//-------------------------------------------------------------------------------
+		void TextBoxInputTextChanged(object sender, EventArgs e)
+		{
+			errorProvider.Clear();
 		}
 	}
 }

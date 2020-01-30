@@ -28,6 +28,10 @@ namespace ArdeshirV.Forms
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.ErrorProvider errorProvider;
+		private System.Windows.Forms.Panel panelBack;
+		private System.Windows.Forms.Panel panelBackCenter;
+		private System.Windows.Forms.Panel panelBottomButtons;
+		private System.Windows.Forms.Panel panelTopLabel;
 		
 		#endregion
 		//-----------------------------------------------------------------------------------------------
@@ -64,16 +68,24 @@ namespace ArdeshirV.Forms
 			this.labelInputMessage = new System.Windows.Forms.Label();
 			this.textBoxInput = new System.Windows.Forms.TextBox();
 			this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.panelTopLabel = new System.Windows.Forms.Panel();
+			this.panelBottomButtons = new System.Windows.Forms.Panel();
+			this.panelBack = new System.Windows.Forms.Panel();
+			this.panelBackCenter = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+			this.panelTopLabel.SuspendLayout();
+			this.panelBottomButtons.SuspendLayout();
+			this.panelBack.SuspendLayout();
+			this.panelBackCenter.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonCancel
 			// 
 			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(142, 82);
+			this.buttonCancel.Location = new System.Drawing.Point(164, 8);
 			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.Size = new System.Drawing.Size(75, 25);
 			this.buttonCancel.TabIndex = 0;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
@@ -81,9 +93,9 @@ namespace ArdeshirV.Forms
 			// buttonOK
 			// 
 			this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonOK.Location = new System.Drawing.Point(61, 82);
+			this.buttonOK.Location = new System.Drawing.Point(83, 8);
 			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.Size = new System.Drawing.Size(75, 25);
 			this.buttonOK.TabIndex = 1;
 			this.buttonOK.Text = "&OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
@@ -91,14 +103,13 @@ namespace ArdeshirV.Forms
 			// 
 			// labelInputMessage
 			// 
-			this.labelInputMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-			| System.Windows.Forms.AnchorStyles.Right)));
 			this.labelInputMessage.BackColor = System.Drawing.Color.Transparent;
-			this.labelInputMessage.Location = new System.Drawing.Point(22, 9);
+			this.labelInputMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.labelInputMessage.Location = new System.Drawing.Point(0, 5);
 			this.labelInputMessage.Name = "labelInputMessage";
-			this.labelInputMessage.Size = new System.Drawing.Size(195, 19);
+			this.labelInputMessage.Size = new System.Drawing.Size(262, 19);
 			this.labelInputMessage.TabIndex = 2;
-			this.labelInputMessage.Text = "Enter Input Value: ";
+			this.labelInputMessage.Text = "       Enter Input Value: ";
 			this.labelInputMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// textBoxInput
@@ -106,16 +117,57 @@ namespace ArdeshirV.Forms
 			this.textBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 			| System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.textBoxInput.Location = new System.Drawing.Point(22, 30);
+			this.textBoxInput.Location = new System.Drawing.Point(23, 0);
 			this.textBoxInput.Multiline = true;
 			this.textBoxInput.Name = "textBoxInput";
-			this.textBoxInput.Size = new System.Drawing.Size(195, 46);
+			this.textBoxInput.Size = new System.Drawing.Size(216, 22);
 			this.textBoxInput.TabIndex = 3;
 			this.textBoxInput.Text = "Input value goes here";
+			this.textBoxInput.TextChanged += new System.EventHandler(this.TextBoxInputTextChanged);
 			// 
 			// errorProvider
 			// 
 			this.errorProvider.ContainerControl = this;
+			// 
+			// panelTopLabel
+			// 
+			this.panelTopLabel.BackColor = System.Drawing.Color.Transparent;
+			this.panelTopLabel.Controls.Add(this.labelInputMessage);
+			this.panelTopLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelTopLabel.Location = new System.Drawing.Point(0, 0);
+			this.panelTopLabel.Name = "panelTopLabel";
+			this.panelTopLabel.Size = new System.Drawing.Size(262, 24);
+			this.panelTopLabel.TabIndex = 4;
+			// 
+			// panelBottomButtons
+			// 
+			this.panelBottomButtons.BackColor = System.Drawing.Color.Transparent;
+			this.panelBottomButtons.Controls.Add(this.buttonCancel);
+			this.panelBottomButtons.Controls.Add(this.buttonOK);
+			this.panelBottomButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panelBottomButtons.Location = new System.Drawing.Point(0, 46);
+			this.panelBottomButtons.Name = "panelBottomButtons";
+			this.panelBottomButtons.Size = new System.Drawing.Size(262, 45);
+			this.panelBottomButtons.TabIndex = 5;
+			// 
+			// panelBack
+			// 
+			this.panelBack.BackColor = System.Drawing.Color.Transparent;
+			this.panelBack.Controls.Add(this.panelBackCenter);
+			this.panelBack.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelBack.Location = new System.Drawing.Point(0, 24);
+			this.panelBack.Name = "panelBack";
+			this.panelBack.Size = new System.Drawing.Size(262, 22);
+			this.panelBack.TabIndex = 6;
+			// 
+			// panelBackCenter
+			// 
+			this.panelBackCenter.Controls.Add(this.textBoxInput);
+			this.panelBackCenter.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelBackCenter.Location = new System.Drawing.Point(0, 0);
+			this.panelBackCenter.Name = "panelBackCenter";
+			this.panelBackCenter.Size = new System.Drawing.Size(262, 22);
+			this.panelBackCenter.TabIndex = 6;
 			// 
 			// FormInput
 			// 
@@ -123,19 +175,22 @@ namespace ArdeshirV.Forms
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(239, 117);
+			this.ClientSize = new System.Drawing.Size(262, 91);
 			this.ControlBox = false;
-			this.Controls.Add(this.textBoxInput);
-			this.Controls.Add(this.labelInputMessage);
-			this.Controls.Add(this.buttonOK);
-			this.Controls.Add(this.buttonCancel);
-			this.MinimumSize = new System.Drawing.Size(216, 133);
+			this.Controls.Add(this.panelBack);
+			this.Controls.Add(this.panelBottomButtons);
+			this.Controls.Add(this.panelTopLabel);
+			this.MinimumSize = new System.Drawing.Size(216, 130);
 			this.Name = "FormInput";
 			this.Text = "Input";
 			this.Shown += new System.EventHandler(this.FormInputShown);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+			this.panelTopLabel.ResumeLayout(false);
+			this.panelBottomButtons.ResumeLayout(false);
+			this.panelBack.ResumeLayout(false);
+			this.panelBackCenter.ResumeLayout(false);
+			this.panelBackCenter.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 		
