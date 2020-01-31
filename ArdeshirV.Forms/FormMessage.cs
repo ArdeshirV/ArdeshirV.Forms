@@ -124,11 +124,8 @@ namespace ArdeshirV.Forms
 			int intMinHeight = (icon == MessageBoxIcon.None)? 118: 147;
 			if(form.Height < intMinHeight)
 				form.Height = intMinHeight;
-			if(Environment.OSVersion.Platform == PlatformID.Unix) {
-				int intPos = form.buttonOne.Height + form.buttonOne.Top + 20; // + titleBarHeight
-				if(form.Height < intPos)
-					form.Height += 30;
-			}
+			form.Width += 30;
+			form.Height += 10;
 			return form.ShowDialog(FormOwner);
 		}
 		//-------------------------------------------------------------------------------
@@ -256,7 +253,6 @@ namespace ArdeshirV.Forms
 		//-------------------------------------------------------------------------------
 		void FormMessageShown(object sender, EventArgs e)
 		{
-        	//CorrectFormHeight(buttonOne, pictureBoxIcon.Left);
 		}
 	}
 }

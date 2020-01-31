@@ -361,11 +361,10 @@ namespace ArdeshirV.Forms
                 base.OnPaintBackground(e);
         }
         //-------------------------------------------------------------------------------
-        protected void CorrectFormHeight(Control bottomCtl, int gap)
-        {        	
-			Rectangle screenRectangle = this.RectangleToScreen(this.ClientRectangle);
-			int titleBarHeight = screenRectangle.Top - this.Top;
-        	Height = bottomCtl.Top + bottomCtl.Height + gap + titleBarHeight;
+        public int GetTitlebarHeight()
+        {
+        	Rectangle screenRectangle = RectangleToScreen(ClientRectangle);
+			return screenRectangle.Top - Top;
         }
 
         #endregion

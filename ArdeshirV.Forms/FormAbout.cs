@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
+using System.Diagnostics;
 using ArdeshirV.Controls;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
@@ -106,7 +107,6 @@ namespace ArdeshirV.Forms
         protected void InitFormAbout(FormAboutData d) 
         {
             data = d;
-            //MessageBox.Show(this.ClientSize.ToString());
             SetURL(linkLabelURL, d.URL);
             SetEmail(linkLabelEmail, d.Email);
             m_lblApplicationName.Text = d.AppName;
@@ -187,7 +187,7 @@ namespace ArdeshirV.Forms
             string l_strSystemInfo = Environment.SystemDirectory + "\\msinfo32.exe";
 
             if (File.Exists(l_strSystemInfo))
-                System.Diagnostics.Process.Start(l_strSystemInfo);
+                Process.Start(l_strSystemInfo);
             else
                 throw new FileNotFoundException(string.Format(
             		"File {0} missing!", l_strSystemInfo));
@@ -240,7 +240,7 @@ namespace ArdeshirV.Forms
 		{
         	linkLabelEmail.Height =
         	linkLabelURL.Height = 16;
-        	//Size = new Size(650, 290);
+        	// Below code is neccesary for portability with Mono
         	ClientSize = new Size(634, 256);
 		}
         //-------------------------------------------------------------------------------
@@ -610,8 +610,8 @@ namespace ArdeshirV.Forms
         	this.labelContactUs = new System.Windows.Forms.Label();
         	this.labelHomePage = new System.Windows.Forms.Label();
         	this.panel1 = new System.Windows.Forms.Panel();
-        	this.linkLabelEmail = new System.Windows.Forms.LinkLabel();
         	this.linkLabelURL = new System.Windows.Forms.LinkLabel();
+        	this.linkLabelEmail = new System.Windows.Forms.LinkLabel();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxAppIcon)).BeginInit();
         	this.contextMenuStripDonation.SuspendLayout();
         	this.tabControl.SuspendLayout();
@@ -669,7 +669,7 @@ namespace ArdeshirV.Forms
         	this.m_btnOk.Location = new System.Drawing.Point(542, 9);
         	this.m_btnOk.Name = "m_btnOk";
         	this.m_btnOk.Size = new System.Drawing.Size(80, 25);
-        	this.m_btnOk.TabIndex = 7;
+        	this.m_btnOk.TabIndex = 5;
         	this.m_btnOk.Text = "&OK";
         	this.m_btnOk.UseVisualStyleBackColor = false;
         	this.m_btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -681,7 +681,7 @@ namespace ArdeshirV.Forms
         	this.m_btnSysteminfo.Location = new System.Drawing.Point(456, 9);
         	this.m_btnSysteminfo.Name = "m_btnSysteminfo";
         	this.m_btnSysteminfo.Size = new System.Drawing.Size(80, 25);
-        	this.m_btnSysteminfo.TabIndex = 6;
+        	this.m_btnSysteminfo.TabIndex = 4;
         	this.m_btnSysteminfo.Text = "&System Info";
         	this.toolTip.SetToolTip(this.m_btnSysteminfo, "Shows information about current system");
         	this.m_btnSysteminfo.UseVisualStyleBackColor = false;
@@ -755,7 +755,7 @@ namespace ArdeshirV.Forms
         	this.textBoxCopyright.Location = new System.Drawing.Point(140, 33);
         	this.textBoxCopyright.Name = "textBoxCopyright";
         	this.textBoxCopyright.ReadOnly = true;
-        	this.textBoxCopyright.Size = new System.Drawing.Size(455, 20);
+        	this.textBoxCopyright.Size = new System.Drawing.Size(456, 20);
         	this.textBoxCopyright.TabIndex = 3;
         	this.textBoxCopyright.Text = "";
         	this.textBoxCopyright.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
@@ -793,7 +793,7 @@ namespace ArdeshirV.Forms
         	this.textBoxVersion.Location = new System.Drawing.Point(462, 59);
         	this.textBoxVersion.Name = "textBoxVersion";
         	this.textBoxVersion.ReadOnly = true;
-        	this.textBoxVersion.Size = new System.Drawing.Size(133, 20);
+        	this.textBoxVersion.Size = new System.Drawing.Size(134, 20);
         	this.textBoxVersion.TabIndex = 7;
         	this.textBoxVersion.Text = "";
         	this.textBoxVersion.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
@@ -802,7 +802,7 @@ namespace ArdeshirV.Forms
         	// 
         	this.buttonCopyrightCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.buttonCopyrightCopy.BackColor = System.Drawing.Color.Transparent;
-        	this.buttonCopyrightCopy.Location = new System.Drawing.Point(525, 6);
+        	this.buttonCopyrightCopy.Location = new System.Drawing.Point(526, 6);
         	this.buttonCopyrightCopy.Name = "buttonCopyrightCopy";
         	this.buttonCopyrightCopy.Size = new System.Drawing.Size(70, 22);
         	this.buttonCopyrightCopy.TabIndex = 2;
@@ -823,7 +823,7 @@ namespace ArdeshirV.Forms
         	this.richTextBoxCopyrightDescription.Name = "richTextBoxCopyrightDescription";
         	this.richTextBoxCopyrightDescription.ReadOnly = true;
         	this.richTextBoxCopyrightDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-        	this.richTextBoxCopyrightDescription.Size = new System.Drawing.Size(455, 49);
+        	this.richTextBoxCopyrightDescription.Size = new System.Drawing.Size(456, 49);
         	this.richTextBoxCopyrightDescription.TabIndex = 8;
         	this.richTextBoxCopyrightDescription.Text = "Description";
         	this.richTextBoxCopyrightDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
@@ -1011,7 +1011,7 @@ namespace ArdeshirV.Forms
         	this.buttonLicenseCopy.BackColor = System.Drawing.Color.Transparent;
         	this.buttonLicenseCopy.Location = new System.Drawing.Point(526, 6);
         	this.buttonLicenseCopy.Name = "buttonLicenseCopy";
-        	this.buttonLicenseCopy.Size = new System.Drawing.Size(70, 21);
+        	this.buttonLicenseCopy.Size = new System.Drawing.Size(70, 22);
         	this.buttonLicenseCopy.TabIndex = 2;
         	this.buttonLicenseCopy.Text = "&Copy";
         	this.toolTip.SetToolTip(this.buttonLicenseCopy, "Copy selectet license to clipboard");
@@ -1063,7 +1063,7 @@ namespace ArdeshirV.Forms
         	this.labelContactUs.Location = new System.Drawing.Point(2, 3);
         	this.labelContactUs.Name = "labelContactUs";
         	this.labelContactUs.Size = new System.Drawing.Size(74, 19);
-        	this.labelContactUs.TabIndex = 2;
+        	this.labelContactUs.TabIndex = 0;
         	this.labelContactUs.Text = "&Contact us:";
         	this.labelContactUs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         	// 
@@ -1074,7 +1074,7 @@ namespace ArdeshirV.Forms
         	this.labelHomePage.Location = new System.Drawing.Point(2, 22);
         	this.labelHomePage.Name = "labelHomePage";
         	this.labelHomePage.Size = new System.Drawing.Size(74, 19);
-        	this.labelHomePage.TabIndex = 4;
+        	this.labelHomePage.TabIndex = 2;
         	this.labelHomePage.Text = "Home Page:";
         	this.labelHomePage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         	// 
@@ -1091,18 +1091,7 @@ namespace ArdeshirV.Forms
         	this.panel1.Location = new System.Drawing.Point(0, 210);
         	this.panel1.Name = "panel1";
         	this.panel1.Size = new System.Drawing.Size(634, 46);
-        	this.panel1.TabIndex = 8;
-        	// 
-        	// linkLabelEmail
-        	// 
-        	this.linkLabelEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-			| System.Windows.Forms.AnchorStyles.Right)));
-        	this.linkLabelEmail.Location = new System.Drawing.Point(75, 6);
-        	this.linkLabelEmail.Name = "linkLabelEmail";
-        	this.linkLabelEmail.Size = new System.Drawing.Size(379, 16);
-        	this.linkLabelEmail.TabIndex = 8;
-        	this.linkLabelEmail.TabStop = true;
-        	this.linkLabelEmail.Text = "Email address goes here";
+        	this.panel1.TabIndex = 2;
         	// 
         	// linkLabelURL
         	// 
@@ -1111,9 +1100,20 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.Location = new System.Drawing.Point(75, 25);
         	this.linkLabelURL.Name = "linkLabelURL";
         	this.linkLabelURL.Size = new System.Drawing.Size(379, 20);
-        	this.linkLabelURL.TabIndex = 9;
+        	this.linkLabelURL.TabIndex = 3;
         	this.linkLabelURL.TabStop = true;
         	this.linkLabelURL.Text = "Support web site goes here";
+        	// 
+        	// linkLabelEmail
+        	// 
+        	this.linkLabelEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+        	this.linkLabelEmail.Location = new System.Drawing.Point(75, 6);
+        	this.linkLabelEmail.Name = "linkLabelEmail";
+        	this.linkLabelEmail.Size = new System.Drawing.Size(379, 16);
+        	this.linkLabelEmail.TabIndex = 1;
+        	this.linkLabelEmail.TabStop = true;
+        	this.linkLabelEmail.Text = "Email address goes here";
         	// 
         	// FormAbout
         	// 

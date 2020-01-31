@@ -29,16 +29,16 @@ namespace ArdeshirV.Forms
         private Label m_lblStackTrack;
         private Button buttonInnerExp;
         private TextBox textBoxMessage;
-        private const int intMax = 450;
-        private const int intMin = 188;
-        private IWin32Window hwndOwner; 
+        private IWin32Window hwndOwner;
         private readonly string strFileLine;
 		private bool m_blnIsShrinked = false;
+        private const int intMinHeight = 191;
+        private const int intMaxHeight = 446;
         //private static bool s_blnIsExists = false;
+        private System.Windows.Forms.Panel panelTop;
         private System.ComponentModel.IContainer components;
         private System.Windows.Forms.Label labelReportError;
         private System.Windows.Forms.TextBox textBoxStackTrack;
-
         #endregion
         //-------------------------------------------------------------------------------
         #region Constructor
@@ -54,7 +54,6 @@ namespace ArdeshirV.Forms
         {
             InitializeComponent();
             Opacity = 1.0;
-            Height = intMin;
             hwndOwner = wOwner;
             exp = expException;
             m_strLink = strLinkSite;
@@ -154,7 +153,7 @@ namespace ArdeshirV.Forms
         private void lnkLink_LinkClicked(object sender,LinkLabelLinkClickedEventArgs e)
 		{
 			m_lnkLink.LinkVisited = true;
-			System.Diagnostics.Process.Start(m_strLink);
+			Process.Start(m_strLink);
 		}
         //---------------------------------------------------------------------
 		/// <summary>
@@ -180,14 +179,15 @@ namespace ArdeshirV.Forms
             m_btnMore.Enabled = false;
 			m_blnIsShrinked = !m_blnIsShrinked;
 
-			if(Height <= intMin) {
-                ShrinkHeightByTime(intMax);
+			if(Height <= intMinHeight) {
+				ShrinkHeightByTime(intMaxHeight);
 				m_btnMore.Text = "&Less <<";
 			} else {
-                ShrinkHeightByTime(intMin);
+                ShrinkHeightByTime(intMinHeight);
 				m_btnMore.Text = "&More >>";
 			}
 
+            //MessageBox.Show(ClientSize.ToString());
             m_btnMore.Enabled = true;
 		}
 		//-------------------------------------------------------------------------------
@@ -245,6 +245,13 @@ namespace ArdeshirV.Forms
 		{
 			Clipboard.SetText(textBoxMessage.Text);
 		}
+		//-------------------------------------------------------------------------------
+		void FormErrorHandlerShown(object sender, EventArgs e)
+		{
+			Height = intMinHeight;
+			m_lnkLink.Height = 19;
+			//ClientSize = MinSize;
+		}
 
 		#endregion
 		//-------------------------------------------------------------------------------
@@ -279,6 +286,8 @@ namespace ArdeshirV.Forms
 			this.m_lnkLink = new System.Windows.Forms.LinkLabel();
 			this.labelReportError = new System.Windows.Forms.Label();
 			this.textBoxStackTrack = new System.Windows.Forms.TextBox();
+			this.panelTop = new System.Windows.Forms.Panel();
+			this.panelTop.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// m_btnOk
@@ -311,12 +320,13 @@ namespace ArdeshirV.Forms
 			this.m_lblStackTrack.BackColor = System.Drawing.Color.Transparent;
 			this.m_lblStackTrack.Location = new System.Drawing.Point(12, 161);
 			this.m_lblStackTrack.Name = "m_lblStackTrack";
-			this.m_lblStackTrack.Size = new System.Drawing.Size(560, 13);
+			this.m_lblStackTrack.Size = new System.Drawing.Size(570, 13);
 			this.m_lblStackTrack.TabIndex = 7;
 			this.m_lblStackTrack.Text = "&Stack Track:";
 			// 
 			// buttonInnerExp
 			// 
+			this.buttonInnerExp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonInnerExp.BackColor = System.Drawing.Color.Transparent;
 			this.buttonInnerExp.Location = new System.Drawing.Point(490, 70);
 			this.buttonInnerExp.Name = "buttonInnerExp";
@@ -345,6 +355,7 @@ namespace ArdeshirV.Forms
 			// 
 			// buttonCopy
 			// 
+			this.buttonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCopy.BackColor = System.Drawing.Color.Transparent;
 			this.buttonCopy.Location = new System.Drawing.Point(490, 41);
 			this.buttonCopy.Name = "buttonCopy";
@@ -360,9 +371,9 @@ namespace ArdeshirV.Forms
 			this.m_lnkLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.m_lnkLink.BackColor = System.Drawing.Color.Transparent;
-			this.m_lnkLink.Location = new System.Drawing.Point(86, 125);
+			this.m_lnkLink.Location = new System.Drawing.Point(81, 128);
 			this.m_lnkLink.Name = "m_lnkLink";
-			this.m_lnkLink.Size = new System.Drawing.Size(485, 27);
+			this.m_lnkLink.Size = new System.Drawing.Size(502, 19);
 			this.m_lnkLink.TabIndex = 6;
 			this.m_lnkLink.TabStop = true;
 			this.m_lnkLink.Text = "Technical Support";
@@ -375,9 +386,9 @@ namespace ArdeshirV.Forms
 			// 
 			this.labelReportError.BackColor = System.Drawing.Color.Transparent;
 			this.labelReportError.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.labelReportError.Location = new System.Drawing.Point(12, 125);
+			this.labelReportError.Location = new System.Drawing.Point(3, 128);
 			this.labelReportError.Name = "labelReportError";
-			this.labelReportError.Size = new System.Drawing.Size(74, 27);
+			this.labelReportError.Size = new System.Drawing.Size(79, 19);
 			this.labelReportError.TabIndex = 5;
 			this.labelReportError.Text = "&Report Error:";
 			this.labelReportError.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -392,25 +403,35 @@ namespace ArdeshirV.Forms
 			this.textBoxStackTrack.Multiline = true;
 			this.textBoxStackTrack.Name = "textBoxStackTrack";
 			this.textBoxStackTrack.ReadOnly = true;
-			this.textBoxStackTrack.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxStackTrack.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBoxStackTrack.Size = new System.Drawing.Size(560, 218);
 			this.textBoxStackTrack.TabIndex = 8;
 			this.textBoxStackTrack.TabStop = false;
 			this.textBoxStackTrack.Text = "Stack Track ...";
 			this.textBoxStackTrack.WordWrap = false;
 			// 
+			// panelTop
+			// 
+			this.panelTop.BackColor = System.Drawing.Color.Transparent;
+			this.panelTop.Controls.Add(this.m_lnkLink);
+			this.panelTop.Controls.Add(this.labelReportError);
+			this.panelTop.Controls.Add(this.m_btnOk);
+			this.panelTop.Controls.Add(this.m_btnMore);
+			this.panelTop.Controls.Add(this.buttonInnerExp);
+			this.panelTop.Controls.Add(this.textBoxMessage);
+			this.panelTop.Controls.Add(this.buttonCopy);
+			this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelTop.Location = new System.Drawing.Point(0, 0);
+			this.panelTop.Name = "panelTop";
+			this.panelTop.Size = new System.Drawing.Size(584, 151);
+			this.panelTop.TabIndex = 11;
+			// 
 			// FormErrorHandler
 			// 
-			this.ClientSize = new System.Drawing.Size(584, 407);
+			this.ClientSize = new System.Drawing.Size(584, 152);
+			this.Controls.Add(this.panelTop);
 			this.Controls.Add(this.textBoxStackTrack);
-			this.Controls.Add(this.m_lnkLink);
-			this.Controls.Add(this.labelReportError);
-			this.Controls.Add(this.buttonCopy);
-			this.Controls.Add(this.textBoxMessage);
-			this.Controls.Add(this.buttonInnerExp);
 			this.Controls.Add(this.m_lblStackTrack);
-			this.Controls.Add(this.m_btnMore);
-			this.Controls.Add(this.m_btnOk);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -420,6 +441,9 @@ namespace ArdeshirV.Forms
 			this.Text = "Error";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormErrorHandler_FormClosed);
 			this.Load += new System.EventHandler(this.frmAbout_Load);
+			this.Shown += new System.EventHandler(this.FormErrorHandlerShown);
+			this.panelTop.ResumeLayout(false);
+			this.panelTop.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
