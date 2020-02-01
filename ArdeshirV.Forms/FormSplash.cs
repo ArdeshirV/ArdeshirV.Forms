@@ -13,6 +13,8 @@ namespace ArdeshirV.Forms
 {
     public partial class FormSplash : FormBase
     {
+    	public delegate void FormSplashProcess(ProgressBar pb);
+    	
         private Thread t;
         private Form _formOwner;
         private ThreadStart run;
