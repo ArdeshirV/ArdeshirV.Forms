@@ -68,6 +68,7 @@ namespace ArdeshirV.Forms
         	this.ShowInTaskbar = false;
         	this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         	this.TopMost = true;
+        	this.Shown += new System.EventHandler(this.FormSplashShown);
         	this.Click += new System.EventHandler(this.M_imgPictureBox_Click);
         	this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormSplash_KeyPress);
         	((System.ComponentModel.ISupportInitialize)(this.m_imgPictureBox)).EndInit();

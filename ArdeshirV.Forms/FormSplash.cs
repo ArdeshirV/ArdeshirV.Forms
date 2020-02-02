@@ -4,7 +4,6 @@
 
 using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 #endregion
@@ -15,10 +14,8 @@ namespace ArdeshirV.Forms
     {
     	public delegate void FormSplashProcess(ProgressBar pb);
     	
-        private Thread t;
         private Form _formOwner;
-        private ThreadStart run;
-        //private Timer m_timTimer;
+        private Timer m_timTimer;
         //-------------------------------------------------------------------------------
         protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) :
         	base(formOwner)
@@ -36,25 +33,26 @@ namespace ArdeshirV.Forms
 	            this.AutoSizeMode = AutoSizeMode.GrowOnly;
 	            this.StartPosition = FormStartPosition.CenterScreen;
 	            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-	            //m_timTimer = new Timer();
-	            //m_timTimer.Interval = Delay;
-	            //m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
+	            m_timTimer = new Timer();
+	            m_timTimer.Interval = 200;
+	            m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
 	            //m_timTimer.Start();
 	            Show(_formOwner = formOwner);
-            	run = new ThreadStart(Run);
-            	t = new Thread(run);
             }
         }
         //-------------------------------------------------------------------------------
-        private void Run() {
-        	
+        private bool Run() {
+        	return true;
         }
         //-------------------------------------------------------------------------------
         private void m_timTimer_Elapsed(object sender, EventArgs e)
         {
-            //m_timTimer.Stop();
-            Close();
+            m_timTimer.Stop();
+            //Close();
             //_formOwner.Show();
+            
+            Run();
+			Application.DoEvents();
         }
         //-------------------------------------------------------------------------------
         /// <summary>
@@ -101,6 +99,11 @@ namespace ArdeshirV.Forms
         {
             Close();
         }
+        //-------------------------------------------------------------------------------
+		void FormSplashShown(object sender, EventArgs e)
+		{
+			m_timTimer.Start();
+		}
     }
 }
 //---------------------------------------------------------------------------------------
