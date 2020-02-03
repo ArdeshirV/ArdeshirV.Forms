@@ -12,10 +12,18 @@ namespace ArdeshirV.Forms
 {
     public partial class FormSplash : FormBase
     {
+    	/// <summary>
+    	/// FormSplashProcess has been process loading app resources
+    	/// and update progressbar below FormSplash
+    	/// </summary>
+    	/// <param name="pb">ProgressBar below the FormSplash
+    	/// that demonstrat loading progress</param>
     	public delegate void FormSplashProcess(ProgressBar pb);
-    	
+        //-------------------------------------------------------------------------------    	
         private Form _formOwner;
         private Timer m_timTimer;
+        private FormSplashProcess localFormSplashProcess;
+        private readonly long intTicks = DateTime.Now.Ticks + 4;
         //-------------------------------------------------------------------------------
         protected FormSplash(Form formOwner, Image imgSplashImage, int Delay) :
         	base(formOwner)
@@ -41,18 +49,44 @@ namespace ArdeshirV.Forms
             }
         }
         //-------------------------------------------------------------------------------
-        private bool Run() {
-        	return true;
+        protected FormSplash(Form formOwner, Image imgSplashImage, FormSplashProcess fsp) :
+        	base(formOwner)
+        {
+            InitializeComponent();
+            if (!DesignMode)
+            {
+	            //Visible = false;
+            	//formOwner.Hide();
+            	localFormSplashProcess += fsp;
+            	Size = new Size(imgSplashImage.Size.Width,
+            	                imgSplashImage.Size.Height + progressBar.Height);
+	            //FollowParentFormBase = true;
+            	MoveFormWithMouse = false;
+	            m_imgPictureBox.Image = imgSplashImage;
+	            this.AutoSizeMode = AutoSizeMode.GrowOnly;
+	            this.StartPosition = FormStartPosition.CenterScreen;
+	            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+	            m_timTimer = new Timer();
+	            m_timTimer.Interval = 200;
+	            m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
+	            //m_timTimer.Start();
+	            Show(_formOwner = formOwner);
+            }
         }
         //-------------------------------------------------------------------------------
         private void m_timTimer_Elapsed(object sender, EventArgs e)
         {
-            m_timTimer.Stop();
-            //Close();
-            //_formOwner.Show();
-            
-            Run();
-			Application.DoEvents();
+        	m_timTimer.Stop();
+            if(localFormSplashProcess != null) {
+            	localFormSplashProcess(progressBar);
+            	Close();
+            } else {
+        		int intNow = DateTime.Now.Second + 4;
+        		while(intNow < DateTime.Now.Second) {
+        			Application.DoEvents();
+        			Close();
+        		}
+            }
         }
         //-------------------------------------------------------------------------------
         /// <summary>
