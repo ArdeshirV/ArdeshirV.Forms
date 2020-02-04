@@ -163,16 +163,7 @@ namespace ArdeshirV.TestForms
         //-------------------------------------------------------------------------------
         private void buttonSplashForm_Click(object sender, EventArgs e)
         {
-        	const int delay = 3000;
-            FormSplash splash = FormSplash.Show(this, Resources.Logo, delay);
-            splash.Progress.Minimum = 0;
-            splash.Progress.Maximum = delay;
-            int n = (int)DateTime.Now.Ticks;
-            for(int i = 0; i <= delay; i = (int)DateTime.Now.Ticks - n) {
-            	Application.DoEvents();
-            	if(i <= splash.Progress.Maximum)
-            		splash.Progress.Value = i;
-            }
+        	FormSplash.Show(this, Resources.Logo);
         }
         //-------------------------------------------------------------------------------
 		void ButtonFormMessageClick(object sender, EventArgs e)
@@ -198,7 +189,8 @@ namespace ArdeshirV.TestForms
 			string stringValue;
 			const string stringInputMsg = "Enter floating point number: ";
 			DialogResult result = FormInput.Show(this, out stringValue, IsValidInput,
-			                                     stringInputMsg, Text, "", Size);
+			                                     stringInputMsg, Text, "",
+			                                     new Size(Width, 0));
 			if(result == DialogResult.OK)
 				m_lblMessage.Text = stringValue;
 		}

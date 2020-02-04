@@ -164,7 +164,14 @@ namespace ArdeshirV.Forms
 					textBoxInput.SelectAll();
 					textBoxInput.Focus();
 				}
-			} else DialogResult = DialogResult.OK;
+			} else {
+				DialogResult = DialogResult.OK;
+			}
+		}
+		//-------------------------------------------------------------------------------
+		void ButtonCancelClick(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
 		}
 		//-------------------------------------------------------------------------------
 		void TextBoxInputTextChanged(object sender, EventArgs e)

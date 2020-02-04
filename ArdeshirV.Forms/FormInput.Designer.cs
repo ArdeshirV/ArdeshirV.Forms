@@ -18,20 +18,20 @@ namespace ArdeshirV.Forms
 	{
 		#region Variables
 
-		private Label labelInputMessage;
-		private Button buttonCancel;
-		private Button buttonOK;
-		private TextBox textBoxInput;
-		
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-		private System.Windows.Forms.ErrorProvider errorProvider;
+		
+		private Button buttonOK;
+		private Button buttonCancel;
+		private TextBox textBoxInput;
+		private Label labelInputMessage;
 		private System.Windows.Forms.Panel panelBack;
+		private System.Windows.Forms.Panel panelTopLabel;
 		private System.Windows.Forms.Panel panelBackCenter;
 		private System.Windows.Forms.Panel panelBottomButtons;
-		private System.Windows.Forms.Panel panelTopLabel;
+		private System.Windows.Forms.ErrorProvider errorProvider;
 		
 		#endregion
 		//-----------------------------------------------------------------------------------------------
@@ -89,6 +89,7 @@ namespace ArdeshirV.Forms
 			this.buttonCancel.TabIndex = 0;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.ButtonCancelClick);
 			// 
 			// buttonOK
 			// 
@@ -183,6 +184,7 @@ namespace ArdeshirV.Forms
 			this.MinimumSize = new System.Drawing.Size(216, 130);
 			this.Name = "FormInput";
 			this.Text = "Input";
+			//this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormInputFormClosing);
 			this.Shown += new System.EventHandler(this.FormInputShown);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
 			this.panelTopLabel.ResumeLayout(false);

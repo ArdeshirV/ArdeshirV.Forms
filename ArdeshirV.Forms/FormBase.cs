@@ -329,6 +329,7 @@ namespace ArdeshirV.Forms
             }
 
             base.OnClosed(e);
+            Dispose();
         }
         //-------------------------------------------------------------------------------
         protected override void OnResize(EventArgs e)
