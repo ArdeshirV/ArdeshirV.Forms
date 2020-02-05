@@ -20,7 +20,7 @@ using qr=ArdeshirV.Utilities.QrCode;
 #endregion
 //---------------------------------------------------------------------------------------
 namespace ArdeshirV.Forms
-{	
+{
     /// <summary>
     /// About Form
     /// </summary>
@@ -151,7 +151,7 @@ namespace ArdeshirV.Forms
 
         	if(!boolFormIsActive) {
         		c2 = BackgoundEndGradientColor;
-        		c1 = BackgoundStartGradientColor;        		
+        		c1 = BackgoundStartGradientColor;
         	} else {
         		c2 = BackgoundInactiveEndGradientColor;
         		c1 = BackgoundInactiveStartGradientColor;
