@@ -1,4 +1,5 @@
 #!/bin/sh
+# Clean directory before update git
 rm -R "ArdeshirV.Forms\bin"
 rm -R "ArdeshirV.Forms\obj"
 rm -R "Test ArdeshirV.Forms\bin"
