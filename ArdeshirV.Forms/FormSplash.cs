@@ -23,12 +23,13 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------    	
         private Timer m_timTimer;
         private Form _formOwner;
+        private int intDelay;
         private FormSplashEnd formSplashEnd;
         private FormSplashWndProcess localFormSplashProcess;
         private readonly long intTicks = DateTime.Now.Ticks + 4;
         //-------------------------------------------------------------------------------
-        protected FormSplash(IWin32Window windowParent, Image imgSplashImage, int Delay,
-                             FormSplashWndProcess fsp) :
+        protected FormSplash(IWin32Window windowParent, Image imgSplashImage,
+                                      int Delay, FormSplashWndProcess fsp) :
         	base(windowParent)
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace ArdeshirV.Forms
             	}
 	            //FollowParentFormBase = true;
             	MoveFormWithMouse = false;
+            	intDelay = Delay;
 	            m_imgPictureBox.Image = imgSplashImage;
             	StartPosition = FormStartPosition.CenterScreen;
 	            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -62,7 +64,10 @@ namespace ArdeshirV.Forms
             	localFormSplashProcess(progressBar);
             	Close();
             } else {
-        		;
+        		if(m_timTimer.Interval == intDelay)
+        			Close();
+        		else
+        			m_timTimer.Interval = intDelay;      		
             }
         }
         //-------------------------------------------------------------------------------
@@ -87,6 +92,19 @@ namespace ArdeshirV.Forms
         public static FormSplash Show(Form formOwner, Image imgSplashImage, int Delay)
         {
             return new FormSplash(formOwner, imgSplashImage, Delay, null);
+        }
+        //-------------------------------------------------------------------------------
+        /// <summary>
+        /// Create and show splash form 
+        /// </summary>
+        /// <param name="formOwner">Owner form</param>
+        /// <param name="imgSplashImage">Image on the splash form</param>
+        /// <param name="Delay">Delay time in miliseconds that splash form is present</param>
+        /// <returns>Reference to created splash form</returns>
+        public static FormSplash Show(Form formOwner, Image imgSplashImage,
+                                      int Delay, FormSplashWndProcess fsp)
+        {
+            return new FormSplash(formOwner, imgSplashImage, Delay, fsp);
         }
         //-------------------------------------------------------------------------------
         public ProgressBar Progress
