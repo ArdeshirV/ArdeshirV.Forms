@@ -78,6 +78,14 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel linkLabelURL;
         private System.Windows.Forms.LinkLabel linkLabelEmail;
+        private System.Windows.Forms.TabPage tabPageCredits;
+        private System.Windows.Forms.ComboBox comboBoxCreditComponent;
+        private System.Windows.Forms.Button buttonCreditCopy;
+        private ArdeshirV.Controls.ComboBoxImage comboBoxImageCreditNames;
+        private System.Windows.Forms.PictureBox pictureBoxCredit;
+        private System.Windows.Forms.RichTextBox richTextBoxCreditData;
+        private System.Windows.Forms.Label labelCreditComponents;
+        private System.Windows.Forms.Label labelCreditNames;
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -170,6 +178,11 @@ namespace ArdeshirV.Forms
 		void ButtonCopyClick(object sender, EventArgs e)
 		{
 			Clipboard.SetText(textBoxCopyright.Text);
+		}
+        //-------------------------------------------------------------------------------
+		void ButtonCreditCopyClick(object sender, EventArgs e)
+		{
+			Clipboard.SetText(richTextBoxCreditData.Text);
 		}
 		//-------------------------------------------------------------------------------
 		void ButtonDonationCopyClick(object sender, EventArgs e)
@@ -508,7 +521,7 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
 		void rtbLinkClick(object sender, LinkClickedEventArgs e)
 		{
-			System.Diagnostics.Process.Start(e.LinkText);
+			Process.Start(e.LinkText);
 		}
         //-------------------------------------------------------------------------------
         private void btnOk_Click(object sender, System.EventArgs e)
@@ -530,13 +543,13 @@ namespace ArdeshirV.Forms
             s_blnIsExists = false;
             base.OnClosed(e);
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         protected override void OnShown(EventArgs e)
         {
 			UpdateTabControlBackColor(false);
         	base.OnShown(e);
         }
-        //---------------------------------------------------------------------
+        //-------------------------------------------------------------------------------
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -591,6 +604,14 @@ namespace ArdeshirV.Forms
         	this.labelCopyrightComponent = new System.Windows.Forms.Label();
         	this.labelCompany = new System.Windows.Forms.Label();
         	this.labelVersion = new System.Windows.Forms.Label();
+        	this.tabPageCredits = new System.Windows.Forms.TabPage();
+        	this.comboBoxCreditComponent = new System.Windows.Forms.ComboBox();
+        	this.buttonCreditCopy = new System.Windows.Forms.Button();
+        	this.comboBoxImageCreditNames = new ArdeshirV.Controls.ComboBoxImage();
+        	this.pictureBoxCredit = new System.Windows.Forms.PictureBox();
+        	this.richTextBoxCreditData = new System.Windows.Forms.RichTextBox();
+        	this.labelCreditComponents = new System.Windows.Forms.Label();
+        	this.labelCreditNames = new System.Windows.Forms.Label();
         	this.tabPageDonation = new System.Windows.Forms.TabPage();
         	this.labelDonationDescription = new System.Windows.Forms.Label();
         	this.comboBoxDonation = new System.Windows.Forms.ComboBox();
@@ -617,6 +638,8 @@ namespace ArdeshirV.Forms
         	this.tabControl.SuspendLayout();
         	this.tabPageCopyright.SuspendLayout();
         	this.contextMenuStripCopyToClipboard.SuspendLayout();
+        	this.tabPageCredits.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.pictureBoxCredit)).BeginInit();
         	this.tabPageDonation.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonation)).BeginInit();
         	this.tabPageLicense.SuspendLayout();
@@ -704,6 +727,7 @@ namespace ArdeshirV.Forms
         	this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
         	this.tabControl.Controls.Add(this.tabPageCopyright);
+        	this.tabControl.Controls.Add(this.tabPageCredits);
         	this.tabControl.Controls.Add(this.tabPageDonation);
         	this.tabControl.Controls.Add(this.tabPageLicense);
         	this.tabControl.Location = new System.Drawing.Point(12, 42);
@@ -855,6 +879,111 @@ namespace ArdeshirV.Forms
         	this.labelVersion.TabIndex = 6;
         	this.labelVersion.Text = "&Version:";
         	this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        	// 
+        	// tabPageCredits
+        	// 
+        	this.tabPageCredits.Controls.Add(this.comboBoxCreditComponent);
+        	this.tabPageCredits.Controls.Add(this.buttonCreditCopy);
+        	this.tabPageCredits.Controls.Add(this.comboBoxImageCreditNames);
+        	this.tabPageCredits.Controls.Add(this.pictureBoxCredit);
+        	this.tabPageCredits.Controls.Add(this.richTextBoxCreditData);
+        	this.tabPageCredits.Controls.Add(this.labelCreditComponents);
+        	this.tabPageCredits.Controls.Add(this.labelCreditNames);
+        	this.tabPageCredits.Location = new System.Drawing.Point(4, 22);
+        	this.tabPageCredits.Name = "tabPageCredits";
+        	this.tabPageCredits.Size = new System.Drawing.Size(602, 140);
+        	this.tabPageCredits.TabIndex = 3;
+        	this.tabPageCredits.Text = "   Credits  ";
+        	this.tabPageCredits.UseVisualStyleBackColor = true;
+        	// 
+        	// comboBoxCreditComponent
+        	// 
+        	this.comboBoxCreditComponent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+        	this.comboBoxCreditComponent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comboBoxCreditComponent.FormattingEnabled = true;
+        	this.comboBoxCreditComponent.Items.AddRange(new object[] {
+			"Component\'s Name"});
+        	this.comboBoxCreditComponent.Location = new System.Drawing.Point(215, 6);
+        	this.comboBoxCreditComponent.Name = "comboBoxCreditComponent";
+        	this.comboBoxCreditComponent.Size = new System.Drawing.Size(381, 21);
+        	this.comboBoxCreditComponent.TabIndex = 14;
+        	// 
+        	// buttonCreditCopy
+        	// 
+        	this.buttonCreditCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+        	this.buttonCreditCopy.BackColor = System.Drawing.Color.Transparent;
+        	this.buttonCreditCopy.Location = new System.Drawing.Point(526, 33);
+        	this.buttonCreditCopy.Name = "buttonCreditCopy";
+        	this.buttonCreditCopy.Size = new System.Drawing.Size(70, 22);
+        	this.buttonCreditCopy.TabIndex = 17;
+        	this.buttonCreditCopy.Text = "&Copy";
+        	this.toolTip.SetToolTip(this.buttonCreditCopy, "Copy selected donation address to clipboard");
+        	this.buttonCreditCopy.UseVisualStyleBackColor = false;
+        	this.buttonCreditCopy.Click += new System.EventHandler(this.ButtonCreditCopyClick);
+        	// 
+        	// comboBoxImageCreditNames
+        	// 
+        	this.comboBoxImageCreditNames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+        	this.comboBoxImageCreditNames.BackColor = System.Drawing.SystemColors.Control;
+        	this.comboBoxImageCreditNames.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+        	this.comboBoxImageCreditNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comboBoxImageCreditNames.FormattingEnabled = true;
+        	this.comboBoxImageCreditNames.Images = null;
+        	this.comboBoxImageCreditNames.Items.AddRange(new object[] {
+			"Bitcoin"});
+        	this.comboBoxImageCreditNames.Location = new System.Drawing.Point(215, 33);
+        	this.comboBoxImageCreditNames.Name = "comboBoxImageCreditNames";
+        	this.comboBoxImageCreditNames.Size = new System.Drawing.Size(305, 21);
+        	this.comboBoxImageCreditNames.TabIndex = 16;
+        	// 
+        	// pictureBoxCredit
+        	// 
+        	this.pictureBoxCredit.BackColor = System.Drawing.Color.White;
+        	this.pictureBoxCredit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        	this.pictureBoxCredit.ContextMenuStrip = this.contextMenuStripDonation;
+        	this.pictureBoxCredit.InitialImage = null;
+        	this.pictureBoxCredit.Location = new System.Drawing.Point(6, 6);
+        	this.pictureBoxCredit.Name = "pictureBoxCredit";
+        	this.pictureBoxCredit.Size = new System.Drawing.Size(128, 128);
+        	this.pictureBoxCredit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+        	this.pictureBoxCredit.TabIndex = 19;
+        	this.pictureBoxCredit.TabStop = false;
+        	// 
+        	// richTextBoxCreditData
+        	// 
+        	this.richTextBoxCreditData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
+        	this.richTextBoxCreditData.BackColor = System.Drawing.SystemColors.Control;
+        	this.richTextBoxCreditData.ContextMenuStrip = this.contextMenuStripCopyToClipboard;
+        	this.richTextBoxCreditData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.richTextBoxCreditData.Location = new System.Drawing.Point(140, 60);
+        	this.richTextBoxCreditData.Name = "richTextBoxCreditData";
+        	this.richTextBoxCreditData.ReadOnly = true;
+        	this.richTextBoxCreditData.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+        	this.richTextBoxCreditData.Size = new System.Drawing.Size(456, 74);
+        	this.richTextBoxCreditData.TabIndex = 18;
+        	this.richTextBoxCreditData.Text = "Credits data goes here";
+        	// 
+        	// labelCreditComponents
+        	// 
+        	this.labelCreditComponents.Location = new System.Drawing.Point(140, 6);
+        	this.labelCreditComponents.Name = "labelCreditComponents";
+        	this.labelCreditComponents.Size = new System.Drawing.Size(74, 20);
+        	this.labelCreditComponents.TabIndex = 13;
+        	this.labelCreditComponents.Text = "Com&ponent:";
+        	this.labelCreditComponents.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        	// 
+        	// labelCreditNames
+        	// 
+        	this.labelCreditNames.Location = new System.Drawing.Point(140, 33);
+        	this.labelCreditNames.Name = "labelCreditNames";
+        	this.labelCreditNames.Size = new System.Drawing.Size(74, 20);
+        	this.labelCreditNames.TabIndex = 15;
+        	this.labelCreditNames.Text = "&Name:";
+        	this.labelCreditNames.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         	// 
         	// tabPageDonation
         	// 
@@ -1137,6 +1266,8 @@ namespace ArdeshirV.Forms
         	this.tabControl.ResumeLayout(false);
         	this.tabPageCopyright.ResumeLayout(false);
         	this.contextMenuStripCopyToClipboard.ResumeLayout(false);
+        	this.tabPageCredits.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.pictureBoxCredit)).EndInit();
         	this.tabPageDonation.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonation)).EndInit();
         	this.tabPageLicense.ResumeLayout(false);
@@ -1149,4 +1280,4 @@ namespace ArdeshirV.Forms
         #endregion
     }
 }
-//-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
