@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle ("ArdeshirV.TestForms")]
-[assembly: AssemblyDescription ("This is a test application that shows how to use ArdeshirV.Forms")]
+[assembly: AssemblyDescription ("This is a unit test app that demonstrate how to use ArdeshirV.Forms")]
 [assembly: AssemblyCompany ("ArdeshirV")]
 [assembly: AssemblyProduct ("ArdeshirV.TestForms")]
 [assembly: AssemblyCulture ("")]

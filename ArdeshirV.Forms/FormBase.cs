@@ -79,6 +79,9 @@ namespace ArdeshirV.Forms
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private LinearGradientMode m_lgmInactiveBackgroundActiveMode = LinearGradientMode.Vertical;
+        
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private Form _formParent = null;
 
         #endregion
         //-------------------------------------------------------------------------------
@@ -90,9 +93,14 @@ namespace ArdeshirV.Forms
         protected FormBase()
         {
         	IWin32Window window = Parent;
+        	
+        	if(window != null) {
+        		if(window is Form)
+        			_formParent = window as Form;
         		
-            if (window is FormBase && m_blnFollowParentFormBase)
-                FollowFormBase(window as FormBase);
+		    	if (window is FormBase && m_blnFollowParentFormBase)
+		            FollowFormBase(window as FormBase);
+        	}
         }
         //-------------------------------------------------------------------------------
         /// <summary>
@@ -103,6 +111,9 @@ namespace ArdeshirV.Forms
         	IWin32Window window = windowParent;
         	if (windowParent == null)
         		window = Parent;
+        	
+    		if(window is Form)
+    			_formParent = window as Form;
         		
             if (window is FormBase && m_blnFollowParentFormBase)
                 FollowFormBase(window as FormBase);
@@ -330,6 +341,9 @@ namespace ArdeshirV.Forms
 
             base.OnClosed(e);
             Dispose();
+            // Below code is neccessary when we use this component with Mono runtime
+            if(_formParent != null)
+            	_formParent.Activate();
         }
         //-------------------------------------------------------------------------------
         protected override void OnResize(EventArgs e)

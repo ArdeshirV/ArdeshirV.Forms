@@ -134,6 +134,14 @@ namespace ArdeshirV.TestForms
 			};
 			
 			Credits[] credits = new Credits[] {
+				new Credits(stringAssemblyTitle, new Credit[] {
+				            	DefaultCreditList.GetItem("ArdeshirV")
+				            })
+
+				// TODO: You are allowed to add your credit info in your code like this:
+				//new Credits(stringAssemblyTitle, new Credit[] {
+				//	            new Credit("Credit Name", "Credit Description...", CreditAvator)
+				//	        })
 			};
 			
 			// You can add your copyright data about your different components like below code
@@ -159,7 +167,7 @@ namespace ArdeshirV.TestForms
         	                                       copyrights,
         	                                       credits,
         	                                       licenses,
-        	                                       null,//donations,
+        	                                       donations,
         	                                       _stringWebsite,
         	                                       _stringEmail);
         	FormAbout.Show(data);

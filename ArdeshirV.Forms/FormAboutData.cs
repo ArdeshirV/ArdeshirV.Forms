@@ -155,7 +155,7 @@ namespace ArdeshirV.Forms
     	//---------------------------------------------------------------------
     	public string Name { get { return _name; } }
     	public Image Avator { get { return _avator; } }
-    	public string Address { get { return _description; } }
+    	public string Description { get { return _description; } }
     	//---------------------------------------------------------------------
     	private Credit() {}
     	//---------------------------------------------------------------------
@@ -300,17 +300,21 @@ namespace ArdeshirV.Forms
 			_donations = new Dictionary<string, Donation[]>();
 			_copyrights = new Dictionary<string, Copyright>();
 
-			foreach(Donations d in donations)
-				_donations.Add(d.Name, d.Items);
+			if(donations != null)
+				foreach(Donations d in donations)
+					_donations.Add(d.Name, d.Items);
 			
-			foreach(Credits c in credits)
-				_credits.Add(c.Name, c.Items);
+			if(credits != null)
+				foreach(Credits c in credits)
+					_credits.Add(c.Name, c.Items);
 			
-			foreach(License l in licenses)
-				_licenses.Add(l.Name, l);
+			if(licenses != null)
+				foreach(License l in licenses)
+					_licenses.Add(l.Name, l);
 			
-			foreach(Copyright c in copyrights)
-				_copyrights.Add(c.Name, c);
+			if(copyrights != null)
+				foreach(Copyright c in copyrights)
+					_copyrights.Add(c.Name, c);
 			
 			AddDefaults();
 		}
@@ -319,12 +323,82 @@ namespace ArdeshirV.Forms
 		{
 			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
 			_donations.Add(aaa.AssemblyTitle, DefaultDonationList.Items);
+			
 			_copyrights.Add(aaa.AssemblyTitle, new Copyright(this, Resources.ArdeshirV_Forms_Logo));
 			_licenses.Add(aaa.AssemblyTitle, new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
+			_credits.Add(aaa.AssemblyTitle, new Credit[] { DefaultCreditList.GetItem("ArdeshirV") });
 			
 			aaa = new AssemblyAttributeAccessors(qr.QrCode.Ecc.High);
 			_copyrights.Add(aaa.AssemblyTitle, new Copyright(qr.QrCode.Ecc.High, qr.Res.Logo));
 			_licenses.Add(aaa.AssemblyTitle, new License("MIT", qr.Res.License, qr.Res.LicenseLogo));
+			_credits.Add(aaa.AssemblyTitle, new Credit[] {
+			             	DefaultCreditList.GetItem("ArdeshirV.QrCode"),
+			             	DefaultCreditList.GetItem("Manuel Bleichenbacher"),
+			             	DefaultCreditList.GetItem("Nayuki Project")
+			});
+		}
+	}
+	//-----------------------------------------------------------------------------------	
+	public static class DefaultCreditList
+	{
+		private static readonly Credit[] _credits;
+		private static readonly Dictionary<string, Credit> _list;
+		//-------------------------------------------------------------------------------
+		static DefaultCreditList()
+		{
+			//***************************************************************************
+			// Warning: Nobody is not allowed to change or modify credits that
+			// are mentioned here but you are allowed to add your own credit
+			// somewhere else that refer to your own components.
+			// That place is out of this file.
+			// Now search for "todo: You are allowed to change..." in your "Task List"
+			// for more information and find that sample code about
+			// how to adding your own credit information easily above mine.
+			const string strCreditArdeshirVQrCode=
+@"ArdeshirV downgrade the https://github.com/manuelbl/QrCodeGenerator project to C# 2.0 to be able to use it with ArdeshirV.Forms Project.
+Email: ArdeshirV@protonmail.com
+github: https://github.com/ArdeshirV";
+
+			const string strCreditArdeshirV  =
+@"ArdeshirV is the main ArdeshirV.Forms developer.
+Email: ArdeshirV@protonmail.com
+github: https://github.com/ArdeshirV";
+
+			const string strCreditNayuki =
+@"The original QrCode project is created in Nayuki project with Java by Nayuki.
+Email: me@nayuki.io
+https://www.nayuki.io/page/qr-code-generator-library
+https://github.com/nayuki/QR-Code-generator";
+
+			const string strCreditBleichenbacher =
+@"Manuel Bleichenbacher converted original Nayuki project from Java to C#.
+https://github.com/manuelbl/QrCodeGenerator";
+
+			_credits = new Credit[] {
+				new Credit("ArdeshirV.QrCode", strCreditArdeshirVQrCode, Resources.ArdeshirV),
+				new Credit("ArdeshirV", strCreditArdeshirV, Resources.ArdeshirV),
+				new Credit("Nayuki Project", strCreditNayuki, Res.NayukiAvator),
+				new Credit("Manuel Bleichenbacher", strCreditBleichenbacher, Res.ManuelBleichenbacherAvator)
+			};
+			
+			_list = new Dictionary<string, Credit>();
+			foreach(Credit c in _credits)
+				_list.Add(c.Name, c);
+			//***************************************************************************
+		}
+		//-------------------------------------------------------------------------------
+		public static Credit[] Items {
+			get {
+				return _credits;
+			}
+		}
+		//-------------------------------------------------------------------------------
+		public static Credit GetItem(string strCreditName) {
+			return _list[strCreditName];
+		}
+		//-------------------------------------------------------------------------------
+		public static bool IsExists(string strCreditName) {
+			return _list.ContainsKey(strCreditName);
 		}
 	}
 	//-----------------------------------------------------------------------------------	

@@ -29,6 +29,7 @@ namespace ArdeshirV.Forms
         #region Variables
 
         private ImageList _ImageListCurrencies;
+        private ImageList _imageListCreditsAvators;
         private Donation _donationSelected = null;
         private FormAboutData data;
         private Button m_btnOk;
@@ -133,12 +134,33 @@ namespace ArdeshirV.Forms
             comboBoxCopyrights.Items.Clear();
             foreach(string stringCopyrightTargetComponent in d.Copyrights.Keys)
             	comboBoxCopyrights.Items.Add(stringCopyrightTargetComponent);
+            
+            comboBoxCreditComponent.Items.Clear();
+            comboBoxImageCreditNames.Items.Clear();
+            foreach(string stringCreditName in d.Credits.Keys)
+            	comboBoxCreditComponent.Items.Add(stringCreditName);
 
             _ImageListCurrencies = new ImageList();
+            _imageListCreditsAvators = new ImageList();
 			comboBoxDonationCurrencies.Images = _ImageListCurrencies;
+			comboBoxImageCreditNames.Images = _imageListCreditsAvators;
             comboBoxDonation.SelectedIndex = comboBoxDonation.Items.Count > 0? 0: -1;
             comboBoxLicenses.SelectedIndex = comboBoxLicenses.Items.Count > 0? 0: -1;
             comboBoxCopyrights.SelectedIndex = comboBoxCopyrights.Items.Count > 0? 0: -1;
+            comboBoxCreditComponent.SelectedIndex =
+            	comboBoxCreditComponent.Items.Count > 0? 0: -1;
+            
+            if(data.Copyrights.Count <= 0)
+            	tabControl.TabPages.Remove(tabPageCopyright);
+            
+            if(data.Credits.Count <= 0)
+            	tabControl.TabPages.Remove(tabPageCredits);
+            
+            if(data.Donations.Count <= 0)
+            	tabControl.TabPages.Remove(tabPageDonation);
+            
+            if(data.Licenses.Count <= 0)
+            	tabControl.TabPages.Remove(tabPageLicense);
         }
         //-------------------------------------------------------------------------------
         public static FormAbout Show(FormAboutData Data)
@@ -148,9 +170,8 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
         private void UpdateTabControlBackColor(bool boolFormIsActive)
     	{
-			tabPageLicense.BackColor =
-			tabPageDonation.BackColor =
-			tabPageCopyright.BackColor = GetMidleColor(boolFormIsActive);
+        	foreach(TabPage tab in tabControl.TabPages)
+        		tab.BackColor = GetMidleColor(boolFormIsActive);
         }
         //-------------------------------------------------------------------------------
 		private Color GetMidleColor(bool boolFormIsActive)
@@ -380,8 +401,13 @@ namespace ArdeshirV.Forms
 				if(data.Licenses.ContainsKey(stringSelectedLicense)) {
 					License license = data.Licenses[stringSelectedLicense];
 					richTextBoxLicense.Clear();
+					if(string.IsNullOrEmpty(license.Text))
+						return;
 					richTextBoxLicense.Text = license.Text;
-					pictureBoxLicense.Image = license.Logo;
+					if(license.Logo == null)
+						pictureBoxLicense.Visible = false;
+					else
+						pictureBoxLicense.Image = license.Logo;
 					
 				}
 			}
@@ -431,6 +457,50 @@ namespace ArdeshirV.Forms
 							}
 						}
 					}
+				}
+			}
+		}
+        //-------------------------------------------------------------------------------
+		void ComboBoxImageCreditNamesSelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(comboBoxCreditComponent.SelectedIndex >= 0) {
+				string stringSelectedCreditComponent = (string)comboBoxCreditComponent.Items[
+					comboBoxCreditComponent.SelectedIndex];
+				if(data.Credits.ContainsKey(stringSelectedCreditComponent)) {
+					Credit[] credits = data.Credits[stringSelectedCreditComponent];
+					if(comboBoxImageCreditNames.SelectedIndex >= 0) {
+						string stringSelectedCredit =
+							(string)comboBoxImageCreditNames.Items[
+								comboBoxImageCreditNames.SelectedIndex];
+						foreach(Credit c in credits) {
+							if(c.Name == stringSelectedCredit) {
+								richTextBoxCreditData.Clear();
+								richTextBoxCreditData.Text = c.Description;
+								pictureBoxCredit.Image = c.Avator;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+        //-------------------------------------------------------------------------------
+		void ComboBoxCreditComponentSelectedIndexChanged(object sender, EventArgs e)
+		{
+			if(comboBoxCreditComponent.SelectedIndex >= 0) {
+				string stringSelectedComponent = (string)comboBoxCreditComponent.Items[
+					comboBoxCreditComponent.SelectedIndex];
+				if(data.Credits.ContainsKey(stringSelectedComponent)) {
+					Credit[] credits = data.Credits[stringSelectedComponent];
+					comboBoxImageCreditNames.Items.Clear();
+					_imageListCreditsAvators.Images.Clear();
+					foreach(Credit c in credits) {
+						comboBoxImageCreditNames.Items.Add(c.Name);
+						if(c.Avator != null)
+							_imageListCreditsAvators.Images.Add(c.Name, c.Avator);
+					}
+					if(comboBoxImageCreditNames.Items.Count > 0)
+						comboBoxImageCreditNames.SelectedIndex = 0;
 				}
 			}
 		}
@@ -908,6 +978,7 @@ namespace ArdeshirV.Forms
         	this.comboBoxCreditComponent.Name = "comboBoxCreditComponent";
         	this.comboBoxCreditComponent.Size = new System.Drawing.Size(381, 21);
         	this.comboBoxCreditComponent.TabIndex = 14;
+        	this.comboBoxCreditComponent.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCreditComponentSelectedIndexChanged);
         	// 
         	// buttonCreditCopy
         	// 
@@ -918,7 +989,7 @@ namespace ArdeshirV.Forms
         	this.buttonCreditCopy.Size = new System.Drawing.Size(70, 22);
         	this.buttonCreditCopy.TabIndex = 17;
         	this.buttonCreditCopy.Text = "&Copy";
-        	this.toolTip.SetToolTip(this.buttonCreditCopy, "Copy selected donation address to clipboard");
+        	this.toolTip.SetToolTip(this.buttonCreditCopy, "Copy selected credit information to clipboard");
         	this.buttonCreditCopy.UseVisualStyleBackColor = false;
         	this.buttonCreditCopy.Click += new System.EventHandler(this.ButtonCreditCopyClick);
         	// 
@@ -937,6 +1008,7 @@ namespace ArdeshirV.Forms
         	this.comboBoxImageCreditNames.Name = "comboBoxImageCreditNames";
         	this.comboBoxImageCreditNames.Size = new System.Drawing.Size(305, 21);
         	this.comboBoxImageCreditNames.TabIndex = 16;
+        	this.comboBoxImageCreditNames.SelectedIndexChanged += new System.EventHandler(this.ComboBoxImageCreditNamesSelectedIndexChanged);
         	// 
         	// pictureBoxCredit
         	// 
