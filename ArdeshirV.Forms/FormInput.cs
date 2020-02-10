@@ -22,6 +22,7 @@ namespace ArdeshirV.Forms
 		#region Variables
 
 		private IsValidInput funcIsValidInput = null;
+		private string stringResult = string.Empty;
 		private const string stringDefaultInputMessage = "Enter input value: ";
 		
 		#endregion Variables
@@ -136,7 +137,7 @@ namespace ArdeshirV.Forms
 			if(formSize != Size.Empty)
 				form.Size = formSize;
 			DialogResult result = form.ShowDialog(windowParent);
-			Value = form.textBoxInput.Text;
+			Value = (result == DialogResult.OK)? form.stringResult: string.Empty;
 			return result;
 		}
 		//-------------------------------------------------------------------------------
@@ -157,20 +158,24 @@ namespace ArdeshirV.Forms
 			if(funcIsValidInput != null) {
 				string stringErrMsg;
 				if(funcIsValidInput(textBoxInput.Text, out stringErrMsg)) {
-					DialogResult =
-					buttonOK.DialogResult = DialogResult.OK;
+					stringResult = textBoxInput.Text;
+					buttonOK.DialogResult =
+					DialogResult = DialogResult.OK;
 				} else {
 					errorProvider.SetError(textBoxInput, stringErrMsg);
 					textBoxInput.SelectAll();
 					textBoxInput.Focus();
 				}
 			} else {
+				stringResult = textBoxInput.Text;
+				buttonOK.DialogResult =
 				DialogResult = DialogResult.OK;
 			}
 		}
 		//-------------------------------------------------------------------------------
 		void ButtonCancelClick(object sender, EventArgs e)
 		{
+			buttonCancel.DialogResult =
 			DialogResult = DialogResult.Cancel;
 		}
 		//-------------------------------------------------------------------------------

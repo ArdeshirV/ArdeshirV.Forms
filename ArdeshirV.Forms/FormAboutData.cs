@@ -145,6 +145,62 @@ namespace ArdeshirV.Forms
     }
     //-------------------------------------------------------------------------------
     /// <summary>
+    /// Contains a credit name/logo-description pair.
+    /// </summary>
+    public sealed class Credit
+    {
+    	private readonly string _name;
+    	private readonly Image  _avator;
+    	private readonly string _description;
+    	//---------------------------------------------------------------------
+    	public string Name { get { return _name; } }
+    	public Image Avator { get { return _avator; } }
+    	public string Address { get { return _description; } }
+    	//---------------------------------------------------------------------
+    	private Credit() {}
+    	//---------------------------------------------------------------------
+    	/// <summary>
+    	/// Creates a credit entry with name, logo and description.
+    	/// </summary>
+    	/// <param name="name">Specify the person who has this credit.</param>
+    	/// <param name="description">Description about this credit</param>
+    	/// <param name="avator">Personal credit avator</param>
+    	public Credit(string name, string description, Image avator)
+    	{
+    		_name = name;
+    		_avator = avator;
+    		_description = description;
+    	}
+    }
+    //-----------------------------------------------------------------------------------
+    /// <summary>
+    /// Contains an array of credits
+    /// </summary>
+    public sealed class Credits
+    {
+    	private readonly string _name;
+    	private readonly Credit[] _creditArr;
+    	//-------------------------------------------------------------------------------
+    	public string Name { get { return _name; } }
+    	public Credit[] Items { get { return _creditArr; } }
+    	public Credit this[int index] { get { return _creditArr[index]; } }
+    	//-------------------------------------------------------------------------------
+    	private Credits() {}
+    	//-------------------------------------------------------------------------------
+    	/// <summary>
+    	/// Creates a credit array entry with names, avators and descritons.
+    	/// </summary>
+    	/// <param name="name">Component Name that refer to current credit.</param>
+    	/// <param name="creditArr">Contains credit name, avator and descriton
+    	/// about the current component that specified in name.</param>
+    	public Credits(string name, Credit[] creditArr)
+    	{
+    		_name = name;
+    		_creditArr = creditArr;
+    	}
+    }
+    //-------------------------------------------------------------------------------
+    /// <summary>
     /// Contains a donation currency-type/address pair.
     /// </summary>
     public sealed class Donation
@@ -205,12 +261,14 @@ namespace ArdeshirV.Forms
 		private readonly string _email;
 		private readonly IWin32Window _formOwner;
 		private readonly Dictionary<string, License> _licenses;
+		private readonly Dictionary<string, Credit[]> _credits;
 		private readonly Dictionary<string, Copyright> _copyrights;
 		private readonly Dictionary<string, Donation[]> _donations;
 		//-------------------------------------------------------------------------------
 		public string URL { get { return _URL; } }
 		public string Email { get { return _email; } }
 		public IWin32Window Owner { get { return _formOwner; } }
+		public Dictionary<string, Credit[]> Credits { get { return _credits; } }
 		public Dictionary<string, License> Licenses { get { return _licenses; } }
 		public Dictionary<string, Copyright> Copyrights { get { return _copyrights; } }
 		public Dictionary<string, Donation[]> Donations { get { return _donations; } }
@@ -231,18 +289,22 @@ namespace ArdeshirV.Forms
 		private FormAboutData() {}
 		//-------------------------------------------------------------------------------
 		public FormAboutData(IWin32Window owner, Copyright[] copyrights,
-		                     License[] licenses, Donations[] donations,
-		                     string URL, string email)
+		                     Credits[] credits, License[] licenses,
+		                     Donations[] donations, string URL, string email)
 		{
 			_URL = URL;
 			_email = email;
 			_formOwner = owner;
+			_credits = new Dictionary<string, Credit[]>();
 			_licenses = new Dictionary<string, License>();
 			_donations = new Dictionary<string, Donation[]>();
 			_copyrights = new Dictionary<string, Copyright>();
 
 			foreach(Donations d in donations)
 				_donations.Add(d.Name, d.Items);
+			
+			foreach(Credits c in credits)
+				_credits.Add(c.Name, c.Items);
 			
 			foreach(License l in licenses)
 				_licenses.Add(l.Name, l);

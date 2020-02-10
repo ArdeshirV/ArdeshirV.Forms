@@ -133,6 +133,9 @@ namespace ArdeshirV.TestForms
 				//new Donations(stringAssemblyTitle, DefaultDonationList.Items)
 			};
 			
+			Credits[] credits = new Credits[] {
+			};
+			
 			// You can add your copyright data about your different components like below code
 			Copyright[] copyrights = new Copyright[] {
 				new Copyright(this, Resources.Logo)  // the first parameter is
@@ -154,8 +157,9 @@ namespace ArdeshirV.TestForms
 			
         	FormAboutData data = new FormAboutData(this,
         	                                       copyrights,
+        	                                       credits,
         	                                       licenses,
-        	                                       donations,
+        	                                       null,//donations,
         	                                       _stringWebsite,
         	                                       _stringEmail);
         	FormAbout.Show(data);
@@ -179,9 +183,14 @@ namespace ArdeshirV.TestForms
 		}
         //-------------------------------------------------------------------------------
 		private bool IsValidInput(string strInput, out string stringErrMsg) {
-			double result;
-			stringErrMsg = "Please enter a valid floating point number.";
-			return double.TryParse(strInput, out result);
+			float result;
+			if(float.TryParse(strInput, out result)) {
+				stringErrMsg = string.Empty;
+				return true;
+			} else {
+				stringErrMsg = "Please enter a valid floating point number.";
+				return false;
+			}
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)
