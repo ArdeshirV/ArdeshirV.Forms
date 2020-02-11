@@ -275,8 +275,7 @@ namespace ArdeshirV.Forms
 		//-------------------------------------------------------------------------------
 		public string AppName
 		{
-			get
-			{System.Collections.Hashtable h = new System.Collections.Hashtable();
+			get {
 				string result = string.Empty;
 				
 				if(Owner != null)
@@ -338,72 +337,9 @@ namespace ArdeshirV.Forms
 			});
 		}
 	}
-	//-----------------------------------------------------------------------------------	
-	public static class DefaultCreditList
-	{
-		private static readonly Credit[] _credits;
-		private static readonly Dictionary<string, Credit> _list;
-		//-------------------------------------------------------------------------------
-		static DefaultCreditList()
-		{
-			//***************************************************************************
-			// Warning: Nobody is not allowed to change or modify credits that
-			// are mentioned here but you are allowed to add your own credit
-			// somewhere else that refer to your own components.
-			// That place is out of this file.
-			// Now search for "todo: You are allowed to change..." in your "Task List"
-			// for more information and find that sample code about
-			// how to adding your own credit information easily above mine.
-			const string strCreditArdeshirVQrCode=
-@"ArdeshirV downgrade the https://github.com/manuelbl/QrCodeGenerator project to C# 2.0 to be able to use it with ArdeshirV.Forms Project.
-Email: ArdeshirV@protonmail.com
-github: https://github.com/ArdeshirV";
-
-			const string strCreditArdeshirV  =
-@"ArdeshirV is the main ArdeshirV.Forms developer.
-Email: ArdeshirV@protonmail.com
-github: https://github.com/ArdeshirV";
-
-			const string strCreditNayuki =
-@"The original QrCode project is created in Nayuki project with Java by Nayuki.
-Email: me@nayuki.io
-https://www.nayuki.io/page/qr-code-generator-library
-https://github.com/nayuki/QR-Code-generator";
-
-			const string strCreditBleichenbacher =
-@"Manuel Bleichenbacher converted original Nayuki project from Java to C#.
-https://github.com/manuelbl/QrCodeGenerator";
-
-			_credits = new Credit[] {
-				new Credit("ArdeshirV.QrCode", strCreditArdeshirVQrCode, Resources.ArdeshirV),
-				new Credit("ArdeshirV", strCreditArdeshirV, Resources.ArdeshirV),
-				new Credit("Nayuki Project", strCreditNayuki, Res.NayukiAvator),
-				new Credit("Manuel Bleichenbacher", strCreditBleichenbacher, Res.ManuelBleichenbacherAvator)
-			};
-			
-			_list = new Dictionary<string, Credit>();
-			foreach(Credit c in _credits)
-				_list.Add(c.Name, c);
-			//***************************************************************************
-		}
-		//-------------------------------------------------------------------------------
-		public static Credit[] Items {
-			get {
-				return _credits;
-			}
-		}
-		//-------------------------------------------------------------------------------
-		public static Credit GetItem(string strCreditName) {
-			return _list[strCreditName];
-		}
-		//-------------------------------------------------------------------------------
-		public static bool IsExists(string strCreditName) {
-			return _list.ContainsKey(strCreditName);
-		}
-	}
-	//-----------------------------------------------------------------------------------	
+	//-----------------------------------------------------------------------------------
 	/// <summary>
-	/// DefaultDonationList provides default donation addresses
+	/// Provides default donation addresses.
 	/// </summary>
 	public static class DefaultDonationList
 	{
@@ -419,6 +355,7 @@ https://github.com/manuelbl/QrCodeGenerator";
 			// Now search for "todo: You are allowed to change..." in your "Task List"
 			// for more information and find that sample code about
 			// how to adding your own addresses easily above mine.
+			// You can find the best sample code in TestForms/FormMainTest.cs file.
 			_donations = new Donation[] {
 				new Donation("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi", Resources.Bitcoin),
 				new Donation("Ethereum", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.Ethereum),
@@ -458,6 +395,87 @@ https://github.com/manuelbl/QrCodeGenerator";
 		//-------------------------------------------------------------------------------
 		public static bool IsExists(string Name) {
 			return _list.ContainsKey(Name);
+		}
+	}
+	//-----------------------------------------------------------------------------------
+	/// <summary>
+	/// Provides default credit information that are used
+	/// in this project and relative projects.
+	/// </summary>
+	public static class DefaultCreditList
+	{
+		private static readonly Credit[] _credits;
+		private static readonly Dictionary<string, Credit> _list;
+		//-------------------------------------------------------------------------------
+		static DefaultCreditList()
+		{
+			//***************************************************************************
+			// Warning: Nobody is not allowed to change or modify credits that
+			// are mentioned here but you are allowed to add your own credit
+			// somewhere else that refer to your own components.
+			// That place is out of this file.
+			// Now search for "todo: You are allowed to change..." in your "Task List"
+			// in FormMainTest.cs for more information and find that sample code about
+			// how to adding your own credit information easily above mine.
+			// You can find the best sample code in TestForms/FormMainTest.cs file.
+			const string strCreditArdeshirVQrCode=
+@"ArdeshirV downgrade the https://github.com/manuelbl/QrCodeGenerator project to C# 2.0 to use it with ArdeshirV.Forms Project.
+Email: ArdeshirV@protonmail.com
+github: https://github.com/ArdeshirV";
+
+			const string strCreditArdeshirV  =
+@"ArdeshirV is the 'ArdeshirV.Forms' founder and developer.
+Email: ArdeshirV@protonmail.com
+github: https://github.com/ArdeshirV";
+
+			const string strCreditNayuki =
+@"The original QrCode project is created in Nayuki project with Java by Nayuki.
+Email: me@nayuki.io
+https://www.nayuki.io/page/qr-code-generator-library
+https://github.com/nayuki/QR-Code-generator";
+
+			const string strCreditBleichenbacher =
+@"Manuel Bleichenbacher converted original Nayuki project about QrCodeGenerator from Java to C#.
+https://github.com/manuelbl/QrCodeGenerator";
+
+			_credits = new Credit[] {
+				new Credit("ArdeshirV.QrCode", strCreditArdeshirVQrCode, Resources.ArdeshirV),
+				new Credit("ArdeshirV", strCreditArdeshirV, Resources.ArdeshirV),
+				new Credit("Nayuki Project", strCreditNayuki, Res.NayukiAvator),
+				new Credit("Manuel Bleichenbacher", strCreditBleichenbacher, Res.ManuelBleichenbacherAvator)
+			};
+			
+			_list = new Dictionary<string, Credit>();
+			foreach(Credit c in _credits)
+				_list.Add(c.Name, c);
+			//***************************************************************************
+		}
+		//-------------------------------------------------------------------------------
+		/// <summary>
+		/// Gets all items.
+		/// </summary>
+		public static Credit[] Items {
+			get {
+				return _credits;
+			}
+		}
+		//-------------------------------------------------------------------------------
+		/// <summary>
+		/// Gets an item that is specified by a name.
+		/// </summary>
+		/// <param name="strCreditName">Credit name.</param>
+		/// <returns>Credit with specified name.</returns>
+		public static Credit GetItem(string strCreditName) {
+			return _list[strCreditName];
+		}
+		//-------------------------------------------------------------------------------
+		/// <summary>
+		/// Check the item with specified name is exists or not.
+		/// </summary>
+		/// <param name="strCreditName">Credit name</param>
+		/// <returns>true if credit with specified name is exists</returns>
+		public static bool IsExists(string strCreditName) {
+			return _list.ContainsKey(strCreditName);
 		}
 	}
 }

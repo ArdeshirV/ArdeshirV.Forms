@@ -8,6 +8,7 @@ using ArdeshirV.Forms;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using ArdeshirV.TestForms.Properties;
+using res = ArdeshirV.Forms.Properties;
 
 #endregion
 //---------------------------------------------------------------------------------------
@@ -15,7 +16,7 @@ namespace ArdeshirV.TestForms
 {
     public partial class FormMainTest : FormBase
     {
-    	#region Variables 
+    	#region Variables
     	
     	private Button[] buttons;
         private int intIncH = 100;
@@ -129,17 +130,23 @@ namespace ArdeshirV.TestForms
 			
 			// Adding all my default donation addresses
 			Donations[] donations = new Donations[] {
-				// Below code add default donation list to donation tab of FormAbout
+				// Below code add default donation list to donation tab of FormAbout:
 				//new Donations(stringAssemblyTitle, DefaultDonationList.Items)
+				// You can add your own donation address like this:
+				//new Donations("Component Name", new Donation[] {
+				//              	new Donation(
+				//              		"Bitcoin",                       // Currency type
+				//              		"1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi",  // Address
+				//              		res.Resources.Bitcoin)  // Currency global symbol
+				//              })
 			};
 			
 			Credits[] credits = new Credits[] {
 				new Credits(stringAssemblyTitle, new Credit[] {
 				            	DefaultCreditList.GetItem("ArdeshirV")
 				            })
-
 				// TODO: You are allowed to add your credit info in your code like this:
-				//new Credits(stringAssemblyTitle, new Credit[] {
+				//new Credits("Component Name", new Credit[] {
 				//	            new Credit("Credit Name", "Credit Description...", CreditAvator)
 				//	        })
 			};
