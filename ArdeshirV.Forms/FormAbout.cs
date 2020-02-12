@@ -1,7 +1,7 @@
 #region Header
 
 // FormAbout.cs : Provides Advanced Form About Box
-// Copyright© 2002-2019 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.IO;
@@ -1304,6 +1304,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelURL.TabIndex = 3;
         	this.linkLabelURL.TabStop = true;
         	this.linkLabelURL.Text = "Support web site goes here";
+        	this.linkLabelURL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkTechnicalSupport_LinkClicked);
         	// 
         	// linkLabelEmail
         	// 
@@ -1315,6 +1316,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelEmail.TabIndex = 1;
         	this.linkLabelEmail.TabStop = true;
         	this.linkLabelEmail.Text = "Email address goes here";
+        	this.linkLabelEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkMalieTo_LinkClicked);
         	// 
         	// FormAbout
         	// 
