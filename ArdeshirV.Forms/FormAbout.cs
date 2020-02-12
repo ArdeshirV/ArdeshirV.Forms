@@ -1038,6 +1038,7 @@ namespace ArdeshirV.Forms
         	this.richTextBoxCreditData.Size = new System.Drawing.Size(456, 74);
         	this.richTextBoxCreditData.TabIndex = 18;
         	this.richTextBoxCreditData.Text = "Credits data goes here";
+        	this.richTextBoxCreditData.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtbLinkClick);
         	// 
         	// labelCreditComponents
         	// 
