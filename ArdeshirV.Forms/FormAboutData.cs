@@ -359,23 +359,23 @@ namespace ArdeshirV.Forms
 			_donations = new Donation[] {
 				new Donation("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi", Resources.Bitcoin),
 				new Donation("Ethereum", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.Ethereum),
-				new Donation("Nano", "nano_1t7fg3drandk1crg363cn66px1adzsz3reeece8puuecbti4ysnyszbikry5", Resources.Nano),
+				new Donation("Tron", "TCB6uBci8mw1P4e2xikSGbyHcFjNCFphXr", Resources.Tron),
 				new Donation("TrueUSD", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.TrueUSD),
-				new Donation("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y", Resources.Monero),
-				new Donation("Litecoin", "LdfYVr2Lgyuwp9K5Dk4aUsUbUQ2Rr5TA1n", Resources.Litecoin),
-				new Donation("BitcoinCash", "bitcoincash:qzqsse2w6vqkqylfvkuqdvmgpl34zyq2cvwneunpyl", Resources.BitcoinCash),
+				new Donation("USDTether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.USDTether),
+				new Donation("Binance", "bnb15qwa7kl46ledh5zqqynmy2tqw92mhzuwmap6sf", Resources.Binance),
+				new Donation("Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc", Resources.Nano),
 				new Donation("Stellar", "GCMALSIYBJT74K5SKJFHMLBJRWFCO6EPIKQ4DO6C7ER4QAYIMTQSOOWI", Resources.Stellar),
 				new Donation("Ripple", "raBw695Qnkt5RNTxTcyGFPzC5yFFHYztfR", Resources.Ripple),
 				new Donation("Cardano", "DdzFFzCqrhsoSn5qvqRTovUkr1XHWy9LvbvDHVYFoFFyxAJkf1bT4X4ySpm8DwFqDo3EWAn934W9WfipbSNiXTcRzEqLP1y5KyAfMByJ", Resources.Cardano),
 				new Donation("Neo", "AXqbLBWhcrFrjumvrm8nW9iYaUFoKML17b", Resources.Neo),
-				new Donation("Tron", "TCB6uBci8mw1P4e2xikSGbyHcFjNCFphXr", Resources.Tron),
 				new Donation("NEM", "NDXCTS2ITWO4J33YPL7AMHSGOIFRJSTBWSDZ4C3P", Resources.NEM),
 				new Donation("Qtum", "QddGvqLg5yTi2J2DvixZVFgA1rpm5RAq2x", Resources.Qtum),
-				new Donation("USDTether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.USDTether),
-				new Donation("Binance", "bnb15qwa7kl46ledh5zqqynmy2tqw92mhzuwmap6sf", Resources.Binance),
+				new Donation("Litecoin", "LdfYVr2Lgyuwp9K5Dk4aUsUbUQ2Rr5TA1n", Resources.Litecoin),
+				new Donation("BitcoinCash", "bitcoincash:qzqsse2w6vqkqylfvkuqdvmgpl34zyq2cvwneunpyl", Resources.BitcoinCash),
 				new Donation("Dash", "XhsE3ntLYdKMbT4JptTvURqyu9RKuypDCf", Resources.Dash),
 				new Donation("Verge", "DRviBtskt1M6BBTpAoNvF3qLrpKTN3mb7P", Resources.Verge),
-				new Donation("ZCash", "t1ZnspKa3XFijtUAG6yKHsM3y6Bdb7C8HKA", Resources.ZCash)
+				new Donation("ZCash", "t1ZnspKa3XFijtUAG6yKHsM3y6Bdb7C8HKA", Resources.ZCash),
+				new Donation("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y", Resources.Monero)
 			};
 			_list = new Dictionary<string, Donation>();
 			foreach(Donation d in _donations)
