@@ -1,4 +1,4 @@
-<strong>ArdeshirV.Forms</strong> is my own version of everyday windows .Net forms like About Box, Error Handler, Splash Screen and my base windows form with many special ability.
+<strong>ArdeshirV.Forms</strong> is a customized version of everyday windows .Net forms like About Box, Error Handler, Splash Screen and my base windows form with many fantastic special ability.
 <br/><br/>
     <main>
       <article>
