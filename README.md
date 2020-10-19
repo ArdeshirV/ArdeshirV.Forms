@@ -50,6 +50,6 @@
     </main>
     <footer>
         <p style="margin: auto;">
-           Copyright&copy; 2008-2020 <a href="mailto:ArdeshirV@protonmail.com">ArdeshirV@protonmail.com</a>, Licensed under GPL<sup>v3+</sup>
+           Copyright&copy; 2002-2020 <a href="mailto:ArdeshirV@protonmail.com">ArdeshirV@protonmail.com</a>, Licensed under GPL<sup>v3+</sup>
         <p/>
     </footer>
