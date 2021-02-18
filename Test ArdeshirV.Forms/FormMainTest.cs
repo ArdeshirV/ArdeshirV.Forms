@@ -113,7 +113,7 @@ namespace ArdeshirV.TestForms
         	AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
 			string stringAssemblyTitle = aaa.AssemblyTitle;
 
-			// TODO: You are allowed to add your donation addresses in your code like this:
+			// TODO: You can add your donation addresses in your code like this:
 			Donations[] donations = new Donations[] {
 				new Donations(      // Donations belong to this component and you can specify 
 				stringAssemblyTitle,// several donation lists for several different component in your app
@@ -129,19 +129,19 @@ namespace ArdeshirV.TestForms
 					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
 					             // Predefined crypto currency logos, You can use other images.
 					             GlobalResouces.CurrencyLogos.Ethereum), 
-					new Donation("USDTether", 
-					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
-					             GlobalResouces.CurrencyLogos.USDTether),
 					new Donation("Nano", 
 					             "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc",
-					             GlobalResouces.CurrencyLogos.Nano)
+					             GlobalResouces.CurrencyLogos.Nano),
+					new Donation("USDTether", 
+					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
+					             GlobalResouces.CurrencyLogos.USDTether)
 				})};
 			
 			Credits[] credits = new Credits[] {
 				new Credits(stringAssemblyTitle, new Credit[] {
 				            	DefaultCreditList.GetItem("ArdeshirV")
 				            })
-				// TODO: You are allowed to add your credit info in your code like this:
+				// TODO: You can add your credit info in your code like this:
 				//new Credits("Component Name", new Credit[] {
 				//	            new Credit("Credit Name", "Credit Description...", CreditAvator)
 				//	        })

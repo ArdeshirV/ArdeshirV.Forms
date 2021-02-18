@@ -122,12 +122,12 @@ namespace ArdeshirV.Forms
         #endregion
         //-------------------------------------------------------------------------------
         #region Interface
-
+        
         public void ShrinkWidthByTime(int intNewWidth)
         {
             if (WindowState == FormWindowState.Normal)
             {
-                int intInc = 8, intIncHalf = intInc / 2;
+                int intInc = 12, intIncHalf = intInc / 2;
                 int l_intShrinkWidthSize = (intNewWidth - Width) / intInc;
 
                 if(l_intShrinkWidthSize < 0)
@@ -147,8 +147,7 @@ namespace ArdeshirV.Forms
                 	     Width <= MinimumSize.Width))
                         break;
 
-                    Application.DoEvents();
-                    Thread.Sleep(5);
+                    Thread.Sleep(1);
                     Application.DoEvents();
                     Left -= intIncHalf;
                     Width += intInc;
@@ -165,8 +164,7 @@ namespace ArdeshirV.Forms
         {
             if (WindowState == FormWindowState.Normal)
             {
-                int intInc = 8;
-                int intIncHalf = intInc / 2;
+                int intInc = 8, intIncHalf = intInc / 2;
                 int l_intShrinkHeightSize = (intNewHeight - Height) / intInc;
 
                 if (l_intShrinkHeightSize < 0)
@@ -186,14 +184,10 @@ namespace ArdeshirV.Forms
                 	     Height <= MinimumSize.Height))
                         break;
 
-                    Application.DoEvents();
-                    Thread.Sleep(10);
+                    Thread.Sleep(1);
                     Application.DoEvents();
                     Top -= intIncHalf;
                     Height += intInc;
-
-                    if (Height == intNewHeight)
-                        break;
                 }
 
                 Height = intNewHeight;
