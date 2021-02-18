@@ -195,14 +195,17 @@ namespace ArdeshirV.TestForms
 		}
         //-------------------------------------------------------------------------------
 		bool IsValidInput(string strInput, out string stringErrMsg) {
-			float result;
-			if(float.TryParse(strInput, out result)) {
-				stringErrMsg = string.Empty;
-				return true;
-			} else {
-				stringErrMsg = "Please enter a valid floating point number.";
-				return false;
-			}
+        	bool boolResult = true;
+        	stringErrMsg = string.Empty;
+        	
+        	try {
+        		int.Parse(strInput);
+        	} catch(Exception) {
+        		boolResult = false;
+        		stringErrMsg = "Please enter an integer number.";
+        	}
+        	
+        	return boolResult;
 		}
         //-------------------------------------------------------------------------------
 		void ButtonInputClick(object sender, EventArgs e)

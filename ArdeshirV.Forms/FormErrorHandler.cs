@@ -24,7 +24,6 @@ namespace ArdeshirV.Forms
         private ToolTip toolTip;
         private Button m_btnMore;
         private Button buttonCopy;
-		private LinkLabel m_lnkLink;
         private string m_strLink = "";
         private Label m_lblStackTrack;
         private Button buttonInnerExp;
@@ -39,6 +38,7 @@ namespace ArdeshirV.Forms
         private System.ComponentModel.IContainer components;
         private System.Windows.Forms.Label labelReportError;
         private System.Windows.Forms.TextBox textBoxStackTrack;
+        private System.Windows.Forms.LinkLabel linkLabelWebSite;
         #endregion
         //-------------------------------------------------------------------------------
         #region Constructor
@@ -57,6 +57,7 @@ namespace ArdeshirV.Forms
             hwndOwner = wOwner;
             exp = expException;
             m_strLink = strLinkSite;
+            this.linkLabelWebSite.BringToFront();
             textBoxMessage.SelectedText = "";
 			DialogResult = DialogResult.Cancel;
             //textBoxMessage.Text = expException.Message;
@@ -98,14 +99,14 @@ namespace ArdeshirV.Forms
             textBoxStackTrack.BackColor = Color.Black;
 
             if (string.IsNullOrEmpty(m_strLink)) {
-				m_lnkLink.Visible =
+				linkLabelWebSite.Visible =
 				labelReportError.Visible = false;
             } else {
 	        	//if(wOwner != null)
 	        		//m_lnkLink.Text = m_strLink;
 	        			//string.Format("Visit {0} on the web", frmOwner.Text);
 	        	//else
-	            	m_lnkLink.Text = m_strLink;
+	            	linkLabelWebSite.Text = m_strLink;
 			}
 
             ShowDialog(wOwner);
@@ -152,7 +153,7 @@ namespace ArdeshirV.Forms
 		/// <param name="e"></param>
         private void lnkLink_LinkClicked(object sender,LinkLabelLinkClickedEventArgs e)
 		{
-			m_lnkLink.LinkVisited = true;
+			linkLabelWebSite.LinkVisited = true;
 			Process.Start(m_strLink);
 		}
         //---------------------------------------------------------------------
@@ -249,7 +250,7 @@ namespace ArdeshirV.Forms
 		void FormErrorHandlerShown(object sender, EventArgs e)
 		{
 			Height = intMinHeight;
-			m_lnkLink.Height = 19;
+			linkLabelWebSite.Height = 19;
 			//ClientSize = MinSize;
 		}
 
@@ -283,7 +284,7 @@ namespace ArdeshirV.Forms
 			this.textBoxMessage = new System.Windows.Forms.TextBox();
 			this.buttonCopy = new System.Windows.Forms.Button();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.m_lnkLink = new System.Windows.Forms.LinkLabel();
+			this.linkLabelWebSite = new System.Windows.Forms.LinkLabel();
 			this.labelReportError = new System.Windows.Forms.Label();
 			this.textBoxStackTrack = new System.Windows.Forms.TextBox();
 			this.panelTop = new System.Windows.Forms.Panel();
@@ -366,21 +367,21 @@ namespace ArdeshirV.Forms
 			this.buttonCopy.UseVisualStyleBackColor = false;
 			this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
 			// 
-			// m_lnkLink
+			// linkLabelWebSite
 			// 
-			this.m_lnkLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.linkLabelWebSite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 			| System.Windows.Forms.AnchorStyles.Right)));
-			this.m_lnkLink.BackColor = System.Drawing.Color.Transparent;
-			this.m_lnkLink.Location = new System.Drawing.Point(81, 128);
-			this.m_lnkLink.Name = "m_lnkLink";
-			this.m_lnkLink.Size = new System.Drawing.Size(502, 19);
-			this.m_lnkLink.TabIndex = 6;
-			this.m_lnkLink.TabStop = true;
-			this.m_lnkLink.Text = "Technical Support";
-			this.m_lnkLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.toolTip.SetToolTip(this.m_lnkLink, "Link/email to technical support");
-			this.m_lnkLink.UseCompatibleTextRendering = true;
-			this.m_lnkLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLink_LinkClicked);
+			this.linkLabelWebSite.BackColor = System.Drawing.Color.Transparent;
+			this.linkLabelWebSite.Location = new System.Drawing.Point(81, 128);
+			this.linkLabelWebSite.Name = "linkLabelWebSite";
+			this.linkLabelWebSite.Size = new System.Drawing.Size(502, 23);
+			this.linkLabelWebSite.TabIndex = 6;
+			this.linkLabelWebSite.TabStop = true;
+			this.linkLabelWebSite.Text = "Technical Support";
+			this.linkLabelWebSite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolTip.SetToolTip(this.linkLabelWebSite, "Link/email to technical support");
+			this.linkLabelWebSite.UseCompatibleTextRendering = true;
+			this.linkLabelWebSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLink_LinkClicked);
 			// 
 			// labelReportError
 			// 
@@ -413,7 +414,7 @@ namespace ArdeshirV.Forms
 			// panelTop
 			// 
 			this.panelTop.BackColor = System.Drawing.Color.Transparent;
-			this.panelTop.Controls.Add(this.m_lnkLink);
+			this.panelTop.Controls.Add(this.linkLabelWebSite);
 			this.panelTop.Controls.Add(this.labelReportError);
 			this.panelTop.Controls.Add(this.m_btnOk);
 			this.panelTop.Controls.Add(this.m_btnMore);
