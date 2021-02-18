@@ -116,6 +116,7 @@ namespace ArdeshirV.Forms
         protected void InitFormAbout(FormAboutData d) 
         {
             data = d;
+            AcceptButton = m_btnOk;
             SetURL(linkLabelURL, d.URL);
             SetEmail(linkLabelEmail, d.Email);
             m_lblApplicationName.Text = d.AppName;
@@ -176,24 +177,28 @@ namespace ArdeshirV.Forms
         //-------------------------------------------------------------------------------
 		private Color GetMidleColor(bool boolFormIsActive)
 		{
-        	Color c1, c2;
-
-        	if(!boolFormIsActive) {
-        		c2 = BackgoundEndGradientColor;
-        		c1 = BackgoundStartGradientColor;
-        	} else {
-        		c2 = BackgoundInactiveEndGradientColor;
-        		c1 = BackgoundInactiveStartGradientColor;
-        	}
-        	
-    		Color color = Color.FromArgb(
-    			(c1.A + c2.A) / 2,
-    			(c1.R + c2.R) / 2,
-    			(c1.G + c2.G) / 2,
-    			(c1.B + c2.B) / 2
-    		);
-        	
-        	return color;
+			if(this.BackgroundGradientColor) {
+	        	Color c1, c2;
+	
+	        	if(!boolFormIsActive) {
+	        		c2 = BackgoundEndGradientColor;
+	        		c1 = BackgoundStartGradientColor;
+	        	} else {
+	        		c2 = BackgoundInactiveEndGradientColor;
+	        		c1 = BackgoundInactiveStartGradientColor;
+	        	}
+	        	
+	    		Color color = Color.FromArgb(
+	    			(c1.A + c2.A) / 2,
+	    			(c1.R + c2.R) / 2,
+	    			(c1.G + c2.G) / 2,
+	    			(c1.B + c2.B) / 2
+	    		);
+	        	
+	        	return color;
+			} else {
+				return this.BackColor;
+			}
 		}
         //-------------------------------------------------------------------------------
 		void ButtonCopyClick(object sender, EventArgs e)
@@ -510,7 +515,7 @@ namespace ArdeshirV.Forms
 			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(4, 1);
 		}
         //-------------------------------------------------------------------------------
-        private void m_lnkMalieTo_LinkClicked(object sender,
+        private void m_lnkMailTo_LinkClicked(object sender,
         	LinkLabelLinkClickedEventArgs e)
         {
         	string stringEmail = Extractor.ExtractFirstEmail(data.Email);
@@ -575,7 +580,8 @@ namespace ArdeshirV.Forms
 		{
 			toolStripMenuDonationSaveAs.Enabled = 
 			copyToolStripMenuItemDonation.Enabled =
-				(pictureBoxDonation.Image != null && _donationSelected != null);
+				(pictureBoxDonation.Image != null &&
+				 _donationSelected != null);
 		}
         //-------------------------------------------------------------------------------
 		void CopyToolStripMenuItemClick(object sender, EventArgs e)
@@ -1014,7 +1020,6 @@ namespace ArdeshirV.Forms
         	// 
         	this.pictureBoxCredit.BackColor = System.Drawing.Color.White;
         	this.pictureBoxCredit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        	this.pictureBoxCredit.ContextMenuStrip = this.contextMenuStripDonation;
         	this.pictureBoxCredit.InitialImage = null;
         	this.pictureBoxCredit.Location = new System.Drawing.Point(6, 6);
         	this.pictureBoxCredit.Name = "pictureBoxCredit";
@@ -1317,7 +1322,7 @@ namespace ArdeshirV.Forms
         	this.linkLabelEmail.TabIndex = 1;
         	this.linkLabelEmail.TabStop = true;
         	this.linkLabelEmail.Text = "Email address goes here";
-        	this.linkLabelEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkMalieTo_LinkClicked);
+        	this.linkLabelEmail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_lnkMailTo_LinkClicked);
         	// 
         	// FormAbout
         	// 

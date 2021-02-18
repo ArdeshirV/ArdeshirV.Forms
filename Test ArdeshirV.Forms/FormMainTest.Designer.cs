@@ -170,6 +170,10 @@ namespace ArdeshirV.TestForms
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.BackColor = System.Drawing.SystemColors.Control;
+        	this.BackgoundEndGradientColor = System.Drawing.Color.Red;
+        	this.BackgoundInactiveEndGradientColor = System.Drawing.Color.DarkRed;
+        	this.BackgoundInactiveStartGradientColor = System.Drawing.Color.SandyBrown;
+        	this.BackgoundStartGradientColor = System.Drawing.Color.Yellow;
         	this.CancelButton = this.buttonExit;
         	this.ClientSize = new System.Drawing.Size(248, 370);
         	this.Controls.Add(this.ButtonInput);

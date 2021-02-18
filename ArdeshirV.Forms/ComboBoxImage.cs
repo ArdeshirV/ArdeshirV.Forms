@@ -13,7 +13,7 @@ using AVFR = ArdeshirV.Forms.Properties;
 //---------------------------------------------------------------------------------------
 namespace ArdeshirV.Controls
 {
-	class ComboBoxImage : ComboBox
+	public class ComboBoxImage : ComboBox
 	{
 		private ImageList _images;
 		
@@ -53,8 +53,6 @@ namespace ArdeshirV.Controls
 		        	e.Graphics.DrawImage(pic, e.Bounds.Left, e.Bounds.Top,
 		        	                     e.Bounds.Height, e.Bounds.Height);
 	        }
-	
-	        base.OnDrawItem(e);
 	    }
 		//-------------------------------------------------------------------------------
 	    public ImageList Images {

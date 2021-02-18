@@ -32,17 +32,18 @@ namespace ArdeshirV.TestForms
         public FormMainTest()
         {
             InitializeComponent();
-            OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
-            StartPosition = FormStartPosition.CenterScreen;
             BackgoundEndGradientColor = Color.Lime;
             BackgoundStartGradientColor = Color.White;
             BackgoundInactiveEndGradientColor = Color.LightBlue;
             BackgoundInactiveStartGradientColor = Color.White;
+            StartPosition = FormStartPosition.CenterScreen;
             UpdateMessageBar();
             buttons = new Button[] {
             	buttonShrinkWidth, buttonShrinkHeight, buttonSplashForm,
             	ButtonFormMessage, ButtonInput, buttonErrorHandlerForm,
             	buttonFormAbout, buttonNewForm, buttonExit };
+            
+            OnShrinkEnd += TestArdeshirV_Forms_OnShrinkEnd;
         }
         //-------------------------------------------------------------------------------
         private void TestArdeshirV_Forms_OnShrinkEnd(object sender, EventArgs e)
@@ -113,33 +114,28 @@ namespace ArdeshirV.TestForms
 			string stringAssemblyTitle = aaa.AssemblyTitle;
 
 			// TODO: You are allowed to add your donation addresses in your code like this:
-			/*Donations[] donations = new Donations[] {
+			Donations[] donations = new Donations[] {
 				new Donations(      // Donations belong to this component and you can specify 
 				stringAssemblyTitle,// several donation lists for several different component in your app
 				new Donation[] {    // All below donations addresses are linked to
 				              	    // the component with stringAssemblyTitle title
 					new Donation("Bitcoin",                             // Donation name
-					             "1MjwviitdNC7ndvjXL3dG7mE9Pir3ZBSBP",  // Donation address
-				             ArdeshirV.Forms.Properties.Resources.Bitcoin), // Donation logo
+					             "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi",  // Donation address
+					             GlobalResouces.CurrencyLogos.Bitcoin), // Donation logo
 					// if you use usual public cryptocurrency logos like bitcoin and etc...
 					// then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
 					new Donation("Ethereum",  // Here another example about Ethereum
-					             "0x1DBED0B76d1070a47613EdEE58D9eD8afD6A206D",
-					             ArdeshirV.Forms.Properties.Resources.Ethereum)
-				})};*/
-			
-			// Adding all my default donation addresses
-			Donations[] donations = new Donations[] {
-				// Below code add default donation list to donation tab of FormAbout:
-				//new Donations(stringAssemblyTitle, DefaultDonationList.Items)
-				// You can add your own donation address like this:
-				//new Donations("Component Name", new Donation[] {
-				//              	new Donation(
-				//              		"Bitcoin",                       // Currency type
-				//              		"1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi",  // Address
-				//              		res.Resources.Bitcoin)  // Currency global symbol
-				//              })
-			};
+					             // You can use your own donation address in your app like this:
+					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
+					             // Predefined crypto currency logos, You can use other images.
+					             GlobalResouces.CurrencyLogos.Ethereum), 
+					new Donation("USDTether", 
+					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
+					             GlobalResouces.CurrencyLogos.USDTether),
+					new Donation("Nano", 
+					             "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc",
+					             GlobalResouces.CurrencyLogos.Nano)
+				})};
 			
 			Credits[] credits = new Credits[] {
 				new Credits(stringAssemblyTitle, new Credit[] {
@@ -151,7 +147,8 @@ namespace ArdeshirV.TestForms
 				//	        })
 			};
 			
-			// You can add your copyright data about your different components like below code
+			// You can add your copyright data about your different components
+			// that are present in your app like below code:
 			Copyright[] copyrights = new Copyright[] {
 				new Copyright(this, Resources.Logo)  // the first parameter is
 				// one of your components and the Copyright constructor can retrive all
@@ -197,7 +194,7 @@ namespace ArdeshirV.TestForms
 				                 MessageBoxIcon.Information).ToString();
 		}
         //-------------------------------------------------------------------------------
-		private bool IsValidInput(string strInput, out string stringErrMsg) {
+		bool IsValidInput(string strInput, out string stringErrMsg) {
 			float result;
 			if(float.TryParse(strInput, out result)) {
 				stringErrMsg = string.Empty;
@@ -212,9 +209,16 @@ namespace ArdeshirV.TestForms
 		{
 			string stringValue;
 			const string stringInputMsg = "Enter floating point number: ";
-			DialogResult result = FormInput.Show(this, out stringValue, IsValidInput,
-			                                     stringInputMsg, Text, "",
-			                                     new Size(Width, 0));
+			
+			DialogResult result =
+				FormInput.Show(this,
+				               out stringValue,
+				               IsValidInput,
+				               stringInputMsg,
+				               Text,
+				               string.Empty,
+				               new Size(Width, 0));
+			
 			if(result == DialogResult.OK)
 				m_lblMessage.Text = stringValue;
 		}

@@ -28,9 +28,9 @@ namespace ArdeshirV.Forms
         private FormSplashWndProcess localFormSplashProcess;
         private readonly long intTicks = DateTime.Now.Ticks + 4;
         //-------------------------------------------------------------------------------
-        protected FormSplash(IWin32Window windowParent, Image imgSplashImage,
-                                      int Delay, FormSplashWndProcess fsp) :
-        	base(windowParent)
+        protected FormSplash(Form container, Image imgSplashImage,
+                             int Delay, FormSplashWndProcess fsp) :
+        	base(container)
         {
             InitializeComponent();
             if (!DesignMode)
@@ -48,15 +48,17 @@ namespace ArdeshirV.Forms
             	MoveFormWithMouse = false;
             	intDelay = Delay;
 	            m_imgPictureBox.Image = imgSplashImage;
-            	StartPosition = FormStartPosition.CenterScreen;
+	            StartPosition = FormStartPosition.CenterScreen;
 	            m_imgPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 	            
 	            m_timTimer = new Timer();
 	            m_timTimer.Interval = 200;
 	            m_timTimer.Tick += new EventHandler(m_timTimer_Elapsed);
-            	Show(_formOwner = windowParent as Form);
+	            Show(_formOwner = container);
             }
         }
+        //-------------------------------------------------------------------------------
+        
         //-------------------------------------------------------------------------------
         private void m_timTimer_Elapsed(object sender, EventArgs e)
         {
@@ -67,7 +69,7 @@ namespace ArdeshirV.Forms
         		if(m_timTimer.Interval == intDelay)
         			Close();
         		else
-        			m_timTimer.Interval = intDelay;      		
+        			m_timTimer.Interval = intDelay;
             }
         }
         //-------------------------------------------------------------------------------

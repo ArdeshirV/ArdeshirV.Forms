@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription ("ArdeshirV.Forms provides everyday Windows " +
                                 "forms like FormBase, FormAbout, FormErrorHandl" +
                                 "er, FormInput, FormMessage and FormSplash.")]
-[assembly: AssemblyCopyright ("Copyright© 2002-2020 ArdeshirV@protonmail.com," +
+[assembly: AssemblyCopyright ("Copyright© 2002-2021 ArdeshirV@protonmail.com," +
                               " Licensed under LGPLv3+")]
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -37,6 +37,6 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion ("4.5.1.1")]
-[assembly: AssemblyFileVersion ("4.5.1.1")]
+[assembly: AssemblyVersion ("4.8.1.1")]
+[assembly: AssemblyFileVersion ("4.8.1.1")]
 //-----------------------------------------------------------------------------------

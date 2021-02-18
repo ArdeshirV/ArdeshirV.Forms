@@ -127,7 +127,6 @@ namespace ArdeshirV.Forms
         {
             if (WindowState == FormWindowState.Normal)
             {
-                RaiseShrinkBegan();
                 int intInc = 8, intIncHalf = intInc / 2;
                 int l_intShrinkWidthSize = (intNewWidth - Width) / intInc;
 
@@ -137,6 +136,7 @@ namespace ArdeshirV.Forms
                     intIncHalf = -intIncHalf;
                     l_intShrinkWidthSize = -l_intShrinkWidthSize;
                 }
+                RaiseShrinkBegan();
                 
                 for (int i = 0; i < l_intShrinkWidthSize; i++)
                 {
@@ -165,7 +165,6 @@ namespace ArdeshirV.Forms
         {
             if (WindowState == FormWindowState.Normal)
             {
-                RaiseShrinkBegan();
                 int intInc = 8;
                 int intIncHalf = intInc / 2;
                 int l_intShrinkHeightSize = (intNewHeight - Height) / intInc;
@@ -176,6 +175,7 @@ namespace ArdeshirV.Forms
                     intIncHalf = -intIncHalf;
                     l_intShrinkHeightSize = -l_intShrinkHeightSize;
                 }
+                RaiseShrinkBegan();
 
                 for (int i = 0; i < l_intShrinkHeightSize; i++)
                 {
@@ -209,9 +209,9 @@ namespace ArdeshirV.Forms
             {
                 int l_intShrinkWidthSize = intNewWidth - Width;
 
-                RaiseShrinkBegan();
                 Left -= l_intShrinkWidthSize / 2;
                 Width += l_intShrinkWidthSize;
+                RaiseShrinkBegan();
                 Width = intNewWidth;
                 RaiseShrinkEnd();
             }
@@ -225,9 +225,9 @@ namespace ArdeshirV.Forms
             {
                 int l_intShrinkHeightSize = intNewHeight - Height;
 
-                RaiseShrinkBegan();
                 Top -= l_intShrinkHeightSize / 2;
                 Height += l_intShrinkHeightSize;
+                RaiseShrinkBegan();
                 Height = intNewHeight;
                 RaiseShrinkEnd();
             }
@@ -546,10 +546,7 @@ namespace ArdeshirV.Forms
         {
             get
             {
-                if (m_blnMouseDown)
-                    return m_pntLastLocation;
-                else
-                    return Point.Empty;
+                return m_blnMouseDown ? m_pntLastLocation: Point.Empty;
             }
         }
         //-------------------------------------------------------------------------------------
