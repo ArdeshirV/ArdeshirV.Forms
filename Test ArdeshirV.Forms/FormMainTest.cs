@@ -110,13 +110,12 @@ namespace ArdeshirV.TestForms
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
         	// AssemblyAttributeAccessors retrive all assembly data by reflection
-        	AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
-			string stringAssemblyTitle = aaa.AssemblyTitle;
+			string stringAssemblyProductName = new AssemblyAttributeAccessors(this).AssemblyProduct;
 
 			// TODO: You can add your donation addresses in your code like this:
 			Donations[] donations = new Donations[] {
 				new Donations(      // Donations belong to this component and you can specify 
-				stringAssemblyTitle,// several donation lists for several different component in your app
+				stringAssemblyProductName,// several donation lists for several different component in your app
 				new Donation[] {    // All below donations addresses are linked to
 				              	    // the component with stringAssemblyTitle title
 					new Donation("Bitcoin",                             // Donation name
@@ -138,7 +137,7 @@ namespace ArdeshirV.TestForms
 				})};
 			
 			Credits[] credits = new Credits[] {
-				new Credits(stringAssemblyTitle, new Credit[] {
+				new Credits(stringAssemblyProductName, new Credit[] {
 				            	DefaultCreditList.GetItem("ArdeshirV")
 				            })
 				// TODO: You can add your credit info in your code like this:
@@ -162,7 +161,7 @@ namespace ArdeshirV.TestForms
 			};
 			
 			License[] licenses = new License[] {
-				new License(stringAssemblyTitle,  // The component name
+				new License(stringAssemblyProductName,  // The component name
 				            Resources.LICENSE,    // License Contents for specified component
 				            Resources.GPLv3)      // License Logo
 			};

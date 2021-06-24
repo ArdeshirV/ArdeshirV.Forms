@@ -107,16 +107,16 @@ namespace ArdeshirV.Forms
     	/// <summary>
     	/// Creates copyright class that contains the component's copyright information.
     	/// </summary>
-    	/// <param name="name">Component's name</param>
+    	/// <param name="product_name">Component's name</param>
     	/// <param name="version">Component's version</param>
     	/// <param name="company">Component's company name</param>
     	/// <param name="copyrights">Copyright text</param>
     	/// <param name="description">Component's description</param>
     	/// <param name="logo">Component's logo</param>
-    	public Copyright(string name, string version, string company,
+    	public Copyright(string product_name, string version, string company,
     	                 string copyrights, string description, Image logo)
     	{
-    		_name = name;
+    		_name = product_name;
     		_logo = logo;
     		_company = company;
     		_version = version;
@@ -135,7 +135,7 @@ namespace ArdeshirV.Forms
     	{
             AssemblyAttributeAccessors info = new AssemblyAttributeAccessors(
     			Assembly.GetAssembly(component.GetType()));
-    		_name = info.AssemblyTitle;
+    		_name = info.AssemblyProduct;
     		_logo = logo;
     		_version = info.AssemblyVersion;
     		_company = info.AssemblyCompany;
@@ -279,7 +279,7 @@ namespace ArdeshirV.Forms
 				string result = string.Empty;
 				
 				if(Owner != null)
-					result = new AssemblyAttributeAccessors(Owner).AssemblyProduct;
+					result = new AssemblyAttributeAccessors(Owner).AssemblyTitle;
 				
 				return result;
 			}
@@ -321,16 +321,16 @@ namespace ArdeshirV.Forms
 		private void AddDefaults()
 		{
 			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
-			_donations.Add(aaa.AssemblyTitle, DefaultDonationList.Items);
+			_donations.Add(aaa.AssemblyProduct, DefaultDonationList.Items);
 			
-			_copyrights.Add(aaa.AssemblyTitle, new Copyright(this, Resources.ArdeshirV_Forms_Logo));
-			_licenses.Add(aaa.AssemblyTitle, new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
-			_credits.Add(aaa.AssemblyTitle, new Credit[] { DefaultCreditList.GetItem("ArdeshirV") });
+			_copyrights.Add(aaa.AssemblyProduct, new Copyright(this, Resources.ArdeshirV_Forms_Logo));
+			_licenses.Add(aaa.AssemblyProduct, new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
+			_credits.Add(aaa.AssemblyProduct, new Credit[] { DefaultCreditList.GetItem("ArdeshirV") });
 			
 			aaa = new AssemblyAttributeAccessors(qr.QrCode.Ecc.High);
-			_copyrights.Add(aaa.AssemblyTitle, new Copyright(qr.QrCode.Ecc.High, qr.Res.Logo));
-			_licenses.Add(aaa.AssemblyTitle, new License("MIT", qr.Res.License, qr.Res.LicenseLogo));
-			_credits.Add(aaa.AssemblyTitle, new Credit[] {
+			_copyrights.Add(aaa.AssemblyProduct, new Copyright(qr.QrCode.Ecc.High, qr.Res.Logo));
+			_licenses.Add(aaa.AssemblyProduct, new License("MIT", qr.Res.License, qr.Res.LicenseLogo));
+			_credits.Add(aaa.AssemblyProduct, new Credit[] {
 			             	DefaultCreditList.GetItem("ArdeshirV.QrCode"),
 			             	DefaultCreditList.GetItem("Manuel Bleichenbacher"),
 			             	DefaultCreditList.GetItem("Nayuki Project")
@@ -425,7 +425,7 @@ Github: https://github.com/ArdeshirV/ArdeshirV.Utility.QrCode
 Email: ArdeshirV@protonmail.com";
 
 			const string strCreditArdeshirV  =
-@"ArdeshirV is 'ArdeshirV.Forms' founder and developer.
+@"ArdeshirV is founder and developer of 'ArdeshirV.Forms' project.
 ArdeshirV.Forms: https://ardeshirv.github.io/ArdeshirV.Forms
 Github: https://github.com/ArdeshirV/ArdeshirV.Forms
 Email: ArdeshirV@protonmail.com";

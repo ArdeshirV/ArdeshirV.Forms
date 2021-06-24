@@ -11,7 +11,7 @@ using AVFR = ArdeshirV.Forms.Properties;
 
 #endregion
 //---------------------------------------------------------------------------------------
-namespace ArdeshirV.Controls
+namespace ArdeshirV.Forms
 {
 	public class ComboBoxImage : ComboBox
 	{

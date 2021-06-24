@@ -6,15 +6,11 @@
 using System;
 using System.IO;
 using System.Drawing;
-using System.Reflection;
 using System.Diagnostics;
-using ArdeshirV.Controls;
 using ArdeshirV.Utilities;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Imaging;
-using ArdeshirV.Forms.Properties;
-using System.Collections.Generic;
 using qr=ArdeshirV.Utilities.QrCode;
 
 #endregion
@@ -82,7 +78,7 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.TabPage tabPageCredits;
         private System.Windows.Forms.ComboBox comboBoxCreditComponent;
         private System.Windows.Forms.Button buttonCreditCopy;
-        private ArdeshirV.Controls.ComboBoxImage comboBoxImageCreditNames;
+        private ArdeshirV.Forms.ComboBoxImage comboBoxImageCreditNames;
         private System.Windows.Forms.PictureBox pictureBoxCredit;
         private System.Windows.Forms.RichTextBox richTextBoxCreditData;
         private System.Windows.Forms.Label labelCreditComponents;
@@ -683,7 +679,7 @@ namespace ArdeshirV.Forms
         	this.tabPageCredits = new System.Windows.Forms.TabPage();
         	this.comboBoxCreditComponent = new System.Windows.Forms.ComboBox();
         	this.buttonCreditCopy = new System.Windows.Forms.Button();
-        	this.comboBoxImageCreditNames = new ArdeshirV.Controls.ComboBoxImage();
+        	this.comboBoxImageCreditNames = new ArdeshirV.Forms.ComboBoxImage();
         	this.pictureBoxCredit = new System.Windows.Forms.PictureBox();
         	this.richTextBoxCreditData = new System.Windows.Forms.RichTextBox();
         	this.labelCreditComponents = new System.Windows.Forms.Label();
@@ -692,7 +688,7 @@ namespace ArdeshirV.Forms
         	this.labelDonationDescription = new System.Windows.Forms.Label();
         	this.comboBoxDonation = new System.Windows.Forms.ComboBox();
         	this.buttonDonationCopy = new System.Windows.Forms.Button();
-        	this.comboBoxDonationCurrencies = new ArdeshirV.Controls.ComboBoxImage();
+        	this.comboBoxDonationCurrencies = new ArdeshirV.Forms.ComboBoxImage();
         	this.pictureBoxDonation = new System.Windows.Forms.PictureBox();
         	this.richTextBoxDonation = new System.Windows.Forms.RichTextBox();
         	this.labelDonationComponent = new System.Windows.Forms.Label();
