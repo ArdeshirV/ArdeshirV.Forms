@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("TestForms")]
-[assembly: AssemblyDescription ("This is a unit test app that demonstrate how to use ArdeshirV.Forms")]
+[assembly: AssemblyTitle ("Test Forms")]
+[assembly: AssemblyDescription ("This is a test app that demonstrates how to use ArdeshirV.Forms")]
 [assembly: AssemblyCompany ("ArdeshirV")]
 [assembly: AssemblyProduct ("ArdeshirV.TestForms")]
 [assembly: AssemblyCulture ("")]
-[assembly: AssemblyCopyright ("Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+")]
+[assembly: AssemblyCopyright ("Copyright© 2002-2021 ArdeshirV@protonmail.com, Licensed under GPLv3+")]
 [assembly: AssemblyTrademark ("ArdeshirV")]
 [assembly: AssemblyConfiguration ("")]
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyFileVersion("2.0.*")]
