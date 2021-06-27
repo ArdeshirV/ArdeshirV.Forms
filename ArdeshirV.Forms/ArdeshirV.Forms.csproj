@@ -124,9 +124,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArdeshirV.Utility.QrCode\ArdeshirV.Utilities.QrCode.csproj">
+    <ProjectReference Include="..\ArdeshirV.Tools.QrCode\ArdeshirV.Tools.QrCode.csproj">
       <Project>{39a1b686-75a9-4189-a328-51c96bb4b6eb}</Project>
-      <Name>ArdeshirV.Utilities.QrCode</Name>
+      <Name>ArdeshirV.Tools.QrCode</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

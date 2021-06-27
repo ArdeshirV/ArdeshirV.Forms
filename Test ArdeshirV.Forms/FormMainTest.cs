@@ -2,17 +2,17 @@
 
 // Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under GPLv3+
 using System;
-using System.IO;
 using System.Drawing;
 using ArdeshirV.Forms;
-using ArdeshirV.Utilities;
+using ArdeshirV.Tools;
 using System.Windows.Forms;
-using ArdeshirV.TestForms.Properties;
 using res = ArdeshirV.Forms.Properties;
+using ArdeshirV.Applications.TestForms;
+using ArdeshirV.Applications.TestForms.Properties;
 
 #endregion
 //---------------------------------------------------------------------------------------
-namespace ArdeshirV.TestForms
+namespace ArdeshirV.Applications.TestForms
 {
     public partial class FormMainTest : FormBase
     {
@@ -138,7 +138,7 @@ namespace ArdeshirV.TestForms
 			
 			Credits[] credits = new Credits[] {
 				new Credits(stringAssemblyProductName, new Credit[] {
-				            	DefaultCreditList.GetItem("ArdeshirV")
+				            	DefaultCreditList.GetItem("ArdeshirV.Forms")
 				            })
 				// TODO: You can add your credit info in your code like this:
 				//new Credits("Component Name", new Credit[] {
@@ -162,8 +162,8 @@ namespace ArdeshirV.TestForms
 			
 			License[] licenses = new License[] {
 				new License(stringAssemblyProductName,  // The component name
-				            Resources.LICENSE,    // License Contents for specified component
-				            Resources.GPLv3)      // License Logo
+				            GlobalResouces.Licenses.GPLLicense,    // License Contents for specified component
+				            GlobalResouces.Licenses.GPLLicenseLogo)      // License Logo
 			};
 			
         	FormAboutData data = new FormAboutData(this,
