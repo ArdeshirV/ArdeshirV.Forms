@@ -1,4 +1,18 @@
 <strong>ArdeshirV.Forms</strong> is a customized version of everyday windows .Net forms like About Box, Error Handler, Splash Screen and my base windows form with many fantastic special ability.
+
+New Stable Version 4.8.1.1
+
+The "Test.ArdeshirV.Forms.zip" file contains three file: "ArdeshirV.Forms.dll", "ArdeshirV.Tools.QrCode.dll" and "TestForms.exe".
+
+The "ArdeshirV.Forms.dll" is the main target library that contains a set of everyday windows forms such as About Box, Error Handler, Splash Form and my own custom windows base form for all my own windows forms with many new abilities and beauties! You are free to use "ArdeshirV.Forms.dll" library in your code with the legal notes of GPLv3+ license and enjoy it.
+
+The "TestForms.exe" is a simple application that shows the power of "ArdeshirV.Forms.dll" library and all ability of that library. This app is just for test and it works just beside the "ArdeshirV.Forms.dll" library or you need to copy "ArdeshirV.Forms.dll" or install it to a global place to use it with this executable app or your own apps.
+
+For example here you can see "ArdeshirV.Forms.FormAbout":
+<img src="https://raw.githubusercontent.com/ArdeshirV/ArdeshirV.Forms/master/Images/FormAboutTestFormCopyright.png" alt="ArdeshirV.Forms.FormAbout">
+
+You can use "ArdeshirV.Forms" in your project to create fantastic windows forms applications.
+
 <br/><br/>
     <main>
       <article>
