@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+./Test\ ArdeshirV.Forms/obj/*
+./ArdeshirV.Forms/obj/*
+./ArdeshirV.Toos.QrCode/obj/*

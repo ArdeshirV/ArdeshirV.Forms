@@ -518,13 +518,13 @@ namespace ArdeshirV.Forms
         	Bitmap canvas = new Bitmap(pbWidth, pbHeight);
         	Graphics g = Graphics.FromImage(canvas);
         	g.DrawImage(QrCode, 0, 0, pbWidth, pbHeight);
-        	g.FillEllipse(brush, x1, y1, hDiv5, hDiv5);  // Draw shadow
+        	g.FillEllipse(brush, x1, y1, hDiv5, hDiv5);  // Draw white shadow
         	g.DrawImage(d.Logo, x1, y1, hDiv5, hDiv5);
         	pb.SuspendLayout();
         	pb.Image = canvas;
         	pb.ResumeLayout();
         	brush.Dispose();
-        	canvas.Save(GetDonationFileName(d) + ".png", ImageFormat.Png);
+        	// canvas.Save(GetDonationFileName(d) + ".png", ImageFormat.Png);
         }
         //-------------------------------------------------------------------------------
 		private Image GetQRCodeImage(string Data)
