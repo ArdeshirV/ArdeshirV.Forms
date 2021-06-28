@@ -1,3 +1,6 @@
 [submodule "ArdeshirV.Utility.QrCode"]
 	path = ArdeshirV.Utility.QrCode
 	url = https://github.com/ArdeshirV/ArdeshirV.Utility.QrCode.git
+[submodule "ArdeshirV.Tools.QrCode"]
+	path = ArdeshirV.Tools.QrCode
+	url = https://github.com/ArdeshirV/ArdeshirV.Tools.QrCode
