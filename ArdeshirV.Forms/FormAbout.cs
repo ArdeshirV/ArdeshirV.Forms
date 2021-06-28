@@ -1,7 +1,7 @@
 #region Header
 
 // FormAbout.cs : Provides Advanced Form About Box
-// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2021 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.IO;
@@ -510,11 +510,11 @@ namespace ArdeshirV.Forms
         private void SetQrCodeImageOnPictureBox(PictureBox pb, Donation d)
         {
         	const int Divider = 3, marj = 1;
-        	int pbWidth = pb.DisplayRectangle.Width, wDiv5 = pbWidth / Divider;
-        	int pbHeight = pb.DisplayRectangle.Height, hDiv5 = pbHeight / Divider;
+        	Image QrCode = GetQRCodeImage(d.Address);
+        	int pbWidth = QrCode.Width, wDiv5 = pbWidth / Divider;
+        	int pbHeight = QrCode.Height, hDiv5 = pbHeight / Divider;
         	int x1 = wDiv5 * marj, y1 = hDiv5 * marj;
         	Brush brush = new SolidBrush(Color.FromArgb(220, Color.White));
-        	Image QrCode = GetQRCodeImage(d.Address);
         	Bitmap canvas = new Bitmap(pbWidth, pbHeight);
         	Graphics g = Graphics.FromImage(canvas);
         	g.DrawImage(QrCode, 0, 0, pbWidth, pbHeight);
@@ -524,11 +524,17 @@ namespace ArdeshirV.Forms
         	pb.Image = canvas;
         	pb.ResumeLayout();
         	brush.Dispose();
+        	canvas.Save(GetDonationFileName(d) + ".png", ImageFormat.Png);
         }
         //-------------------------------------------------------------------------------
 		private Image GetQRCodeImage(string Data)
 		{
 			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(5, 1);
+		}
+		//-------------------------------------------------------------------------------
+		private string GetDonationFileName(Donation d)
+		{
+			return string.Format("{0} {1}", d.Name, d.Address).Replace(':', ' ');
 		}
         //-------------------------------------------------------------------------------
         private void m_lnkMailTo_LinkClicked(object sender,
@@ -547,7 +553,7 @@ namespace ArdeshirV.Forms
         	string stringURL = Extractor.ExtractFirstURL(data.URL);
         	if(stringURL != string.Empty) {
 	            (sender as LinkLabel).LinkVisited = true;
-	            System.Diagnostics.Process.Start(stringURL);
+	            Process.Start(stringURL);
         	}
         }
         //-------------------------------------------------------------------------------
@@ -577,9 +583,7 @@ namespace ArdeshirV.Forms
 				sfd.ValidateNames = true;
 				sfd.OverwritePrompt = true;
 				sfd.CheckPathExists = true;
-				sfd.FileName = string.Format("{0} {1}",
-                     _donationSelected.Name,
-                     _donationSelected.Address).Replace(':', ' ');
+				sfd.FileName = GetDonationFileName(_donationSelected);
 
 				if(sfd.ShowDialog(this) == DialogResult.OK)
 					pictureBoxDonation.Image.Save(sfd.FileName, ImageFormat.Png);
