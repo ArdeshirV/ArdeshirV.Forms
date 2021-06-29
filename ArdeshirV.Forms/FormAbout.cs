@@ -517,6 +517,7 @@ namespace ArdeshirV.Forms
         	Brush brush = new SolidBrush(Color.FromArgb(220, Color.White));
         	Bitmap canvas = new Bitmap(pbWidth, pbHeight);
         	Graphics g = Graphics.FromImage(canvas);
+        	g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
         	g.DrawImage(QrCode, 0, 0, pbWidth, pbHeight);
         	g.FillEllipse(brush, x1, y1, hDiv5, hDiv5);  // Draw white shadow
         	g.DrawImage(d.Logo, x1, y1, hDiv5, hDiv5);
