@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ArdeshirV.TestForms
+namespace ArdeshirV.Applications.TestForms
 {
     partial class FormMainTest
     {        

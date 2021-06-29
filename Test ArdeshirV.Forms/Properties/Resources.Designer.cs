@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ArdeshirV.TestForms.Properties {
+namespace ArdeshirV.Applications.TestForms.Properties {
 	using System;
 	
 	
@@ -39,7 +39,7 @@ namespace ArdeshirV.TestForms.Properties {
 		public static global::System.Resources.ResourceManager ResourceManager {
 			get {
 				if (object.ReferenceEquals(resourceMan, null)) {
-					global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ArdeshirV.TestForms.Properties.Resources", typeof(Resources).Assembly);
+					global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ArdeshirV.Applications.TestForms.Properties.Resources", typeof(Resources).Assembly);
 					resourceMan = temp;
 				}
 				return resourceMan;
@@ -57,38 +57,6 @@ namespace ArdeshirV.TestForms.Properties {
 			}
 			set {
 				resourceCulture = value;
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized resource of type System.Drawing.Bitmap.
-		/// </summary>
-		public static System.Drawing.Bitmap GPLv3 {
-			get {
-				object obj = ResourceManager.GetObject("GPLv3", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized string similar to                     GNU GENERAL PUBLIC LICENSE
-		///                       Version 3, 29 June 2007
-		///
-		/// Copyright (C) 2007 Free Software Foundation, Inc. &lt;https://fsf.org/&gt;
-		/// Everyone is permitted to copy and distribute verbatim copies
-		/// of this license document, but changing it is not allowed.
-		///
-		///                            Preamble
-		///
-		///  The GNU General Public License is a free, copyleft license for
-		///software and other kinds of works.
-		///
-		///  The licenses for most software and other practical works are designed
-		///to take away y [rest of string was truncated]&quot;;.
-		/// </summary>
-		public static string LICENSE {
-			get {
-				return ResourceManager.GetString("LICENSE", resourceCulture);
 			}
 		}
 		

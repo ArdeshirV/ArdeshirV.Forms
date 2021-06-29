@@ -8,13 +8,13 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
-using ArdeshirV.Utilities;
+using ArdeshirV.Tools;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Collections.Generic;
 using ArdeshirV.Forms.Properties;
-using ArdeshirV.Utilities.QrCode;
-using qr=ArdeshirV.Utilities.QrCode;
+using ArdeshirV.Tools.QrCode;
+using qr=ArdeshirV.Tools.QrCode;
 
 #endregion
 //-----------------------------------------------------------------------------------
@@ -107,16 +107,16 @@ namespace ArdeshirV.Forms
     	/// <summary>
     	/// Creates copyright class that contains the component's copyright information.
     	/// </summary>
-    	/// <param name="name">Component's name</param>
+    	/// <param name="product_name">Component's name</param>
     	/// <param name="version">Component's version</param>
     	/// <param name="company">Component's company name</param>
     	/// <param name="copyrights">Copyright text</param>
     	/// <param name="description">Component's description</param>
     	/// <param name="logo">Component's logo</param>
-    	public Copyright(string name, string version, string company,
+    	public Copyright(string product_name, string version, string company,
     	                 string copyrights, string description, Image logo)
     	{
-    		_name = name;
+    		_name = product_name;
     		_logo = logo;
     		_company = company;
     		_version = version;
@@ -135,7 +135,7 @@ namespace ArdeshirV.Forms
     	{
             AssemblyAttributeAccessors info = new AssemblyAttributeAccessors(
     			Assembly.GetAssembly(component.GetType()));
-    		_name = info.AssemblyTitle;
+    		_name = info.AssemblyProduct;
     		_logo = logo;
     		_version = info.AssemblyVersion;
     		_company = info.AssemblyCompany;
@@ -279,7 +279,7 @@ namespace ArdeshirV.Forms
 				string result = string.Empty;
 				
 				if(Owner != null)
-					result = new AssemblyAttributeAccessors(Owner).AssemblyProduct;
+					result = new AssemblyAttributeAccessors(Owner).AssemblyTitle;
 				
 				return result;
 			}
@@ -321,17 +321,17 @@ namespace ArdeshirV.Forms
 		private void AddDefaults()
 		{
 			AssemblyAttributeAccessors aaa = new AssemblyAttributeAccessors(this);
-			_donations.Add(aaa.AssemblyTitle, DefaultDonationList.Items);
+			_donations.Add(aaa.AssemblyProduct, DefaultDonationList.Items);
 			
-			_copyrights.Add(aaa.AssemblyTitle, new Copyright(this, Resources.ArdeshirV_Forms_Logo));
-			_licenses.Add(aaa.AssemblyTitle, new License("LGPLv3+", Resources.LICENSE, Resources.LGPLv3));
-			_credits.Add(aaa.AssemblyTitle, new Credit[] { DefaultCreditList.GetItem("ArdeshirV") });
+			_copyrights.Add(aaa.AssemblyProduct, new Copyright(this, Resources.ArdeshirV_Forms_Logo));
+			_licenses.Add(aaa.AssemblyProduct, new License("LGPLv3+", Resources.LGPL_LICENSE, Resources.LGPLv3));
+			_credits.Add(aaa.AssemblyProduct, new Credit[] { DefaultCreditList.GetItem("ArdeshirV.Forms") });
 			
 			aaa = new AssemblyAttributeAccessors(qr.QrCode.Ecc.High);
-			_copyrights.Add(aaa.AssemblyTitle, new Copyright(qr.QrCode.Ecc.High, qr.Res.Logo));
-			_licenses.Add(aaa.AssemblyTitle, new License("MIT", qr.Res.License, qr.Res.LicenseLogo));
-			_credits.Add(aaa.AssemblyTitle, new Credit[] {
-			             	DefaultCreditList.GetItem("ArdeshirV.QrCode"),
+			_copyrights.Add(aaa.AssemblyProduct, new Copyright(qr.QrCode.Ecc.High, qr.Res.Logo));
+			_licenses.Add(aaa.AssemblyProduct, new License("MIT", qr.Res.License, qr.Res.LicenseLogo));
+			_credits.Add(aaa.AssemblyProduct, new Credit[] {
+			             	DefaultCreditList.GetItem("ArdeshirV.Tools.QrCode"),
 			             	DefaultCreditList.GetItem("Manuel Bleichenbacher"),
 			             	DefaultCreditList.GetItem("Nayuki Project")
 			});
@@ -357,25 +357,28 @@ namespace ArdeshirV.Forms
 			// how to adding your own addresses easily above mine.
 			// You can find the best sample code in TestForms/FormMainTest.cs file.
 			_donations = new Donation[] {
-				new Donation("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi", Resources.Bitcoin),
-				new Donation("Ethereum", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.Ethereum),
-				new Donation("Tron", "TCB6uBci8mw1P4e2xikSGbyHcFjNCFphXr", Resources.Tron),
-				new Donation("TrueUSD", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.TrueUSD),
-				new Donation("USDTether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", Resources.USDTether),
-				new Donation("Binance", "bnb15qwa7kl46ledh5zqqynmy2tqw92mhzuwmap6sf", Resources.Binance),
-				new Donation("Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc", Resources.Nano),
-				new Donation("Stellar", "GCMALSIYBJT74K5SKJFHMLBJRWFCO6EPIKQ4DO6C7ER4QAYIMTQSOOWI", Resources.Stellar),
-				new Donation("Ripple", "raBw695Qnkt5RNTxTcyGFPzC5yFFHYztfR", Resources.Ripple),
-				new Donation("Cardano", "DdzFFzCqrhsoSn5qvqRTovUkr1XHWy9LvbvDHVYFoFFyxAJkf1bT4X4ySpm8DwFqDo3EWAn934W9WfipbSNiXTcRzEqLP1y5KyAfMByJ", Resources.Cardano),
-				new Donation("Neo", "AXqbLBWhcrFrjumvrm8nW9iYaUFoKML17b", Resources.Neo),
-				new Donation("NEM", "NDXCTS2ITWO4J33YPL7AMHSGOIFRJSTBWSDZ4C3P", Resources.NEM),
-				new Donation("Qtum", "QddGvqLg5yTi2J2DvixZVFgA1rpm5RAq2x", Resources.Qtum),
-				new Donation("Litecoin", "LdfYVr2Lgyuwp9K5Dk4aUsUbUQ2Rr5TA1n", Resources.Litecoin),
-				new Donation("BitcoinCash", "bitcoincash:qzqsse2w6vqkqylfvkuqdvmgpl34zyq2cvwneunpyl", Resources.BitcoinCash),
-				new Donation("Dash", "XhsE3ntLYdKMbT4JptTvURqyu9RKuypDCf", Resources.Dash),
-				new Donation("Verge", "DRviBtskt1M6BBTpAoNvF3qLrpKTN3mb7P", Resources.Verge),
-				new Donation("ZCash", "t1ZnspKa3XFijtUAG6yKHsM3y6Bdb7C8HKA", Resources.ZCash),
-				new Donation("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y", Resources.Monero)
+				new Donation("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi", GlobalResouces.CurrencyLogos.Bitcoin),
+				new Donation("Ethereum", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.Ethereum),
+				new Donation("Tron", "TCB6uBci8mw1P4e2xikSGbyHcFjNCFphXr", GlobalResouces.CurrencyLogos.Tron),
+				new Donation("PaxosStandard", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.PaxosStandard),
+				new Donation("USDTether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.USDTether),
+				new Donation("PaxGold", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.PaxGold),
+				new Donation("TetherGold", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.TetherGold),
+				new Donation("TrueUSD", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.TrueUSD),
+				new Donation("Binance", "bnb15qwa7kl46ledh5zqqynmy2tqw92mhzuwmap6sf", GlobalResouces.CurrencyLogos.Binance),
+				new Donation("Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc", GlobalResouces.CurrencyLogos.Nano),
+				new Donation("Stellar", "GCMALSIYBJT74K5SKJFHMLBJRWFCO6EPIKQ4DO6C7ER4QAYIMTQSOOWI", GlobalResouces.CurrencyLogos.Stellar),
+				new Donation("Ripple", "raBw695Qnkt5RNTxTcyGFPzC5yFFHYztfR", GlobalResouces.CurrencyLogos.XRP),
+				new Donation("Cardano", "DdzFFzCqrhsoSn5qvqRTovUkr1XHWy9LvbvDHVYFoFFyxAJkf1bT4X4ySpm8DwFqDo3EWAn934W9WfipbSNiXTcRzEqLP1y5KyAfMByJ", GlobalResouces.CurrencyLogos.Cardano),
+				new Donation("Neo", "AXqbLBWhcrFrjumvrm8nW9iYaUFoKML17b", GlobalResouces.CurrencyLogos.Neo),
+				new Donation("NEM", "NDXCTS2ITWO4J33YPL7AMHSGOIFRJSTBWSDZ4C3P", GlobalResouces.CurrencyLogos.Nem),
+				new Donation("Qtum", "QddGvqLg5yTi2J2DvixZVFgA1rpm5RAq2x", GlobalResouces.CurrencyLogos.Qtum),
+				new Donation("Litecoin", "LdfYVr2Lgyuwp9K5Dk4aUsUbUQ2Rr5TA1n", GlobalResouces.CurrencyLogos.Litecoin),
+				new Donation("BitcoinCash", "bitcoincash:qzqsse2w6vqkqylfvkuqdvmgpl34zyq2cvwneunpyl", GlobalResouces.CurrencyLogos.BitcoinCash),
+				new Donation("Dash", "XhsE3ntLYdKMbT4JptTvURqyu9RKuypDCf", GlobalResouces.CurrencyLogos.Dash),
+				new Donation("Verge", "DRviBtskt1M6BBTpAoNvF3qLrpKTN3mb7P", GlobalResouces.CurrencyLogos.Verge),
+				new Donation("ZCash", "t1ZnspKa3XFijtUAG6yKHsM3y6Bdb7C8HKA", GlobalResouces.CurrencyLogos.ZCash),
+				new Donation("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y", GlobalResouces.CurrencyLogos.Monero)
 			};
 			_list = new Dictionary<string, Donation>();
 			foreach(Donation d in _donations)
@@ -420,12 +423,12 @@ namespace ArdeshirV.Forms
 			// You can find the best sample code in TestForms/FormMainTest.cs file.
 			const string strCreditArdeshirVQrCode=
 @"ArdeshirV downgrade the https://github.com/manuelbl/QrCodeGenerator project to C# 2.0 to use it with ArdeshirV.Forms Project.
-QrCode: https://ardeshirv.github.io/ArdeshirV.Utility.QrCode
-Github: https://github.com/ArdeshirV/ArdeshirV.Utility.QrCode
+QrCode: https://ardeshirv.github.io/ArdeshirV.Tools.QrCode
+Github: https://github.com/ArdeshirV/ArdeshirV.Tools.QrCode
 Email: ArdeshirV@protonmail.com";
 
 			const string strCreditArdeshirV  =
-@"ArdeshirV is 'ArdeshirV.Forms' founder and developer.
+@"ArdeshirV is founder and developer of 'ArdeshirV.Forms' project.
 ArdeshirV.Forms: https://ardeshirv.github.io/ArdeshirV.Forms
 Github: https://github.com/ArdeshirV/ArdeshirV.Forms
 Email: ArdeshirV@protonmail.com";
@@ -441,8 +444,8 @@ Email: me@nayuki.io";
 QrCodeGenerator: https://github.com/manuelbl/QrCodeGenerator";
 
 			_credits = new Credit[] {
-				new Credit("ArdeshirV.QrCode", strCreditArdeshirVQrCode, Resources.ArdeshirV),
-				new Credit("ArdeshirV", strCreditArdeshirV, Resources.ArdeshirV),
+			    new Credit("ArdeshirV.Tools.QrCode", strCreditArdeshirVQrCode, Resources.ArdeshirV),
+				new Credit("ArdeshirV.Forms", strCreditArdeshirV, Resources.ArdeshirV),
 				new Credit("Nayuki Project", strCreditNayuki, Res.NayukiAvator),
 				new Credit("Manuel Bleichenbacher", strCreditBleichenbacher, Res.ManuelBleichenbacherAvator)
 			};

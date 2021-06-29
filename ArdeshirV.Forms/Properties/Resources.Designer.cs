@@ -63,6 +63,86 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
+		internal static System.Drawing.Bitmap _0x {
+			get {
+				object obj = ResourceManager.GetObject("0x", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap aelf {
+			get {
+				object obj = ResourceManager.GetObject("aelf", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap aeon {
+			get {
+				object obj = ResourceManager.GetObject("aeon", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap aeternity {
+			get {
+				object obj = ResourceManager.GetObject("aeternity", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap aion {
+			get {
+				object obj = ResourceManager.GetObject("aion", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap algorand {
+			get {
+				object obj = ResourceManager.GetObject("algorand", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap appcoins {
+			get {
+				object obj = ResourceManager.GetObject("appcoins", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap aragon {
+			get {
+				object obj = ResourceManager.GetObject("aragon", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
 		internal static System.Drawing.Bitmap ArdeshirV {
 			get {
 				object obj = ResourceManager.GetObject("ArdeshirV", resourceCulture);
@@ -83,9 +163,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Binance {
+		internal static System.Drawing.Bitmap augur {
 			get {
-				object obj = ResourceManager.GetObject("Binance", resourceCulture);
+				object obj = ResourceManager.GetObject("augur", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -93,9 +173,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Bitcoin {
+		internal static System.Drawing.Bitmap band_protocol {
 			get {
-				object obj = ResourceManager.GetObject("Bitcoin", resourceCulture);
+				object obj = ResourceManager.GetObject("band-protocol", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -103,9 +183,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap BitcoinCash {
+		internal static System.Drawing.Bitmap basic_attention_token {
 			get {
-				object obj = ResourceManager.GetObject("BitcoinCash", resourceCulture);
+				object obj = ResourceManager.GetObject("basic-attention-token", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -113,9 +193,179 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Cardano {
+		internal static System.Drawing.Bitmap binance_coin {
 			get {
-				object obj = ResourceManager.GetObject("Cardano", resourceCulture);
+				object obj = ResourceManager.GetObject("binance-coin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcloud {
+			get {
+				object obj = ResourceManager.GetObject("bitcloud", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin_cash {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin-cash", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin_diamond {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin-diamond", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin_gold {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin-gold", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin_plus {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin-plus", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin_private {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin-private", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcoin_sv {
+			get {
+				object obj = ResourceManager.GetObject("bitcoin-sv", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitcore {
+			get {
+				object obj = ResourceManager.GetObject("bitcore", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap bitforex_token {
+			get {
+				object obj = ResourceManager.GetObject("bitforex-token", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap blockstamp {
+			get {
+				object obj = ResourceManager.GetObject("blockstamp", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap cardano {
+			get {
+				object obj = ResourceManager.GetObject("cardano", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap celo {
+			get {
+				object obj = ResourceManager.GetObject("celo", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap celsius {
+			get {
+				object obj = ResourceManager.GetObject("celsius", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap chainlink {
+			get {
+				object obj = ResourceManager.GetObject("chainlink", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap chainx {
+			get {
+				object obj = ResourceManager.GetObject("chainx", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap civic {
+			get {
+				object obj = ResourceManager.GetObject("civic", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -133,9 +383,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Dash {
+		internal static System.Drawing.Bitmap cosmos {
 			get {
-				object obj = ResourceManager.GetObject("Dash", resourceCulture);
+				object obj = ResourceManager.GetObject("cosmos", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -143,9 +393,241 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Ethereum {
+		internal static System.Drawing.Bitmap crypto_com {
 			get {
-				object obj = ResourceManager.GetObject("Ethereum", resourceCulture);
+				object obj = ResourceManager.GetObject("crypto-com", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap curve_dao_token {
+			get {
+				object obj = ResourceManager.GetObject("curve-dao-token", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap dash {
+			get {
+				object obj = ResourceManager.GetObject("dash", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap decentraland {
+			get {
+				object obj = ResourceManager.GetObject("decentraland", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap decred {
+			get {
+				object obj = ResourceManager.GetObject("decred", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap dogecoin {
+			get {
+				object obj = ResourceManager.GetObject("dogecoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap energy_web_token {
+			get {
+				object obj = ResourceManager.GetObject("energy-web-token", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap enjin_coin {
+			get {
+				object obj = ResourceManager.GetObject("enjin-coin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap eos {
+			get {
+				object obj = ResourceManager.GetObject("eos", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap ether_zero {
+			get {
+				object obj = ResourceManager.GetObject("ether-zero", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap ethereum {
+			get {
+				object obj = ResourceManager.GetObject("ethereum", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap ethereum_classic {
+			get {
+				object obj = ResourceManager.GetObject("ethereum-classic", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap filecoin {
+			get {
+				object obj = ResourceManager.GetObject("filecoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap ftx_token {
+			get {
+				object obj = ResourceManager.GetObject("ftx-token", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap gas {
+			get {
+				object obj = ResourceManager.GetObject("gas", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap gemini_dollar {
+			get {
+				object obj = ResourceManager.GetObject("gemini-dollar", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap gifto {
+			get {
+				object obj = ResourceManager.GetObject("gifto", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to                     GNU GENERAL PUBLIC LICENSE
+		///                       Version 3, 29 June 2007
+		///
+		/// Copyright (C) 2007 Free Software Foundation, Inc. &lt;https://fsf.org/&gt;
+		/// Everyone is permitted to copy and distribute verbatim copies
+		/// of this license document, but changing it is not allowed.
+		///
+		///                            Preamble
+		///
+		///  The GNU General Public License is a free, copyleft license for
+		///software and other kinds of works.
+		///
+		///  The licenses for most software and other practical works are designed
+		///t [rest of string was truncated]&quot;;.
+		/// </summary>
+		internal static string GPL_LICENSE {
+			get {
+				return ResourceManager.GetString("GPL_LICENSE", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap GPLv3 {
+			get {
+				object obj = ResourceManager.GetObject("GPLv3", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap grin {
+			get {
+				object obj = ResourceManager.GetObject("grin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap harmony {
+			get {
+				object obj = ResourceManager.GetObject("harmony", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap holo {
+			get {
+				object obj = ResourceManager.GetObject("holo", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap icon {
+			get {
+				object obj = ResourceManager.GetObject("icon", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -193,9 +675,39 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap LGPLv3 {
+		internal static System.Drawing.Bitmap iostoken {
 			get {
-				object obj = ResourceManager.GetObject("LGPLv3", resourceCulture);
+				object obj = ResourceManager.GetObject("iostoken", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap iota {
+			get {
+				object obj = ResourceManager.GetObject("iota", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap iotex {
+			get {
+				object obj = ResourceManager.GetObject("iotex", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap komodo {
+			get {
+				object obj = ResourceManager.GetObject("komodo", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -215,18 +727,18 @@ namespace ArdeshirV.Forms.Properties {
 		///
 		///  0. A [rest of string was truncated]&quot;;.
 		/// </summary>
-		internal static string LICENSE {
+		internal static string LGPL_LICENSE {
 			get {
-				return ResourceManager.GetString("LICENSE", resourceCulture);
+				return ResourceManager.GetString("LGPL_LICENSE", resourceCulture);
 			}
 		}
 		
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Litecoin {
+		internal static System.Drawing.Bitmap LGPLv3 {
 			get {
-				object obj = ResourceManager.GetObject("Litecoin", resourceCulture);
+				object obj = ResourceManager.GetObject("LGPLv3", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -234,9 +746,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Monero {
+		internal static System.Drawing.Bitmap likecoin {
 			get {
-				object obj = ResourceManager.GetObject("Monero", resourceCulture);
+				object obj = ResourceManager.GetObject("likecoin", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -244,9 +756,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Nano {
+		internal static System.Drawing.Bitmap lisk {
 			get {
-				object obj = ResourceManager.GetObject("Nano", resourceCulture);
+				object obj = ResourceManager.GetObject("lisk", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -254,9 +766,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap NEM {
+		internal static System.Drawing.Bitmap litecoin {
 			get {
-				object obj = ResourceManager.GetObject("NEM", resourceCulture);
+				object obj = ResourceManager.GetObject("litecoin", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -264,9 +776,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Neo {
+		internal static System.Drawing.Bitmap loom_network {
 			get {
-				object obj = ResourceManager.GetObject("Neo", resourceCulture);
+				object obj = ResourceManager.GetObject("loom-network", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -274,9 +786,178 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Qtum {
+		internal static System.Drawing.Bitmap loopring {
 			get {
-				object obj = ResourceManager.GetObject("Qtum", resourceCulture);
+				object obj = ResourceManager.GetObject("loopring", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap maker {
+			get {
+				object obj = ResourceManager.GetObject("maker", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap metal {
+			get {
+				object obj = ResourceManager.GetObject("metal", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized string similar to MIT License
+		///
+		///Copyright (c) ArdeshirV@protonmail.com (MIT License)
+		///https://github.com/ardeshirv
+		///
+		///Permission is hereby granted, free of charge, to any person obtaining a copy
+		///of this software and associated documentation files (the &quot;Software&quot;), to deal
+		///in the Software without restriction, including without limitation the rights
+		///to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		///copies of the Software, and to permit persons to whom the Software is
+		///furnished to do so, subject to [rest of string was truncated]&quot;;.
+		/// </summary>
+		internal static string MIT_LICENSE {
+			get {
+				return ResourceManager.GetString("MIT_LICENSE", resourceCulture);
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap monero {
+			get {
+				object obj = ResourceManager.GetObject("monero", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap nano {
+			get {
+				object obj = ResourceManager.GetObject("nano", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap nem {
+			get {
+				object obj = ResourceManager.GetObject("nem", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap neo {
+			get {
+				object obj = ResourceManager.GetObject("neo", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap nxt {
+			get {
+				object obj = ResourceManager.GetObject("nxt", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap ontology {
+			get {
+				object obj = ResourceManager.GetObject("ontology", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap orchid {
+			get {
+				object obj = ResourceManager.GetObject("orchid", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap pax_gold {
+			get {
+				object obj = ResourceManager.GetObject("pax-gold", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap paxos_standard {
+			get {
+				object obj = ResourceManager.GetObject("paxos-standard", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap pivx {
+			get {
+				object obj = ResourceManager.GetObject("pivx", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap polkadot_new {
+			get {
+				object obj = ResourceManager.GetObject("polkadot-new", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap qash {
+			get {
+				object obj = ResourceManager.GetObject("qash", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap qtum {
+			get {
+				object obj = ResourceManager.GetObject("qtum", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -294,9 +975,19 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Ripple {
+		internal static System.Drawing.Bitmap ravencoin {
 			get {
-				object obj = ResourceManager.GetObject("Ripple", resourceCulture);
+				object obj = ResourceManager.GetObject("ravencoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap salt {
+			get {
+				object obj = ResourceManager.GetObject("salt", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -314,9 +1005,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Stellar {
+		internal static System.Drawing.Bitmap siacoin {
 			get {
-				object obj = ResourceManager.GetObject("Stellar", resourceCulture);
+				object obj = ResourceManager.GetObject("siacoin", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -324,9 +1015,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Tron {
+		internal static System.Drawing.Bitmap status {
 			get {
-				object obj = ResourceManager.GetObject("Tron", resourceCulture);
+				object obj = ResourceManager.GetObject("status", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -334,9 +1025,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap TrueUSD {
+		internal static System.Drawing.Bitmap steem {
 			get {
-				object obj = ResourceManager.GetObject("TrueUSD", resourceCulture);
+				object obj = ResourceManager.GetObject("steem", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -344,9 +1035,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap USDTether {
+		internal static System.Drawing.Bitmap steem_dollars {
 			get {
-				object obj = ResourceManager.GetObject("USDTether", resourceCulture);
+				object obj = ResourceManager.GetObject("steem-dollars", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -354,9 +1045,9 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap Verge {
+		internal static System.Drawing.Bitmap stellar {
 			get {
-				object obj = ResourceManager.GetObject("Verge", resourceCulture);
+				object obj = ResourceManager.GetObject("stellar", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -364,9 +1055,269 @@ namespace ArdeshirV.Forms.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		internal static System.Drawing.Bitmap ZCash {
+		internal static System.Drawing.Bitmap storj {
 			get {
-				object obj = ResourceManager.GetObject("ZCash", resourceCulture);
+				object obj = ResourceManager.GetObject("storj", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap stratis {
+			get {
+				object obj = ResourceManager.GetObject("stratis", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap sushiswap {
+			get {
+				object obj = ResourceManager.GetObject("sushiswap", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap swipe {
+			get {
+				object obj = ResourceManager.GetObject("swipe", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap swissborg {
+			get {
+				object obj = ResourceManager.GetObject("swissborg", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap tether {
+			get {
+				object obj = ResourceManager.GetObject("tether", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap tether_gold {
+			get {
+				object obj = ResourceManager.GetObject("tether-gold", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap tezos {
+			get {
+				object obj = ResourceManager.GetObject("tezos", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap tokenpay {
+			get {
+				object obj = ResourceManager.GetObject("tokenpay", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap tron {
+			get {
+				object obj = ResourceManager.GetObject("tron", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap trueusd {
+			get {
+				object obj = ResourceManager.GetObject("trueusd", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap uniswap {
+			get {
+				object obj = ResourceManager.GetObject("uniswap", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap usd_coin {
+			get {
+				object obj = ResourceManager.GetObject("usd-coin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap vechain {
+			get {
+				object obj = ResourceManager.GetObject("vechain", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap verge {
+			get {
+				object obj = ResourceManager.GetObject("verge", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap vericoin {
+			get {
+				object obj = ResourceManager.GetObject("vericoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap vertcoin {
+			get {
+				object obj = ResourceManager.GetObject("vertcoin", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap vibe {
+			get {
+				object obj = ResourceManager.GetObject("vibe", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap waves {
+			get {
+				object obj = ResourceManager.GetObject("waves", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap wepower {
+			get {
+				object obj = ResourceManager.GetObject("wepower", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap wing {
+			get {
+				object obj = ResourceManager.GetObject("wing", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap xrp {
+			get {
+				object obj = ResourceManager.GetObject("xrp", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap yearn_finance {
+			get {
+				object obj = ResourceManager.GetObject("yearn-finance", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap zcash {
+			get {
+				object obj = ResourceManager.GetObject("zcash", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap zclassic {
+			get {
+				object obj = ResourceManager.GetObject("zclassic", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap zel {
+			get {
+				object obj = ResourceManager.GetObject("zel", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		internal static System.Drawing.Bitmap zilliqa {
+			get {
+				object obj = ResourceManager.GetObject("zilliqa", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}

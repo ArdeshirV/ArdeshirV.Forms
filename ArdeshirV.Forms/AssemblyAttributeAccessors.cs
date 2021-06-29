@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 #endregion
 //-----------------------------------------------------------------------------------
-namespace ArdeshirV.Utilities
+namespace ArdeshirV.Tools
 {
 	public static class Extractor
 	{

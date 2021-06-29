@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------------
 
-namespace ArdeshirV.TestForms.Properties {
+namespace ArdeshirV.Applications.TestForms {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

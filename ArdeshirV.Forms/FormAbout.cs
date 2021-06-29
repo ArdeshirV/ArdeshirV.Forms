@@ -1,21 +1,17 @@
 #region Header
 
 // FormAbout.cs : Provides Advanced Form About Box
-// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2021 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 
 using System;
 using System.IO;
 using System.Drawing;
-using System.Reflection;
 using System.Diagnostics;
-using ArdeshirV.Controls;
-using ArdeshirV.Utilities;
+using ArdeshirV.Tools;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Imaging;
-using ArdeshirV.Forms.Properties;
-using System.Collections.Generic;
-using qr=ArdeshirV.Utilities.QrCode;
+using qr=ArdeshirV.Tools.QrCode;
 
 #endregion
 //---------------------------------------------------------------------------------------
@@ -82,7 +78,7 @@ namespace ArdeshirV.Forms
         private System.Windows.Forms.TabPage tabPageCredits;
         private System.Windows.Forms.ComboBox comboBoxCreditComponent;
         private System.Windows.Forms.Button buttonCreditCopy;
-        private ArdeshirV.Controls.ComboBoxImage comboBoxImageCreditNames;
+        private ArdeshirV.Forms.ComboBoxImage comboBoxImageCreditNames;
         private System.Windows.Forms.PictureBox pictureBoxCredit;
         private System.Windows.Forms.RichTextBox richTextBoxCreditData;
         private System.Windows.Forms.Label labelCreditComponents;
@@ -115,12 +111,13 @@ namespace ArdeshirV.Forms
 
         protected void InitFormAbout(FormAboutData d) 
         {
-            data = d;
+        	data = d;
             AcceptButton = m_btnOk;
             SetURL(linkLabelURL, d.URL);
             SetEmail(linkLabelEmail, d.Email);
             m_lblApplicationName.Text = d.AppName;
             Text = String.Format("About {0}", d.AppName);
+            tabControl.Appearance = TabAppearance.Normal;
             m_btnSysteminfo.Enabled = File.Exists(m_strSystemInfo);
             
             comboBoxDonation.Items.Clear();
@@ -162,7 +159,7 @@ namespace ArdeshirV.Forms
             
             if(data.Licenses.Count <= 0)
             	tabControl.TabPages.Remove(tabPageLicense);
-        }
+        }      
         //-------------------------------------------------------------------------------
         public static FormAbout Show(FormAboutData Data)
         {
@@ -429,7 +426,7 @@ namespace ArdeshirV.Forms
 					_ImageListCurrencies.Images.Clear();
 					foreach(Donation d in donations) {
 						comboBoxDonationCurrencies.Items.Add(d.Name);
-						if(d.Logo != null)
+						//if(d.Logo != null)  // Null is better than nothing
 							_ImageListCurrencies.Images.Add(d.Name, d.Logo);
 					}
 					if(comboBoxDonationCurrencies.Items.Count > 0)
@@ -439,7 +436,7 @@ namespace ArdeshirV.Forms
 		}
         //-------------------------------------------------------------------------------
 		void ComboBoxDonationCurrenciesSelectedIndexChanged(object sender, EventArgs e)
-		{
+		{//10,355,000
 			_donationSelected = null;
 			toolTip.SetToolTip(pictureBoxDonation, string.Empty);
 			if(comboBoxDonation.SelectedIndex >= 0) {
@@ -456,7 +453,7 @@ namespace ArdeshirV.Forms
 								_donationSelected = d;
 								richTextBoxDonation.Clear();
 								richTextBoxDonation.Text = d.Address;
-								pictureBoxDonation.Image = GetQRCodeImage(d.Address);
+								SetQrCodeImageOnPictureBox(pictureBoxDonation, d);
 								toolTip.SetToolTip(pictureBoxDonation, _stringQRTip);
 								break;
 							}
@@ -501,7 +498,7 @@ namespace ArdeshirV.Forms
 					_imageListCreditsAvators.Images.Clear();
 					foreach(Credit c in credits) {
 						comboBoxImageCreditNames.Items.Add(c.Name);
-						if(c.Avator != null)
+						//if(c.Avator != null)
 							_imageListCreditsAvators.Images.Add(c.Name, c.Avator);
 					}
 					if(comboBoxImageCreditNames.Items.Count > 0)
@@ -510,9 +507,34 @@ namespace ArdeshirV.Forms
 			}
 		}
         //-------------------------------------------------------------------------------
+        private void SetQrCodeImageOnPictureBox(PictureBox pb, Donation d)
+        {
+        	const int Divider = 3, marj = 1;
+        	Image QrCode = GetQRCodeImage(d.Address);
+        	int pbWidth = QrCode.Width, wDiv5 = pbWidth / Divider;
+        	int pbHeight = QrCode.Height, hDiv5 = pbHeight / Divider;
+        	int x1 = wDiv5 * marj, y1 = hDiv5 * marj;
+        	Brush brush = new SolidBrush(Color.FromArgb(220, Color.White));
+        	Bitmap canvas = new Bitmap(pbWidth, pbHeight);
+        	Graphics g = Graphics.FromImage(canvas);
+        	g.DrawImage(QrCode, 0, 0, pbWidth, pbHeight);
+        	g.FillEllipse(brush, x1, y1, hDiv5, hDiv5);  // Draw white shadow
+        	g.DrawImage(d.Logo, x1, y1, hDiv5, hDiv5);
+        	pb.SuspendLayout();
+        	pb.Image = canvas;
+        	pb.ResumeLayout();
+        	brush.Dispose();
+        	// canvas.Save(GetDonationFileName(d) + ".png", ImageFormat.Png);
+        }
+        //-------------------------------------------------------------------------------
 		private Image GetQRCodeImage(string Data)
 		{
-			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(4, 1);
+			return qr.QrCode.EncodeText(Data, qr.QrCode.Ecc.High).ToBitmap(5, 1);
+		}
+		//-------------------------------------------------------------------------------
+		private string GetDonationFileName(Donation d)
+		{
+			return string.Format("{0} {1}", d.Name, d.Address).Replace(':', ' ');
 		}
         //-------------------------------------------------------------------------------
         private void m_lnkMailTo_LinkClicked(object sender,
@@ -521,7 +543,7 @@ namespace ArdeshirV.Forms
         	string stringEmail = Extractor.ExtractFirstEmail(data.Email);
         	if(stringEmail != string.Empty) {
 	            (sender as LinkLabel).LinkVisited = true;
-	            System.Diagnostics.Process.Start("mailto:" + stringEmail);
+	            Process.Start("mailto:" + stringEmail);
         	}
         }
         //-------------------------------------------------------------------------------
@@ -531,7 +553,7 @@ namespace ArdeshirV.Forms
         	string stringURL = Extractor.ExtractFirstURL(data.URL);
         	if(stringURL != string.Empty) {
 	            (sender as LinkLabel).LinkVisited = true;
-	            System.Diagnostics.Process.Start(stringURL);
+	            Process.Start(stringURL);
         	}
         }
         //-------------------------------------------------------------------------------
@@ -561,10 +583,8 @@ namespace ArdeshirV.Forms
 				sfd.ValidateNames = true;
 				sfd.OverwritePrompt = true;
 				sfd.CheckPathExists = true;
-				sfd.FileName = string.Format("{0} {1}",
-                     _donationSelected.Name,
-                     _donationSelected.Address).Replace(':', ' ');
-				
+				sfd.FileName = GetDonationFileName(_donationSelected);
+
 				if(sfd.ShowDialog(this) == DialogResult.OK)
 					pictureBoxDonation.Image.Save(sfd.FileName, ImageFormat.Png);
 			}
@@ -683,7 +703,7 @@ namespace ArdeshirV.Forms
         	this.tabPageCredits = new System.Windows.Forms.TabPage();
         	this.comboBoxCreditComponent = new System.Windows.Forms.ComboBox();
         	this.buttonCreditCopy = new System.Windows.Forms.Button();
-        	this.comboBoxImageCreditNames = new ArdeshirV.Controls.ComboBoxImage();
+        	this.comboBoxImageCreditNames = new ArdeshirV.Forms.ComboBoxImage();
         	this.pictureBoxCredit = new System.Windows.Forms.PictureBox();
         	this.richTextBoxCreditData = new System.Windows.Forms.RichTextBox();
         	this.labelCreditComponents = new System.Windows.Forms.Label();
@@ -692,7 +712,7 @@ namespace ArdeshirV.Forms
         	this.labelDonationDescription = new System.Windows.Forms.Label();
         	this.comboBoxDonation = new System.Windows.Forms.ComboBox();
         	this.buttonDonationCopy = new System.Windows.Forms.Button();
-        	this.comboBoxDonationCurrencies = new ArdeshirV.Controls.ComboBoxImage();
+        	this.comboBoxDonationCurrencies = new ArdeshirV.Forms.ComboBoxImage();
         	this.pictureBoxDonation = new System.Windows.Forms.PictureBox();
         	this.richTextBoxDonation = new System.Windows.Forms.RichTextBox();
         	this.labelDonationComponent = new System.Windows.Forms.Label();

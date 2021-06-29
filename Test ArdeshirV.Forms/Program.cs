@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 #endregion Header
 //---------------------------------------------------------------------------------------------
-namespace ArdeshirV.TestForms
+namespace ArdeshirV.Applications.TestForms
 {
     internal static class Program
     {
@@ -22,7 +22,7 @@ namespace ArdeshirV.TestForms
         	const string stringMessage = @"
     ArdeshirV.TestForms v2.0 - Shows how to use 'ArdeshirV.Forms' library
     You can find the latest update here: https://ardeshirv.github.io/ArdeshirV.Forms
-    Copyright (C) 2002-2020 ArdeshirV@protonmail.com
+    Copyright (C) 2002-2021 ArdeshirV@protonmail.com
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
