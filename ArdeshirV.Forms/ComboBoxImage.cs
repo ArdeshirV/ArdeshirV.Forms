@@ -1,12 +1,10 @@
 ﻿#region Header
 
-// Copyright© 2002-2020 ArdeshirV@protonmail.com, Licensed under LGPLv3+
+// Copyright© 2002-2021 ArdeshirV@protonmail.com, Licensed under LGPLv3+
 using System;
-using System.IO;
 using System.Drawing;
-using ArdeshirV.Forms;
-using ArdeshirV.Tools;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 using AVFR = ArdeshirV.Forms.Properties;
 
 #endregion
@@ -37,21 +35,25 @@ namespace ArdeshirV.Forms
 	        		return;
 	        	}
 		        
-		        e.Graphics.FillRectangle(new SolidBrush(e.BackColor), e.Bounds);
+	        	SolidBrush brush = new SolidBrush(e.BackColor);
+        		e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+		        //e.Graphics.FillRectangle(brush, e.Bounds);
 		        e.Graphics.DrawString(strItem, e.Font, new SolidBrush(e.ForeColor),
 		                              e.Bounds.Left + e.Bounds.Height, e.Bounds.Top + 2);
 		        
 		        Image pic;
 		        try {
-			        pic = _images.Images[strItem];
+				    pic = _images.Images[strItem];
+				    
+			        if(pic != null)
+			        	e.Graphics.DrawImage(pic, e.Bounds.Left, e.Bounds.Top,
+			        	                     e.Bounds.Height, e.Bounds.Height);
 	        	} catch(Exception) {
 	        		base.OnDrawItem(e);
-	        		return;
 	        	}
-		        
-		        if(pic != null)
-		        	e.Graphics.DrawImage(pic, e.Bounds.Left, e.Bounds.Top,
-		        	                     e.Bounds.Height, e.Bounds.Height);
+		        finally {
+		        	brush.Dispose();
+		        }
 	        }
 	    }
 		//-------------------------------------------------------------------------------
