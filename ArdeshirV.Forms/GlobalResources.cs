@@ -3,6 +3,7 @@
 // Copyright© 2002-2021 ArdeshirV@protonmail.com, Licensed under GPLv3+
 using System;
 using System.Drawing;
+using System.Collections.Generic;
 using res = ArdeshirV.Forms.Properties;
 using qres = ArdeshirV.Tools.QrCode.Res;
 
@@ -27,44 +28,44 @@ namespace ArdeshirV.Forms
 					return qres.LicenseLogo;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static Image LGPLLicenseLogo {
 				get {
 					return res.Resources.LGPLv3;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static Image GPLLicenseLogo {
 				get {
 					return res.Resources.GPLv3;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static string MITLicense {
 				get {
 					return qres.License;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static string QrCodeMITLicense {
 				get {
 					return qres.License;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static string GPLLicense {
 				get {
 					return res.Resources.GPL_LICENSE;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static string LGPLLicense {
 				get {
 					return res.Resources.LGPL_LICENSE;
 				}
 			}
 		}
-		
+		//-------------------------------------------------------------------------------
 		/// <summary>
 		/// ComponentLogos is a static class that provides global component photos.
 		/// </summary>
@@ -74,7 +75,7 @@ namespace ArdeshirV.Forms
 					return qres.Logo;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			public static Image ArdeshirVFormsLogo {
 				get {
 					return res.Resources.ArdeshirV_Forms_Logo;
@@ -94,7 +95,7 @@ namespace ArdeshirV.Forms
 					return res.Resources.ArdeshirV;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			/// <summary>
 			/// Nayuki avator; Nayuki is founder of QrCode project.
 			/// </summary>
@@ -103,7 +104,7 @@ namespace ArdeshirV.Forms
 					return qres.NayukiAvator;
 				}
 			}
-			
+			//---------------------------------------------------------------------------
 			/// <summary>
 			/// ManuelBleichenbacher avator; ManuelBleichenbacher converted original QrCode from java to C#.
 			/// </summary>
@@ -113,682 +114,157 @@ namespace ArdeshirV.Forms
 				}
 			}
 		}
-
+		
 		/// <summary>
 		/// CurrencyLogos is a static class that provides global currency logos,
 		/// such as Bitcoin logo, Ethereum logo, Nano logo, USDTether logo and etc.
 		/// </summary>
 		public static class CurrencyLogos {
-			public static Bitmap Bitcoin {
-				get {
-					return res.Resources.bitcoin;
-				}
-			}
-			
-			public static Bitmap _0x {
-				get {
-					return res.Resources._0x;
-				}
-			}
-			
-			public static Bitmap Aelf {
-				get {
-					return res.Resources.aelf;
-				}
-			}
-			
-			public static Bitmap Ripple {
-				get {
-					return res.Resources.xrp;
-				}
-			}
-			
-			public static Bitmap NEM {
-				get {
-					return res.Resources.nem;
-				}
-			}
-			
-			public static Bitmap Aeon {
-				get {
-					return res.Resources.aeon;
-				}
-			}
-			
-			public static Bitmap Aeternity {
-				get {
-					return res.Resources.aeternity;
-				}
-			}
-			
-			public static Bitmap Aion {
-				get {
-					return res.Resources.aion;
-				}
-			}
-			
-			public static Bitmap Algorand {
-				get {
-					return res.Resources.algorand;
-				}
-			}
-			
-			public static Bitmap Appcoins {
-				get {
-					return res.Resources.appcoins;
-				}
-			}
-			
-			public static Bitmap Aragon {
-				get {
-					return res.Resources.aragon;
-				}
-			}
-			
-			public static Bitmap Augur {
-				get {
-					return res.Resources.augur;
-				}
-			}
-			
-			public static Bitmap BandProtocol {
-				get {
-					return res.Resources.band_protocol;
-				}
-			}
-			
-			public static Bitmap BasicAttentionToken {
-				get {
-					return res.Resources.basic_attention_token;
-				}
-			}
-			
-			public static Bitmap Binance {
-				get {
-					return res.Resources.binance_coin;
-				}
-			}
-			
-			public static Bitmap Bitcloud {
-				get {
-					return res.Resources.bitcloud;
-				}
-			}
-			
-			public static Bitmap BitcoinCash {
-				get {
-					return res.Resources.bitcoin_cash;
-				}
-			}
-			
-			public static Bitmap BitcoinDiamond {
-				get {
-					return res.Resources.bitcoin_diamond;
-				}
-			}
-			
-			public static Bitmap BitcoinGold {
-				get {
-					return res.Resources.bitcoin_gold;
-				}
-			}
-			
-			public static Bitmap BitcoinPlus {
-				get {
-					return res.Resources.bitcoin_plus;
-				}
-			}
-			
-			public static Bitmap BitcoinPrivate {
-				get {
-					return res.Resources.bitcoin_private;
-				}
-			}
-			
-			public static Bitmap BitcoinSV {
-				get {
-					return res.Resources.bitcoin_sv;
-				}
-			}
-			
-			public static Bitmap Bitcore {
-				get {
-					return res.Resources.bitcore;
-				}
-			}
-			
-			public static Bitmap BitforexToken {
-				get {
-					return res.Resources.bitforex_token;
-				}
-			}
-			
-			public static Bitmap Blockstamp {
-				get {
-					return res.Resources.blockstamp;
-				}
-			}
-			
-			public static Bitmap Cardano {
-				get {
-					return res.Resources.cardano;
-				}
-			}
-			
-			public static Bitmap Celo {
-				get {
-					return res.Resources.celo;
-				}
-			}
-			
-			public static Bitmap Celsius {
-				get {
-					return res.Resources.celsius;
-				}
-			}
-			
-			public static Bitmap Chainlink {
-				get {
-					return res.Resources.chainlink;
-				}
-			}
-			
-			public static Bitmap Chainx {
-				get {
-					return res.Resources.chainx;
-				}
-			}
-			
-			public static Bitmap Civic {
-				get {
-					return res.Resources.civic;
-				}
-			}
-			
-			public static Bitmap Cosmos {
-				get {
-					return res.Resources.cosmos;
-				}
-			}
-			
-			public static Bitmap CryptoCom {
-				get {
-					return res.Resources.crypto_com;
-				}
-			}
-			
-			public static Bitmap CurveDaoToken {
-				get {
-					return res.Resources.curve_dao_token;
-				}
-			}
-			
-			public static Bitmap Dash {
-				get {
-					return res.Resources.dash;
-				}
-			}
-			
-			public static Bitmap Decentraland {
-				get {
-					return res.Resources.decentraland;
-				}
-			}
-			
-			public static Bitmap Decred {
-				get {
-					return res.Resources.decred;
-				}
-			}
-			
-			public static Bitmap Dogecoin {
-				get {
-					return res.Resources.dogecoin;
-				}
-			}
-			
-			public static Bitmap EnergyWebToken {
-				get {
-					return res.Resources.energy_web_token;
-				}
-			}
-			
-			public static Bitmap EnjinCoin {
-				get {
-					return res.Resources.enjin_coin;
-				}
-			}
-			
-			public static Bitmap Eos {
-				get {
-					return res.Resources.eos;
-				}
-			}
-			
-			public static Bitmap EtherZero {
-				get {
-					return res.Resources.ether_zero;
-				}
-			}
-			
-			public static Bitmap Ethereum {
-				get {
-					return res.Resources.ethereum;
-				}
-			}
-			
-			public static Bitmap EthereumClassic {
-				get {
-					return res.Resources.ethereum_classic;
-				}
-			}
-			
-			public static Bitmap Filecoin {
-				get {
-					return res.Resources.filecoin;
-				}
-			}
-			
-			public static Bitmap FtxToken {
-				get {
-					return res.Resources.ftx_token;
-				}
-			}
-			
-			public static Bitmap Gas {
-				get {
-					return res.Resources.gas;
-				}
-			}
-			
-			public static Bitmap GeminiDollar {
-				get {
-					return res.Resources.gemini_dollar;
-				}
-			}
-			
-			public static Bitmap Gifto {
-				get {
-					return res.Resources.gifto;
-				}
-			}
-			
-			public static Bitmap Grin {
-				get {
-					return res.Resources.grin;
-				}
-			}
-			
-			public static Bitmap Harmony {
-				get {
-					return res.Resources.harmony;
-				}
-			}
-			
-			public static Bitmap Holo {
-				get {
-					return res.Resources.holo;
-				}
-			}
-			
-			public static Bitmap Icon {
-				get {
-					return res.Resources.icon;
-				}
-			}
-			
-			public static Bitmap IOSToken {
-				get {
-					return res.Resources.iostoken;
-				}
-			}
-			
-			public static Bitmap IOTA {
-				get {
-					return res.Resources.iota;
-				}
-			}
-			
-			public static Bitmap Iotex {
-				get {
-					return res.Resources.iotex;
-				}
-			}
-			
-			public static Bitmap Komodo {
-				get {
-					return res.Resources.komodo;
-				}
-			}
-			
-			public static Bitmap Likecoin {
-				get {
-					return res.Resources.likecoin;
-				}
-			}
-			
-			public static Bitmap Lisk {
-				get {
-					return res.Resources.lisk;
-				}
-			}
-			
-			public static Bitmap Litecoin {
-				get {
-					return res.Resources.litecoin;
-				}
-			}
-			
-			public static Bitmap LoomNetwork {
-				get {
-					return res.Resources.loom_network;
-				}
-			}
-			
-			public static Bitmap Loopring {
-				get {
-					return res.Resources.loopring;
-				}
-			}
-			
-			public static Bitmap Maker {
-				get {
-					return res.Resources.maker;
-				}
-			}
-			
-			public static Bitmap Metal {
-				get {
-					return res.Resources.metal;
-				}
-			}
-			
-			public static Bitmap Monero {
-				get {
-					return res.Resources.monero;
-				}
-			}
-			
-			public static Bitmap Nano {
-				get {
-					return res.Resources.nano;
-				}
-			}
-			
-			public static Bitmap Nem {
-				get {
-					return res.Resources.nem;
-				}
-			}
-			
-			public static Bitmap Neo {
-				get {
-					return res.Resources.neo;
-				}
-			}
-			
-			public static Bitmap Nxt {
-				get {
-					return res.Resources.nxt;
-				}
-			}
-			
-			public static Bitmap Ontology {
-				get {
-					return res.Resources.ontology;
-				}
-			}
-			
-			public static Bitmap Orchid {
-				get {
-					return res.Resources.orchid;
-				}
-			}
-			
-			public static Bitmap PaxGold {
-				get {
-					return res.Resources.pax_gold;
-				}
-			}
-			
-			public static Bitmap PaxosStandard {
-				get {
-					return res.Resources.paxos_standard;
-				}
-			}
-			
-			public static Bitmap Pivx {
-				get {
-					return res.Resources.pivx;
-				}
-			}
-			
-			public static Bitmap Polkadot {
-				get {
-					return res.Resources.polkadot_new;
-				}
-			}
-			
-			public static Bitmap Qash {
-				get {
-					return res.Resources.qash;
-				}
-			}
-			
-			public static Bitmap Qtum {
-				get {
-					return res.Resources.qtum;
-				}
-			}
-			
-			public static Bitmap Ravencoin {
-				get {
-					return res.Resources.ravencoin;
-				}
-			}
-			
-			public static Bitmap Salt {
-				get {
-					return res.Resources.salt;
-				}
-			}
-			
-			public static Bitmap Siacoin {
-				get {
-					return res.Resources.siacoin;
-				}
-			}
-			
-			public static Bitmap Status {
-				get {
-					return res.Resources.status;
-				}
-			}
-			
-			public static Bitmap Steem {
-				get {
-					return res.Resources.steem;
-				}
-			}
-			
-			public static Bitmap SteemDollars {
-				get {
-					return res.Resources.steem_dollars;
-				}
-			}
-			
-			public static Bitmap Stellar {
-				get {
-					return res.Resources.stellar;
-				}
-			}
-			
-			public static Bitmap Storj {
-				get {
-					return res.Resources.storj;
-				}
-			}
-			
-			public static Bitmap Stratis {
-				get {
-					return res.Resources.stratis;
-				}
-			}
-			
-			public static Bitmap Sushiswap {
-				get {
-					return res.Resources.sushiswap;
-				}
-			}
-			
-			public static Bitmap Swipe {
-				get {
-					return res.Resources.swipe;
-				}
-			}
-			
-			public static Bitmap Swissborg {
-				get {
-					return res.Resources.swissborg;
-				}
-			}
-			
-			public static Bitmap USDTether {
-				get {
-					return res.Resources.tether;
-				}
-			}
-
-			public static Bitmap XAUT {
-				get {
-					return res.Resources.tether_gold;
-				}
-			}
-			
-			public static Bitmap TetherGold {
-				get {
-					return res.Resources.tether_gold;
-				}
-			}
-
-			public static Bitmap Tezos {
-				get {
-					return res.Resources.tezos;
-				}
-			}
-
-			public static Bitmap Tokenpay {
-				get {
-					return res.Resources.tokenpay;
-				}
-			}
-
-			public static Bitmap Tron {
-				get {
-					return res.Resources.tron;
-				}
-			}
-
-			public static Bitmap TrueUSD {
-				get {
-					return res.Resources.trueusd;
-				}
-			}
-
-			public static Bitmap Uniswap {
-				get {
-					return res.Resources.uniswap;
-				}
-			}
-
-			public static Bitmap USDCoin {
-				get {
-					return res.Resources.usd_coin;
-				}
-			}
-
-			public static Bitmap Vechain {
-				get {
-					return res.Resources.vechain;
-				}
-			}
-
-			public static Bitmap Verge {
-				get {
-					return res.Resources.verge;
-				}
-			}
-
-			public static Bitmap Vericoin {
-				get {
-					return res.Resources.vericoin;
-				}
-			}
-
-			public static Bitmap Vertcoin {
-				get {
-					return res.Resources.vertcoin;
-				}
-			}
-
-			public static Bitmap Vibe {
-				get {
-					return res.Resources.vibe;
-				}
-			}
-
-			public static Bitmap Waves {
-				get {
-					return res.Resources.waves;
-				}
-			}
-
-			public static Bitmap WePower {
-				get {
-					return res.Resources.wepower;
-				}
-			}
-
-			public static Bitmap Wing {
-				get {
-					return res.Resources.wing;
-				}
-			}
-
-			public static Bitmap XRP {
-				get {
-					return res.Resources.xrp;
-				}
-			}
-
-			public static Bitmap YearnFinance {
-				get {
-					return res.Resources.yearn_finance;
-				}
-			}
-
-			public static Bitmap ZCash {
-				get {
-					return res.Resources.zcash;
-				}
-			}
-
-			public static Bitmap ZClassic {
-				get {
-					return res.Resources.zclassic;
-				}
-			}
-
-			public static Bitmap Zel {
-				get {
-					return res.Resources.zel;
-				}
-			}
-
-			public static Bitmap Zilliqa {
-				get {
-					return res.Resources.zilliqa;
-				}
+			private static readonly Dictionary<string, Bitmap> logos =
+				new Dictionary<string, Bitmap>();
+			//---------------------------------------------------------------------------			
+			public static Bitmap GetItemByName(string logoName) {
+				Bitmap bitmapTarget;
+				if(logos.TryGetValue(logoName, out bitmapTarget))
+					return bitmapTarget;
+				else {
+					throw new Exception(string.Format(
+						"Error in CurrencyLogos.GetItemByName\nThe currency name: " + 
+						"\"{0}\" is not exists in predefined CurrencyLogos list.",
+						logoName));
+				}
+			}
+			//--------------------------------------------------------------------------
+			/// <summary>
+			/// Checks if the stringCurrencyName is
+			/// exists in the predefined currency logos.
+			/// </summary>
+			/// <param name="stringCurrencyName">Predefined currency name</param>
+			/// <returns>The image(logo) of the predefined currency
+			/// that refer to stringCurrencyName</returns>
+			public static bool Contains(string stringCurrencyName) {
+				return logos.ContainsKey(stringCurrencyName);
+			}
+			//---------------------------------------------------------------------------			
+			/// <summary>
+			/// Returns an IEnumerable to the list of all predefined currency logos.
+			/// </summary>
+			public static System.Collections.IEnumerable NamesList {
+				get {
+					return logos.Keys;
+				}
+			}
+			//---------------------------------------------------------------------------			
+			static CurrencyLogos() {				
+				logos.Add("Bitcoin", res.Resources.bitcoin);
+				logos.Add("Ethereum", res.Resources.ethereum);
+				logos.Add("0x", res.Resources._0x);
+				logos.Add("Aelf", res.Resources.aelf);
+				logos.Add("Aeon", res.Resources.aeon);
+				logos.Add("Aeternity", res.Resources.aeternity);
+				logos.Add("Aion", res.Resources.aion);
+				logos.Add("Algorand", res.Resources.algorand);
+				logos.Add("AppCoins", res.Resources.appcoins);
+				logos.Add("Aragon", res.Resources.aragon);
+				logos.Add("Augur", res.Resources.augur);
+				logos.Add("Band Protocol", res.Resources.band_protocol);
+				logos.Add("Basic Attention Token", res.Resources.basic_attention_token);
+				logos.Add("Binance", res.Resources.binance_coin);
+				logos.Add("Bitcloud", res.Resources.bitcloud);
+				logos.Add("Bitcoin Cash", res.Resources.bitcoin_cash);
+				logos.Add("Bitcoin Diamond", res.Resources.bitcoin_diamond);
+				logos.Add("Bitcoin Gold", res.Resources.bitcoin_gold);
+				logos.Add("Bitcoin Plus", res.Resources.bitcoin_plus);
+				logos.Add("Bitcoin Private", res.Resources.bitcoin_private);
+				logos.Add("Bitcoin SV", res.Resources.bitcoin_sv);
+				logos.Add("BitCore", res.Resources.bitcore);
+				logos.Add("Bitforex Token", res.Resources.bitforex_token);
+				logos.Add("BlockStamp", res.Resources.blockstamp);
+				logos.Add("Cardano", res.Resources.cardano);
+				logos.Add("Celo", res.Resources.celo);
+				logos.Add("Celsius", res.Resources.celsius);
+				logos.Add("Chainlink", res.Resources.chainlink);
+				logos.Add("ChainX", res.Resources.chainx);
+				logos.Add("Civic", res.Resources.civic);
+				logos.Add("Cosmos", res.Resources.cosmos);
+				logos.Add("Crypto.com", res.Resources.crypto_com);
+				logos.Add("Curve DAO Token", res.Resources.curve_dao_token);
+				logos.Add("Dash", res.Resources.dash);
+				logos.Add("Decentraland", res.Resources.decentraland);
+				logos.Add("Decred", res.Resources.decred);
+				logos.Add("Dogecoin", res.Resources.dogecoin);
+				logos.Add("Energy Web Token", res.Resources.energy_web_token);
+				logos.Add("Enjin Coin", res.Resources.enjin_coin);
+				logos.Add("EOS", res.Resources.eos);
+				logos.Add("Ether Zero", res.Resources.ether_zero);
+				logos.Add("Ethereum Classic", res.Resources.ethereum_classic);
+				logos.Add("Filecoin", res.Resources.filecoin);
+				logos.Add("FTX Token", res.Resources.ftx_token);
+				logos.Add("Gas", res.Resources.gas);
+				logos.Add("Gemini Dollar", res.Resources.gemini_dollar);
+				logos.Add("Gifto", res.Resources.gifto);
+				logos.Add("Grin", res.Resources.grin);
+				logos.Add("Harmony", res.Resources.harmony);
+				logos.Add("Holo", res.Resources.holo);
+				logos.Add("Icon", res.Resources.icon);
+				logos.Add("IOS Token", res.Resources.iostoken);
+				logos.Add("IOTA", res.Resources.iota);
+				logos.Add("IoTeX", res.Resources.iotex);
+				logos.Add("Komodo", res.Resources.komodo);
+				logos.Add("LikeCoin", res.Resources.likecoin);
+				logos.Add("Lisk", res.Resources.lisk);
+				logos.Add("Litecoin", res.Resources.litecoin);
+				logos.Add("Loom Network", res.Resources.loom_network);
+				logos.Add("Loopring", res.Resources.loopring);
+				logos.Add("Maker", res.Resources.maker);
+				logos.Add("Metal", res.Resources.metal);
+				logos.Add("Monero", res.Resources.monero);
+				logos.Add("Nano", res.Resources.nano);
+				logos.Add("NEM", res.Resources.nem);
+				logos.Add("Neo", res.Resources.neo);
+				logos.Add("NXT", res.Resources.nxt);
+				logos.Add("Ontology", res.Resources.ontology);
+				logos.Add("Orchid", res.Resources.orchid);
+				logos.Add("PAX Gold", res.Resources.pax_gold);
+				logos.Add("Paxos Standard", res.Resources.paxos_standard);
+				logos.Add("PIVX", res.Resources.pivx);
+				logos.Add("Polkadot", res.Resources.polkadot_new);
+				logos.Add("Qash", res.Resources.qash);
+				logos.Add("Qtum", res.Resources.qtum);
+				logos.Add("Ravencoin", res.Resources.ravencoin);
+				logos.Add("Salt", res.Resources.salt);
+				logos.Add("Siacoin", res.Resources.siacoin);
+				logos.Add("Status", res.Resources.status);
+				logos.Add("Steem", res.Resources.steem);
+				logos.Add("Steem Dollars", res.Resources.steem_dollars);
+				logos.Add("Stellar", res.Resources.stellar);
+				logos.Add("Storj", res.Resources.storj);
+				logos.Add("Stratis", res.Resources.stratis);
+				logos.Add("Sushi", res.Resources.sushiswap);
+				logos.Add("Swipe", res.Resources.swipe);
+				logos.Add("SwissBorg", res.Resources.swissborg);
+				logos.Add("Tether", res.Resources.tether);
+				logos.Add("Tether Gold", res.Resources.tether_gold);
+				logos.Add("Tezos", res.Resources.tezos);
+				logos.Add("TokenPay", res.Resources.tokenpay);
+				logos.Add("Tron", res.Resources.tron);
+				logos.Add("TrueUSD", res.Resources.trueusd);
+				logos.Add("Uniswap", res.Resources.uniswap);
+				logos.Add("USD Coin", res.Resources.usd_coin);
+				logos.Add("VeChain", res.Resources.vechain);
+				logos.Add("Verge", res.Resources.verge);
+				logos.Add("VeriCoin", res.Resources.vericoin);
+				logos.Add("Vertcoin", res.Resources.vertcoin);
+				logos.Add("VIBE", res.Resources.vibe);
+				logos.Add("Waves", res.Resources.waves);
+				logos.Add("WePower", res.Resources.wepower);
+				logos.Add("Wing", res.Resources.wing);
+				logos.Add("Ripple", res.Resources.xrp);
+				logos.Add("yearn.finance", res.Resources.yearn_finance);
+				logos.Add("Zcash", res.Resources.zcash);
+				logos.Add("Zclassic", res.Resources.zclassic);
+				logos.Add("Flux", res.Resources.zel);
+				logos.Add("Zilliqa", res.Resources.zilliqa);
 			}
 		}
 	}

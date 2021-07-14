@@ -23,7 +23,7 @@ namespace ArdeshirV.Forms
 		//-------------------------------------------------------------------------------
 	    protected override void OnDrawItem(DrawItemEventArgs e)
 	    {
-	        e.DrawBackground();
+	    	e.DrawBackground();
 	        e.DrawFocusRectangle();
 	        	
 	        if(e.Index >= 0) {
@@ -35,24 +35,29 @@ namespace ArdeshirV.Forms
 	        		return;
 	        	}
 		        
-	        	SolidBrush brush = new SolidBrush(e.BackColor);
+	        	SolidBrush brushBack = new SolidBrush(e.BackColor);
+	        	SolidBrush brushFore = new SolidBrush(e.ForeColor);
         		e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-		        //e.Graphics.FillRectangle(brush, e.Bounds);
-		        e.Graphics.DrawString(strItem, e.Font, new SolidBrush(e.ForeColor),
+		        //e.Graphics.FillRectangle(brushBack, e.Bounds);
+		        e.Graphics.DrawString(strItem, e.Font, brushFore,
 		                              e.Bounds.Left + e.Bounds.Height, e.Bounds.Top + 2);
 		        
-		        Image pic;
 		        try {
-				    pic = _images.Images[strItem];
+				    Image pic = _images.Images[strItem];
 				    
-			        if(pic != null)
-			        	e.Graphics.DrawImage(pic, e.Bounds.Left, e.Bounds.Top,
-			        	                     e.Bounds.Height, e.Bounds.Height);
+				    if(pic != null) {
+				    	Rectangle rect =
+				    		new Rectangle(e.Bounds.Left, e.Bounds.Top,
+				    		              e.Bounds.Height, e.Bounds.Height);
+				    	// e.Graphics.FillRectangle(brushBack, rect);
+			        	e.Graphics.DrawImage(pic, rect);
+				    }
 	        	} catch(Exception) {
 	        		base.OnDrawItem(e);
 	        	}
 		        finally {
-		        	brush.Dispose();
+		        	brushBack.Dispose();
+		        	brushFore.Dispose();
 		        }
 	        }
 	    }

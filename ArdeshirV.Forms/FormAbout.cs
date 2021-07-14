@@ -6,8 +6,8 @@
 using System;
 using System.IO;
 using System.Drawing;
-using System.Diagnostics;
 using ArdeshirV.Tools;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing.Imaging;
@@ -514,16 +514,19 @@ namespace ArdeshirV.Forms
         	int pbWidth = QrCode.Width, wDiv5 = pbWidth / Divider;
         	int pbHeight = QrCode.Height, hDiv5 = pbHeight / Divider;
         	int x1 = wDiv5 * marj, y1 = hDiv5 * marj;
-        	Brush brush = new SolidBrush(Color.FromArgb(220, Color.White));
-        	Bitmap canvas = new Bitmap(pbWidth, pbHeight);
+        	Brush brush = new SolidBrush(Color.FromArgb(230, Color.White));
+        	Image canvas = new Bitmap(pbWidth, pbHeight);
         	Graphics g = Graphics.FromImage(canvas);
         	g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
         	g.DrawImage(QrCode, 0, 0, pbWidth, pbHeight);
         	g.FillEllipse(brush, x1, y1, hDiv5, hDiv5);  // Draw white shadow
         	g.DrawImage(d.Logo, x1, y1, hDiv5, hDiv5);
+        	//	Image img = GlobalResouces.CurrencyLogos.GetItem("Nano");//
+        	//	g.DrawImage(img, x1, y1, hDiv5, hDiv5);  // Code test
         	pb.SuspendLayout();
         	pb.Image = canvas;
         	pb.ResumeLayout();
+        	QrCode.Dispose();
         	brush.Dispose();
         	// canvas.Save(GetDonationFileName(d) + ".png", ImageFormat.Png);
         }

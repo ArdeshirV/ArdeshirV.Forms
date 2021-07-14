@@ -253,6 +253,18 @@ namespace ArdeshirV.Forms
     		_name = name;
     		_donations = donations;
     	}
+		//-------------------------------------------------------------------------------
+		public static Donation NewDonationByDefaultCurrencyLogos(
+			string DefaultCurrencyName, string CurrencyAddress) {
+			if(GlobalResouces.CurrencyLogos.Contains(DefaultCurrencyName))
+				return new Donation(DefaultCurrencyName, CurrencyAddress,
+				                    GlobalResouces.CurrencyLogos.
+				                    GetItemByName(DefaultCurrencyName));
+			else
+				throw new ApplicationException(string.Format(
+					"The \"{0}\" not found in GlobalResouces.CurrencyLogos",
+					DefaultCurrencyName));
+		}
     }
     //-----------------------------------------------------------------------------------
 	public sealed class FormAboutData
@@ -352,38 +364,62 @@ namespace ArdeshirV.Forms
 			// Warning: Nobody is not allowed to change or modify my donation addresses here
 			// but you are allowed to add your own donation addresses somewhere else
  			// that refer to your own components. That place is out of this file.
-			// Now search for "todo: You are allowed to change..." in your "Task List"
 			// for more information and find that sample code about
-			// how to adding your own addresses easily above mine.
-			// You can find the best sample code in TestForms/FormMainTest.cs file.
+			// how to adding your own addresses easily above mine;
+			// You can find the best sample code in "TestForms/FormMainTest.cs" file.	
+			// Search for "todo: You are allowed to change..." in your "Task List"
+			// in the "FormMainTest.cs" file of "TestForms" project
 			_donations = new Donation[] {
-				new Donation("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi", GlobalResouces.CurrencyLogos.Bitcoin),
-				new Donation("Ethereum", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.Ethereum),
-				new Donation("Tron", "TCB6uBci8mw1P4e2xikSGbyHcFjNCFphXr", GlobalResouces.CurrencyLogos.Tron),
-				new Donation("PaxosStandard", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.PaxosStandard),
-				new Donation("USDTether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.USDTether),
-				new Donation("PaxGold", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.PaxGold),
-				new Donation("TetherGold", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.TetherGold),
-				new Donation("TrueUSD", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E", GlobalResouces.CurrencyLogos.TrueUSD),
-				new Donation("Binance", "bnb15qwa7kl46ledh5zqqynmy2tqw92mhzuwmap6sf", GlobalResouces.CurrencyLogos.Binance),
-				new Donation("Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc", GlobalResouces.CurrencyLogos.Nano),
-				new Donation("Stellar", "GCMALSIYBJT74K5SKJFHMLBJRWFCO6EPIKQ4DO6C7ER4QAYIMTQSOOWI", GlobalResouces.CurrencyLogos.Stellar),
-				new Donation("Ripple", "raBw695Qnkt5RNTxTcyGFPzC5yFFHYztfR", GlobalResouces.CurrencyLogos.XRP),
-				new Donation("Cardano", "DdzFFzCqrhsoSn5qvqRTovUkr1XHWy9LvbvDHVYFoFFyxAJkf1bT4X4ySpm8DwFqDo3EWAn934W9WfipbSNiXTcRzEqLP1y5KyAfMByJ", GlobalResouces.CurrencyLogos.Cardano),
-				new Donation("Neo", "AXqbLBWhcrFrjumvrm8nW9iYaUFoKML17b", GlobalResouces.CurrencyLogos.Neo),
-				new Donation("NEM", "NDXCTS2ITWO4J33YPL7AMHSGOIFRJSTBWSDZ4C3P", GlobalResouces.CurrencyLogos.Nem),
-				new Donation("Qtum", "QddGvqLg5yTi2J2DvixZVFgA1rpm5RAq2x", GlobalResouces.CurrencyLogos.Qtum),
-				new Donation("Litecoin", "LdfYVr2Lgyuwp9K5Dk4aUsUbUQ2Rr5TA1n", GlobalResouces.CurrencyLogos.Litecoin),
-				new Donation("BitcoinCash", "bitcoincash:qzqsse2w6vqkqylfvkuqdvmgpl34zyq2cvwneunpyl", GlobalResouces.CurrencyLogos.BitcoinCash),
-				new Donation("Dash", "XhsE3ntLYdKMbT4JptTvURqyu9RKuypDCf", GlobalResouces.CurrencyLogos.Dash),
-				new Donation("Verge", "DRviBtskt1M6BBTpAoNvF3qLrpKTN3mb7P", GlobalResouces.CurrencyLogos.Verge),
-				new Donation("ZCash", "t1ZnspKa3XFijtUAG6yKHsM3y6Bdb7C8HKA", GlobalResouces.CurrencyLogos.ZCash),
-				new Donation("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y", GlobalResouces.CurrencyLogos.Monero)
+				CreateDonationByDefaultLogos("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi"),
+				CreateDonationByDefaultLogos("Ethereum", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				CreateDonationByDefaultLogos("Tron", "TCB6uBci8mw1P4e2xikSGbyHcFjNCFphXr"),
+				CreateDonationByDefaultLogos("Paxos Standard", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				CreateDonationByDefaultLogos("Tether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				CreateDonationByDefaultLogos("PAX Gold", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				CreateDonationByDefaultLogos("Tether Gold", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				CreateDonationByDefaultLogos("TrueUSD", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				CreateDonationByDefaultLogos("Binance", "bnb15qwa7kl46ledh5zqqynmy2tqw92mhzuwmap6sf"),
+				CreateDonationByDefaultLogos("Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc"),
+				CreateDonationByDefaultLogos("Stellar", "GCMALSIYBJT74K5SKJFHMLBJRWFCO6EPIKQ4DO6C7ER4QAYIMTQSOOWI"),
+				CreateDonationByDefaultLogos("Ripple", "raBw695Qnkt5RNTxTcyGFPzC5yFFHYztfR"),
+				CreateDonationByDefaultLogos("Cardano", "DdzFFzCqrhsoSn5qvqRTovUkr1XHWy9LvbvDHVYFoFFyxAJkf1bT4X4ySpm8DwFqDo3EWAn934W9WfipbSNiXTcRzEqLP1y5KyAfMByJ"),
+				CreateDonationByDefaultLogos("Neo", "AXqbLBWhcrFrjumvrm8nW9iYaUFoKML17b"),
+				CreateDonationByDefaultLogos("NEM", "NDXCTS2ITWO4J33YPL7AMHSGOIFRJSTBWSDZ4C3P"),
+				CreateDonationByDefaultLogos("Qtum", "QddGvqLg5yTi2J2DvixZVFgA1rpm5RAq2x"),
+				CreateDonationByDefaultLogos("Litecoin", "LdfYVr2Lgyuwp9K5Dk4aUsUbUQ2Rr5TA1n"),
+				CreateDonationByDefaultLogos("Bitcoin Cash", "bitcoincash:qzqsse2w6vqkqylfvkuqdvmgpl34zyq2cvwneunpyl"),
+				CreateDonationByDefaultLogos("Dash", "XhsE3ntLYdKMbT4JptTvURqyu9RKuypDCf"),
+				CreateDonationByDefaultLogos("Verge", "DRviBtskt1M6BBTpAoNvF3qLrpKTN3mb7P"),
+				CreateDonationByDefaultLogos("Zcash", "t1ZnspKa3XFijtUAG6yKHsM3y6Bdb7C8HKA"),
+				CreateDonationByDefaultLogos("Monero", "42dJ7dWZjHyV4bzL4uVcS6cYnNfSvtXQyJaZ83yj4xALMiZoEMuja5SdcMHZS3Ai1eDCF9D5RDzgrHoyngckf38yC2MM42y")
 			};
 			_list = new Dictionary<string, Donation>();
 			foreach(Donation d in _donations)
 				_list.Add(d.Name, d);
 			//************************************************************************
+		}
+		//-------------------------------------------------------------------------------
+		/// <summary>
+		/// Provides a new donation instance with one of predefined currency image logos
+		/// that are exists as predefined values in GlobalResouces.CurrencyLogos
+		/// You can check the full list of predefined currency logos in
+		/// the GlobalResouces.CurrencyLogos.NamesList
+		/// </summary>
+		/// <param name="CurrencyName">The currency name that should be exists in
+		/// GlobalResouces.CurrencyLogos.NamesList as default currency logos</param>
+		/// <param name="CurrencyAddress"></param>
+		/// <returns></returns>
+		public static Donation CreateDonationByDefaultLogos(
+			string CurrencyName, string CurrencyAddress)
+		{
+			if(GlobalResouces.CurrencyLogos.Contains(CurrencyName)) {
+				Image imageLogo = GlobalResouces.CurrencyLogos.GetItemByName(CurrencyName);
+				return new Donation(CurrencyName, CurrencyAddress, imageLogo);
+			} else
+				throw new Exception(string.Format(
+					"Error in DefaultDonationList.CreateDonationByDefaultLogos\nThe cu" +
+					"rrency name: \"{0}\" is not exists in predefined CurrencyLogos list.",
+					CurrencyName));
 		}
 		//-------------------------------------------------------------------------------
 		public static Donation[] Items {

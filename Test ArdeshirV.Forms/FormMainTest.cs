@@ -117,23 +117,28 @@ namespace ArdeshirV.Applications.TestForms
 				new Donations(      // Donations belong to this component and you can specify 
 				stringAssemblyProductName,// several donation lists for several different component in your app
 				new Donation[] {    // All below donations addresses are linked to
-				              	    // the component with stringAssemblyTitle title
-					new Donation("Bitcoin",                             // Donation name
-					             "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi",  // Donation address
-					             GlobalResouces.CurrencyLogos.Bitcoin), // Donation logo
-					// if you use usual public cryptocurrency logos like bitcoin and etc...
-					// then you can refer to ArdeshirV.Forms.Properties.Resources.Bitcoin image
-					new Donation("Ethereum",  // Here another example about Ethereum
-					             // You can use your own donation address in your app like this:
-					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
-					             // Predefined crypto currency logos, You can use other images.
-					             GlobalResouces.CurrencyLogos.Ethereum), 
-					new Donation("Nano", 
-					             "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc",
-					             GlobalResouces.CurrencyLogos.Nano),
-					new Donation("USDTether", 
-					             "0x6E6465394D14975956cd1BD37ab4E35F2C60300E",
-					             GlobalResouces.CurrencyLogos.USDTether)
+				    // the component-name with stringAssemblyTitle title
+				    // That means each independent component of application can refer
+				    // to a large number of donation addresses just like below:
+				    
+			    	// Here we specify donation predefined name and address and
+			    	// the prdefined image-logo to specified currency name
+			    	// will be found in the predefined currency name/logos
+			    	// To visit the full predefined list of currency logos check
+			    	// the GlobalResouces.CurrencyLogos.NamesList
+				    DefaultDonationList.CreateDonationByDefaultLogos(
+				    	"Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi"),
+					    // You can also use the below code instead of above code:
+					    //   new Donation("Bitcoin", "1GtjrxH6t8om8KwHAHKpcG5SAwVSsm4PEi",
+					    //                GlobalResouces.CurrencyLogos.GetItemByName("Bitcoin")),
+					    // but it's too longer and more complicated but with same result.
+					    // Here also the Bitcoin logo will be added to the list automatically.
+				    DefaultDonationList.CreateDonationByDefaultLogos(
+				    	"Ethereum",  "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+					DefaultDonationList.CreateDonationByDefaultLogos(
+				    	"Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc"), 
+					DefaultDonationList.CreateDonationByDefaultLogos(
+				    	"Tether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E")
 				})};
 			
 			Credits[] credits = new Credits[] {
