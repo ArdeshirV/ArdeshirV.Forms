@@ -109,13 +109,15 @@ namespace ArdeshirV.Applications.TestForms
         //-------------------------------------------------------------------------------
         private void buttonFormAbout_Click(object sender, EventArgs e)
         {
-        	// AssemblyAttributeAccessors retrive all assembly data by reflection
-			string stringAssemblyProductName = new AssemblyAttributeAccessors(this).AssemblyProduct;
+        	// if you want to create the most beautiful "About form" you just need to
+        	// copy below code in this method into your app and change some words
+			string stringProductName = Application.ProductName;
 
-			// TODO: You can add your donation addresses in your code like this:
+			// TODO: You can add your donation addresses in your code like below examples
+			// You just need to replace your currency-name currency-address and logos
 			Donations[] donations = new Donations[] {
 				new Donations(      // Donations belong to this component and you can specify 
-				stringAssemblyProductName,// several donation lists for several different component in your app
+				stringProductName,// several donation lists for several different component in your app
 				new Donation[] {    // All below donations addresses are linked to
 				    // the component-name with stringAssemblyTitle title
 				    // That means each independent component of application can refer
@@ -134,20 +136,32 @@ namespace ArdeshirV.Applications.TestForms
 					    // but it's too longer and more complicated but with same result.
 					    // Here also the Bitcoin logo will be added to the list automatically.
 				    DefaultDonationList.CreateDonationByDefaultLogos(
-				    	"Ethereum",  "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+					    // Here we used predefined logo for Ethereum but without custom address:
+				    	"Ethereum",  "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),  
+					// Here we use default predefined Binance address
+					// and logo that belong to ArdeshirV: (You don't need to use it)
+				    DefaultDonationList.GetItem("Binance"),
+				    DefaultDonationList.GetItem("Tron"),
+				    // We use predefined Nano logo with the specified custom address: 
 					DefaultDonationList.CreateDonationByDefaultLogos(
 				    	"Nano", "nano_3feuiaogay8zbsfye5ob1xp7obwb4syfpmc4pcb7ctckhh5z8671q4uzm9tc"), 
 					DefaultDonationList.CreateDonationByDefaultLogos(
-				    	"Tether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E")
+				    	"Tether", "0x6E6465394D14975956cd1BD37ab4E35F2C60300E"),
+				    DefaultDonationList.GetItem("Paxos Standard"),
+				    DefaultDonationList.GetItem("PAX Gold"),
+				    DefaultDonationList.GetItem("Monero"),
+				    DefaultDonationList.GetItem("Zcash"),
 				})};
 			
 			Credits[] credits = new Credits[] {
-				new Credits(stringAssemblyProductName, new Credit[] {
+				new Credits(stringProductName, new Credit[] {
 				            	DefaultCreditList.GetItem("ArdeshirV.Forms")
-				            })
-				// TODO: You can add your credit info in your code like this:
+				            })  //,
+				// TODO: You can add your credit info in your code like this example:
 				//new Credits("Component Name", new Credit[] {
-				//	            new Credit("Credit Name", "Credit Description...", CreditAvator)
+				//	            new Credit("Credit Name",
+			    //                         "Credit Description...",
+			    //                          CreditAvator)  // It's an image about your specified creadit
 				//	        })
 			};
 			
@@ -166,9 +180,9 @@ namespace ArdeshirV.Applications.TestForms
 			};
 			
 			License[] licenses = new License[] {
-				new License(stringAssemblyProductName,  // The component name
-				            GlobalResouces.Licenses.GPLLicense,    // License Contents for specified component
-				            GlobalResouces.Licenses.GPLLicenseLogo)      // License Logo
+				new License(stringProductName,              // The component name
+				            GlobalResouces.Licenses.GPLLicense,     // License Contents for specified component
+				            GlobalResouces.Licenses.GPLLicenseLogo) // License Logo
 			};
 			
         	FormAboutData data = new FormAboutData(this,
