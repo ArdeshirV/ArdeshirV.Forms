@@ -71,6 +71,7 @@ You can use "ArdeshirV.Forms" in your project to create fantastic windows forms 
         </section>
       </article>
     </main>
+    <br/><br/>
     <footer>
         <p style="margin: auto;">
            Copyright&copy; 2002-2020 <a href="mailto:ArdeshirV@protonmail.com">ArdeshirV@protonmail.com</a>, Licensed under GPL<sup>v3+</sup>
