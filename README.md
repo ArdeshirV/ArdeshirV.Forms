@@ -1,14 +1,11 @@
-<strong>ArdeshirV.Forms</strong> is a customized version of everyday windows .Net forms like About Box, Error Handler, Splash Screen and my base windows form with many fantastic special ability.
+# ArdeshirV.Forms
+## ArdeshirV.Forms is a customized version of everyday Windows .NET forms, such as About Box, Error Handler, Splash Screen, and my base Windows form with many fantastic special abilities."
 
-New Stable Version 4.8.1.1
+"The 'Test.ArdeshirV.Forms.zip' file contains three files: 'ArdeshirV.Forms.dll', 'ArdeshirV.Tools.QrCode.dll', and 'TestForms.exe'."
 
-The "Test.ArdeshirV.Forms.zip" file contains three file: "ArdeshirV.Forms.dll", "ArdeshirV.Tools.QrCode.dll" and "TestForms.exe".
+"The 'ArdeshirV.Forms.dll' is the main target library that contains a set of everyday Windows forms, such as About Box, Error Handler, Splash Form, and my own custom Windows base form for all my own Windows forms with many new abilities and beauties. You are free to use the 'ArdeshirV.Forms.dll' library in your code with different kinds of licenses without any problem because I published this library with the LGPLv3+ license that allows you to use this library in all kinds of projects with varied licenses."
 
-The "ArdeshirV.Forms.dll" is the main target library that contains a set of everyday windows forms such as About Box, Error Handler, Splash Form and my own custom windows base form for all my own windows forms with many new abilities and beauties. You are free to use "ArdeshirV.Forms.dll" library in your code with different kind of licensed without any problem because I published this library with the LGPLv3+ license that let you use this library in all kind of projects with varied licensed.
-
-The "TestForms.exe" is a simple application that shows the power of "ArdeshirV.Forms.dll" library and all ability of that library. This app is just for test the library and it works only beside the "ArdeshirV.Forms.dll" library.
-
-For example here you can see "ArdeshirV.Forms.FormAbout":
+"The 'TestForms.exe' is a simple application that showcases the power of the 'ArdeshirV.Forms.dll' library and all the abilities of that library. This app is just for testing the library, and it only works alongside the 'ArdeshirV.Forms.dll' library.:
 <img src="https://raw.githubusercontent.com/ArdeshirV/ArdeshirV.Forms/master/Images/FormAboutTestFormCopyright.png" alt="ArdeshirV.Forms.FormAbout">
 
 You can use "ArdeshirV.Forms" in your project to create fantastic windows forms applications.
