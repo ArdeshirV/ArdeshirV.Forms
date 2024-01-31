@@ -12,4 +12,3 @@ The 'Test.ArdeshirV.Forms.zip' file contains three files: 'ArdeshirV.Forms.dll',
 I hope you use "ArdeshirV.Forms" in your project to create fantastic Windows Forms applications. You can access its repository on Github [here](https://github.com/ArdeshirV/ArdeshirV.Forms).
 
 #### Copyright&copy; 2002-2023 [ArdeshirV](mailto:ArdeshirV@protonmail.com), Licensed under LGPL
-
